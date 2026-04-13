@@ -95,7 +95,9 @@ export function ProgressPage() {
         <div className="bg-[#2D3324] rounded-[32px] p-6 text-white overflow-hidden relative group">
            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:bg-white/10 transition-all" />
            <div className="flex items-center gap-5 relative z-10">
-              <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${active ? 'bg-[#8B9A71] text-white shadow-lg shadow-[#8B9A71]/20 scale-100 sm:scale-110 -translate-y-1' : 'text-[#2D3324]/40 hover:text-[#8B9A71]'}`}>
+              <div className="w-14 h-14 sm:w-16 sm:h-16 bg-[#8B9A71] rounded-2xl flex items-center justify-center text-white shadow-xl shadow-[#8B9A71]/20">
+                 <Award size={32} />
+              </div>
               <div>
                  <h4 className="text-lg font-extrabold">Consistency King</h4>
                  <p className="text-xs text-white/60 mt-1">You've reached an 8-day check-in streak</p>
