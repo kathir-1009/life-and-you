@@ -1,75 +1,89 @@
 import { createBrowserRouter, Navigate } from "react-router";
+import { lazy, Suspense } from "react";
 import { MainLayout } from "./components/MainLayout";
-import { HomePage } from "./pages/HomePage";
-import { ProgramsPage } from "./pages/ProgramsPage";
-import { BookSessionPage } from "./pages/BookSessionPage";
-import { ConfirmationPage } from "./pages/ConfirmationPage";
-import { DashboardPage } from "./pages/DashboardPage";
-import { ProgressPage } from "./pages/ProgressPage";
-import { MessagingPage } from "./pages/MessagingPage";
-import { ResourcesPage } from "./pages/ResourcesPage";
-import { ProfilePage } from "./pages/ProfilePage";
-import { AboutPage } from "./pages/AboutPage";
-import { PricingPage } from "./pages/PricingPage";
-import { ContactPage } from "./pages/ContactPage";
-import { OnboardingPage } from "./pages/OnboardingPage";
-import { SplashPage } from "./pages/SplashPage";
-import { AuthPage } from "./pages/AuthPage";
-import { OTPVerifyPage } from "./pages/OTPVerifyPage";
-
 import { AppLayout } from "./components/AppLayout";
 
-import { ExploreCoachesPage } from "./pages/ExploreCoachesPage";
-import { CoachDetailPage } from "./pages/CoachDetailPage";
-import { NotificationsPage } from "./pages/NotificationsPage";
-import { CoachSchedulePage } from "./pages/CoachSchedulePage";
-import { CoachClientsPage } from "./pages/CoachClientsPage";
-import { CoachEarningsPage } from "./pages/CoachEarningsPage";
-import { VideoSessionPage } from "./pages/VideoSessionPage";
-import { AvailabilityPage } from "./pages/AvailabilityPage";
-import { JournalPage } from "./pages/JournalPage";
-import { HelpSupportPage } from "./pages/HelpSupportPage";
+// Lazy load pages
+const HomePage = lazy(() => import("./pages/HomePage").then(m => ({ default: m.HomePage })));
+const ProgramsPage = lazy(() => import("./pages/ProgramsPage").then(m => ({ default: m.ProgramsPage })));
+const BookSessionPage = lazy(() => import("./pages/BookSessionPage").then(m => ({ default: m.BookSessionPage })));
+const ConfirmationPage = lazy(() => import("./pages/ConfirmationPage").then(m => ({ default: m.ConfirmationPage })));
+const DashboardPage = lazy(() => import("./pages/DashboardPage").then(m => ({ default: m.DashboardPage })));
+const ProgressPage = lazy(() => import("./pages/ProgressPage").then(m => ({ default: m.ProgressPage })));
+const MessagingPage = lazy(() => import("./pages/MessagingPage").then(m => ({ default: m.MessagingPage })));
+const ResourcesPage = lazy(() => import("./pages/ResourcesPage").then(m => ({ default: m.ResourcesPage })));
+const ProfilePage = lazy(() => import("./pages/ProfilePage").then(m => ({ default: m.ProfilePage })));
+const AboutPage = lazy(() => import("./pages/AboutPage").then(m => ({ default: m.AboutPage })));
+const PricingPage = lazy(() => import("./pages/PricingPage").then(m => ({ default: m.PricingPage })));
+const ContactPage = lazy(() => import("./pages/ContactPage").then(m => ({ default: m.ContactPage })));
+const OnboardingPage = lazy(() => import("./pages/OnboardingPage").then(m => ({ default: m.OnboardingPage })));
+const SplashPage = lazy(() => import("./pages/SplashPage").then(m => ({ default: m.SplashPage })));
+const AuthPage = lazy(() => import("./pages/AuthPage").then(m => ({ default: m.AuthPage })));
+const OTPVerifyPage = lazy(() => import("./pages/OTPVerifyPage").then(m => ({ default: m.OTPVerifyPage })));
+const ExploreCoachesPage = lazy(() => import("./pages/ExploreCoachesPage").then(m => ({ default: m.ExploreCoachesPage })));
+const CoachDetailPage = lazy(() => import("./pages/CoachDetailPage").then(m => ({ default: m.CoachDetailPage })));
+const NotificationsPage = lazy(() => import("./pages/NotificationsPage").then(m => ({ default: m.NotificationsPage })));
+const CoachSchedulePage = lazy(() => import("./pages/CoachSchedulePage").then(m => ({ default: m.CoachSchedulePage })));
+const CoachClientsPage = lazy(() => import("./pages/CoachClientsPage").then(m => ({ default: m.CoachClientsPage })));
+const CoachEarningsPage = lazy(() => import("./pages/CoachEarningsPage").then(m => ({ default: m.CoachEarningsPage })));
+const VideoSessionPage = lazy(() => import("./pages/VideoSessionPage").then(m => ({ default: m.VideoSessionPage })));
+const AvailabilityPage = lazy(() => import("./pages/AvailabilityPage").then(m => ({ default: m.AvailabilityPage })));
+const JournalPage = lazy(() => import("./pages/JournalPage").then(m => ({ default: m.JournalPage })));
+const HelpSupportPage = lazy(() => import("./pages/HelpSupportPage").then(m => ({ default: m.HelpSupportPage })));
+
+// Loading component
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#8B9A71]"></div>
+  </div>
+);
+
+const withSuspense = (Component: React.ComponentType) => (
+  <Suspense fallback={<PageLoader />}>
+    <Component />
+  </Suspense>
+);
 
 export const router = createBrowserRouter([
   {
     path: "/splash",
-    Component: SplashPage,
+    element: withSuspense(SplashPage),
   },
   {
     path: "/auth",
-    Component: AuthPage,
+    element: withSuspense(AuthPage),
   },
   {
     path: "/otp",
-    Component: OTPVerifyPage,
+    element: withSuspense(OTPVerifyPage),
   },
   {
     path: "/onboarding",
-    Component: OnboardingPage,
+    element: withSuspense(OnboardingPage),
   },
   {
     path: "/session/:id",
-    Component: VideoSessionPage, // Global video meeting route
+    element: withSuspense(VideoSessionPage),
   },
   {
     path: "/app",
     element: <AppLayout />,
     children: [
-      { path: "dashboard", Component: DashboardPage },
-      { path: "explore", Component: ExploreCoachesPage },
-      { path: "coach/:id", Component: CoachDetailPage },
-      { path: "notifications", Component: NotificationsPage },
-      { path: "schedule", Component: CoachSchedulePage },
-      { path: "availability", Component: AvailabilityPage },
-      { path: "clients", Component: CoachClientsPage },
-      { path: "earnings", Component: CoachEarningsPage },
-      { path: "progress", Component: ProgressPage },
-      { path: "journal", Component: JournalPage },
-      { path: "messages", Component: MessagingPage },
-      { path: "profile", Component: ProfilePage },
-      { path: "book", Component: BookSessionPage },
-      { path: "resources", Component: ResourcesPage },
-      { path: "help", Component: HelpSupportPage },
+      { path: "dashboard", element: withSuspense(DashboardPage) },
+      { path: "explore", element: withSuspense(ExploreCoachesPage) },
+      { path: "coach/:id", element: withSuspense(CoachDetailPage) },
+      { path: "notifications", element: withSuspense(NotificationsPage) },
+      { path: "schedule", element: withSuspense(CoachSchedulePage) },
+      { path: "availability", element: withSuspense(AvailabilityPage) },
+      { path: "clients", element: withSuspense(CoachClientsPage) },
+      { path: "earnings", element: withSuspense(CoachEarningsPage) },
+      { path: "progress", element: withSuspense(ProgressPage) },
+      { path: "journal", element: withSuspense(JournalPage) },
+      { path: "messages", element: withSuspense(MessagingPage) },
+      { path: "profile", element: withSuspense(ProfilePage) },
+      { path: "book", element: withSuspense(BookSessionPage) },
+      { path: "resources", element: withSuspense(ResourcesPage) },
+      { path: "help", element: withSuspense(HelpSupportPage) },
     ]
   },
   {
@@ -78,29 +92,29 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        Component: HomePage,
+        element: withSuspense(HomePage),
       },
       {
         path: "/programs",
-        Component: ProgramsPage,
+        element: withSuspense(ProgramsPage),
       },
       {
         path: "/pricing",
-        Component: PricingPage,
+        element: withSuspense(PricingPage),
       },
       {
         path: "/about",
-        Component: AboutPage,
+        element: withSuspense(AboutPage),
       },
       {
         path: "/contact",
-        Component: ContactPage,
+        element: withSuspense(ContactPage),
       },
     ],
   },
   {
     path: "/confirmation",
-    Component: ConfirmationPage,
+    element: withSuspense(ConfirmationPage),
   },
   // Redirects for convenience
   { path: "/dashboard", element: <Navigate to="/app/dashboard" replace /> },
