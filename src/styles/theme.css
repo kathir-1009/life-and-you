@@ -40,6 +40,21 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
+  -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape on iOS */
+  text-rendering: optimizeLegibility;
+}
+
+/* iOS Reset for consistent UI */
+button, input, select, textarea {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+  font-family: inherit;
+}
+
+/* Interactive elements feedback */
+a, button {
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1, h2, h3, h4, h5, h6 {

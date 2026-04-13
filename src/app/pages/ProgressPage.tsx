@@ -44,13 +44,13 @@ export function ProgressPage() {
 
       <div className="max-w-xl mx-auto px-6 -mt-8 relative z-20 space-y-6">
         {/* Weekly Chart Card */}
-        <div className="bg-white rounded-[32px] p-8 shadow-premium border border-[rgba(139,154,113,0.1)]">
+        <div className="bg-white rounded-[32px] p-6 sm:p-8 shadow-premium border border-[rgba(139,154,113,0.1)]">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-lg font-extrabold text-[#2D3324]">Weekly Overview</h3>
             <button className="text-[10px] font-extrabold text-[#8B9A71] uppercase tracking-widest border border-[#8B9A71]/20 px-3 py-1.5 rounded-full">Report</button>
           </div>
           
-          <div className="flex items-end justify-between h-64 gap-3">
+          <div className="flex items-end justify-between h-48 sm:h-64 gap-2 sm:gap-3">
              {weekData.map((data, i) => (
                 <div key={i} className="flex-1 flex flex-col items-center gap-4 group justify-end h-full">
                    <div 
@@ -95,9 +95,7 @@ export function ProgressPage() {
         <div className="bg-[#2D3324] rounded-[32px] p-6 text-white overflow-hidden relative group">
            <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:bg-white/10 transition-all" />
            <div className="flex items-center gap-5 relative z-10">
-              <div className="w-16 h-16 bg-[#8B9A71] rounded-2xl flex items-center justify-center text-white shadow-xl shadow-[#8B9A71]/20">
-                 <Award size={32} />
-              </div>
+              <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${active ? 'bg-[#8B9A71] text-white shadow-lg shadow-[#8B9A71]/20 scale-100 sm:scale-110 -translate-y-1' : 'text-[#2D3324]/40 hover:text-[#8B9A71]'}`}>
               <div>
                  <h4 className="text-lg font-extrabold">Consistency King</h4>
                  <p className="text-xs text-white/60 mt-1">You've reached an 8-day check-in streak</p>

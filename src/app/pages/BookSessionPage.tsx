@@ -40,7 +40,7 @@ export function BookSessionPage() {
 
       <div className="max-w-xl mx-auto px-6 -mt-8 relative z-20 space-y-6">
         {/* Step 1: Date & Time */}
-        <div className="bg-white rounded-[32px] p-8 shadow-premium border border-[rgba(139,154,113,0.1)]">
+        <div className="bg-white rounded-[32px] p-6 sm:p-8 shadow-premium border border-[rgba(139,154,113,0.1)]">
           <SectionLabel icon={CalendarIcon}>Select Date</SectionLabel>
           
           <div className="bg-[#F8F9FA] rounded-[24px] p-5 mb-8 border border-[rgba(139,154,113,0.05)]">
@@ -102,7 +102,7 @@ export function BookSessionPage() {
         </div>
 
         {/* Step 2: Privacy & Identity */}
-        <div className="bg-white rounded-[32px] p-8 shadow-premium border border-[rgba(139,154,113,0.1)]">
+        <div className="bg-white rounded-[32px] p-6 sm:p-8 shadow-premium border border-[rgba(139,154,113,0.1)]">
            <SectionLabel icon={Lock}>Privacy Settings</SectionLabel>
            <div className={`p-6 rounded-[24px] border-2 transition-all flex items-center justify-between mb-8 ${anonymous ? 'bg-[#8B9A71]/5 border-[#8B9A71] shadow-sm' : 'bg-[#F8F9FA] border-transparent'}`}>
               <div className="flex items-center gap-4">

@@ -21,7 +21,7 @@ export function HomePage() {
               <span className="text-[10px] font-extrabold text-[#4E5540] uppercase tracking-[0.2em]">100% Anonymous & ICF Certified</span>
             </div>
 
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-[#2D3324] leading-[1.05] mb-8 tracking-tight animate-in fade-in slide-in-from-bottom-6 duration-1000">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-[#2D3324] leading-[1.05] mb-8 tracking-tight animate-in fade-in slide-in-from-bottom-6 duration-1000">
               Be <span className="text-[#8B9A71]">Heard.</span><br />
               Heal Truly.<br />
               Live Well.
@@ -33,12 +33,12 @@ export function HomePage() {
 
             <div className="flex flex-col sm:flex-row gap-5 mb-16 w-full sm:w-auto animate-in fade-in slide-in-from-bottom-10 duration-1000">
               <Link
-                to="/book"
-                className="px-10 py-5 bg-[#2D3324] text-white rounded-pill font-bold text-sm uppercase tracking-widest shadow-2xl hover:bg-[#1C1A1E] transition-all active:scale-[0.98] text-center"
+                to="/app/book"
+                className="px-8 py-4 sm:px-10 sm:py-5 bg-[#2D3324] text-white rounded-pill font-bold text-sm uppercase tracking-widest shadow-2xl hover:bg-[#1C1A1E] transition-all active:scale-[0.98] text-center"
               >
                 Begin Your Journey
               </Link>
-              <button className="px-10 py-5 bg-white border border-[rgba(139,154,113,0.15)] text-[#2D3324] rounded-pill font-bold text-sm uppercase tracking-widest hover:bg-[#8B9A71]/5 transition-all flex items-center justify-center gap-3">
+              <button className="px-8 py-4 sm:px-10 sm:py-5 bg-white border border-[rgba(139,154,113,0.15)] text-[#2D3324] rounded-pill font-bold text-sm uppercase tracking-widest hover:bg-[#8B9A71]/5 transition-all flex items-center justify-center gap-3">
                 <div className="w-8 h-8 bg-[#8B9A71]/10 text-[#8B9A71] rounded-full flex items-center justify-center">
                   <Play size={10} fill="currentColor" />
                 </div>
@@ -46,18 +46,18 @@ export function HomePage() {
               </button>
             </div>
 
-            <div className="flex gap-12 pt-12 border-t border-[rgba(139,154,113,0.1)] w-full">
-              <div>
-                <div className="text-4xl font-extrabold text-[#2D3324] tracking-tight">500+</div>
-                <div className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1">Lives Touched</div>
+            <div className="flex gap-8 md:gap-12 pt-12 border-t border-[rgba(139,154,113,0.1)] w-full overflow-x-auto pb-4 scrollbar-hide">
+              <div className="flex-shrink-0">
+                <div className="text-3xl md:text-4xl font-extrabold text-[#2D3324] tracking-tight">500+</div>
+                <div className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1 whitespace-nowrap">Lives Touched</div>
               </div>
-              <div>
-                <div className="text-4xl font-extrabold text-[#2D3324] tracking-tight">100%</div>
-                <div className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1">Anonymity</div>
+              <div className="flex-shrink-0">
+                <div className="text-3xl md:text-4xl font-extrabold text-[#2D3324] tracking-tight">100%</div>
+                <div className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1 whitespace-nowrap">Anonymity</div>
               </div>
-              <div className="hidden md:block">
-                <div className="text-4xl font-extrabold text-[#2D3324] tracking-tight">4.9</div>
-                <div className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1">Top Rating</div>
+              <div className="hidden sm:block flex-shrink-0">
+                <div className="text-3xl md:text-4xl font-extrabold text-[#2D3324] tracking-tight">4.9</div>
+                <div className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1 whitespace-nowrap">Top Rating</div>
               </div>
             </div>
           </div>
@@ -132,11 +132,11 @@ export function HomePage() {
              { title: "Feeling Lonely", desc: "Smiling Outside, Silent Inside", img: "lonely.png", color: "bg-orange-50/50" },
              { title: "Trauma Recovery", desc: "The Past Hurt, The Future Heals", img: "trauma.png", color: "bg-indigo-50/50" }
            ].map((t, i) => (
-             <div key={i} className="min-w-[320px] bg-white rounded-[40px] p-10 border border-[rgba(139,154,113,0.08)] hover:shadow-premium transition-all group cursor-pointer">
-                <div className={`w-20 h-20 rounded-2xl overflow-hidden mb-8 group-hover:scale-110 transition-all ${t.color}`}>
-                   <img src={`/img/treatment/${t.img}`} alt={t.title} className="w-full h-full object-cover p-5 grayscale group-hover:grayscale-0 transition-all duration-700" />
+             <div key={i} className="min-w-[280px] sm:min-w-[320px] bg-white rounded-[32px] sm:rounded-[40px] p-8 sm:p-10 border border-[rgba(139,154,113,0.08)] hover:shadow-premium transition-all group cursor-pointer">
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden mb-8 group-hover:scale-110 transition-all ${t.color}`}>
+                   <img src={`/img/treatment/${t.img}`} alt={t.title} className="w-full h-full object-cover p-4 sm:p-5 grayscale group-hover:grayscale-0 transition-all duration-700" />
                 </div>
-                <h4 className="text-2xl font-bold text-[#2D3324] mb-2 tracking-tight">{t.title}</h4>
+                <h4 className="text-xl sm:text-2xl font-bold text-[#2D3324] mb-2 tracking-tight">{t.title}</h4>
                 <p className="text-sm font-medium text-[#545454] opacity-50 mb-8">{t.desc}</p>
                 <Link to="/app/book" className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] flex items-center gap-2 group-hover:gap-4 transition-all">
                    Book Breakthrough <ArrowRight size={14} />
@@ -192,13 +192,13 @@ export function HomePage() {
                { title: "Healing Journey", price: "₹8,000", desc: "4 sessions + 24/7 chat support for consistent growth.", icon: "🌿", popular: true },
                { title: "Elite Masterclass", price: "₹22,000", desc: "12 sessions, NLP blueprints, and performance mapping.", icon: "💎" }
              ].map((p, i) => (
-               <div key={i} className={`p-10 rounded-[32px] border transition-all hover:scale-[1.03] group ${p.popular ? 'bg-[#2D3324] border-transparent text-white shadow-premium' : 'bg-white border-[rgba(139,154,113,0.08)] text-[#2D3324]'}`}>
-                  <div className="text-5xl mb-8 transform group-hover:scale-110 transition-all opacity-80">{p.icon}</div>
-                  <h4 className="text-2xl font-bold mb-4 tracking-tight">{p.title}</h4>
+               <div key={i} className={`p-8 sm:p-10 rounded-[32px] border transition-all hover:scale-[1.03] group ${p.popular ? 'bg-[#2D3324] border-transparent text-white shadow-premium' : 'bg-white border-[rgba(139,154,113,0.08)] text-[#2D3324]'}`}>
+                  <div className="text-4xl sm:text-5xl mb-8 transform group-hover:scale-110 transition-all opacity-80">{p.icon}</div>
+                  <h4 className="text-xl sm:text-2xl font-bold mb-4 tracking-tight">{p.title}</h4>
                   <p className={`text-sm mb-10 leading-relaxed opacity-60 font-medium ${p.popular ? 'text-white' : 'text-[#545454]'}`}>{p.desc}</p>
                   <div className="flex items-center justify-between mt-auto pt-8 border-t border-white/5">
-                     <span className={`text-2xl font-extrabold tracking-tight ${p.popular ? 'text-[#8B9A71]' : 'text-[#2D3324]'}`}>{p.price}</span>
-                     <Link to="/book" className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${p.popular ? 'bg-[#8B9A71] text-white' : 'bg-[#F8F9FA] text-[#8B9A71]'}`}>
+                     <span className={`text-xl sm:text-2xl font-extrabold tracking-tight ${p.popular ? 'text-[#8B9A71]' : 'text-[#2D3324]'}`}>{p.price}</span>
+                     <Link to="/app/book" className={`w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all ${p.popular ? 'bg-[#8B9A71] text-white' : 'bg-[#F8F9FA] text-[#8B9A71]'}`}>
                         <ArrowRight size={20} />
                      </Link>
                   </div>
@@ -215,12 +215,12 @@ export function HomePage() {
 
 function StatCard({ icon: Icon, label, val, color }: { icon: any, label: string, val: string, color: string }) {
   return (
-    <div className="bg-[#F8F9FA] p-8 rounded-[40px] flex flex-col items-center">
-       <div className={`w-14 h-14 ${color} rounded-2xl flex items-center justify-center text-white shadow-lg mb-4`}>
-          <Icon size={24} />
+    <div className="bg-[#F8F9FA] p-6 sm:p-8 rounded-[32px] sm:rounded-[40px] flex flex-col items-center">
+       <div className={`w-12 h-12 sm:w-14 sm:h-14 ${color} rounded-2xl flex items-center justify-center text-white shadow-lg mb-4`}>
+          <Icon size={20} className="sm:size-[24px]" />
        </div>
-       <p className="text-[10px] font-extrabold text-[#545454] uppercase tracking-widest mb-1">{label}</p>
-       <p className="text-2xl font-black text-[#2D3324]">{val}</p>
+       <p className="text-[9px] sm:text-[10px] font-extrabold text-[#545454] uppercase tracking-widest mb-1">{label}</p>
+       <p className="text-xl sm:text-2xl font-black text-[#2D3324]">{val}</p>
     </div>
   );
 }

@@ -34,7 +34,7 @@ export function OTPVerifyPage() {
   }, [otp, navigate]);
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] flex flex-col p-8">
+    <div className="min-h-[100dvh] bg-[#F8F9FA] flex flex-col p-6 sm:p-8">
       <div className="max-w-md mx-auto w-full flex-1 flex flex-col relative">
         {/* Abstract Background Blur */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#8B9A71]/5 rounded-full blur-[100px] pointer-events-none" />
@@ -70,7 +70,7 @@ export function OTPVerifyPage() {
               value={digit}
               onChange={(e) => handleChange(i, e.target.value)}
               onKeyDown={(e) => handleKeyDown(i, e)}
-              className={`w-[70px] h-[86px] text-4xl font-bold text-[#2D3324] text-center rounded-[24px] border-2 outline-none transition-all shadow-premium ${
+              className={`flex-1 aspect-[7/8.5] max-w-[70px] text-3xl sm:text-4xl font-bold text-[#2D3324] text-center rounded-[20px] sm:rounded-[24px] border-2 outline-none transition-all shadow-premium ${
                 digit ? "border-[#8B9A71] bg-[#F8F9FA]" : "bg-white border-[rgba(139,154,113,0.15)] focus:border-[#8B9A71]"
               }`}
             />

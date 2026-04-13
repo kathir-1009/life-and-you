@@ -9,7 +9,7 @@ export function AuthPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] flex flex-col px-6 py-12 md:px-12">
+    <div className="min-h-[100dvh] bg-[#F8F9FA] flex flex-col px-6 py-8 md:py-12 md:px-12">
       <div className="max-w-md mx-auto w-full flex-1 flex flex-col">
         {/* Header with Back */}
         <div className="flex items-center justify-between mb-12">
@@ -49,7 +49,7 @@ export function AuthPage() {
                   <input 
                     type="text" 
                     placeholder="Enter your name" 
-                    className="w-full bg-white border-2 border-[rgba(139,154,113,0.1)] rounded-[18px] pl-12 pr-4 py-4 text-sm outline-none focus:border-[#8B9A71] transition-all"
+                    className="w-full bg-white border-2 border-[rgba(139,154,113,0.1)] rounded-[18px] pl-12 pr-4 py-4 text-base md:text-sm outline-none focus:border-[#8B9A71] transition-all"
                   />
                 </div>
               </div>
@@ -59,11 +59,11 @@ export function AuthPage() {
               <label className="text-[11px] font-extrabold text-[#2D3324] uppercase tracking-wider ml-1">Email Address</label>
               <div className="relative">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8B9A71]" size={18} />
-                <input 
-                  type="email" 
-                  placeholder="hello@example.com" 
-                  className="w-full bg-white border-2 border-[rgba(139,154,113,0.1)] rounded-[18px] pl-12 pr-4 py-4 text-sm outline-none focus:border-[#8B9A71] transition-all"
-                />
+                  <input 
+                    type="email" 
+                    placeholder="hello@example.com" 
+                    className="w-full bg-white border-2 border-[rgba(139,154,113,0.1)] rounded-[18px] pl-12 pr-4 py-4 text-base md:text-sm outline-none focus:border-[#8B9A71] transition-all"
+                  />
               </div>
             </div>
 
@@ -74,7 +74,7 @@ export function AuthPage() {
                 <input 
                   type="tel" 
                   placeholder="+971 -- --- ----" 
-                  className="w-full bg-white border-2 border-[rgba(139,154,113,0.1)] rounded-[18px] pl-12 pr-4 py-4 text-sm outline-none focus:border-[#8B9A71] transition-all"
+                  className="w-full bg-white border-2 border-[rgba(139,154,113,0.1)] rounded-[18px] pl-12 pr-4 py-4 text-base md:text-sm outline-none focus:border-[#8B9A71] transition-all"
                 />
               </div>
             </div>

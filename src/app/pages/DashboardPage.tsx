@@ -35,7 +35,7 @@ function ClientDashboard({ isAnonymous, user }: { isAnonymous: boolean, user: an
   return (
     <div className="min-h-screen bg-[#F8F9FA] pb-32 md:pb-8">
       {/* Dynamic Header */}
-      <div className="bg-[#4E5540] pt-12 pb-24 px-6 md:px-12 rounded-b-[48px] relative overflow-hidden">
+      <div className="bg-[#4E5540] pt-8 sm:pt-12 pb-20 sm:pb-24 px-6 md:px-12 rounded-b-[40px] sm:rounded-b-[48px] relative overflow-hidden">
         {/* Background Accents */}
         <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
         
@@ -45,13 +45,13 @@ function ClientDashboard({ isAnonymous, user }: { isAnonymous: boolean, user: an
               {isAnonymous ? <EyeOff size={12} /> : <Star size={12} className="text-[#CED2BA] fill-[#CED2BA]" />}
               <span className="text-[10px] font-black uppercase tracking-[0.2em]">{isAnonymous ? "Anonymous Mode Active" : "Premium Member"}</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-white leading-tight">
                Hey, {isAnonymous ? "Valued User" : user.name.split(' ')[0]}!
             </h1>
-            <p className="text-[#CED2BA] mt-4 text-lg font-medium opacity-80">Ready for your transformation today?</p>
+            <p className="text-[#CED2BA] mt-3 sm:mt-4 text-base sm:text-lg font-medium opacity-80">Ready for your transformation today?</p>
           </div>
-          <Link to="/app/notifications" className="w-16 h-16 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[24px] flex items-center justify-center text-white shrink-0 shadow-2xl hover:bg-white/10 transition-all">
-            <Bell size={28} />
+          <Link to="/app/notifications" className="w-14 h-14 sm:w-16 sm:h-16 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[20px] sm:rounded-[24px] flex items-center justify-center text-white shrink-0 shadow-2xl hover:bg-white/10 transition-all">
+            <Bell size={24} className="sm:size-[28px]" />
           </Link>
         </div>
       </div>
@@ -59,18 +59,18 @@ function ClientDashboard({ isAnonymous, user }: { isAnonymous: boolean, user: an
       <div className="max-w-7xl mx-auto px-6 md:px-12 -mt-12 relative z-20 space-y-8">
         
         {/* New Discovery CTA */}
-        <div className="bg-[#8B9A71] rounded-[48px] p-10 shadow-premium flex flex-col md:flex-row items-center justify-between gap-10 group cursor-pointer hover:scale-[1.01] transition-all" onClick={() => navigate('/app/explore')}>
-           <div className="flex items-center gap-6">
-              <div className="w-16 h-16 bg-white/20 rounded-[28px] flex items-center justify-center text-white">
-                 <Compass size={32} />
+        <div className="bg-[#8B9A71] rounded-[32px] sm:rounded-[48px] p-6 sm:p-10 shadow-premium flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-10 group cursor-pointer hover:scale-[1.01] transition-all" onClick={() => navigate('/app/explore')}>
+           <div className="flex items-center gap-4 sm:gap-6">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white/20 rounded-[20px] sm:rounded-[28px] flex items-center justify-center text-white">
+                 <Compass size={24} className="sm:size-[32px]" />
               </div>
               <div>
-                 <h3 className="text-2xl font-black text-[#2D3324]">Find your Guide.</h3>
-                 <p className="text-[#2D3324]/60 font-bold text-sm">Explore our 200+ certified NLP & ICF coaches.</p>
+                 <h3 className="text-xl sm:text-2xl font-black text-[#2D3324]">Find your Guide.</h3>
+                 <p className="text-[#2D3324]/60 font-bold text-xs sm:text-sm">Explore our 200+ certified coaches.</p>
               </div>
            </div>
-           <div className="w-14 h-14 bg-[#2D3324] rounded-full flex items-center justify-center text-white group-hover:translate-x-2 transition-transform">
-              <ArrowRight size={24} />
+           <div className="w-12 h-12 sm:w-14 sm:h-14 bg-[#2D3324] rounded-full flex items-center justify-center text-white group-hover:translate-x-2 transition-transform">
+              <ArrowRight size={20} className="sm:size-[24px]" />
            </div>
         </div>
         {/* Next Session Card */}
@@ -138,7 +138,7 @@ function ClientDashboard({ isAnonymous, user }: { isAnonymous: boolean, user: an
           </div>
 
           {/* Progress Chart Snapshot */}
-          <div className="bg-white rounded-[32px] p-8 shadow-premium border border-[rgba(139,154,113,0.1)] h-full">
+          <div className="bg-white rounded-[28px] sm:rounded-[32px] p-6 sm:p-8 shadow-premium border border-[rgba(139,154,113,0.1)] h-full">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-xl font-extrabold text-[#2D3324]">Mood Insights</h2>
               <div className="text-[10px] font-extrabold text-[#8B9A71] bg-[#8B9A71]/10 px-3 py-1 rounded-full uppercase tracking-widest">Last 7 Days</div>
