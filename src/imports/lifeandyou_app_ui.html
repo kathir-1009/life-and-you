@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Life & You – Detailed App UI Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --sage: #3D5247;
+  --sage-mid: #5A7265;
+  --sage-light: #B5C4BA;
+  --sage-pale: #EDF2EE;
+  --gold: #C4A35A;
+  --gold-light: #E8D5A3;
+  --gold-pale: #FBF5E6;
+  --cream: #F5EFE6;
+  --terra: #B5735A;
+  --charcoal: #1C2320;
+  --text: #1C2320;
+  --text-mid: #3D5247;
+  --text-muted: #7A8C7E;
+  --border: rgba(61,82,71,0.12);
+  --card-shadow: 0 8px 32px rgba(28,35,32,0.10);
+  --white: #ffffff;
+}
+
+body { font-family: 'Nunito', sans-serif; background: #D8D4CE; min-height: 100vh; }
+
+/* PAGE HEADER */
+.page-header {
+  background: linear-gradient(135deg, #1C2320 0%, #3D5247 60%, #C4A35A 100%);
+  padding: 56px 60px 44px;
+  text-align: center; color: white; position: relative; overflow: hidden;
+}
+.page-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.page-header .logo-row { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 16px; position: relative; }
+.page-header .logo-sq { width: 56px; height: 56px; background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.25); border-radius: 18px; display: flex; align-items: center; justify-content: center; font-size: 26px; }
+.page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 700; letter-spacing: 2px; }
+.page-header .subtitle { font-size: 15px; opacity: 0.7; max-width: 520px; margin: 8px auto 0; line-height: 1.7; position: relative; }
+.screen-count-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 100px; padding: 6px 20px; font-size: 12px; font-weight: 800; letter-spacing: 1px; margin-top: 20px; text-transform: uppercase; }
+
+/* SECTION HEADER */
+.section-header { padding: 52px 60px 22px; display: flex; align-items: center; gap: 20px; }
+.section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 700; color: var(--charcoal); white-space: nowrap; }
+.section-header .sh-line { flex: 1; height: 2px; background: linear-gradient(to right, var(--gold), transparent); border-radius: 2px; }
+.section-header .sh-num { width: 36px; height: 36px; background: var(--sage); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 800; flex-shrink: 0; }
+
+/* PHONE FRAME */
+.phones-row { display: flex; gap: 32px; justify-content: center; flex-wrap: wrap; padding: 0 40px 70px; align-items: flex-start; }
+.phone-wrap { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.phone-label { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--charcoal); background: white; padding: 5px 18px; border-radius: 100px; box-shadow: 0 2px 10px rgba(28,35,32,0.12); }
+
+.phone-frame {
+  width: 300px; background: #1A1C1A; border-radius: 46px; padding: 14px;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.06), inset 0 0 0 1px rgba(0,0,0,0.6);
+  position: relative;
+}
+.phone-frame::before {
+  content: ''; position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  width: 82px; height: 24px; background: #1A1C1A; border-radius: 0 0 14px 14px; z-index: 10;
+}
+.phone-screen { width: 100%; height: 630px; border-radius: 34px; overflow: hidden; position: relative; background: var(--cream); }
+
+/* STATUS BAR */
+.status-bar { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px 6px; font-size: 11px; font-weight: 800; color: white; }
+.status-bar.dark { color: var(--text); }
+.status-icons { display: flex; gap: 5px; align-items: center; font-size: 11px; }
+
+/* ===== SCREEN 1: SPLASH ===== */
+.s-splash { height: 100%; background: linear-gradient(160deg, #1C2320 0%, #3D5247 55%, #C4A35A 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 44px 28px; position: relative; overflow: hidden; }
+.s-splash::before { content: ''; position: absolute; width: 280px; height: 280px; border-radius: 50%; background: rgba(255,255,255,0.04); top: -60px; right: -80px; }
+.s-splash::after { content: ''; position: absolute; width: 200px; height: 200px; border-radius: 50%; background: rgba(196,163,90,0.08); bottom: -50px; left: -50px; }
+.splash-logo { width: 94px; height: 94px; background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.25); border-radius: 28px; display: flex; align-items: center; justify-content: center; font-size: 42px; margin-bottom: 24px; box-shadow: 0 16px 48px rgba(0,0,0,0.25); }
+.s-splash h1 { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 700; color: white; letter-spacing: 3px; margin-bottom: 6px; }
+.s-splash .tagline { font-size: 12px; color: rgba(255,255,255,0.6); text-align: center; line-height: 1.8; }
+.s-splash .ornament { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: rgba(196,163,90,0.5); margin: 14px 0; letter-spacing: 6px; }
+.splash-btn { background: white; color: var(--charcoal); border: none; border-radius: 18px; padding: 15px 44px; font-size: 14px; font-weight: 800; font-family: 'Nunito', sans-serif; cursor: pointer; width: 100%; box-shadow: 0 8px 28px rgba(0,0,0,0.2); margin-top: 28px; }
+.splash-btn-outline { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.35); border-radius: 18px; padding: 12px 44px; font-size: 13px; font-weight: 600; font-family: 'Nunito', sans-serif; cursor: pointer; width: 100%; margin-top: 10px; }
+.splash-social-row { display: flex; gap: 14px; margin-top: 20px; align-items: center; }
+.splash-or { font-size: 11px; color: rgba(255,255,255,0.45); }
+.splash-social-btn { width: 42px; height: 42px; background: rgba(255,255,255,0.12); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+
+/* ===== SCREEN 2: ONBOARDING ===== */
+.s-onboard { height: 100%; display: flex; flex-direction: column; background: var(--cream); }
+.ob-header { background: var(--sage); padding: 30px 22px 36px; position: relative; overflow: hidden; }
+.ob-header::before { content: ''; position: absolute; width: 200px; height: 200px; border-radius: 50%; background: rgba(255,255,255,0.04); right: -60px; top: -60px; }
+.ob-step-dots { display: flex; gap: 6px; margin-bottom: 24px; }
+.ob-dot { width: 28px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.2); }
+.ob-dot.active { background: var(--gold); }
+.ob-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: white; line-height: 1.2; margin-bottom: 6px; }
+.ob-sub { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+.ob-icon { position: absolute; right: 20px; top: 24px; font-size: 52px; opacity: 0.2; }
+.ob-body { padding: 24px 20px; flex: 1; overflow-y: auto; }
+.ob-label { font-size: 11px; font-weight: 800; color: var(--text-muted); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+.ob-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+.ob-option { display: flex; align-items: center; gap: 12px; padding: 14px 16px; background: white; border-radius: 14px; border: 1.5px solid var(--border); cursor: pointer; }
+.ob-option.sel { border-color: var(--sage); background: var(--sage-pale); }
+.ob-opt-icon { font-size: 20px; width: 36px; height: 36px; background: var(--cream); border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ob-option.sel .ob-opt-icon { background: var(--sage-pale); }
+.ob-opt-text { font-size: 13px; font-weight: 700; color: var(--text); }
+.ob-opt-sub { font-size: 10px; color: var(--text-muted); margin-top: 1px; }
+.ob-check { margin-left: auto; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 10px; flex-shrink: 0; }
+.ob-option.sel .ob-check { background: var(--sage); border-color: var(--sage); color: white; }
+.ob-footer { padding: 16px 20px; border-top: 1px solid var(--border); }
+.ob-next-btn { width: 100%; background: var(--sage); color: white; border: none; border-radius: 16px; padding: 14px; font-size: 14px; font-weight: 800; font-family: 'Nunito', sans-serif; }
+
+/* ===== SCREEN 3: HOME ===== */
+.s-home { height: 100%; display: flex; flex-direction: column; background: #F0EBE3; overflow-y: auto; }
+.home-header { background: linear-gradient(160deg, var(--charcoal), var(--sage)); padding: 30px 20px 40px; }
+.h-top-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.h-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: white; }
+.h-logo span { color: var(--gold); }
+.h-avatar { width: 36px; height: 36px; background: var(--gold); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.h-greeting { font-size: 11px; color: rgba(255,255,255,0.55); margin-bottom: 4px; }
+.h-name { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: white; margin-bottom: 16px; }
+.h-week-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.1); border: 1px solid rgba(196,163,90,0.3); border-radius: 100px; padding: 5px 14px; font-size: 11px; color: var(--gold-light); font-weight: 700; }
+
+.home-body { padding: 16px 16px 80px; }
+.h-next-card { background: var(--sage); border-radius: 18px; padding: 18px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 8px 24px rgba(61,82,71,0.25); }
+.hnc-left .hnc-label { font-size: 10px; color: var(--gold-light); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.hnc-left .hnc-time { font-size: 16px; font-weight: 800; color: white; margin-top: 3px; }
+.hnc-left .hnc-sub { font-size: 11px; color: rgba(255,255,255,0.55); margin-top: 2px; }
+.hnc-btn { background: var(--gold); border: none; border-radius: 12px; color: white; padding: 10px 16px; font-size: 12px; font-weight: 800; font-family: 'Nunito', sans-serif; }
+
+.h-stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+.h-stat { background: white; border-radius: 14px; padding: 16px; }
+.hs-label { font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.hs-val { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 700; color: var(--charcoal); }
+.hs-change { font-size: 11px; color: #16a34a; margin-top: 2px; font-weight: 600; }
+
+.h-section-title { font-size: 14px; font-weight: 800; color: var(--charcoal); margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; }
+.h-section-title span { font-size: 11px; color: var(--sage); font-weight: 600; }
+.h-resource-card { background: white; border-radius: 14px; padding: 14px; display: flex; gap: 12px; align-items: center; margin-bottom: 10px; }
+.hrc-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.hrc-sage { background: var(--sage-pale); }
+.hrc-gold { background: var(--gold-pale); }
+.hrc-terra { background: rgba(181,115,90,0.1); }
+.hrc-title { font-size: 12px; font-weight: 700; color: var(--charcoal); line-height: 1.3; margin-bottom: 3px; }
+.hrc-meta { font-size: 10px; color: var(--text-muted); }
+
+/* BOTTOM NAV */
+.bottom-nav { position: absolute; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--border); padding: 10px 20px 14px; display: flex; align-items: center; justify-content: space-around; z-index: 50; }
+.bn-item { display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: pointer; }
+.bn-icon { font-size: 22px; }
+.bn-label { font-size: 9px; font-weight: 700; color: var(--text-muted); letter-spacing: 0.5px; }
+.bn-item.active .bn-label { color: var(--sage); }
+.bn-item.active .bn-icon { filter: drop-shadow(0 2px 4px rgba(61,82,71,0.3)); }
+.bn-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: absolute; top: -2px; right: -2px; }
+
+/* ===== SCREEN 4: BOOK SESSION ===== */
+.s-book { height: 100%; display: flex; flex-direction: column; background: white; }
+.book-header { background: var(--charcoal); padding: 30px 20px 26px; }
+.bh-back-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+.bh-back { width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: white; }
+.bh-breadcrumb { font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.bh-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 700; color: white; margin-bottom: 4px; }
+.bh-sub { font-size: 12px; color: rgba(255,255,255,0.55); }
+.book-body { flex: 1; overflow-y: auto; padding: 18px 18px 80px; }
+
+.book-step { font-size: 10px; font-weight: 800; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+.book-cal-mini { background: var(--sage-pale); border-radius: 16px; padding: 14px; margin-bottom: 16px; }
+.bcm-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.bcm-month { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: var(--charcoal); }
+.bcm-nav { color: var(--sage); font-size: 16px; }
+.bcm-days { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; margin-bottom: 6px; }
+.bcm-days span { font-size: 9px; font-weight: 700; color: var(--text-muted); }
+.bcm-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: 2px; }
+.bcm-d { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 11px; border-radius: 6px; color: var(--charcoal); cursor: pointer; }
+.bcm-d.avail { color: var(--sage); font-weight: 800; }
+.bcm-d.avail::after { content: '·'; position: absolute; bottom: 1px; left: 50%; transform: translateX(-50%); font-size: 14px; color: var(--gold); }
+.bcm-d.sel { background: var(--sage); color: white; font-weight: 800; }
+.bcm-d.today { border: 1.5px solid var(--gold); }
+.bcm-d.dim { color: rgba(0,0,0,0.2); }
+.bcm-d { position: relative; }
+
+.time-grid-mobile { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 16px; }
+.tgm-chip { padding: 10px; text-align: center; font-size: 11px; border: 1.5px solid var(--border); border-radius: 10px; cursor: pointer; color: var(--charcoal); font-weight: 700; }
+.tgm-chip.on { background: var(--sage); color: white; border-color: var(--sage); }
+.tgm-chip.full { background: var(--cream); color: var(--text-muted); cursor: not-allowed; font-size: 10px; }
+
+.anon-card { display: flex; align-items: center; gap: 12px; background: var(--sage-pale); border-radius: 14px; padding: 14px; margin-bottom: 14px; border: 1px solid var(--border); }
+.anon-icon { font-size: 22px; }
+.anon-text .at-title { font-size: 13px; font-weight: 800; color: var(--charcoal); }
+.anon-text .at-sub { font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+.anon-toggle-m { width: 40px; height: 22px; background: var(--sage); border-radius: 11px; position: relative; margin-left: auto; cursor: pointer; flex-shrink: 0; }
+.anon-toggle-m::after { content: ''; position: absolute; width: 16px; height: 16px; background: white; border-radius: 50%; top: 3px; right: 3px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+
+.concern-chips-m { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+.cc-m { padding: 6px 12px; border: 1.5px solid var(--border); border-radius: 100px; font-size: 11px; font-weight: 700; cursor: pointer; color: var(--text-mid); }
+.cc-m.on { background: var(--sage); color: white; border-color: var(--sage); }
+
+.m-input { width: 100%; border: 1.5px solid var(--border); border-radius: 12px; padding: 11px 14px; font-size: 13px; font-family: 'Nunito', sans-serif; outline: none; color: var(--charcoal); margin-bottom: 10px; background: white; }
+
+.book-summary-bar { background: var(--sage); padding: 16px 18px; position: absolute; bottom: 0; left: 0; right: 0; display: flex; align-items: center; justify-content: space-between; }
+.bsb-info .bsb-date { font-size: 13px; font-weight: 800; color: white; }
+.bsb-info .bsb-price { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 2px; }
+.bsb-btn { background: var(--gold); border: none; color: white; padding: 10px 18px; border-radius: 12px; font-size: 13px; font-weight: 800; font-family: 'Nunito', sans-serif; }
+
+/* ===== SCREEN 5: CONFIRMATION ===== */
+.s-confirm { height: 100%; display: flex; flex-direction: column; background: var(--cream); }
+.confirm-body { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 28px 22px; text-align: center; }
+.confirm-icon { width: 90px; height: 90px; background: var(--sage-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; margin-bottom: 20px; border: 4px solid var(--sage); box-shadow: 0 8px 24px rgba(61,82,71,0.15); }
+.confirm-title { font-family: 'Cormorant Garamond', serif; font-size: 34px; font-weight: 700; color: var(--charcoal); margin-bottom: 8px; }
+.confirm-sub { font-size: 13px; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+.confirm-card { background: white; border-radius: 18px; padding: 20px; width: 100%; text-align: left; margin-bottom: 16px; box-shadow: var(--card-shadow); }
+.cc-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--cream); }
+.cc-row:last-child { border-bottom: none; }
+.cc-row .cc-k { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+.cc-row .cc-v { font-size: 13px; font-weight: 800; color: var(--charcoal); }
+.cc-row .cc-v.green { color: var(--sage); }
+.confirm-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; }
+.ca-primary { background: var(--sage); color: white; border: none; border-radius: 16px; padding: 14px; font-size: 14px; font-weight: 800; font-family: 'Nunito', sans-serif; }
+.ca-ghost { background: white; color: var(--sage); border: 1.5px solid var(--border); border-radius: 16px; padding: 13px; font-size: 13px; font-weight: 700; font-family: 'Nunito', sans-serif; }
+
+/* ===== SCREEN 6: PROGRESS TRACKER ===== */
+.s-progress { height: 100%; display: flex; flex-direction: column; background: #F0EBE3; overflow-y: auto; }
+.prog-header { background: linear-gradient(160deg, var(--sage), var(--sage-mid)); padding: 30px 20px 50px; }
+.ph-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.ph-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: white; }
+.ph-period { font-size: 11px; color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 100px; }
+.prog-body { padding: 14px 16px 80px; margin-top: -20px; }
+
+.prog-overview-card { background: white; border-radius: 18px; padding: 18px; margin-bottom: 16px; box-shadow: var(--card-shadow); }
+.poc-label { font-size: 10px; font-weight: 800; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; }
+.poc-chart { display: flex; align-items: flex-end; gap: 6px; height: 70px; margin-bottom: 10px; }
+.poc-bar { flex: 1; border-radius: 4px 4px 0 0; position: relative; display: flex; align-items: flex-end; justify-content: center; padding-bottom: 2px; }
+.poc-bar-label { font-size: 8px; color: white; font-weight: 800; position: absolute; top: 4px; left: 50%; transform: translateX(-50%); }
+.poc-day { font-size: 9px; color: var(--text-muted); text-align: center; margin-top: 4px; font-weight: 700; }
+.poc-chart-wrap { display: flex; gap: 6px; }
+.poc-bar-col { flex: 1; display: flex; flex-direction: column; }
+
+.prog-area-card { background: white; border-radius: 16px; padding: 16px; margin-bottom: 10px; }
+.pac-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.pac-name { font-size: 13px; font-weight: 800; color: var(--charcoal); }
+.pac-pct { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: var(--sage); }
+.pac-bar { height: 7px; background: var(--cream); border-radius: 4px; overflow: hidden; margin-bottom: 6px; }
+.pac-fill { height: 100%; border-radius: 4px; background: linear-gradient(to right, var(--sage), var(--gold)); }
+.pac-desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+.milestone-card { background: var(--gold-pale); border-radius: 16px; padding: 16px; border: 1px solid rgba(196,163,90,0.25); margin-bottom: 10px; display: flex; gap: 12px; align-items: center; }
+.mc-icon { font-size: 28px; }
+.mc-title { font-size: 13px; font-weight: 800; color: var(--charcoal); }
+.mc-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* ===== SCREEN 7: MESSAGING ===== */
+.s-messages { height: 100%; display: flex; flex-direction: column; background: #F0EBE3; }
+.msg-header { background: var(--charcoal); padding: 30px 18px 18px; }
+.msg-h-top { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+.msg-back { width: 32px; height: 32px; background: rgba(255,255,255,0.1); border-radius: 9px; display: flex; align-items: center; justify-content: center; color: white; font-size: 14px; }
+.msg-coach-info { flex: 1; }
+.msg-coach-name { font-size: 14px; font-weight: 800; color: white; }
+.msg-coach-status { font-size: 10px; color: #4ade80; margin-top: 1px; font-weight: 600; }
+.msg-coach-av { width: 36px; height: 36px; background: var(--sage); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 16px; position: relative; }
+.msg-coach-av::after { content: ''; position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; background: #4ade80; border-radius: 50%; border: 2px solid var(--charcoal); }
+.msg-encrypt-note { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.07); border-radius: 8px; padding: 7px 10px; font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 600; }
+
+.msg-list { flex: 1; padding: 14px 14px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.msg-bubble { max-width: 78%; padding: 12px 14px; border-radius: 16px; font-size: 12px; line-height: 1.6; }
+.msg-bubble.received { background: white; color: var(--text); border-radius: 4px 16px 16px 16px; align-self: flex-start; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.msg-bubble.sent { background: var(--sage); color: white; border-radius: 16px 4px 16px 16px; align-self: flex-end; }
+.msg-time { font-size: 9px; color: var(--text-muted); margin-top: 4px; text-align: right; }
+.msg-time.recv { text-align: left; }
+.msg-divider { text-align: center; font-size: 10px; color: var(--text-muted); font-weight: 700; margin: 4px 0; }
+.msg-input-area { background: white; border-top: 1px solid var(--border); padding: 10px 14px; display: flex; gap: 10px; align-items: center; }
+.msg-input { flex: 1; border: 1.5px solid var(--border); border-radius: 20px; padding: 9px 14px; font-size: 12px; font-family: 'Nunito', sans-serif; outline: none; background: var(--cream); }
+.msg-send-btn { width: 36px; height: 36px; background: var(--sage); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; cursor: pointer; flex-shrink: 0; }
+
+/* ===== SCREEN 8: RESOURCES ===== */
+.s-resources { height: 100%; display: flex; flex-direction: column; background: #F0EBE3; overflow-y: auto; }
+.res-header { background: linear-gradient(160deg, var(--charcoal), var(--charcoal-mid, #2E3B35)); padding: 30px 20px 20px; }
+.rh-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: white; margin-bottom: 14px; }
+.res-filter-row { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 2px; }
+.rf-chip { padding: 6px 14px; background: rgba(255,255,255,0.1); border-radius: 100px; font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7); white-space: nowrap; }
+.rf-chip.on { background: var(--gold); color: white; }
+.res-body { padding: 14px 16px 80px; }
+.res-featured { background: var(--sage); border-radius: 18px; padding: 18px; margin-bottom: 16px; display: flex; gap: 14px; align-items: center; box-shadow: 0 8px 24px rgba(61,82,71,0.2); }
+.rfe-icon { width: 54px; height: 54px; background: rgba(255,255,255,0.15); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.rfe-label { font-size: 9px; font-weight: 800; color: var(--gold-light); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+.rfe-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 700; color: white; line-height: 1.3; margin-bottom: 4px; }
+.rfe-meta { font-size: 10px; color: rgba(255,255,255,0.55); }
+.res-list { display: flex; flex-direction: column; gap: 10px; }
+.rl-item { background: white; border-radius: 14px; padding: 14px; display: flex; gap: 12px; align-items: center; }
+.rli-icon { width: 46px; height: 46px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.rli-sage { background: var(--sage-pale); }
+.rli-gold { background: var(--gold-pale); }
+.rli-terra { background: rgba(181,115,90,0.1); }
+.rli-dark { background: rgba(28,35,32,0.08); }
+.rli-title { font-size: 12px; font-weight: 700; color: var(--charcoal); line-height: 1.3; margin-bottom: 3px; }
+.rli-meta { font-size: 10px; color: var(--text-muted); display: flex; align-items: center; gap: 5px; }
+.rli-type { font-size: 9px; background: var(--sage-pale); color: var(--sage); padding: 2px 7px; border-radius: 4px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+.rli-lock { margin-left: auto; font-size: 14px; flex-shrink: 0; }
+
+/* ===== SCREEN 9: PROFILE ===== */
+.s-profile { height: 100%; display: flex; flex-direction: column; background: #F0EBE3; overflow-y: auto; }
+.profile-hero { background: linear-gradient(160deg, var(--sage), var(--sage-mid)); padding: 36px 20px 28px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.profile-avatar { width: 78px; height: 78px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 12px; border: 4px solid rgba(255,255,255,0.3); position: relative; }
+.edit-avatar { position: absolute; bottom: 0; right: 0; width: 24px; height: 24px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; border: 2px solid white; }
+.profile-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; color: white; }
+.profile-mode { font-size: 11px; color: var(--gold-light); margin-top: 4px; font-weight: 700; }
+.profile-badges { display: flex; gap: 8px; margin-top: 12px; }
+.pb { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; padding: 4px 12px; font-size: 10px; color: white; font-weight: 700; }
+.profile-body { padding: 14px 16px 80px; }
+.p-stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 16px; }
+.p-stat { background: white; border-radius: 12px; padding: 14px; text-align: center; }
+.pst-val { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 700; color: var(--charcoal); }
+.pst-label { font-size: 9px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; font-weight: 700; }
+
+.menu-group { background: white; border-radius: 16px; overflow: hidden; margin-bottom: 12px; }
+.menu-item { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-bottom: 1px solid var(--cream); cursor: pointer; }
+.menu-item:last-child { border-bottom: none; }
+.mi-icon { width: 34px; height: 34px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.mi-sage { background: var(--sage-pale); }
+.mi-gold { background: var(--gold-pale); }
+.mi-terra { background: rgba(181,115,90,0.1); }
+.mi-gray { background: rgba(0,0,0,0.05); }
+.menu-label { font-size: 13px; font-weight: 700; color: var(--text); flex: 1; }
+.menu-arrow { color: var(--text-muted); font-size: 16px; }
+.menu-badge { background: var(--sage); color: white; font-size: 10px; font-weight: 800; padding: 2px 8px; border-radius: 6px; }
+.menu-switch { width: 36px; height: 20px; background: var(--sage); border-radius: 10px; position: relative; }
+.menu-switch::after { content: ''; position: absolute; right: 2px; top: 2px; width: 16px; height: 16px; background: white; border-radius: 50%; box-shadow: 0 1px 4px rgba(0,0,0,0.2); }
+
+/* ===== SCREEN 10: NOTIFICATIONS ===== */
+.s-notifs { height: 100%; display: flex; flex-direction: column; background: #F0EBE3; overflow-y: auto; }
+.notifs-header { background: var(--charcoal); padding: 32px 18px 18px; display: flex; align-items: center; justify-content: space-between; }
+.notifs-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 700; color: white; }
+.notifs-header .nh-mark { font-size: 11px; color: var(--gold); font-weight: 700; }
+.notifs-body { padding: 14px 14px 80px; }
+.notif-group-label { font-size: 10px; font-weight: 800; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; padding: 8px 2px 6px; }
+.notif-item { background: white; border-radius: 14px; padding: 14px; margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start; }
+.notif-item.unread { background: var(--sage-pale); border: 1px solid rgba(61,82,71,0.15); }
+.notif-icon { width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.ni-green { background: #dcfce7; }
+.ni-gold { background: var(--gold-pale); }
+.ni-sage { background: var(--sage-pale); }
+.ni-terra { background: rgba(181,115,90,0.1); }
+.ni-dark { background: rgba(28,35,32,0.08); }
+.notif-content { flex: 1; }
+.notif-title { font-size: 13px; font-weight: 800; color: var(--charcoal); margin-bottom: 3px; }
+.notif-desc { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+.notif-time { font-size: 10px; color: var(--text-muted); margin-top: 5px; font-weight: 600; }
+.notif-unread-dot { width: 8px; height: 8px; background: var(--gold); border-radius: 50%; flex-shrink: 0; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="logo-row">
+    <div class="logo-sq">🌿</div>
+    <h1>Life & You</h1>
+  </div>
+  <p class="subtitle">Detailed Mobile App UI — 10 screens covering the complete client journey from splash to portal</p>
+  <div><span class="screen-count-badge">📱 10 App Screens · iOS Design Language</span></div>
+</div>
+
+<!-- =============================== -->
+<!-- ROW 1: ONBOARDING SCREENS -->
+<!-- =============================== -->
+<div class="section-header">
+  <div class="sh-num">1</div>
+  <h2>Onboarding — First Impressions</h2>
+  <div class="sh-line"></div>
+</div>
+<div class="phones-row">
+
+  <!-- SCREEN 1: SPLASH -->
+  <div class="phone-wrap">
+    <div class="phone-label">Splash / Welcome</div>
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="s-splash">
+          <div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>WiFi</span><span>🔋</span></div></div>
+          <div class="splash-logo">🌿</div>
+          <h1>Life & You</h1>
+          <div class="tagline">Be Heard. Heal Anonymously.<br>Live Better.</div>
+          <div class="ornament">✦ ✦ ✦</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);letter-spacing:2px;text-transform:uppercase;">NLP · ICF Certified · UAE</div>
+          <button class="splash-btn">Begin Your Journey →</button>
+          <button class="splash-btn-outline">I Already Have an Account</button>
+          <div class="splash-social-row">
+            <span class="splash-or">or</span>
+            <div class="splash-social-btn">G</div>
+            <div class="splash-social-btn">A</div>
+            <div class="splash-social-btn">📧</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 2: ONBOARDING -->
+  <div class="phone-wrap">
+    <div class="phone-label">Onboarding — What Brings You Here?</div>
+    <div class="phone-frame">
+      <div class="phone-screen">
+        <div class="s-onboard">
+          <div class="ob-header">
+            <div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>🔋</span></div></div>
+            <div class="ob-step-dots">
+              <div class="ob-dot active"></div><div class="ob-dot active"></div><div class="ob-dot"></div><div class="ob-dot"></div>
+            </div>
+            <div class="ob-icon">🗺️</div>
+            <div class="ob-title">What brings<br>you here?</div>
+            <div class="ob-sub">Select all that feel true. This helps us personalize your experience.</div>
+          </div>
+          <div class="ob-body">
+            <div class="ob-label">I'm navigating...</div>
+            <div class="ob-options">
+              <div class="ob-option sel">
+                <div class="ob-opt-icon">😰</div>
+                <div><div class="ob-opt-text">Anxiety or overthinking</div><div class="ob-opt-sub">Stress, racing thoughts, worry</div></div>
+                <div class="ob-check">✓</div>
+              </div>
+              <div class="ob-option sel">
+                <div class="ob-opt-icon">💼</div>
+                <div><div class="ob-opt-text">Career challenges</div><div class="ob-opt-sub">Transitions, burnout, direction</div></div>
+                <div class="ob-check">✓</div>
+              </div>
+              <div class="ob-option">
+                <div class="ob-opt-icon">❤️</div>
+                <div><div class="ob-opt-text">Relationships</div><div class="ob-opt-sub">Communication, boundaries, dynamics</div></div>
+                <div class="ob-check"></div>
+              </div>
+              <div class="ob-option">
+                <div class="ob-opt-icon">🌱</div>
+                <div><div class="ob-opt-text">Personal growth</div><div class="ob-opt-sub">Self-worth, identity, purpose</div></div>
+                <div class="ob-check"></div>
+              </div>
+            </div>
+          </div>
+          <div class="ob-footer">
+            <button class="ob-next-btn">Continue →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 3: HOME DASHBOARD -->
+  <div class="phone-wrap">
+    <div class="phone-label">Home Dashboard</div>
+    <div class="phone-frame">
+      <div class="phone-screen" style="position:relative;">
+        <div class="s-home">
+          <div class="home-header">
+            <div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>🔋</span></div></div>
+            <div class="h-top-row">
+              <div class="h-logo">Life <span>&</span> You</div>
+              <div style="display:flex;align-items:center;gap:8px;">
+                <div style="font-size:16px;position:relative;">🔔<div class="bn-dot"></div></div>
+                <div class="h-avatar">S</div>
+              </div>
+            </div>
+            <div class="h-greeting">Good afternoon,</div>
+            <div class="h-name">Your Journey 🌿</div>
+            <div class="h-week-badge">✦ Week 6 · 8 Sessions Completed</div>
+          </div>
+          <div class="home-body">
+            <div class="h-next-card">
+              <div class="hnc-left">
+                <div class="hnc-label">Next Session</div>
+                <div class="hnc-time">Wed, Mar 4 · 6:00 PM</div>
+                <div class="hnc-sub">Coach B · Secure Video</div>
+              </div>
+              <button class="hnc-btn">Join →</button>
+            </div>
+            <div class="h-stats-row">
+              <div class="h-stat">
+                <div class="hs-label">Mood Avg.</div>
+                <div class="hs-val">7.4</div>
+                <div class="hs-change">↑ +1.2 this week</div>
+              </div>
+              <div class="h-stat">
+                <div class="hs-label">Sessions Done</div>
+                <div class="hs-val">8</div>
+                <div class="hs-change">↑ +2 this month</div>
+              </div>
+            </div>
+            <div class="h-section-title">From Your Library <span>View All →</span></div>
+            <div class="h-resource-card">
+              <div class="hrc-icon hrc-sage">📖</div>
+              <div><div class="hrc-title">What Is NLP and How Does It Change Your Thinking?</div><div class="hrc-meta">7 min read · Coaching Basics</div></div>
+            </div>
+            <div class="h-resource-card">
+              <div class="hrc-icon hrc-gold">🎧</div>
+              <div><div class="hrc-title">10-Minute Guided Breathing for Anxiety</div><div class="hrc-meta">10 min audio · Anxiety & Stress</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="bn-item active"><div class="bn-icon">🏠</div><div class="bn-label">Home</div></div>
+          <div class="bn-item"><div class="bn-icon">📅</div><div class="bn-label" style="position:relative;">Book</div></div>
+          <div class="bn-item"><div class="bn-icon">📊</div><div class="bn-label">Progress</div></div>
+          <div class="bn-item"><div class="bn-icon">📚</div><div class="bn-label">Library</div></div>
+          <div class="bn-item"><div style="position:relative;font-size:22px;">👤<div class="bn-dot"></div></div><div class="bn-label">Profile</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- =============================== -->
+<!-- ROW 2: BOOKING & CONFIRMATION -->
+<!-- =============================== -->
+<div class="section-header">
+  <div class="sh-num">2</div>
+  <h2>Booking Flow — Schedule & Confirm</h2>
+  <div class="sh-line"></div>
+</div>
+<div class="phones-row">
+
+  <!-- SCREEN 4: BOOK SESSION -->
+  <div class="phone-wrap">
+    <div class="phone-label">Book a Session</div>
+    <div class="phone-frame">
+      <div class="phone-screen" style="position:relative;">
+        <div class="s-book">
+          <div class="book-header">
+            <div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>🔋</span></div></div>
+            <div class="bh-back-row">
+              <div class="bh-back">←</div>
+              <div class="bh-breadcrumb">Booking</div>
+            </div>
+            <div class="bh-title">Choose Your <em style="font-style:italic;color:var(--gold-light);">Session</em></div>
+            <div class="bh-sub">60-minute · Secure video or phone · Anonymous available</div>
+          </div>
+          <div class="book-body">
+            <div class="book-step">Step 1 — Select Date</div>
+            <div class="book-cal-mini">
+              <div class="bcm-head">
+                <div class="bcm-month">March 2026</div>
+                <div style="display:flex;gap:12px;"><span class="bcm-nav">‹</span><span class="bcm-nav">›</span></div>
+              </div>
+              <div class="bcm-days"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+              <div class="bcm-grid">
+                <div class="bcm-d dim">24</div><div class="bcm-d dim">25</div><div class="bcm-d dim">26</div><div class="bcm-d dim">27</div><div class="bcm-d dim">28</div><div class="bcm-d dim">1</div><div class="bcm-d dim">2</div>
+                <div class="bcm-d today">3</div><div class="bcm-d avail">4</div><div class="bcm-d avail">5</div><div class="bcm-d">6</div><div class="bcm-d">7</div><div class="bcm-d avail">8</div><div class="bcm-d avail">9</div>
+                <div class="bcm-d">10</div><div class="bcm-d sel">11</div><div class="bcm-d avail">12</div><div class="bcm-d">13</div><div class="bcm-d">14</div><div class="bcm-d avail">15</div><div class="bcm-d avail">16</div>
+              </div>
+            </div>
+
+            <div class="book-step">Step 2 — Select Time (Wed, Mar 11)</div>
+            <div class="time-grid-mobile">
+              <div class="tgm-chip full">9:00 AM<div style="font-size:9px;color:var(--text-muted);">Full</div></div>
+              <div class="tgm-chip">10:00 AM</div>
+              <div class="tgm-chip on">11:00 AM ✓</div>
+              <div class="tgm-chip">4:00 PM</div>
+              <div class="tgm-chip">6:00 PM</div>
+              <div class="tgm-chip full">8:00 PM<div style="font-size:9px;color:var(--text-muted);">Full</div></div>
+            </div>
+
+            <div class="book-step">Step 3 — Your Details</div>
+            <div class="anon-card">
+              <div class="anon-icon">🔒</div>
+              <div class="anon-text"><div class="at-title">Anonymous Mode</div><div class="at-sub">Your name hidden from all records</div></div>
+              <div class="anon-toggle-m"></div>
+            </div>
+
+            <div class="concern-chips-m">
+              <span class="cc-m on">Anxiety</span><span class="cc-m">Career</span><span class="cc-m on">Self-Worth</span><span class="cc-m">Grief</span><span class="cc-m">Stress</span><span class="cc-m">Relationships</span>
+            </div>
+
+            <input class="m-input" type="text" placeholder="Alias or first name (optional)">
+          </div>
+        </div>
+        <div class="book-summary-bar">
+          <div class="bsb-info"><div class="bsb-date">Wed, Mar 11 · 11:00 AM GST</div><div class="bsb-price">AED 399 · Individual Session</div></div>
+          <button class="bsb-btn">Confirm →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 5: CONFIRMATION -->
+  <div class="phone-wrap">
+    <div class="phone-label">Booking Confirmed!</div>
+    <div class="phone-frame">
+      <div class="phone-screen" style="position:relative;">
+        <div class="s-confirm">
+          <div style="background:var(--sage);padding:12px 18px;"><div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>🔋</span></div></div></div>
+          <div class="confirm-body">
+            <div class="confirm-icon">✓</div>
+            <div class="confirm-title">You're Booked! 🌿</div>
+            <div class="confirm-sub">Your session is confirmed. A secure video link arrives 30 min before start.</div>
+            <div class="confirm-card">
+              <div class="cc-row"><span class="cc-k">Date & Time</span><span class="cc-v">Wed, Mar 11 · 11:00 AM</span></div>
+              <div class="cc-row"><span class="cc-k">Type</span><span class="cc-v">Individual · 60 min</span></div>
+              <div class="cc-row"><span class="cc-k">Booking ID</span><span class="cc-v">#LY-2026-0311</span></div>
+              <div class="cc-row"><span class="cc-k">Privacy</span><span class="cc-v green">🔒 Anonymous ON</span></div>
+              <div class="cc-row"><span class="cc-k">Total Paid</span><span class="cc-v" style="font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--sage);">AED 399</span></div>
+            </div>
+            <div class="confirm-actions">
+              <button class="ca-primary">Go to My Portal →</button>
+              <button class="ca-ghost">📚 Explore Resources</button>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="bn-item"><div class="bn-icon">🏠</div><div class="bn-label">Home</div></div>
+          <div class="bn-item active"><div class="bn-icon">📅</div><div class="bn-label">Book</div></div>
+          <div class="bn-item"><div class="bn-icon">📊</div><div class="bn-label">Progress</div></div>
+          <div class="bn-item"><div class="bn-icon">📚</div><div class="bn-label">Library</div></div>
+          <div class="bn-item"><div class="bn-icon">👤</div><div class="bn-label">Profile</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 6: SECURE MESSAGING -->
+  <div class="phone-wrap">
+    <div class="phone-label">Secure Coach Messaging</div>
+    <div class="phone-frame">
+      <div class="phone-screen" style="position:relative;">
+        <div class="s-messages">
+          <div class="msg-header">
+            <div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>🔋</span></div></div>
+            <div class="msg-h-top">
+              <div class="msg-back">←</div>
+              <div class="msg-coach-info">
+                <div class="msg-coach-name">Coach B</div>
+                <div class="msg-coach-status">● Online</div>
+              </div>
+              <div class="msg-coach-av">🌙</div>
+            </div>
+            <div class="msg-encrypt-note">🔒 End-to-end encrypted · Zero retention mode ON</div>
+          </div>
+          <div class="msg-list">
+            <div class="msg-divider">Today, March 2</div>
+            <div class="msg-bubble received">Good morning! How are you feeling after our session on Monday? Did you try the journaling exercise I suggested? 🌿</div>
+            <div class="msg-time recv">9:14 AM</div>
+            <div class="msg-bubble sent">Yes! I tried it for the last 3 days. It's helping me notice the patterns. I can see how my inner critic kicks in especially around work situations.</div>
+            <div class="msg-time">9:22 AM</div>
+            <div class="msg-bubble received">That's a big insight. Awareness is the first step in NLP — once you can observe the pattern, you can begin to interrupt it. I've added a worksheet to your portal library about "Pattern Interrupts" 📝</div>
+            <div class="msg-time recv">9:28 AM</div>
+            <div class="msg-bubble sent">Amazing, will read it today. Looking forward to Wednesday's session!</div>
+            <div class="msg-time">9:31 AM · Delivered ✓</div>
+          </div>
+          <div class="msg-input-area">
+            <input class="msg-input" placeholder="Write a message...">
+            <button class="msg-send-btn" style="color:white;font-size:14px;">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- =============================== -->
+<!-- ROW 3: PROGRESS & RESOURCES -->
+<!-- =============================== -->
+<div class="section-header">
+  <div class="sh-num">3</div>
+  <h2>Progress Tracker & Resource Library</h2>
+  <div class="sh-line"></div>
+</div>
+<div class="phones-row">
+
+  <!-- SCREEN 7: PROGRESS -->
+  <div class="phone-wrap">
+    <div class="phone-label">Journey Progress</div>
+    <div class="phone-frame">
+      <div class="phone-screen" style="position:relative;">
+        <div class="s-progress">
+          <div class="prog-header">
+            <div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>🔋</span></div></div>
+            <div class="ph-top">
+              <div class="ph-title">My Journey 📊</div>
+              <div class="ph-period">Week 6</div>
+            </div>
+            <!-- Mood chart in header -->
+            <div style="background:rgba(255,255,255,0.1);border-radius:14px;padding:12px;">
+              <div style="font-size:9px;font-weight:800;color:rgba(255,255,255,0.55);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">Mood This Week</div>
+              <div style="display:flex;align-items:flex-end;gap:5px;height:50px;">
+                <div style="flex:1;background:rgba(255,255,255,0.25);border-radius:3px 3px 0 0;height:60%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px;"><span style="font-size:8px;color:rgba(255,255,255,0.6);">Mon</span></div>
+                <div style="flex:1;background:rgba(255,255,255,0.25);border-radius:3px 3px 0 0;height:72%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px;"><span style="font-size:8px;color:rgba(255,255,255,0.6);">Tue</span></div>
+                <div style="flex:1;background:rgba(196,163,90,0.8);border-radius:3px 3px 0 0;height:85%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px;"><span style="font-size:8px;color:rgba(255,255,255,0.9);font-weight:800;">Wed</span></div>
+                <div style="flex:1;background:rgba(255,255,255,0.25);border-radius:3px 3px 0 0;height:78%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px;"><span style="font-size:8px;color:rgba(255,255,255,0.6);">Thu</span></div>
+                <div style="flex:1;background:rgba(255,255,255,0.25);border-radius:3px 3px 0 0;height:65%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px;"><span style="font-size:8px;color:rgba(255,255,255,0.6);">Fri</span></div>
+                <div style="flex:1;background:rgba(255,255,255,0.25);border-radius:3px 3px 0 0;height:90%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px;"><span style="font-size:8px;color:rgba(255,255,255,0.6);">Sat</span></div>
+                <div style="flex:1;background:rgba(255,255,255,0.25);border-radius:3px 3px 0 0;height:55%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2px;"><span style="font-size:8px;color:rgba(255,255,255,0.6);">Sun</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="prog-body">
+            <!-- Milestones -->
+            <div style="font-size:12px;font-weight:800;color:var(--charcoal);margin-bottom:10px;">🏆 Recent Milestones</div>
+            <div class="milestone-card">
+              <div class="mc-icon">🎯</div>
+              <div><div class="mc-title">6 Weeks In!</div><div class="mc-sub">You've completed your first 6-week coaching journey</div></div>
+            </div>
+            <div class="milestone-card" style="background:var(--sage-pale);border-color:rgba(61,82,71,0.15);">
+              <div class="mc-icon">📚</div>
+              <div><div class="mc-title">10+ Resources Read</div><div class="mc-sub">Engagement with your library is growing</div></div>
+            </div>
+
+            <!-- Progress areas -->
+            <div style="font-size:12px;font-weight:800;color:var(--charcoal);margin:14px 0 10px;">Growth Areas</div>
+            <div class="prog-area-card">
+              <div class="pac-header"><div class="pac-name">Self-Awareness</div><div class="pac-pct">72%</div></div>
+              <div class="pac-bar"><div class="pac-fill" style="width:72%"></div></div>
+              <div class="pac-desc">Noticing thought patterns with greater clarity</div>
+            </div>
+            <div class="prog-area-card">
+              <div class="pac-header"><div class="pac-name">Communication</div><div class="pac-pct">81%</div></div>
+              <div class="pac-bar"><div class="pac-fill" style="width:81%"></div></div>
+              <div class="pac-desc">Expressing needs and boundaries more clearly</div>
+            </div>
+            <div class="prog-area-card">
+              <div class="pac-header"><div class="pac-name">Emotional Resilience</div><div class="pac-pct">58%</div></div>
+              <div class="pac-bar"><div class="pac-fill" style="width:58%"></div></div>
+              <div class="pac-desc">Building tools to manage stress responses</div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="bn-item"><div class="bn-icon">🏠</div><div class="bn-label">Home</div></div>
+          <div class="bn-item"><div class="bn-icon">📅</div><div class="bn-label">Book</div></div>
+          <div class="bn-item active"><div class="bn-icon">📊</div><div class="bn-label">Progress</div></div>
+          <div class="bn-item"><div class="bn-icon">📚</div><div class="bn-label">Library</div></div>
+          <div class="bn-item"><div class="bn-icon">👤</div><div class="bn-label">Profile</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 8: RESOURCES -->
+  <div class="phone-wrap">
+    <div class="phone-label">Resource Library</div>
+    <div class="phone-frame">
+      <div class="phone-screen" style="position:relative;">
+        <div class="s-resources">
+          <div class="res-header">
+            <div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>🔋</span></div></div>
+            <div class="rh-title">Your Library 📚</div>
+            <div class="res-filter-row">
+              <div class="rf-chip on">All</div>
+              <div class="rf-chip">📖 Articles</div>
+              <div class="rf-chip">🎧 Audio</div>
+              <div class="rf-chip">🎬 Video</div>
+              <div class="rf-chip">📝 Worksheets</div>
+            </div>
+          </div>
+          <div class="res-body">
+            <!-- Featured -->
+            <div style="font-size:10px;font-weight:800;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;">Featured This Week</div>
+            <div class="res-featured">
+              <div class="rfe-icon">🎧</div>
+              <div>
+                <div class="rfe-label">Audio · New</div>
+                <div class="rfe-title">Guided Breathing for Anxiety Relief</div>
+                <div class="rfe-meta">10 minutes · Anxiety & Stress · Added by Coach B</div>
+              </div>
+            </div>
+
+            <!-- List -->
+            <div style="font-size:10px;font-weight:800;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;">All Resources</div>
+            <div class="res-list">
+              <div class="rl-item">
+                <div class="rli-icon rli-sage">📖</div>
+                <div style="flex:1;">
+                  <div class="rli-title">What Is NLP and How Does It Change Your Thinking?</div>
+                  <div class="rli-meta"><span class="rli-type">Article</span> 7 min read</div>
+                </div>
+              </div>
+              <div class="rl-item">
+                <div class="rli-icon rli-gold">📝</div>
+                <div style="flex:1;">
+                  <div class="rli-title">Daily Reflection Journal — 5-Question Template</div>
+                  <div class="rli-meta"><span class="rli-type">Worksheet</span> Printable PDF</div>
+                </div>
+                <div class="rli-lock">🔒</div>
+              </div>
+              <div class="rl-item">
+                <div class="rli-icon rli-terra">🎬</div>
+                <div style="flex:1;">
+                  <div class="rli-title">Understanding the Inner Critic: A Coach's Perspective</div>
+                  <div class="rli-meta"><span class="rli-type">Video</span> 18 min</div>
+                </div>
+                <div class="rli-lock">🔒</div>
+              </div>
+              <div class="rl-item">
+                <div class="rli-icon rli-dark">🌙</div>
+                <div style="flex:1;">
+                  <div class="rli-title">Sleep Meditation for Overthinking Minds</div>
+                  <div class="rli-meta"><span class="rli-type">Audio</span> 22 min</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="bn-item"><div class="bn-icon">🏠</div><div class="bn-label">Home</div></div>
+          <div class="bn-item"><div class="bn-icon">📅</div><div class="bn-label">Book</div></div>
+          <div class="bn-item"><div class="bn-icon">📊</div><div class="bn-label">Progress</div></div>
+          <div class="bn-item active"><div class="bn-icon">📚</div><div class="bn-label">Library</div></div>
+          <div class="bn-item"><div class="bn-icon">👤</div><div class="bn-label">Profile</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- =============================== -->
+<!-- ROW 4: PROFILE & NOTIFICATIONS -->
+<!-- =============================== -->
+<div class="section-header">
+  <div class="sh-num">4</div>
+  <h2>Profile, Settings & Notifications</h2>
+  <div class="sh-line"></div>
+</div>
+<div class="phones-row" style="padding-bottom:80px;">
+
+  <!-- SCREEN 9: PROFILE -->
+  <div class="phone-wrap">
+    <div class="phone-label">User Profile</div>
+    <div class="phone-frame">
+      <div class="phone-screen" style="position:relative;">
+        <div class="s-profile">
+          <div class="profile-hero">
+            <div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>🔋</span></div></div>
+            <div class="profile-avatar">S<div class="edit-avatar">✏️</div></div>
+            <div class="profile-name">Anonymous Client</div>
+            <div class="profile-mode">🔒 Anonymous Mode Active</div>
+            <div class="profile-badges">
+              <div class="pb">🌿 Journey Member</div>
+              <div class="pb">⭐ 8 Sessions</div>
+            </div>
+          </div>
+          <div class="profile-body">
+            <div class="p-stats-row">
+              <div class="p-stat"><div class="pst-val">8</div><div class="pst-label">Sessions</div></div>
+              <div class="p-stat"><div class="pst-val">12</div><div class="pst-label">Resources</div></div>
+              <div class="p-stat"><div class="pst-val">6</div><div class="pst-label">Weeks</div></div>
+            </div>
+            <div class="menu-group">
+              <div class="menu-item">
+                <div class="mi-icon mi-sage">📅</div>
+                <div class="menu-label">My Sessions</div>
+                <div class="menu-arrow">›</div>
+              </div>
+              <div class="menu-item">
+                <div class="mi-icon mi-gold">📊</div>
+                <div class="menu-label">Journey Progress</div>
+                <div class="menu-arrow">›</div>
+              </div>
+              <div class="menu-item">
+                <div class="mi-icon mi-terra">💳</div>
+                <div class="menu-label">Billing & Invoices</div>
+                <div class="menu-arrow">›</div>
+              </div>
+            </div>
+            <div class="menu-group">
+              <div class="menu-item">
+                <div class="mi-icon mi-sage">🔒</div>
+                <div class="menu-label">Anonymous Mode</div>
+                <div class="menu-switch"></div>
+              </div>
+              <div class="menu-item">
+                <div class="mi-icon mi-gray">🔔</div>
+                <div class="menu-label">Notifications</div>
+                <div class="menu-badge">3</div>
+                <div class="menu-arrow">›</div>
+              </div>
+              <div class="menu-item">
+                <div class="mi-icon mi-gray">⚙️</div>
+                <div class="menu-label">Account Settings</div>
+                <div class="menu-arrow">›</div>
+              </div>
+            </div>
+            <div class="menu-group">
+              <div class="menu-item"><div class="mi-icon" style="background:#fee2e2;">🚪</div><div class="menu-label" style="color:#dc2626;">Sign Out</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="bn-item"><div class="bn-icon">🏠</div><div class="bn-label">Home</div></div>
+          <div class="bn-item"><div class="bn-icon">📅</div><div class="bn-label">Book</div></div>
+          <div class="bn-item"><div class="bn-icon">📊</div><div class="bn-label">Progress</div></div>
+          <div class="bn-item"><div class="bn-icon">📚</div><div class="bn-label">Library</div></div>
+          <div class="bn-item active"><div class="bn-icon">👤</div><div class="bn-label">Profile</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCREEN 10: NOTIFICATIONS -->
+  <div class="phone-wrap">
+    <div class="phone-label">Notifications</div>
+    <div class="phone-frame">
+      <div class="phone-screen" style="position:relative;">
+        <div class="s-notifs">
+          <div class="notifs-header">
+            <div class="status-bar"><span>9:41</span><div class="status-icons"><span>●●●</span><span>🔋</span></div></div>
+            <h2>Notifications 🔔</h2>
+            <div class="nh-mark">Mark all read</div>
+          </div>
+          <div class="notifs-body">
+            <div class="notif-group-label">Today</div>
+            <div class="notif-item unread">
+              <div class="notif-icon ni-green">✅</div>
+              <div class="notif-content">
+                <div class="notif-title">Session Confirmed!</div>
+                <div class="notif-desc">Your coaching session on Wed, Mar 11 at 11:00 AM GST is confirmed. Video link sent to your email.</div>
+                <div class="notif-time">Just now</div>
+              </div>
+              <div class="notif-unread-dot"></div>
+            </div>
+            <div class="notif-item unread">
+              <div class="notif-icon ni-sage">💬</div>
+              <div class="notif-content">
+                <div class="notif-title">Message from Coach B</div>
+                <div class="notif-desc">Coach B has added a new worksheet to your portal library: "Pattern Interrupts in NLP"</div>
+                <div class="notif-time">2 hours ago</div>
+              </div>
+              <div class="notif-unread-dot"></div>
+            </div>
+
+            <div class="notif-group-label">Yesterday</div>
+            <div class="notif-item unread">
+              <div class="notif-icon ni-gold">📚</div>
+              <div class="notif-content">
+                <div class="notif-title">New Resource Available</div>
+                <div class="notif-desc">A new audio guide has been added to your library: "10-Minute Breathing for Anxiety"</div>
+                <div class="notif-time">Yesterday · 5:00 PM</div>
+              </div>
+              <div class="notif-unread-dot"></div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-icon ni-green">📅</div>
+              <div class="notif-content">
+                <div class="notif-title">Session Reminder</div>
+                <div class="notif-desc">Your session with Coach B is tomorrow at 11:00 AM. Prep tip: journal your biggest challenge this week before the call.</div>
+                <div class="notif-time">Yesterday · 9:00 AM</div>
+              </div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-icon ni-terra">🏆</div>
+              <div class="notif-content">
+                <div class="notif-title">Milestone Reached!</div>
+                <div class="notif-desc">You've completed 6 weeks of your coaching journey. You're building momentum! 🌿</div>
+                <div class="notif-time">2 days ago</div>
+              </div>
+            </div>
+            <div class="notif-item">
+              <div class="notif-icon ni-dark">⭐</div>
+              <div class="notif-content">
+                <div class="notif-title">How was your last session?</div>
+                <div class="notif-desc">We'd love your anonymous feedback on your session from Feb 24. It only takes 30 seconds.</div>
+                <div class="notif-time">3 days ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-nav">
+          <div class="bn-item"><div class="bn-icon">🏠</div><div class="bn-label">Home</div></div>
+          <div class="bn-item"><div class="bn-icon">📅</div><div class="bn-label">Book</div></div>
+          <div class="bn-item"><div class="bn-icon">📊</div><div class="bn-label">Progress</div></div>
+          <div class="bn-item"><div class="bn-icon">📚</div><div class="bn-label">Library</div></div>
+          <div class="bn-item active"><div class="bn-icon" style="position:relative;">👤<div class="bn-dot"></div></div><div class="bn-label">Profile</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
