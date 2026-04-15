@@ -1,10 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router";
-import { Menu, X, ShieldCheck, User, ArrowRight } from "lucide-react";
+import { Menu, X, ShieldCheck, User, ArrowRight, Sparkles } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useUser } from "../context/UserContext";
 
 export function Navigation() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { role } = useUser();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -17,82 +19,98 @@ export function Navigation() {
 
   const navLinks = [
     { path: "/", label: "Home" },
-    { path: "/about", label: "About" },
+    { path: "/about-us", label: "About" },
     { path: "/programs", label: "Programs" },
+    { path: "/book", label: "Book a Session", badge: "NEW" },
+    { path: "/resources", label: "Resources", badge: "NEW" },
     { path: "/pricing", label: "Pricing" },
     { path: "/contact", label: "Contact" },
   ];
 
+  const getPortalPath = () => {
+    if (role === 'admin') return "/admin";
+    if (role === 'coach') return "/coach";
+    return "/portal";
+  };
+
   return (
     <>
       {/* Cinematic Announcement Bar */}
-      <div className="bg-[#2D3324] py-2.5 text-center text-[9px] md:text-[10px] text-[#CED2BA] tracking-[0.4em] font-black uppercase px-4 border-b border-white/5 relative z-50">
-        ✦ Safe Space · Certified NLP & ICF Coaching · Anonymous ✦
+      <div className="bg-[#1C2320] py-2.5 text-center text-[10px] text-[#B5C4BA] tracking-[0.25em] font-bold uppercase px-4 border-b border-white/5 relative z-[60]">
+        <div className="max-w-7xl mx-auto flex items-center justify-center gap-4 overflow-hidden whitespace-nowrap">
+          <span>NLP Certified & ICF Member</span>
+          <span className="opacity-30">•</span>
+          <span className="text-[#C4A35A]">100% Anonymous Coaching</span>
+          <span className="opacity-30">•</span>
+          <span>Free Discovery Calls Available</span>
+        </div>
       </div>
       
-      <nav className="bg-white/95 backdrop-blur-xl border-b border-[rgba(139,154,113,0.1)] sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
+      <nav className="bg-white/95 backdrop-blur-xl border-b border-[#3D5247]/10 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-          <Link to="/" className="flex items-center gap-4 group">
-               <div className="w-10 h-10 bg-transparent flex items-center justify-center group-hover:scale-110 transition-all">
+            <Link to="/" className="flex items-center gap-3">
+               <div className="w-10 h-10">
                   <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain" />
                </div>
                <div className="flex flex-col">
-                  <span className="text-xl font-extrabold text-[#2D3324] leading-none tracking-tight">Life & You</span>
-                  <span className="text-[9px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1 opacity-80">Coaching & Consulting</span>
+                  <span className="text-xl font-bold text-[#3D5247] leading-none tracking-tight font-serif">Life & You</span>
+                  <span className="text-[10px] font-bold text-[#C4A35A] uppercase tracking-[0.1em] mt-1">UAE & Global</span>
                </div>
-          </Link>
+            </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1 flex-1 justify-center">
+            <div className="hidden lg:flex items-center gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
-                  className={`px-5 py-2 rounded-full text-[10.5px] font-bold uppercase tracking-[0.15em] transition-all ${
+                  className={`px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
                     isActive(link.path)
-                      ? "bg-[#8B9A71]/10 text-[#2D3324]"
-                      : "text-[#545454]/80 hover:text-[#8B9A71] hover:bg-[#8B9A71]/5"
+                      ? "text-[#3D5247] bg-[#EDF2EE]"
+                      : "text-[#1C2320]/60 hover:text-[#3D5247] hover:bg-[#F5EFE6]"
                   }`}
                 >
                   {link.label}
+                  {link.badge && (
+                    <span className="px-1.5 py-0.5 bg-[#C4A35A] text-[#1C2320] text-[8px] font-black rounded tracking-tighter shrink-0">{link.badge}</span>
+                  )}
                 </Link>
               ))}
             </div>
 
             {/* Desktop Actions */}
-            <div className="hidden lg:flex items-center gap-4">
+            <div className="hidden lg:flex items-center gap-6">
               {isLoggedIn ? (
                 <Link
-                  to="/app/dashboard"
-                  className="flex items-center gap-3 px-6 py-3 bg-[#2D3324] text-white rounded-pill text-[10px] font-bold uppercase tracking-widest shadow-xl hover:bg-black transition-all"
+                  to={getPortalPath()}
+                  className="flex items-center gap-2 px-6 py-2.5 bg-[#3D5247] text-white rounded-full text-[11px] font-bold uppercase tracking-widest shadow-lg shadow-black/10 hover:bg-[#1C2320] transition-all"
                 >
-                  <User size={16} />
-                   My Dashboard
+                   Enter Portal <ArrowRight size={14} />
                 </Link>
               ) : (
-                <>
-                  <button 
-                    onClick={() => navigate("/splash")}
-                    className="text-[10px] font-bold uppercase tracking-widest text-[#545454] hover:text-[#2D3324] transition-all px-4"
+                <div className="flex items-center gap-4">
+                  <Link 
+                    to="/auth/login"
+                    className="text-[11px] font-bold uppercase tracking-widest text-[#3D5247] hover:text-[#C4A35A] transition-all"
                   >
-                    Portal Access
-                  </button>
-                  <Link
-                    to="/app/book"
-                    className="flex items-center gap-3 px-6 py-3 bg-[#8B9A71] text-white rounded-pill text-[10px] font-bold uppercase tracking-widest shadow-xl hover:opacity-90 transition-all"
-                  >
-                    Book Session <ArrowRight size={14} />
+                    Sign In
                   </Link>
-                </>
+                  <Link
+                    to="/book"
+                    className="px-7 py-2.5 bg-[#3D5247] text-white rounded-full text-[11px] font-bold uppercase tracking-widest shadow-lg shadow-[#3D5247]/20 hover:bg-[#1C2320] transition-all"
+                  >
+                    Book Now
+                  </Link>
+                </div>
               )}
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden w-12 h-12 flex items-center justify-center text-[#2D3324] bg-[#F8F9FA] rounded-2xl"
+              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#3D5247]"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -100,45 +118,49 @@ export function Navigation() {
 
           {/* Mobile Menu */}
           {mobileMenuOpen && (
-            <div className="lg:hidden py-10 border-t border-[rgba(139,154,113,0.1)] animate-in fade-in slide-in-from-top-4 duration-500">
-              <div className="flex flex-col gap-4">
+            <div className="lg:hidden border-t border-[#3D5247]/5 py-8 animate-in slide-in-from-top-4 duration-300">
+              <div className="flex flex-col gap-3">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => setMobileMenuOpen(false)}
-                    className={`px-6 py-4 rounded-2xl text-[11px] font-black uppercase tracking-widest flex items-center justify-between ${
+                    className={`px-6 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest flex items-center justify-between ${
                       isActive(link.path)
-                        ? "bg-[#8B9A71] text-white shadow-lg"
-                        : "bg-[#F8F9FA] text-[#2D3324]"
+                        ? "bg-[#3D5247] text-white shadow-lg shadow-[#3D5247]/20"
+                        : "bg-[#F5EFE6] text-[#3D5247]"
                     }`}
                   >
-                    {link.label}
+                    <div className="flex items-center gap-2">
+                       {link.label}
+                       {link.badge && <span className="bg-[#C4A35A] text-[#1C2320] text-[8px] px-1 rounded">{link.badge}</span>}
+                    </div>
                     <ArrowRight size={14} className="opacity-40" />
                   </Link>
                 ))}
                 
-                <div className="pt-6 grid grid-cols-1 gap-4">
+                <div className="pt-4 grid grid-cols-2 gap-4">
                   {isLoggedIn ? (
                     <Link
-                      to="/app/dashboard"
+                      to={getPortalPath()}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="px-6 py-5 text-[11px] font-black text-center text-white bg-[#2D3324] rounded-pill uppercase tracking-widest"
+                      className="col-span-2 px-6 py-4 text-xs font-bold text-center text-white bg-[#1C2320] rounded-2xl uppercase tracking-widest"
                     >
-                      Enter Portal
+                      Go to Dashboard
                     </Link>
                   ) : (
                     <>
-                      <button
-                        onClick={() => { setMobileMenuOpen(false); navigate("/splash"); }}
-                        className="px-6 py-5 text-[11px] font-black text-center text-[#2D3324] bg-[#F8F9FA] rounded-pill uppercase tracking-widest"
+                      <Link
+                        to="/auth/login"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="px-6 py-4 text-xs font-bold text-center text-[#3D5247] bg-white border border-[#3D5247]/10 rounded-2xl uppercase tracking-widest"
                       >
                         Sign In
-                      </button>
+                      </Link>
                       <Link
-                        to="/app/book"
+                        to="/book"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="px-6 py-5 text-[11px] font-black text-center text-white bg-[#8B9A71] rounded-pill uppercase tracking-widest shadow-xl"
+                        className="px-6 py-4 text-xs font-bold text-center text-white bg-[#3D5247] rounded-2xl uppercase tracking-widest shadow-lg shadow-[#3D5247]/20"
                       >
                         Book Now
                       </Link>

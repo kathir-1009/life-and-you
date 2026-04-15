@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
-import { ArrowLeft, ChevronLeft, ChevronRight, Lock, Check, Calendar as CalendarIcon, Clock, User, MessageSquare } from "lucide-react";
+import { useNavigate } from "react-router";
+import { ChevronLeft, ChevronRight, Lock, Calendar as CalendarIcon, Clock, MessageSquare, ArrowRight } from "lucide-react";
 
 export function BookSessionPage() {
   const navigate = useNavigate();
@@ -25,127 +25,151 @@ export function BookSessionPage() {
   const availableDates = [10, 11, 15, 16, 17, 18, 22, 23, 24, 25];
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] pb-32">
-      {/* Premium Header */}
-      <div className="bg-[#2D3324] pt-16 pb-20 px-6 rounded-b-[40px] relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
-        <div className="max-w-xl mx-auto relative z-10">
-          <button onClick={() => navigate(-1)} className="w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-6">
-            <ArrowLeft size={20} />
+    <div className="min-h-screen bg-[#F5EFE6] pb-32 portal-context">
+      {/* Dynamic Header: Adapts to system width */}
+      <div className="bg-[#1C2320] pt-10 lg:pt-16 pb-24 lg:pb-32 px-6 lg:px-10 rounded-b-[40px] lg:rounded-b-[80px] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[120px]" />
+        
+        <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <button onClick={() => navigate(-1)} className="lg:hidden w-10 h-10 bg-white/10 rounded-2xl flex items-center justify-center text-white mb-8 hover:bg-white/20 transition-all">
+            <ChevronLeft size={20} />
           </button>
-          <h1 className="text-3xl font-extrabold text-white mb-2">Schedule Session</h1>
-          <p className="text-[#8B9A71] text-sm font-medium">Find a time that brings you peace.</p>
+          <div className="space-y-4">
+            <h1 className="text-4xl lg:text-5xl font-bold text-white font-serif tracking-tight">Schedule Your Sanctuary</h1>
+            <p className="text-[#A68A45] text-lg font-medium opacity-90">Find a moment of deep peace and transformation.</p>
+          </div>
         </div>
       </div>
 
-      <div className="max-w-xl mx-auto px-6 -mt-8 relative z-20 space-y-6">
-        {/* Step 1: Date & Time */}
-        <div className="bg-white rounded-[32px] p-6 sm:p-8 shadow-premium border border-[rgba(139,154,113,0.1)]">
-          <SectionLabel icon={CalendarIcon}>Select Date</SectionLabel>
+      {/* Main Content: Highly Responsive Grid */}
+      <div className="max-w-6xl mx-auto px-4 lg:px-10 -mt-12 lg:-mt-20 relative z-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          <div className="bg-[#F8F9FA] rounded-[24px] p-5 mb-8 border border-[rgba(139,154,113,0.05)]">
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="font-extrabold text-[#2D3324]">April 2026</h3>
-              <div className="flex gap-2">
-                <button className="p-2 hover:bg-[#8B9A71]/10 rounded-xl text-[#8B9A71]"><ChevronLeft size={20} /></button>
-                <button className="p-2 hover:bg-[#8B9A71]/10 rounded-xl text-[#8B9A71]"><ChevronRight size={20} /></button>
+          {/* Left Column: Calendar & Time (8/12 space on desktop) */}
+          <div className="lg:col-span-8 space-y-6">
+            <div className="bg-white rounded-[40px] p-6 lg:p-10 shadow-2xl border border-[#3D5247]/5">
+              <div className="flex flex-col lg:flex-row gap-10">
+                {/* Calendar View */}
+                <div className="flex-1">
+                  <SectionLabel icon={CalendarIcon}>Step 1: Focus Date</SectionLabel>
+                  <div className="bg-[#FBF5E6] rounded-[32px] p-6 border border-[#3D5247]/5 shadow-inner">
+                    <div className="flex items-center justify-between mb-8">
+                      <h3 className="font-bold text-[#1C2320] font-serif uppercase tracking-widest text-base">April 2026</h3>
+                      <div className="flex gap-3">
+                        <button className="p-2.5 bg-white rounded-xl text-[#3D5247] shadow-sm hover:scale-105 transition-transform"><ChevronLeft size={20} /></button>
+                        <button className="p-2.5 bg-white rounded-xl text-[#3D5247] shadow-sm hover:scale-105 transition-transform"><ChevronRight size={20} /></button>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-7 gap-3 mb-4">
+                      {["S", "M", "T", "W", "T", "F", "S"].map((d, idx) => (
+                        <div key={`${d}-${idx}`} className="text-center text-[10px] font-black text-[#1C2320]/40 uppercase tracking-widest">{d}</div>
+                      ))}
+                    </div>
+
+                    <div className="grid grid-cols-7 gap-3">
+                      {[1, 2, 3].map(e => <div key={`e-${e}`} />)}
+                      {daysInMonth.slice(0, 28).map(day => {
+                        const isAvailable = availableDates.includes(day);
+                        const isSelected = day === selectedDate;
+                        return (
+                          <button
+                            key={day}
+                            disabled={!isAvailable}
+                            onClick={() => setSelectedDate(day)}
+                            className={`aspect-square rounded-2xl text-xs font-black transition-all relative flex items-center justify-center ${
+                              isSelected ? 'bg-[#3D5247] text-white shadow-xl shadow-[#3D5247]/20 scale-105 z-10' : isAvailable ? 'text-[#3D5247] bg-white border border-[#3D5247]/5 hover:border-[#3D5247] hover:scale-105' : 'text-[#3D5247]/20 opacity-30 cursor-not-allowed'
+                            }`}
+                          >
+                            {day}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Slots View */}
+                <div className="flex-1">
+                  <SectionLabel icon={Clock}>Step 2: Available Slots</SectionLabel>
+                  <div className="grid grid-cols-2 gap-3 lg:grid-cols-1 overflow-y-auto lg:max-h-[380px] custom-scrollbar pr-2">
+                    {times.map(time => {
+                      const isBooked = bookedTimes.includes(time);
+                      const isSelected = selectedTime === time;
+                      return (
+                        <button
+                          key={time}
+                          disabled={isBooked}
+                          onClick={() => setSelectedTime(time)}
+                          className={`py-5 rounded-[24px] text-[11px] font-black uppercase tracking-widest border transition-all flex flex-col items-center justify-center ${
+                            isSelected ? 'bg-[#1C2320] border-transparent text-white shadow-2xl scale-[1.02] z-10' : isBooked ? 'bg-[#F5EFE6] border-transparent text-[#3D5247]/20 cursor-not-allowed opacity-50' : 'bg-white border-[#3D5247]/10 text-[#3D5247] hover:border-[#3D5247] hover:bg-[#FBF5E6]'
+                          }`}
+                        >
+                          {isBooked ? "Reserved" : time}
+                          {!isBooked && <span className="text-[8px] opacity-40 mt-1 uppercase tracking-tighter">60 Min Session</span>}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
-            </div>
-
-            <div className="grid grid-cols-7 gap-2 mb-4">
-              {["S", "M", "T", "W", "T", "F", "S"].map(d => (
-                <div key={d} className="text-center text-[10px] font-extrabold text-[#545454]/40 uppercase">{d}</div>
-              ))}
-            </div>
-
-            <div className="grid grid-cols-7 gap-2">
-              {[1, 2, 3].map(e => <div key={`e-${e}`} />)}
-              {daysInMonth.slice(0, 28).map(day => {
-                const isAvailable = availableDates.includes(day);
-                const isSelected = day === selectedDate;
-                return (
-                  <button
-                    key={day}
-                    disabled={!isAvailable}
-                    onClick={() => setSelectedDate(day)}
-                    className={`aspect-square rounded-2xl text-xs font-extrabold transition-all relative flex items-center justify-center ${
-                      isSelected ? 'bg-[#8B9A71] text-white shadow-lg' : isAvailable ? 'text-[#2D3324] hover:bg-white' : 'text-[#CED2BA] opacity-30 cursor-not-allowed'
-                    }`}
-                  >
-                    {day}
-                    {isAvailable && !isSelected && <div className="absolute bottom-2 w-1 h-1 bg-[#8B9A71] rounded-full" />}
-                  </button>
-                );
-              })}
             </div>
           </div>
 
-          <SectionLabel icon={Clock}>Available Slots</SectionLabel>
-          <div className="grid grid-cols-2 gap-3">
-            {times.map(time => {
-              const isBooked = bookedTimes.includes(time);
-              const isSelected = selectedTime === time;
-              return (
-                <button
-                  key={time}
-                  disabled={isBooked}
-                  onClick={() => setSelectedTime(time)}
-                  className={`py-4 rounded-2xl text-[11px] font-extrabold uppercase tracking-widest border-2 transition-all ${
-                    isSelected ? 'bg-[#2D3324] border-transparent text-white shadow-xl' : isBooked ? 'bg-[#F8F9FA] border-transparent text-[#CED2BA] cursor-not-allowed' : 'bg-white border-[rgba(139,154,113,0.1)] text-[#2D3324] hover:border-[#8B9A71]'
-                  }`}
-                >
-                  {isBooked ? "Reserved" : time}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Step 2: Privacy & Identity */}
-        <div className="bg-white rounded-[32px] p-6 sm:p-8 shadow-premium border border-[rgba(139,154,113,0.1)]">
-           <SectionLabel icon={Lock}>Privacy Settings</SectionLabel>
-           <div className={`p-6 rounded-[24px] border-2 transition-all flex items-center justify-between mb-8 ${anonymous ? 'bg-[#8B9A71]/5 border-[#8B9A71] shadow-sm' : 'bg-[#F8F9FA] border-transparent'}`}>
-              <div className="flex items-center gap-4">
-                 <div className={`w-10 h-10 rounded-2xl flex items-center justify-center ${anonymous ? 'bg-[#8B9A71] text-white' : 'bg-[#CED2BA] text-white'}`}>
-                    <Lock size={18} />
-                 </div>
-                 <div>
-                    <h4 className="text-sm font-extrabold text-[#2D3324]">Anonymous Mode</h4>
-                    <p className="text-[10px] text-[#545454] opacity-70">Identity concealed for session</p>
-                 </div>
-              </div>
-              <button 
-                onClick={() => setAnonymous(!anonymous)}
-                className={`w-12 h-7 rounded-full relative transition-all ${anonymous ? 'bg-[#8B9A71]' : 'bg-[#CED2BA]'}`}
-              >
-                <div className={`absolute top-1 w-5 h-5 bg-white rounded-full transition-all shadow-md ${anonymous ? 'right-1' : 'left-1'}`} />
-              </button>
-           </div>
-
-           <SectionLabel icon={MessageSquare}>Focus Areas</SectionLabel>
-           <div className="flex flex-wrap gap-2 mb-8">
-              {concerns.map(c => {
-                const isSelected = selectedConcerns.includes(c);
-                return (
-                  <button
-                    key={c}
-                    onClick={() => toggleConcern(c)}
-                    className={`px-5 py-2.5 rounded-full text-[10px] font-extrabold uppercase tracking-widest border-2 transition-all ${
-                      isSelected ? 'bg-[#2D3324] border-transparent text-white shadow-lg' : 'bg-white border-[rgba(139,154,113,0.1)] text-[#545454] hover:border-[#8B9A71]'
-                    }`}
+          {/* Right Column: Privacy & Footer (4/12 space on desktop) */}
+          <div className="lg:col-span-4 space-y-6">
+            <div className="bg-white rounded-[40px] p-6 lg:p-8 shadow-2xl border border-[#3D5247]/5 lg:sticky lg:top-32">
+               <SectionLabel icon={Lock}>Step 3: Protocol</SectionLabel>
+               
+               <div className={`p-6 rounded-[32px] border transition-all flex items-center justify-between mb-8 ${anonymous ? 'bg-[#EDF2EE] border-[#3D5247] shadow-sm' : 'bg-[#F5EFE6] border-transparent'}`}>
+                  <div className="flex items-center gap-4">
+                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${anonymous ? 'bg-[#1C2320] text-[#A68A45]' : 'bg-[#1C2320]/10 text-[#3D5247]'}`}>
+                        <Lock size={20} />
+                     </div>
+                     <div>
+                        <h4 className="text-sm font-black text-[#1C2320] uppercase tracking-tight">Identity Guard</h4>
+                        <p className="text-[10px] text-[#1C2320]/60 font-bold uppercase tracking-widest mt-1">Concealed Session</p>
+                     </div>
+                  </div>
+                  <button 
+                    onClick={() => setAnonymous(!anonymous)}
+                    className={`w-14 h-8 rounded-full relative transition-all ${anonymous ? 'bg-[#3D5247]' : 'bg-[#B5C4BA]'}`}
                   >
-                    {c}
+                    <div className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-all shadow-md ${anonymous ? 'right-1' : 'left-1'}`} />
                   </button>
-                );
-              })}
-           </div>
+               </div>
 
-           <button
-             onClick={handleBookSession}
-             className="w-full bg-[#2D3324] text-white py-5 rounded-pill text-[13px] font-extrabold uppercase tracking-[0.2em] shadow-2xl hover:bg-[#1C1A1E] transition-all active:scale-[0.98]"
-           >
-             Confirm Breakthrough
-           </button>
+               <SectionLabel icon={MessageSquare}>Areas of Focus</SectionLabel>
+               <div className="flex flex-wrap gap-2 mb-10">
+                  {concerns.map(c => {
+                    const isSelected = selectedConcerns.includes(c);
+                    return (
+                      <button
+                        key={c}
+                        onClick={() => toggleConcern(c)}
+                        className={`px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${
+                          isSelected ? 'bg-[#3D5247] border-transparent text-white shadow-xl scale-105' : 'bg-white border-[#3D5247]/10 text-[#1C2320]/60 hover:border-[#3D5247]'
+                        }`}
+                      >
+                        {c}
+                      </button>
+                    );
+                  })}
+               </div>
+
+               <div className="pt-6 border-t border-[#3D5247]/5">
+                  <button
+                    onClick={handleBookSession}
+                    className="w-full bg-[#3D5247] text-white py-6 rounded-[28px] text-xs font-black uppercase tracking-widest shadow-2xl shadow-[#3D5247]/20 hover:bg-[#1C2320] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
+                  >
+                    Confirm & Proceed
+                    <ArrowRight size={20} />
+                  </button>
+                  <p className="text-center text-[9px] text-[#1C2320]/40 font-bold uppercase tracking-widest mt-6">Secure Sanctuary Protocol Active</p>
+               </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -154,9 +178,11 @@ export function BookSessionPage() {
 
 function SectionLabel({ children, icon: Icon }: { children: React.ReactNode, icon: any }) {
   return (
-    <div className="flex items-center gap-2 mb-5">
-       <Icon size={14} className="text-[#8B9A71]" />
-       <span className="text-[11px] font-extrabold text-[#8B9A71] uppercase tracking-[0.2em]">{children}</span>
+    <div className="flex items-center gap-2.5 mb-6">
+       <div className="p-1.5 bg-[#A68A45]/10 rounded-lg">
+          <Icon size={14} className="text-[#A68A45]" />
+       </div>
+       <span className="text-[10px] font-black text-[#A68A45] uppercase tracking-[0.25em]">{children}</span>
     </div>
   );
 }

@@ -8,15 +8,15 @@ export function BottomNav() {
   const isActive = (path: string) => location.pathname === path;
 
   const navItems = [
-    { icon: Home, label: "Home", path: "/app/dashboard" },
-    { icon: Compass, label: "Discover", path: "/app/explore" },
-    { icon: Calendar, label: "Book", path: "/app/book" },
-    { icon: MessageCircle, label: "Chat", path: "/app/messages", badge: true },
-    { icon: User, label: "Account", path: "/app/profile" },
+    { icon: Home, label: "Home", path: "/portal" },
+    { icon: Compass, label: "Book", path: "/portal/book" },
+    { icon: TrendingUp, label: "Progress", path: "/portal/progress" },
+    { icon: MessageCircle, label: "Chat", path: "/portal/messages", badge: true },
+    { icon: User, label: "Account", path: "/portal/profile" },
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white/10 backdrop-blur-2xl border-t border-white/10 px-4 sm:px-6 py-2 sm:py-3 pb-8 md:pb-4 flex items-center justify-between z-50 rounded-t-[28px] sm:rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] md:max-w-md md:mx-auto md:bottom-6 md:rounded-full md:border">
+    <div className="fixed bottom-0 left-0 right-0 lg:hidden bg-white/10 backdrop-blur-2xl border-t border-white/10 px-4 sm:px-6 py-1 sm:py-3 pb-3 flex items-center justify-between z-50 rounded-t-[28px] sm:rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
       {navItems.map((item) => {
         const active = isActive(item.path);
         return (
@@ -25,19 +25,19 @@ export function BottomNav() {
             to={item.path}
             className="flex flex-col items-center gap-1.5 relative group"
           >
-            <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${active ? 'bg-[#8B9A71] text-white shadow-lg shadow-[#8B9A71]/20 scale-100 sm:scale-110 -translate-y-1' : 'text-[#2D3324]/40 hover:text-[#8B9A71]'}`}>
+            <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${active ? 'bg-[#3D5247] text-white shadow-lg shadow-black/10 scale-100 sm:scale-110 -translate-y-1' : 'text-[#3D5247]/40 hover:text-[#3D5247]'}`}>
               <item.icon size={22} strokeWidth={active ? 2.5 : 2} />
               {item.badge && !active && (
-                <div className="absolute top-2 right-2 w-2 w-2 bg-red-400 rounded-full border-2 border-white" />
+                <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#C4A35A] rounded-full border-2 border-white" />
               )}
               {item.label === "Account" && isAnonymous && !active && (
-                <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#8B9A71] rounded-full flex items-center justify-center text-[#2D3324] border-2 border-white">
+                <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#C4A35A] rounded-full flex items-center justify-center text-[#1C2320] border-2 border-white">
                    <EyeOff size={10} />
                 </div>
               )}
             </div>
             {!active && (
-              <span className="text-[8px] font-bold text-[#2D3324]/50 uppercase tracking-widest group-hover:text-[#8B9A71] transition-all">
+              <span className="text-[8px] font-bold text-[#3D5247]/50 uppercase tracking-widest group-hover:text-[#3D5247] transition-all">
                 {item.label}
               </span>
             )}

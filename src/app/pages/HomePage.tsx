@@ -1,226 +1,259 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
-import { Play, ArrowRight, Lock, Shield, Star, Heart, CheckCircle, ArrowUpRight, Globe } from "lucide-react";
+import { Play, ArrowRight, Shield, Star, Globe, Lock, Heart, CheckCircle, Smartphone, Camera, MessageSquare, Zap } from "lucide-react";
 
 export function HomePage() {
   useEffect(() => {
-    document.title = "Home | Life & You - Coaching & Consulting";
+    document.title = "Life & You | NLP & ICF Coaching - UAE & Global";
   }, []);
+
   return (
-    <div className="bg-[#FAF9F6]">
-      {/* Cinematic Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center overflow-hidden pt-20">
-        {/* Background Accents */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#8B9A71]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#4E5540]/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-[100px] pointer-events-none" />
-
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 grid lg:grid-cols-2 gap-16 items-center relative z-10">
-          <div className="flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-3 bg-[#8B9A71]/10 border border-[#8B9A71]/20 rounded-full px-5 py-2 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-              <Shield size={14} className="text-[#8B9A71]" />
-              <span className="text-[10px] font-extrabold text-[#4E5540] uppercase tracking-[0.2em]">100% Anonymous & ICF Certified</span>
+    <div className="bg-[#F5EFE6] font-sans-web">
+      {/* Hero Section - Super Dimensional Layout */}
+      <section className="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        {/* Animated Background Elements */}
+        <div className="absolute top-0 right-0 w-[1000px] h-[1000px] bg-[#3D5247]/5 rounded-full blur-[140px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#C4A35A]/5 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+        
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16 items-center relative z-10">
+          <div className="lg:col-span-7 animate-in fade-in slide-in-from-left duration-1000">
+            <div className="inline-flex items-center gap-3 bg-white/60 backdrop-blur-md border border-[#1C2320]/10 px-5 py-2.5 rounded-full mb-10 shadow-sm">
+               <Shield size={16} className="text-[#A68A45]" />
+               <span className="text-[10px] font-black text-[#1C2320] uppercase tracking-[0.3em]">ICF Certified Sanctuary · 100% Private</span>
             </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold text-[#2D3324] leading-[1.05] mb-8 tracking-tight animate-in fade-in slide-in-from-bottom-6 duration-1000">
-              Be <span className="text-[#8B9A71]">Heard.</span><br />
-              Heal Truly.<br />
-              Live Well.
+            
+            <h1 className="text-6xl md:text-8xl lg:text-[110px] font-bold text-[#1C2320] font-serif leading-[0.9] mb-12 tracking-tighter">
+              Be <span className="text-[#A68A45] relative">Heard.
+                <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#A68A45]/20" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent" /></svg>
+              </span><br />
+              Heal Anonymously.<br />
+              Live Better.
             </h1>
-
-            <p className="text-lg md:text-xl text-[#545454] leading-relaxed mb-12 max-w-[520px] font-medium opacity-80 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-              Premium 1-on-1 coaching that preserves your identity while accelerating your growth. Experience the security of complete anonymity.
+            
+            <p className="text-xl lg:text-3xl text-[#1C2320]/80 font-medium mb-14 max-w-2xl leading-[1.4]">
+              Premium wellness coaching that respects your identity. Experience life-changing breakthroughs through our zero-trace anonymous world.
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-5 mb-16 w-full sm:w-auto animate-in fade-in slide-in-from-bottom-10 duration-1000">
-              <Link
-                to="/app/book"
-                className="px-8 py-4 sm:px-10 sm:py-5 bg-[#2D3324] text-white rounded-pill font-bold text-sm uppercase tracking-widest shadow-2xl hover:bg-[#1C1A1E] transition-all active:scale-[0.98] text-center"
+            
+            <div className="flex flex-col sm:flex-row gap-6 mb-20">
+              <Link 
+                to="/book" 
+                className="px-12 py-6 bg-[#1C2320] text-white rounded-full font-bold text-xs uppercase tracking-[0.2em] shadow-2xl hover:scale-105 transition-all text-center"
               >
-                Begin Your Journey
+                Launch Your First Session
               </Link>
-              <button className="px-8 py-4 sm:px-10 sm:py-5 bg-white border border-[rgba(139,154,113,0.15)] text-[#2D3324] rounded-pill font-bold text-sm uppercase tracking-widest hover:bg-[#8B9A71]/5 transition-all flex items-center justify-center gap-3">
-                <div className="w-8 h-8 bg-[#8B9A71]/10 text-[#8B9A71] rounded-full flex items-center justify-center">
-                  <Play size={10} fill="currentColor" />
-                </div>
-                View Demo
-              </button>
-            </div>
-
-            <div className="flex gap-8 md:gap-12 pt-12 border-t border-[rgba(139,154,113,0.1)] w-full overflow-x-auto pb-4 scrollbar-hide">
-              <div className="flex-shrink-0">
-                <div className="text-3xl md:text-4xl font-extrabold text-[#2D3324] tracking-tight">500+</div>
-                <div className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1 whitespace-nowrap">Lives Touched</div>
-              </div>
-              <div className="flex-shrink-0">
-                <div className="text-3xl md:text-4xl font-extrabold text-[#2D3324] tracking-tight">100%</div>
-                <div className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1 whitespace-nowrap">Anonymity</div>
-              </div>
-              <div className="hidden sm:block flex-shrink-0">
-                <div className="text-3xl md:text-4xl font-extrabold text-[#2D3324] tracking-tight">4.9</div>
-                <div className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-1 whitespace-nowrap">Top Rating</div>
-              </div>
+              <Link 
+                to="/programs" 
+                className="px-12 py-6 bg-white border border-[#1C2320]/10 text-[#1C2320] rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#EDF2EE] transition-all flex items-center justify-center gap-3 group"
+              >
+                Explore Programs <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
+              </Link>
             </div>
           </div>
 
-          <div className="relative hidden lg:block animate-in fade-in zoom-in duration-1000">
-             {/* Abstract Premium Geometry */}
-             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-gradient-to-br from-[#8B9A71]/10 to-transparent rounded-full blur-[100px] -z-10" />
-             
+          {/* Right Column: Hero Visual Overlay */}
+          <div className="lg:col-span-5 relative hidden lg:block animate-in fade-in zoom-in duration-1000 delay-300">
+             <div className="absolute inset-0 bg-gradient-to-br from-[#3D5247]/20 to-transparent rounded-[80px] blur-3xl -z-10 scale-110" />
              <div className="relative z-10">
-                <img src="/img/banner/banner-img-111.png" alt="App Preview" className="w-full h-auto drop-shadow-2xl translate-x-10" />
+                <div className="bg-[#1C2320] rounded-[60px] p-2 shadow-2xl overflow-hidden aspect-[4/5]">
+                  <img 
+                    src="/img/banner/banner-img-111.png" 
+                    alt="Sanctuary Session" 
+                    className="w-full h-full object-cover rounded-[54px] opacity-90 hover:scale-105 transition-transform duration-700" 
+                  />
+                </div>
              </div>
-
-             <div className="absolute -bottom-20 -left-20 bg-white p-12 rounded-[64px] shadow-premium border border-[rgba(139,154,113,0.05)] z-20">
-                <div className="grid grid-cols-2 gap-8">
-                   <StatCard icon={Heart} label="Wellness Score" val="92%" color="bg-[#8B9A71]" />
-                   <StatCard icon={Shield} label="Privacy" val="Active" color="bg-[#2D3324]" />
-                   <div className="col-span-2 bg-[#F8F9FA] rounded-[40px] p-8 flex items-center justify-between">
-                      <div>
-                         <p className="text-[10px] font-extrabold text-[#545454]/60 uppercase tracking-widest mb-1">Upcoming Session</p>
-                         <h4 className="text-xl font-extrabold text-[#2D3324]">Tomorrow, 10 AM</h4>
-                      </div>
-                      <Link to="/auth" className="w-14 h-14 bg-[#2D3324] rounded-2xl flex items-center justify-center text-white hover:scale-110 transition-all">
-                        <ArrowUpRight size={24} />
-                      </Link>
+             
+             {/* Dynamic Floaties */}
+             <div className="absolute -bottom-12 -left-12 bg-white/80 backdrop-blur-2xl p-8 rounded-[40px] shadow-2xl border border-white z-20 max-w-xs animate-bounce-slow">
+                <div className="flex items-center gap-4 mb-4">
+                   <div className="w-14 h-14 bg-[#3D5247] rounded-2xl flex items-center justify-center text-[#A68A45] shadow-lg">
+                      <Lock size={28} />
+                   </div>
+                   <div>
+                      <h4 className="font-black text-[#1C2320] text-sm uppercase tracking-tight">Pure Privacy</h4>
+                      <p className="text-[10px] font-black text-[#A68A45] uppercase tracking-widest">Identity Shield Active</p>
                    </div>
                 </div>
-                
-                {/* Floating Member Badge */}
-                <div className="absolute -top-6 -right-6 bg-[#8B9A71] text-white p-6 rounded-[32px] shadow-2xl rotate-12">
-                   <Star size={32} fill="white" />
-                   <p className="text-[10px] font-black uppercase tracking-tighter mt-2">Premium Support</p>
-                </div>
+                <p className="text-xs text-[#1C2320]/70 font-bold leading-relaxed italic">
+                  "The first platform where I felt safe being truly honest."
+                </p>
              </div>
           </div>
         </div>
       </section>
 
-      {/* Trust & Certification Bar */}
-      <section className="bg-[#2D3324] py-10 overflow-hidden border-y border-white/5">
-         <div className="max-w-7xl mx-auto px-6">
-            <div className="flex flex-wrap justify-center md:justify-between items-center gap-12 opacity-80">
-               {[
-                 { icon: Star, label: "4.9/5.0", sub: "Average Rating" },
-                 { icon: Shield, label: "NLP Certified", sub: "Mastery Level" },
-                 { icon: Globe, label: "ICF Member", sub: "Global Standards" },
-                 { icon: Lock, label: "100% Anonymous", sub: "Privacy Promise" }
-               ].map((badge, i) => (
-                 <div key={i} className="flex items-center gap-4">
-                    <badge.icon size={28} className="text-[#8B9A71] stroke-1" />
-                    <div>
-                       <div className="text-white font-bold text-sm uppercase tracking-widest">{badge.label}</div>
-                       <div className="text-[9px] text-white/40 font-bold uppercase tracking-tight">{badge.sub}</div>
-                    </div>
-                 </div>
-               ))}
+      {/* The 3-Step Process - Highly Responsive */}
+      <section className="py-32 bg-white">
+         <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+            <h2 className="text-4xl md:text-6xl font-bold text-[#1C2320] font-serif mb-24">Simple Path to <span className="text-[#A68A45]">Peace.</span></h2>
+            
+            <div className="grid lg:grid-cols-3 gap-16 relative">
+               {/* Connecting Line (Desktop) */}
+               <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#3D5247]/10 to-transparent -translate-y-1/2 hidden lg:block" />
+               
+               <ProcessStep 
+                 num="01" 
+                 icon={Smartphone} 
+                 title="Choose Partner" 
+                 desc="Select from our ICF-certified experts based on your specific life goals and energy." 
+               />
+               <ProcessStep 
+                 num="02" 
+                 icon={Camera} 
+                 title="Secure Stream" 
+                 desc="Enter your one-click sanctuary room. No downloads, no records, just a safe stream." 
+               />
+               <ProcessStep 
+                 num="03" 
+                 icon={Zap} 
+                 title="Transform" 
+                 desc="Experience breakthroughs using world-class NLP and coaching methodologies." 
+               />
             </div>
          </div>
       </section>
 
-      {/* Modern Treatment Categories */}
-      <section className="py-32 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 mb-16 text-center">
-            <h2 className="text-[11px] font-extrabold text-[#8B9A71] uppercase tracking-[0.4em] mb-4">Our Specializations</h2>
-            <h3 className="text-4xl md:text-6xl font-black text-[#2D3324]">Tailored <span className="text-[#8B9A71]">Treatments.</span></h3>
-        </div>
-
-        <div className="flex gap-8 overflow-x-auto pb-12 px-6 lg:px-16 scrollbar-hide">
-           {[
-             { title: "Relationships", desc: "Two Souls, One journey", img: "relationships.png", color: "bg-blue-50/50" },
-             { title: "Personal Growth", desc: "Build The Life You Deserve", img: "growth.png", color: "bg-green-50/50" },
-             { title: "Marriage Issue", desc: "Two Hearts, One Solution", img: "marriage.png", color: "bg-rose-50/50" },
-             { title: "Feeling Lonely", desc: "Smiling Outside, Silent Inside", img: "lonely.png", color: "bg-orange-50/50" },
-             { title: "Trauma Recovery", desc: "The Past Hurt, The Future Heals", img: "trauma.png", color: "bg-indigo-50/50" }
-           ].map((t, i) => (
-             <div key={i} className="min-w-[280px] sm:min-w-[320px] bg-white rounded-[32px] sm:rounded-[40px] p-8 sm:p-10 border border-[rgba(139,154,113,0.08)] hover:shadow-premium transition-all group cursor-pointer">
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden mb-8 group-hover:scale-110 transition-all ${t.color}`}>
-                   <img src={`/img/treatment/${t.img}`} alt={t.title} className="w-full h-full object-cover p-4 sm:p-5 grayscale group-hover:grayscale-0 transition-all duration-700" />
-                </div>
-                <h4 className="text-xl sm:text-2xl font-bold text-[#2D3324] mb-2 tracking-tight">{t.title}</h4>
-                <p className="text-sm font-medium text-[#545454] opacity-50 mb-8">{t.desc}</p>
-                <Link to="/app/book" className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] flex items-center gap-2 group-hover:gap-4 transition-all">
-                   Book Breakthrough <ArrowRight size={14} />
-                </Link>
-             </div>
-           ))}
-        </div>
-      </section>
-
-      {/* Philosophy Section */}
-      <section className="py-32 bg-[#2D3324] text-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16 text-center">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-[11px] font-bold text-[#8B9A71] uppercase tracking-[0.4em] mb-8">Our Philosophy</h2>
-            <p className="text-3xl md:text-5xl font-extrabold leading-tight mb-16 tracking-tight">
-              True transformation happens in a <span className="text-[#8B9A71]">Safe Space</span> where judgment is removed and identity is protected.
-            </p>
-            <div className="grid md:grid-cols-3 gap-12">
-               {[
-                 { title: "NLP Mastery", desc: "Scientific approach to rewiring thought patterns." },
-                 { title: "Pure Anonymity", desc: "Share your soul, not your social status." },
-                 { title: "Elite Coaches", desc: "ICF certified experts dedicated to your growth." }
-               ].map((item, i) => (
-                 <div key={i} className="flex flex-col items-center">
-                    <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-[#8B9A71] mb-6">
-                       <CheckCircle size={24} className="stroke-1" />
-                    </div>
-                    <h4 className="text-base font-bold mb-3 uppercase tracking-widest text-[#CED2BA]">{item.title}</h4>
-                    <p className="text-sm text-white/40 leading-relaxed font-medium">{item.desc}</p>
-                 </div>
-               ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Programs */}
-      <section className="py-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-          <div className="flex items-end justify-between mb-20">
-             <div>
-                <h2 className="text-[11px] font-bold text-[#8B9A71] uppercase tracking-[0.3em] mb-4">Select your path</h2>
-                <h3 className="text-4xl md:text-6xl font-extrabold text-[#2D3324] tracking-tight">Tailored for <span className="text-[#8B9A71]">You.</span></h3>
-             </div>
-             <Link to="/programs" className="hidden md:flex items-center gap-3 text-sm font-bold text-[#2D3324] uppercase tracking-widest border-b-2 border-[#8B9A71] pb-1">
-               View All Programs <ArrowRight size={18} />
-             </Link>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-10">
-             {[
-               { title: "Discovery Phase", price: "₹2,500", desc: "A single powerful 60-min session to map your barriers.", icon: "🌱" },
-               { title: "Healing Journey", price: "₹8,000", desc: "4 sessions + 24/7 chat support for consistent growth.", icon: "🌿", popular: true },
-               { title: "Elite Masterclass", price: "₹22,000", desc: "12 sessions, NLP blueprints, and performance mapping.", icon: "💎" }
-             ].map((p, i) => (
-               <div key={i} className={`p-8 sm:p-10 rounded-[32px] border transition-all hover:scale-[1.03] group ${p.popular ? 'bg-[#2D3324] border-transparent text-white shadow-premium' : 'bg-white border-[rgba(139,154,113,0.08)] text-[#2D3324]'}`}>
-                  <div className="text-4xl sm:text-5xl mb-8 transform group-hover:scale-110 transition-all opacity-80">{p.icon}</div>
-                  <h4 className="text-xl sm:text-2xl font-bold mb-4 tracking-tight">{p.title}</h4>
-                  <p className={`text-sm mb-10 leading-relaxed opacity-60 font-medium ${p.popular ? 'text-white' : 'text-[#545454]'}`}>{p.desc}</p>
-                  <div className="flex items-center justify-between mt-auto pt-8 border-t border-white/5">
-                     <span className={`text-xl sm:text-2xl font-extrabold tracking-tight ${p.popular ? 'text-[#8B9A71]' : 'text-[#2D3324]'}`}>{p.price}</span>
-                     <Link to="/app/book" className={`w-10 h-10 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all ${p.popular ? 'bg-[#8B9A71] text-white' : 'bg-[#F8F9FA] text-[#8B9A71]'}`}>
-                        <ArrowRight size={20} />
-                     </Link>
-                  </div>
+      {/* Programs Cards - Modern Grid */}
+      <section className="py-32 bg-[#F5EFE6]">
+         <div className="max-w-7xl mx-auto px-6 md:px-12">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
+               <div className="max-w-2xl">
+                  <span className="text-[10px] font-black text-[#A68A45] uppercase tracking-[0.4em] mb-4 block">Our Offerings</span>
+                  <h2 className="text-4xl md:text-6xl font-bold text-[#1C2320] font-serif">Tailored Growth <span className="text-[#A68A45]">Programs.</span></h2>
                </div>
-             ))}
-          </div>
-        </div>
+               <Link to="/programs" className="px-8 py-4 bg-white border border-[#1C2320]/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-all">
+                  View Full Catalog
+               </Link>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+               <ProgramCard 
+                 title="Discovery Call" 
+                 desc="Uncover the root of your barriers in a high-impact session."
+                 price="AED 399"
+                 icon="🌱"
+               />
+               <ProgramCard 
+                 title="The Moon Path" 
+                 desc="4 structured sessions + WhatsApp support for deep habit shifts."
+                 price="AED 1,499"
+                 featured={true}
+                 icon="🌿"
+               />
+               <ProgramCard 
+                 title="Elite 3 Months" 
+                 desc="Total life transformation package for high-stakes performers."
+                 price="AED 3,999"
+                 icon="💎"
+               />
+            </div>
+         </div>
       </section>
 
-
+      {/* Testimonials - Cinematic Dark */}
+      <section className="py-40 bg-[#1C2320] relative overflow-hidden">
+         <div className="absolute inset-0 opacity-10 pointer-events-none">
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#A68A45] rounded-full blur-[160px] translate-x-1/2 -translate-y-1/2" />
+         </div>
+         <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="max-w-3xl mb-24">
+               <h2 className="text-4xl md:text-6xl font-bold text-white font-serif leading-tight">Shared Truths from the <span className="text-[#A68A45]">Sanctuary.</span></h2>
+            </div>
+            
+            <div className="grid lg:grid-cols-2 gap-12">
+               <BigTestimonial 
+                 quote="The coaching was life-changing. I felt safe and heard for the first time in a decade. Being able to remain anonymous was the barrier that finally broke down for me."
+                 author="CEO, Dubai Tech Firm"
+               />
+               <div className="space-y-8">
+                  <SmallTestimonial quote="Total anonymity allowed me to be vulnerable without any fear of reputation." />
+                  <SmallTestimonial quote="Coach Sharma helped me navigate my career transition with total clarity and focus." />
+                  <SmallTestimonial quote="A first-class experience from onboarding to the final breakthrough session." />
+               </div>
+            </div>
+         </div>
+      </section>
+      
+      {/* Dynamic CTA */}
+      <section className="py-24 bg-[#A68A45]">
+         <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12">
+            <h3 className="text-3xl md:text-5xl font-bold text-[#1C2320] font-serif max-w-xl text-center lg:text-left leading-tight">Your first 20 minutes are on us. Ready to start?</h3>
+            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+               <Link 
+                 to="/book" 
+                 className="px-12 py-5 bg-[#1C2320] text-white rounded-full font-black text-xs uppercase tracking-widest hover:scale-110 transition-all shadow-2xl shadow-black/30"
+               >
+                 Book Discovery Call
+               </Link>
+               <Link 
+                 to="/contact" 
+                 className="px-12 py-5 bg-white/20 backdrop-blur-md border border-[#1C2320]/10 text-[#1C2320] rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/40 transition-all"
+               >
+                 Chat with Us
+               </Link>
+            </div>
+         </div>
+      </section>
     </div>
   );
 }
 
-function StatCard({ icon: Icon, label, val, color }: { icon: any, label: string, val: string, color: string }) {
+function ProcessStep({ num, icon: Icon, title, desc }: { num: string, icon: any, title: string, desc: string }) {
   return (
-    <div className="bg-[#F8F9FA] p-6 sm:p-8 rounded-[32px] sm:rounded-[40px] flex flex-col items-center">
-       <div className={`w-12 h-12 sm:w-14 sm:h-14 ${color} rounded-2xl flex items-center justify-center text-white shadow-lg mb-4`}>
-          <Icon size={20} className="sm:size-[24px]" />
+    <div className="relative z-10 group">
+       <div className="w-24 h-24 bg-[#F5EFE6] rounded-[32px] mx-auto mb-10 flex items-center justify-center text-[#3D5247] shadow-xl group-hover:bg-[#1C2320] group-hover:text-white transition-all duration-500">
+          <Icon size={32} />
+          <div className="absolute -top-4 right-0 w-10 h-10 bg-[#A68A45] rounded-full flex items-center justify-center text-[#1C2320] text-xs font-black shadow-lg">
+             {num}
+          </div>
        </div>
-       <p className="text-[9px] sm:text-[10px] font-extrabold text-[#545454] uppercase tracking-widest mb-1">{label}</p>
-       <p className="text-xl sm:text-2xl font-black text-[#2D3324]">{val}</p>
+       <h4 className="text-2xl font-bold text-[#1C2320] font-serif mb-4 uppercase tracking-tight">{title}</h4>
+       <p className="text-sm font-medium text-[#1C2320]/60 leading-relaxed max-w-xs mx-auto">{desc}</p>
+    </div>
+  );
+}
+
+function ProgramCard({ title, desc, price, featured = false, icon }: { title: string, desc: string, price: string, featured?: boolean, icon: string }) {
+  return (
+    <div className={`p-10 rounded-[48px] border transition-all hover:-translate-y-4 group ${
+      featured 
+        ? 'bg-[#1C2320] border-transparent text-white shadow-[0_40px_80px_rgba(0,0,0,0.2)]' 
+        : 'bg-white border-[#3D5247]/5 text-[#3D5247] shadow-sm'
+    }`}>
+       <div className="text-6xl mb-10 group-hover:scale-125 transition-transform origin-left duration-500">{icon}</div>
+       <h4 className="text-2xl font-bold mb-4 font-serif uppercase tracking-tight">{title}</h4>
+       <p className={`text-sm font-medium mb-12 leading-relaxed ${featured ? 'text-white/60' : 'text-[#1C2320]/60'}`}>
+         {desc}
+       </p>
+       <div className="flex items-center justify-between pt-10 border-t border-current opacity-20 group-hover:opacity-100 transition-opacity">
+          <span className="text-2xl font-black font-serif">{price}</span>
+          <div className="w-12 h-12 rounded-2xl bg-current/5 flex items-center justify-center">
+            <ArrowRight size={24} className={featured ? 'text-[#A68A45]' : 'text-[#1C2320]'} />
+          </div>
+       </div>
+    </div>
+  );
+}
+
+function BigTestimonial({ quote, author }: { quote: string, author: string }) {
+  return (
+    <div className="p-12 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[60px]">
+       <div className="flex gap-1 mb-10">
+          {[1,2,3,4,5].map(i => <Star key={i} size={18} fill="#A68A45" className="text-[#A68A45]" />)}
+       </div>
+       <p className="text-3xl text-white font-serif italic mb-12 leading-tight">"{quote}"</p>
+       <div className="flex items-center gap-4">
+          <div className="w-12 h-1 bg-[#A68A45] rounded-full" />
+          <span className="text-xs font-black text-[#A68A45] uppercase tracking-widest">{author}</span>
+       </div>
+    </div>
+  );
+}
+
+function SmallTestimonial({ quote }: { quote: string }) {
+  return (
+    <div className="p-8 bg-white/5 border border-white/10 rounded-[40px] hover:bg-white/10 transition-colors">
+       <p className="text-lg text-white/80 font-medium italic">"{quote}"</p>
     </div>
   );
 }

@@ -29,29 +29,29 @@ export function ConfirmationPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#F8F9FA] flex flex-col items-center justify-center p-6 relative overflow-hidden">
+    <div className="min-h-screen bg-[#F5EFE6] flex flex-col items-center justify-center p-6 relative overflow-hidden portal-context">
       {/* Background patterns */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#8B9A71]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#4E5540]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-[100px]" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#3D5247]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#C4A35A]/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-[100px]" />
 
       <div className="max-w-md w-full relative z-10 text-center">
         {/* Success burst */}
         <div className="mb-8 relative inline-block">
-          <div className="w-24 h-24 bg-[#8B9A71] rounded-[32px] flex items-center justify-center text-white shadow-premium animate-in zoom-in duration-500">
-            <Check size={48} strokeWidth={3} />
+          <div className="w-24 h-24 bg-[#3D5247] rounded-[32px] flex items-center justify-center text-white shadow-2xl animate-in zoom-in duration-500">
+            <Check size={48} strokeWidth={3} className="text-[#C4A35A]" />
           </div>
-          <div className="absolute -top-2 -right-2 w-8 h-8 bg-[#2D3324] rounded-2xl flex items-center justify-center text-white text-[10px] font-bold shadow-lg">
-             NEW
+          <div className="absolute -top-2 -right-2 px-3 py-1 bg-[#C4A35A] rounded-full text-[#1C2320] text-[10px] font-bold shadow-lg">
+             MATCHED
           </div>
         </div>
 
-        <h1 className="text-4xl font-extrabold text-[#2D3324] mb-3">You're All Set!</h1>
-        <p className="text-sm text-[#545454] opacity-80 mb-10 leading-relaxed font-medium">
+        <h1 className="text-4xl font-bold text-[#3D5247] font-serif mb-3 tracking-tight">You're All Set!</h1>
+        <p className="text-sm text-[#3D5247]/60 mb-10 leading-relaxed font-medium px-4">
           Step forward with clarity. Your session has been secured, and we've dispatched a formal confirmation to your inbox.
         </p>
 
         {/* Details card with glass effect */}
-        <div className="bg-white rounded-[32px] p-8 shadow-xl border border-[rgba(139,154,113,0.1)] mb-8 transition-transform hover:scale-[1.01]">
+        <div className="bg-white/70 backdrop-blur-xl rounded-[40px] p-8 shadow-2xl border border-white mb-8 transition-transform hover:scale-[1.01]">
            <div className="space-y-5">
               <DetailRow icon={Calendar} label="Date" value="April 15, 2026" />
               <DetailRow icon={Clock} label="Time" value="10:00 AM (IST)" />
@@ -63,14 +63,14 @@ export function ConfirmationPage() {
         {/* Action buttons */}
         <div className="space-y-4">
           <Link
-            to="/app/dashboard"
-            className="group w-full bg-[#2D3324] text-white rounded-pill py-5 text-sm font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-2xl hover:bg-[#1C1A1E] transition-all active:scale-[0.98]"
+            to="/portal"
+            className="group w-full bg-[#1C2320] text-white rounded-2xl py-5 text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-2xl shadow-black/10 hover:bg-black transition-all"
           >
             Go to Dashboard <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <p className="text-[10px] text-[#8B9A71] font-extrabold uppercase tracking-widest bg-[#8B9A71]/10 py-3 rounded-2xl border border-[#8B9A71]/20">
+          <div className="text-[10px] text-[#3D5247]/40 font-bold uppercase tracking-widest bg-[#3D5247]/5 py-3 rounded-2xl border border-[#3D5247]/10">
              ✦ A calendar invite has been sent ✦
-          </p>
+          </div>
         </div>
       </div>
     </div>
@@ -81,12 +81,12 @@ function DetailRow({ icon: Icon, label, value, highlighted }: { icon: any, label
   return (
     <div className="flex items-center justify-between py-1">
        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-[#F8F9FA] flex items-center justify-center text-[#8B9A71]">
+          <div className="w-8 h-8 rounded-xl bg-[#EDF2EE] flex items-center justify-center text-[#3D5247]">
              <Icon size={14} />
           </div>
-          <span className="text-[11px] font-extrabold text-[#545454] uppercase tracking-widest">{label}</span>
+          <span className="text-[10px] font-bold text-[#3D5247]/40 uppercase tracking-widest">{label}</span>
        </div>
-       <span className={`text-xs font-extrabold ${highlighted ? 'text-[#8B9A71]' : 'text-[#2D3324]'}`}>{value}</span>
+       <span className={`text-xs font-bold ${highlighted ? 'text-[#C4A35A]' : 'text-[#3D5247]'}`}>{value}</span>
     </div>
   );
 }
