@@ -10,7 +10,7 @@ import {
   CheckCircle, 
   Phone, 
   CameraVideo, 
-  MessageRight, 
+  ChatDots, 
   LightningCharge 
 } from "react-bootstrap-icons";
 
