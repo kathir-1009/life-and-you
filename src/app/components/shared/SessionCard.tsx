@@ -1,4 +1,4 @@
-import { Calendar, Clock, Video, MoreVertical, CheckCircle2 } from "lucide-react";
+import { Calendar3, Clock, CameraVideo, ThreeDotsVertical, CheckCircleFill } from "react-bootstrap-icons";
 import { Link } from "react-router";
 
 interface SessionCardProps {
@@ -42,7 +42,7 @@ export function SessionCard({ role, session }: SessionCardProps) {
               <span>{session.time} (60 min)</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Video size={12} />
+              <CameraVideo size={12} />
               <span>{session.type}</span>
             </div>
           </div>
@@ -59,12 +59,12 @@ export function SessionCard({ role, session }: SessionCardProps) {
               Join Room
             </Link>
             <button className="p-2.5 text-[#3D5247]/40 hover:text-[#3D5247] transition-colors">
-              <MoreVertical size={18} />
+              <ThreeDotsVertical size={16} />
             </button>
           </>
         ) : (
           <div className="flex items-center gap-2 px-4 py-2 bg-green-50 text-green-700 rounded-xl text-xs font-bold border border-green-100/50">
-            <CheckCircle2 size={14} />
+            <CheckCircleFill size={14} />
             <span>Completed</span>
           </div>
         )}

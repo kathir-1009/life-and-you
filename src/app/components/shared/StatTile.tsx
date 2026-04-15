@@ -1,4 +1,4 @@
-import { TrendingUp, TrendingDown } from "lucide-react";
+import { GraphUpArrow, GraphDownArrow } from "react-bootstrap-icons";
 
 interface StatTileProps {
   label: string;
@@ -31,7 +31,7 @@ export function StatTile({ label, value, delta, icon: Icon }: StatTileProps) {
           <div className={`flex items-center gap-0.5 px-2 py-0.5 rounded-lg text-[10px] font-bold ${
             delta.isPositive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
           }`}>
-            {delta.isPositive ? <TrendingUp size={10} /> : <TrendingDown size={10} />}
+            {delta.isPositive ? <GraphUpArrow size={10} /> : <GraphDownArrow size={10} />}
             {delta.value}
           </div>
         )}

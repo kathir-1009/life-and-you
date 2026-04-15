@@ -1,6 +1,18 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
-import { Play, ArrowRight, Shield, Star, Globe, Lock, Heart, CheckCircle, Smartphone, Camera, MessageSquare, Zap } from "lucide-react";
+import { 
+  ArrowRight, 
+  ShieldLock, 
+  StarFill, 
+  Globe2, 
+  Lock, 
+  Heart, 
+  CheckCircle, 
+  Phone, 
+  CameraVideo, 
+  MessageRight, 
+  LightningCharge 
+} from "react-bootstrap-icons";
 
 export function HomePage() {
   useEffect(() => {
@@ -18,7 +30,7 @@ export function HomePage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16 items-center relative z-10">
           <div className="lg:col-span-7 animate-in fade-in slide-in-from-left duration-1000">
             <div className="inline-flex items-center gap-3 bg-white/60 backdrop-blur-md border border-[#1C2320]/10 px-5 py-2.5 rounded-full mb-10 shadow-sm">
-               <Shield size={16} className="text-[#A68A45]" />
+               <ShieldLock size={16} className="text-[#A68A45]" />
                <span className="text-[10px] font-black text-[#1C2320] uppercase tracking-[0.3em]">ICF Certified Sanctuary · 100% Private</span>
             </div>
             
@@ -93,19 +105,19 @@ export function HomePage() {
                
                <ProcessStep 
                  num="01" 
-                 icon={Smartphone} 
+                 icon={Phone} 
                  title="Choose Partner" 
                  desc="Select from our ICF-certified experts based on your specific life goals and energy." 
                />
                <ProcessStep 
                  num="02" 
-                 icon={Camera} 
+                 icon={CameraVideo} 
                  title="Secure Stream" 
                  desc="Enter your one-click sanctuary room. No downloads, no records, just a safe stream." 
                />
                <ProcessStep 
                  num="03" 
-                 icon={Zap} 
+                 icon={LightningCharge} 
                  title="Transform" 
                  desc="Experience breakthroughs using world-class NLP and coaching methodologies." 
                />
@@ -235,7 +247,7 @@ function BigTestimonial({ quote, author }: { quote: string, author: string }) {
   return (
     <div className="p-12 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[60px]">
        <div className="flex gap-1 mb-10">
-          {[1,2,3,4,5].map(i => <Star key={i} size={18} fill="#A68A45" className="text-[#A68A45]" />)}
+          {[1,2,3,4,5].map(i => <StarFill key={i} size={18} className="text-[#A68A45]" />)}
        </div>
        <p className="text-3xl text-white font-serif italic mb-12 leading-tight">"{quote}"</p>
        <div className="flex items-center gap-4">

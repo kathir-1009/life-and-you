@@ -1,5 +1,18 @@
 import { Link, useLocation } from "react-router";
-import { Home, MessageCircle, Calendar, User, TrendingUp, ShieldCheck, Star, Compass, Book, Clock, Bell, LogOut } from "lucide-react";
+import { 
+  House, 
+  Calendar3, 
+  Compass, 
+  GraphUp, 
+  JournalText, 
+  Star, 
+  Person, 
+  ShieldCheck, 
+  Clock, 
+  Bell, 
+  ChatRightDots, 
+  BoxArrowRight 
+} from "react-bootstrap-icons";
 import { useUser } from "../context/UserContext";
 
 export function PortalHeader() {
@@ -8,28 +21,28 @@ export function PortalHeader() {
   const isActive = (path: string) => location.pathname === path;
 
   const clientNav = [
-    { icon: Home, label: "Home", path: "/portal", desc: "My Dashboard" },
-    { icon: Calendar, label: "Sessions", path: "/portal/sessions", desc: "Appointments" },
+    { icon: House, label: "Home", path: "/portal", desc: "My Dashboard" },
+    { icon: Calendar3, label: "Sessions", path: "/portal/sessions", desc: "Appointments" },
     { icon: Compass, label: "Book", path: "/portal/book", desc: "New Breakthrough" },
-    { icon: TrendingUp, label: "Progress", path: "/portal/progress", desc: "Growth Path" },
-    { icon: Book, label: "Library", path: "/portal/library", desc: "Resources" },
+    { icon: GraphUp, label: "Progress", path: "/portal/progress", desc: "Growth Path" },
+    { icon: JournalText, label: "Library", path: "/portal/library", desc: "Resources" },
     { icon: Star, label: "Journal", path: "/portal/journal", desc: "My Thoughts" },
   ];
 
   const coachNav = [
-    { icon: Home, label: "Home", path: "/coach", desc: "Workspace" },
-    { icon: Calendar, label: "Schedule", path: "/coach/schedule", desc: "Availability" },
-    { icon: User, label: "Clients", path: "/coach/clients", desc: "Management" },
-    { icon: MessageCircle, label: "Messages", path: "/coach/messages", desc: "Community" },
-    { icon: TrendingUp, label: "Earnings", path: "/coach/earnings", desc: "Analytics" },
+    { icon: House, label: "Home", path: "/coach", desc: "Workspace" },
+    { icon: Calendar3, label: "Schedule", path: "/coach/schedule", desc: "Availability" },
+    { icon: Person, label: "Clients", path: "/coach/clients", desc: "Management" },
+    { icon: ChatRightDots, label: "Messages", path: "/coach/messages", desc: "Community" },
+    { icon: GraphUp, label: "Earnings", path: "/coach/earnings", desc: "Analytics" },
   ];
 
   const adminNav = [
-    { icon: Home, label: "Admin", path: "/admin", desc: "Stats" },
-    { icon: User, label: "Users", path: "/admin/users", desc: "Directory" },
+    { icon: House, label: "Admin", path: "/admin", desc: "Stats" },
+    { icon: Person, label: "Users", path: "/admin/users", desc: "Directory" },
     { icon: ShieldCheck, label: "Coaches", path: "/admin/coaches", desc: "Platform" },
     { icon: Clock, label: "Sessions", path: "/admin/sessions", desc: "History" },
-    { icon: TrendingUp, label: "Analytics", path: "/admin/analytics", desc: "Reports" },
+    { icon: GraphUp, label: "Analytics", path: "/admin/analytics", desc: "Reports" },
   ];
 
   const navItems = role === 'coach' ? coachNav : role === 'admin' ? adminNav : clientNav;
@@ -59,7 +72,7 @@ export function PortalHeader() {
             <div className="flex items-center gap-10">
                <div className="flex items-center gap-6">
                   <button className="text-white/40 hover:text-[#A68A45] transition-all"><Bell size={20} /></button>
-                  <button className="text-white/40 hover:text-[#A68A45] transition-all"><MessageCircle size={20} /></button>
+                  <button className="text-white/40 hover:text-[#A68A45] transition-all"><ChatRightDots size={20} /></button>
                </div>
                
                <div className="h-10 w-[1px] bg-white/10" />
@@ -79,7 +92,7 @@ export function PortalHeader() {
                     onClick={() => { sessionStorage.clear(); window.location.href = "/splash"; }}
                     className="p-2 text-white/20 hover:text-red-400 transition-colors ml-2"
                   >
-                     <LogOut size={18} />
+                     <BoxArrowRight size={18} />
                   </button>
                </div>
             </div>
@@ -97,7 +110,7 @@ export function PortalHeader() {
                        to={item.path}
                        className={`flex flex-col items-center gap-2 px-8 py-4 min-w-[120px] transition-all relative group ${active ? 'text-[#3D5247]' : 'text-[#3D5247]/40 hover:text-[#3D5247]'}`}
                      >
-                        <item.icon size={28} strokeWidth={active ? 2.5 : 2} className={`transition-transform duration-300 ${active ? 'scale-110' : 'group-hover:scale-110'}`} />
+                        <item.icon size={26} className={`transition-transform duration-300 ${active ? 'scale-110' : 'group-hover:scale-110'}`} />
                         <span className={`text-xs font-bold tracking-wide transition-all ${active ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`}>{item.label}</span>
                         {active && (
                           <div className="absolute bottom-0 left-6 right-6 h-1 bg-[#3D5247] rounded-t-full shadow-[0_-4px_10px_rgba(61,82,71,0.2)]" />

@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router";
-import { Home, MessageCircle, Calendar, User, TrendingUp, Compass, EyeOff } from "lucide-react";
+import { House, ChatRightDots, GraphUp, Person, Compass, EyeSlash } from "react-bootstrap-icons";
 import { useUser } from "../context/UserContext";
 
 export function BottomNav() {
@@ -8,11 +8,11 @@ export function BottomNav() {
   const isActive = (path: string) => location.pathname === path;
 
   const navItems = [
-    { icon: Home, label: "Home", path: "/portal" },
+    { icon: House, label: "Home", path: "/portal" },
     { icon: Compass, label: "Book", path: "/portal/book" },
-    { icon: TrendingUp, label: "Progress", path: "/portal/progress" },
-    { icon: MessageCircle, label: "Chat", path: "/portal/messages", badge: true },
-    { icon: User, label: "Account", path: "/portal/profile" },
+    { icon: GraphUp, label: "Progress", path: "/portal/progress" },
+    { icon: ChatRightDots, label: "Chat", path: "/portal/messages", badge: true },
+    { icon: Person, label: "Account", path: "/portal/profile" },
   ];
 
   return (
@@ -26,13 +26,13 @@ export function BottomNav() {
             className="flex flex-col items-center gap-1.5 relative group"
           >
             <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${active ? 'bg-[#3D5247] text-white shadow-lg shadow-black/10 scale-100 sm:scale-110 -translate-y-1' : 'text-[#3D5247]/40 hover:text-[#3D5247]'}`}>
-              <item.icon size={22} strokeWidth={active ? 2.5 : 2} />
+              <item.icon size={22} />
               {item.badge && !active && (
                 <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#C4A35A] rounded-full border-2 border-white" />
               )}
               {item.label === "Account" && isAnonymous && !active && (
                 <div className="absolute -top-1 -right-1 w-5 h-5 bg-[#C4A35A] rounded-full flex items-center justify-center text-[#1C2320] border-2 border-white">
-                   <EyeOff size={10} />
+                   <EyeSlash size={10} />
                 </div>
               )}
             </div>

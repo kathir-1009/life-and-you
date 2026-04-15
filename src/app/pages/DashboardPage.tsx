@@ -1,6 +1,14 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
-import { Calendar, MessageSquare, BookOpen, Download, LayoutDashboard, Bell, ArrowRight } from "lucide-react";
+import { 
+  Calendar3, 
+  ChatRightDots, 
+  JournalBookmark, 
+  Download, 
+  Grid1x2, 
+  Bell, 
+  ArrowRight 
+} from "react-bootstrap-icons";
 import { useUser } from "../context/UserContext";
 import { StatTile } from "../components/shared/StatTile";
 import { SessionCard } from "../components/shared/SessionCard";
@@ -46,23 +54,23 @@ export function DashboardPage() {
           label="Mood Average" 
           value="7.8/10" 
           delta={{ value: "12%", isPositive: true }} 
-          icon={LayoutDashboard}
+          icon={Grid1x2}
         />
         <StatTile 
           label="Sessions Done" 
           value="08" 
           delta={{ value: "2", isPositive: true }} 
-          icon={Calendar}
+          icon={Calendar3}
         />
         <StatTile 
           label="Resources Read" 
           value="14" 
-          icon={BookOpen}
+          icon={JournalBookmark}
         />
         <StatTile 
           label="Secure Messages" 
           value="03" 
-          icon={MessageSquare}
+          icon={ChatRightDots}
         />
       </div>
 
@@ -149,7 +157,7 @@ export function DashboardPage() {
               <h4 className="font-bold text-[#3D5247] uppercase tracking-widest text-[10px] mb-6">Recommended for you</h4>
               <div className="bg-white p-4 rounded-2xl shadow-sm mb-6 flex items-center gap-4">
                  <div className="w-12 h-12 bg-[#FBF5E6] rounded-xl flex items-center justify-center text-[#C4A35A] shrink-0">
-                    <BookOpen size={20} />
+                    <JournalBookmark size={20} />
                  </div>
                  <div>
                     <h5 className="text-[13px] font-bold text-[#3D5247] leading-tight mb-1">Anxiety Management NLP</h5>
