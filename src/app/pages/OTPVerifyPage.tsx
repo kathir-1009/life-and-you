@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { ArrowLeft, RefreshCw, CheckCircle2, ShieldCheck, Mail } from "lucide-react";
+import { ChevronLeft, RefreshCw, CheckCircle2, ShieldCheck, Mail } from "lucide-react";
 
 export function OTPVerifyPage() {
   const [otp, setOtp] = useState(["", "", "", ""]);
