@@ -131,20 +131,17 @@ export function HomePage() {
                  title="Discovery Call" 
                  desc="Uncover the root of your barriers in a high-impact session."
                  price="AED 399"
-                 icon="🌱"
                />
                <ProgramCard 
                  title="The Moon Path" 
                  desc="4 structured sessions + WhatsApp support for deep habit shifts."
                  price="AED 1,499"
                  featured={true}
-                 icon="🌿"
                />
                <ProgramCard 
                  title="Elite 3 Months" 
                  desc="Total life transformation package for high-stakes performers."
                  price="AED 3,999"
-                 icon="💎"
                />
             </div>
          </div>
@@ -213,20 +210,19 @@ function ProcessStep({ num, icon: Icon, title, desc }: { num: string, icon: any,
   );
 }
 
-function ProgramCard({ title, desc, price, featured = false, icon }: { title: string, desc: string, price: string, featured?: boolean, icon: string }) {
+function ProgramCard({ title, desc, price, featured = false }: { title: string, desc: string, price: string, featured?: boolean }) {
   return (
-    <div className={`p-10 rounded-[48px] border transition-all hover:-translate-y-4 group ${
+    <div className={`p-10 lg:p-14 rounded-[48px] border transition-all hover:-translate-y-4 group ${
       featured 
         ? 'bg-[#1C2320] border-transparent text-white shadow-[0_40px_80px_rgba(0,0,0,0.2)]' 
         : 'bg-white border-[#3D5247]/5 text-[#3D5247] shadow-sm'
     }`}>
-       <div className="text-6xl mb-10 group-hover:scale-125 transition-transform origin-left duration-500">{icon}</div>
-       <h4 className="text-2xl font-bold mb-4 font-serif uppercase tracking-tight">{title}</h4>
-       <p className={`text-sm font-medium mb-12 leading-relaxed ${featured ? 'text-white/60' : 'text-[#1C2320]/60'}`}>
+       <h4 className="text-3xl lg:text-4xl font-bold mb-6 font-serif uppercase tracking-tight leading-tight">{title}</h4>
+       <p className={`text-base lg:text-lg font-medium mb-16 leading-relaxed ${featured ? 'text-white/60' : 'text-[#1C2320]/60'}`}>
          {desc}
        </p>
        <div className="flex items-center justify-between pt-10 border-t border-current opacity-20 group-hover:opacity-100 transition-opacity">
-          <span className="text-2xl font-black font-serif">{price}</span>
+          <span className="text-3xl font-black font-serif">{price}</span>
           <div className="w-12 h-12 rounded-2xl bg-current/5 flex items-center justify-center">
             <ArrowRight size={24} className={featured ? 'text-[#A68A45]' : 'text-[#1C2320]'} />
           </div>
