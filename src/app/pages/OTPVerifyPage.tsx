@@ -34,14 +34,14 @@ export function OTPVerifyPage() {
   }, [otp, navigate]);
 
   return (
-    <div className="min-h-[100dvh] bg-[#F5EFE6] flex flex-col p-6 sm:p-8 portal-context">
+    <div className="min-h-[100dvh] bg-[#FCF8E8] flex flex-col p-6 sm:p-8 portal-context">
       <div className="max-w-md mx-auto w-full flex-1 flex flex-col relative">
         {/* Abstract Background Blur */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#3D5247]/5 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#99A88C]/5 rounded-full blur-[100px] pointer-events-none" />
 
         {/* Header Navigation */}
         <div className="mb-12">
-          <button onClick={() => navigate("/auth/login")} className="w-12 h-12 bg-white border border-[#3D5247]/10 rounded-2xl flex items-center justify-center text-[#3D5247] shadow-sm hover:scale-105 transition-all active:scale-95">
+          <button onClick={() => navigate("/auth/login")} className="w-12 h-12 bg-white border border-[#99A88C]/10 rounded-2xl flex items-center justify-center text-[#99A88C] shadow-sm hover:scale-105 transition-all active:scale-95">
             <ChevronLeft size={20} />
           </button>
         </div>
@@ -51,8 +51,8 @@ export function OTPVerifyPage() {
           <div className="inline-flex items-center justify-center w-20 h-20 bg-transparent rounded-[32px] shadow-2xl mb-8 animate-in zoom-in duration-700">
              <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain" />
           </div>
-          <h1 className="text-4xl font-bold text-[#3D5247] font-serif mb-3 tracking-tight">Secure Entry</h1>
-          <p className="text-[15px] text-[#3D5247]/60 font-medium leading-relaxed max-w-[300px] mx-auto">
+          <h1 className="text-4xl font-bold text-[#99A88C] font-serif mb-3 tracking-tight">Secure Entry</h1>
+          <p className="text-[15px] text-[#99A88C]/60 font-medium leading-relaxed max-w-[300px] mx-auto">
             A unique 4-digit key has been dispatched to your secure inbox. Enter it to access your portal.
           </p>
         </div>
@@ -70,7 +70,7 @@ export function OTPVerifyPage() {
               value={digit}
               onChange={(e) => handleChange(i, e.target.value)}
               onKeyDown={(e) => handleKeyDown(i, e)}
-              className={`flex-1 aspect-[7/8.5] max-w-[70px] text-3xl sm:text-4xl font-bold text-[#3D5247] text-center rounded-[24px] border border-[#3D5247]/10 outline-none transition-all shadow-lg ${
+              className={`flex-1 aspect-[7/8.5] max-w-[70px] text-3xl sm:text-4xl font-bold text-[#99A88C] text-center rounded-[24px] border border-[#99A88C]/10 outline-none transition-all shadow-lg ${
                 digit ? "border-[#C4A35A] bg-[#EDF2EE]" : "bg-white/50 backdrop-blur-sm focus:border-[#C4A35A] focus:bg-white"
               }`}
             />
@@ -80,7 +80,7 @@ export function OTPVerifyPage() {
         {/* Action / Feedback Loop */}
         <div className="mt-auto pb-12">
           {otp.every(v => v !== "") ? (
-            <div className="bg-[#3D5247] text-white p-6 rounded-[32px] flex items-center justify-center gap-4 animate-in slide-in-from-bottom-8 duration-500 shadow-2xl shadow-black/20">
+            <div className="bg-[#99A88C] text-white p-6 rounded-[32px] flex items-center justify-center gap-4 animate-in slide-in-from-bottom-8 duration-500 shadow-2xl shadow-black/20">
               <CheckCircle2 size={24} className="text-[#C4A35A]" />
               <span className="text-xs font-bold uppercase tracking-[0.2em]">Verified Securely</span>
             </div>
@@ -88,16 +88,16 @@ export function OTPVerifyPage() {
             <div className="space-y-10">
               <button 
                 onClick={() => setOtp(["", "", "", ""])}
-                className="w-full flex items-center justify-center gap-3 text-[10px] font-bold text-[#3D5247] uppercase tracking-[0.3em] group hover:text-[#C4A35A] transition-all"
+                className="w-full flex items-center justify-center gap-3 text-[10px] font-bold text-[#99A88C] uppercase tracking-[0.3em] group hover:text-[#C4A35A] transition-all"
               >
                 <RefreshCw size={14} className="group-hover:rotate-180 transition-transform duration-700" />
                 Regenerate Key
               </button>
               
-              <div className="flex items-center gap-3 justify-center text-[#3D5247]/20">
-                 <div className="h-[1px] flex-1 bg-[#3D5247]/10" />
+              <div className="flex items-center gap-3 justify-center text-[#99A88C]/20">
+                 <div className="h-[1px] flex-1 bg-[#99A88C]/10" />
                  <ShieldCheck size={16} />
-                 <div className="h-[1px] flex-1 bg-[#3D5247]/10" />
+                 <div className="h-[1px] flex-1 bg-[#99A88C]/10" />
               </div>
             </div>
           )}

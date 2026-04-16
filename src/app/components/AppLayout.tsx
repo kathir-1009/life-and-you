@@ -32,7 +32,7 @@ export function AppLayout() {
   if (isAdmin && role !== 'admin') return <Navigate to="/portal" replace />;
 
   return (
-    <div className="min-h-screen bg-[#F5EFE6] flex flex-col portal-context">
+    <div className="min-h-screen bg-[#FCF8E8] flex flex-col portal-context">
       {/* Horizontal Nav - Desktop Only */}
       <PortalHeader />
 

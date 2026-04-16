@@ -89,7 +89,7 @@ export function NotificationsPage() {
 
         {notifications.length === 0 && (
           <div className="py-32 text-center">
-             <div className="w-20 h-20 bg-[#F5EFE6] rounded-[32px] flex items-center justify-center text-[#CED2BA] mx-auto mb-6">
+             <div className="w-20 h-20 bg-[#FCF8E8] rounded-[32px] flex items-center justify-center text-[#CED2BA] mx-auto mb-6">
                 <Bell size={40} />
              </div>
              <h3 className="text-xl font-black text-[#2D3324] mb-2">Clear as a summer sky</h3>

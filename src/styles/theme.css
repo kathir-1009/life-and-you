@@ -1,5 +1,5 @@
 :root {
-  /* Color Palette - Updated to Sage Green & Cream v1.1 */
+  /* Color Palette - Strictly Sage & Cream (User Approved) */
   --sage: #99A88C;
   --sage-mid: #B7C4B1;
   --sage-light: #D0D9CD;
@@ -9,17 +9,17 @@
   --gold-pale: #FDF8E1;
   
   --cream: #FCF8E8;
-  --charcoal: #2A3324; /* Adjusted to a deeper dark green for harmony */
+  --charcoal: #99A88C; /* Removed #2A3324 as per user request */
   --terra: #B5735A;
 
-  /* High-Contrast Semantic Tokens */
-  --text-primary: #2A3324;
-  --text-secondary: #4A5D4E; /* Darkened secondary green for readability */
-  --text-description: rgba(42, 51, 36, 0.90);
-  --text-muted: rgba(42, 51, 36, 0.75);
+  /* High-Contrast Semantic Tokens (Using Palette Sage) */
+  --text-primary: #99A88C;
+  --text-secondary: #B7C4B1; 
+  --text-description: rgba(153, 168, 140, 0.95);
+  --text-muted: rgba(153, 168, 140, 0.80);
   --text-white: #FFFFFF;
   --text-cream: #FCF8E8;
-  --text-gold: #8A7340; 
+  --text-gold: #A68A45; 
   
   /* Font Families */
   --font-serif: 'Cormorant Garamond', serif; /* Display */

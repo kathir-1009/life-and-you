@@ -25,9 +25,9 @@ export function BookSessionPage() {
   const availableDates = [10, 11, 15, 16, 17, 18, 22, 23, 24, 25];
 
   return (
-    <div className="min-h-screen bg-[#F5EFE6] pb-32 portal-context">
+    <div className="min-h-screen bg-[#FCF8E8] pb-32 portal-context">
       {/* Dynamic Header: Adapts to system width */}
-      <div className="bg-[#1C2320] pt-10 lg:pt-16 pb-24 lg:pb-32 px-6 lg:px-10 rounded-b-[40px] lg:rounded-b-[80px] relative overflow-hidden">
+      <div className="bg-[#99A88C] pt-10 lg:pt-16 pb-24 lg:pb-32 px-6 lg:px-10 rounded-b-[40px] lg:rounded-b-[80px] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[120px]" />
         
         <div className="max-w-6xl mx-auto relative z-10 flex flex-col items-center lg:items-start text-center lg:text-left">
@@ -47,23 +47,23 @@ export function BookSessionPage() {
           
           {/* Left Column: Calendar & Time (8/12 space on desktop) */}
           <div className="lg:col-span-8 space-y-6">
-            <div className="bg-white rounded-[40px] p-6 lg:p-10 shadow-2xl border border-[#3D5247]/5">
+            <div className="bg-white rounded-[40px] p-6 lg:p-10 shadow-2xl border border-[#99A88C]/5">
               <div className="flex flex-col lg:flex-row gap-10">
                 {/* Calendar View */}
                 <div className="flex-1">
                   <SectionLabel icon={CalendarIcon}>Step 1: Focus Date</SectionLabel>
-                  <div className="bg-[#FBF5E6] rounded-[32px] p-6 border border-[#3D5247]/5 shadow-inner">
+                  <div className="bg-[#FBF5E6] rounded-[32px] p-6 border border-[#99A88C]/5 shadow-inner">
                     <div className="flex items-center justify-between mb-8">
-                      <h3 className="font-bold text-[#1C2320] font-serif uppercase tracking-widest text-base">April 2026</h3>
+                      <h3 className="font-bold text-[#99A88C] font-serif uppercase tracking-widest text-base">April 2026</h3>
                       <div className="flex gap-3">
-                        <button className="p-2.5 bg-white rounded-xl text-[#3D5247] shadow-sm hover:scale-105 transition-transform"><ChevronLeft size={20} /></button>
-                        <button className="p-2.5 bg-white rounded-xl text-[#3D5247] shadow-sm hover:scale-105 transition-transform"><ChevronRight size={20} /></button>
+                        <button className="p-2.5 bg-white rounded-xl text-[#99A88C] shadow-sm hover:scale-105 transition-transform"><ChevronLeft size={20} /></button>
+                        <button className="p-2.5 bg-white rounded-xl text-[#99A88C] shadow-sm hover:scale-105 transition-transform"><ChevronRight size={20} /></button>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-7 gap-3 mb-4">
                       {["S", "M", "T", "W", "T", "F", "S"].map((d, idx) => (
-                        <div key={`${d}-${idx}`} className="text-center text-[10px] font-black text-[#1C2320]/40 uppercase tracking-widest">{d}</div>
+                        <div key={`${d}-${idx}`} className="text-center text-[10px] font-black text-[#99A88C]/40 uppercase tracking-widest">{d}</div>
                       ))}
                     </div>
 
@@ -78,7 +78,7 @@ export function BookSessionPage() {
                             disabled={!isAvailable}
                             onClick={() => setSelectedDate(day)}
                             className={`aspect-square rounded-2xl text-xs font-black transition-all relative flex items-center justify-center ${
-                              isSelected ? 'bg-[#3D5247] text-white shadow-xl shadow-[#3D5247]/20 scale-105 z-10' : isAvailable ? 'text-[#3D5247] bg-white border border-[#3D5247]/5 hover:border-[#3D5247] hover:scale-105' : 'text-[#3D5247]/20 opacity-30 cursor-not-allowed'
+                              isSelected ? 'bg-[#99A88C] text-white shadow-xl shadow-[#99A88C]/20 scale-105 z-10' : isAvailable ? 'text-[#99A88C] bg-white border border-[#99A88C]/5 hover:border-[#99A88C] hover:scale-105' : 'text-[#99A88C]/20 opacity-30 cursor-not-allowed'
                             }`}
                           >
                             {day}
@@ -102,7 +102,7 @@ export function BookSessionPage() {
                           disabled={isBooked}
                           onClick={() => setSelectedTime(time)}
                           className={`py-5 rounded-[24px] text-[11px] font-black uppercase tracking-widest border transition-all flex flex-col items-center justify-center ${
-                            isSelected ? 'bg-[#1C2320] border-transparent text-white shadow-2xl scale-[1.02] z-10' : isBooked ? 'bg-[#F5EFE6] border-transparent text-[#3D5247]/20 cursor-not-allowed opacity-50' : 'bg-white border-[#3D5247]/10 text-[#3D5247] hover:border-[#3D5247] hover:bg-[#FBF5E6]'
+                            isSelected ? 'bg-[#99A88C] border-transparent text-white shadow-2xl scale-[1.02] z-10' : isBooked ? 'bg-[#FCF8E8] border-transparent text-[#99A88C]/20 cursor-not-allowed opacity-50' : 'bg-white border-[#99A88C]/10 text-[#99A88C] hover:border-[#99A88C] hover:bg-[#FBF5E6]'
                           }`}
                         >
                           {isBooked ? "Reserved" : time}
@@ -118,22 +118,22 @@ export function BookSessionPage() {
 
           {/* Right Column: Privacy & Footer (4/12 space on desktop) */}
           <div className="lg:col-span-4 space-y-6">
-            <div className="bg-white rounded-[40px] p-6 lg:p-8 shadow-2xl border border-[#3D5247]/5 lg:sticky lg:top-32">
+            <div className="bg-white rounded-[40px] p-6 lg:p-8 shadow-2xl border border-[#99A88C]/5 lg:sticky lg:top-32">
                <SectionLabel icon={Lock}>Step 3: Protocol</SectionLabel>
                
-               <div className={`p-6 rounded-[32px] border transition-all flex items-center justify-between mb-8 ${anonymous ? 'bg-[#EDF2EE] border-[#3D5247] shadow-sm' : 'bg-[#F5EFE6] border-transparent'}`}>
+               <div className={`p-6 rounded-[32px] border transition-all flex items-center justify-between mb-8 ${anonymous ? 'bg-[#EDF2EE] border-[#99A88C] shadow-sm' : 'bg-[#FCF8E8] border-transparent'}`}>
                   <div className="flex items-center gap-4">
-                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${anonymous ? 'bg-[#1C2320] text-[#A68A45]' : 'bg-[#1C2320]/10 text-[#3D5247]'}`}>
+                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${anonymous ? 'bg-[#99A88C] text-[#A68A45]' : 'bg-[#99A88C]/10 text-[#99A88C]'}`}>
                         <Lock size={20} />
                      </div>
                      <div>
-                        <h4 className="text-sm font-black text-[#1C2320] uppercase tracking-tight">Identity Guard</h4>
-                        <p className="text-[10px] text-[#1C2320]/60 font-bold uppercase tracking-widest mt-1">Concealed Session</p>
+                        <h4 className="text-sm font-black text-[#99A88C] uppercase tracking-tight">Identity Guard</h4>
+                        <p className="text-[10px] text-[#99A88C]/60 font-bold uppercase tracking-widest mt-1">Concealed Session</p>
                      </div>
                   </div>
                   <button 
                     onClick={() => setAnonymous(!anonymous)}
-                    className={`w-14 h-8 rounded-full relative transition-all ${anonymous ? 'bg-[#3D5247]' : 'bg-[#B5C4BA]'}`}
+                    className={`w-14 h-8 rounded-full relative transition-all ${anonymous ? 'bg-[#99A88C]' : 'bg-[#B5C4BA]'}`}
                   >
                     <div className={`absolute top-1 w-6 h-6 bg-white rounded-full transition-all shadow-md ${anonymous ? 'right-1' : 'left-1'}`} />
                   </button>
@@ -148,7 +148,7 @@ export function BookSessionPage() {
                         key={c}
                         onClick={() => toggleConcern(c)}
                         className={`px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${
-                          isSelected ? 'bg-[#3D5247] border-transparent text-white shadow-xl scale-105' : 'bg-white border-[#3D5247]/10 text-[#1C2320]/60 hover:border-[#3D5247]'
+                          isSelected ? 'bg-[#99A88C] border-transparent text-white shadow-xl scale-105' : 'bg-white border-[#99A88C]/10 text-[#99A88C]/60 hover:border-[#99A88C]'
                         }`}
                       >
                         {c}
@@ -157,15 +157,15 @@ export function BookSessionPage() {
                   })}
                </div>
 
-               <div className="pt-6 border-t border-[#3D5247]/5">
+               <div className="pt-6 border-t border-[#99A88C]/5">
                   <button
                     onClick={handleBookSession}
-                    className="w-full bg-[#3D5247] text-white py-6 rounded-[28px] text-xs font-black uppercase tracking-widest shadow-2xl shadow-[#3D5247]/20 hover:bg-[#1C2320] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
+                    className="w-full bg-[#99A88C] text-white py-6 rounded-[28px] text-xs font-black uppercase tracking-widest shadow-2xl shadow-[#99A88C]/20 hover:bg-[#99A88C] hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-3"
                   >
                     Confirm & Proceed
                     <ArrowRight size={20} />
                   </button>
-                  <p className="text-center text-[9px] text-[#1C2320]/40 font-bold uppercase tracking-widest mt-6">Secure Sanctuary Protocol Active</p>
+                  <p className="text-center text-[9px] text-[#99A88C]/40 font-bold uppercase tracking-widest mt-6">Secure Sanctuary Protocol Active</p>
                </div>
             </div>
           </div>

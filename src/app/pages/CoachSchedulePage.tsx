@@ -73,7 +73,7 @@ export function CoachSchedulePage() {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <span className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest ${slot.status === 'Booked' ? 'bg-[#2D3324] text-white' : (slot.status === 'Break' ? 'bg-[#F5EFE6] text-[#545454]/60' : 'bg-[#8B9A71]/10 text-[#8B9A71]')}`}>
+                  <span className={`px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest ${slot.status === 'Booked' ? 'bg-[#2D3324] text-white' : (slot.status === 'Break' ? 'bg-[#FCF8E8] text-[#545454]/60' : 'bg-[#8B9A71]/10 text-[#8B9A71]')}`}>
                      {slot.status}
                   </span>
                   <button className="w-10 h-10 rounded-xl bg-white/50 flex items-center justify-center text-[#CED2BA] hover:text-[#2D3324] transition-all">

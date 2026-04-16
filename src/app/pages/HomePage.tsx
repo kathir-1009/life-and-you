@@ -29,12 +29,12 @@ export function HomePage() {
         
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-16 items-center relative z-10">
           <div className="lg:col-span-7 animate-in fade-in slide-in-from-left duration-1000">
-            <div className="inline-flex items-center gap-3 bg-white/60 backdrop-blur-md border border-[#2A3324]/10 px-5 py-2.5 rounded-full mb-10 shadow-sm">
+            <div className="inline-flex items-center gap-3 bg-white/60 backdrop-blur-md border border-[#99A88C]/10 px-5 py-2.5 rounded-full mb-10 shadow-sm">
                <ShieldLock size={16} className="text-[#8A7340]" />
-               <span className="text-[10px] font-black text-[#2A3324] uppercase tracking-[0.3em]">ICF Certified Sanctuary · 100% Private</span>
+               <span className="text-[10px] font-black text-[#99A88C] uppercase tracking-[0.3em]">ICF Certified Sanctuary · 100% Private</span>
             </div>
             
-            <h1 className="text-6xl md:text-8xl lg:text-[110px] font-bold text-[#2A3324] font-serif leading-[0.9] mb-12 tracking-tighter">
+            <h1 className="text-6xl md:text-8xl lg:text-[110px] font-bold text-[#99A88C] font-serif leading-[0.9] mb-12 tracking-tighter">
               Be <span className="text-[#8A7340] relative">Heard.
                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-[#8A7340]/20" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="4" fill="transparent" /></svg>
               </span><br />
@@ -42,20 +42,20 @@ export function HomePage() {
               Live Better.
             </h1>
             
-            <p className="text-xl lg:text-3xl text-[#2A3324]/80 font-medium mb-14 max-w-2xl leading-[1.4]">
+            <p className="text-xl lg:text-3xl text-[#99A88C]/80 font-medium mb-14 max-w-2xl leading-[1.4]">
               Premium wellness coaching that respects your identity. Experience life-changing breakthroughs through our zero-trace anonymous world.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-6 mb-20">
               <Link 
                 to="/book" 
-                className="px-12 py-6 bg-[#2A3324] text-white rounded-full font-bold text-xs uppercase tracking-[0.2em] shadow-2xl hover:scale-105 transition-all text-center"
+                className="px-12 py-6 bg-[#99A88C] text-white rounded-full font-bold text-xs uppercase tracking-[0.2em] shadow-2xl hover:scale-105 transition-all text-center"
               >
                 Launch Your First Session
               </Link>
               <Link 
                 to="/programs" 
-                className="px-12 py-6 bg-white border border-[#2A3324]/10 text-[#2A3324] rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#EDF2EE] transition-all flex items-center justify-center gap-3 group"
+                className="px-12 py-6 bg-white border border-[#99A88C]/10 text-[#99A88C] rounded-full font-bold text-xs uppercase tracking-[0.2em] hover:bg-[#EDF2EE] transition-all flex items-center justify-center gap-3 group"
               >
                 Explore Programs <ArrowRight size={18} className="group-hover:translate-x-2 transition-transform" />
               </Link>
@@ -64,9 +64,9 @@ export function HomePage() {
 
           {/* Right Column: Hero Visual Overlay */}
           <div className="lg:col-span-5 relative hidden lg:block animate-in fade-in zoom-in duration-1000 delay-300">
-             <div className="absolute inset-0 bg-gradient-to-br from-[#3D5247]/20 to-transparent rounded-[80px] blur-3xl -z-10 scale-110" />
+             <div className="absolute inset-0 bg-gradient-to-br from-[#99A88C]/20 to-transparent rounded-[80px] blur-3xl -z-10 scale-110" />
              <div className="relative z-10">
-                <div className="bg-[#2A3324] rounded-[60px] p-2 shadow-2xl overflow-hidden aspect-[4/5]">
+                <div className="bg-[#99A88C] rounded-[60px] p-2 shadow-2xl overflow-hidden aspect-[4/5]">
                   <img 
                     src="/img/banner/banner-img-111.png" 
                     alt="Sanctuary Session" 
@@ -82,11 +82,11 @@ export function HomePage() {
                       <Lock size={28} />
                    </div>
                    <div>
-                      <h4 className="font-black text-[#2A3324] text-sm uppercase tracking-tight">Pure Privacy</h4>
+                      <h4 className="font-black text-[#99A88C] text-sm uppercase tracking-tight">Pure Privacy</h4>
                       <p className="text-[10px] font-black text-[#8A7340] uppercase tracking-widest">Identity Shield Active</p>
                    </div>
                 </div>
-                <p className="text-xs text-[#2A3324]/70 font-bold leading-relaxed italic">
+                <p className="text-xs text-[#99A88C]/70 font-bold leading-relaxed italic">
                   "The first platform where I felt safe being truly honest."
                 </p>
              </div>
@@ -97,11 +97,11 @@ export function HomePage() {
       {/* The 3-Step Process - Highly Responsive */}
       <section className="py-32 bg-white">
          <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
-            <h2 className="text-4xl md:text-6xl font-bold text-[#2A3324] font-serif mb-24">Simple Path to <span className="text-[#8A7340]">Peace.</span></h2>
+            <h2 className="text-4xl md:text-6xl font-bold text-[#99A88C] font-serif mb-24">Simple Path to <span className="text-[#8A7340]">Peace.</span></h2>
             
             <div className="grid lg:grid-cols-3 gap-16 relative">
                {/* Connecting Line (Desktop) */}
-               <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#3D5247]/10 to-transparent -translate-y-1/2 hidden lg:block" />
+               <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#99A88C]/10 to-transparent -translate-y-1/2 hidden lg:block" />
                
                <ProcessStep 
                  num="01" 
@@ -131,9 +131,9 @@ export function HomePage() {
             <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
                <div className="max-w-2xl">
                   <span className="text-[10px] font-black text-[#8A7340] uppercase tracking-[0.4em] mb-4 block">Our Offerings</span>
-                  <h2 className="text-4xl md:text-6xl font-bold text-[#2A3324] font-serif">Tailored Growth <span className="text-[#8A7340]">Programs.</span></h2>
+                  <h2 className="text-4xl md:text-6xl font-bold text-[#99A88C] font-serif">Tailored Growth <span className="text-[#8A7340]">Programs.</span></h2>
                </div>
-               <Link to="/programs" className="px-8 py-4 bg-white border border-[#2A3324]/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-all">
+               <Link to="/programs" className="px-8 py-4 bg-white border border-[#99A88C]/10 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-sm hover:scale-105 transition-all">
                   View Full Catalog
                </Link>
             </div>
@@ -160,7 +160,7 @@ export function HomePage() {
       </section>
 
       {/* Testimonials - Cinematic Dark */}
-      <section className="py-40 bg-[#2A3324] relative overflow-hidden">
+      <section className="py-40 bg-[#99A88C] relative overflow-hidden">
          <div className="absolute inset-0 opacity-10 pointer-events-none">
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#8A7340] rounded-full blur-[160px] translate-x-1/2 -translate-y-1/2" />
          </div>
@@ -186,17 +186,17 @@ export function HomePage() {
       {/* Dynamic CTA */}
       <section className="py-24 bg-[#8A7340]">
          <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12">
-            <h3 className="text-3xl md:text-5xl font-bold text-[#2A3324] font-serif max-w-xl text-center lg:text-left leading-tight">Your first 20 minutes are on us. Ready to start?</h3>
+            <h3 className="text-3xl md:text-5xl font-bold text-[#99A88C] font-serif max-w-xl text-center lg:text-left leading-tight">Your first 20 minutes are on us. Ready to start?</h3>
             <div className="flex flex-col sm:flex-row gap-4 shrink-0">
                <Link 
                  to="/book" 
-                 className="px-12 py-5 bg-[#2A3324] text-white rounded-full font-black text-xs uppercase tracking-widest hover:scale-110 transition-all shadow-2xl shadow-black/30"
+                 className="px-12 py-5 bg-[#99A88C] text-white rounded-full font-black text-xs uppercase tracking-widest hover:scale-110 transition-all shadow-2xl shadow-black/30"
                >
                  Book Discovery Call
                </Link>
                <Link 
                  to="/contact" 
-                 className="px-12 py-5 bg-white/20 backdrop-blur-md border border-[#2A3324]/10 text-[#2A3324] rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/40 transition-all"
+                 className="px-12 py-5 bg-white/20 backdrop-blur-md border border-[#99A88C]/10 text-[#99A88C] rounded-full font-black text-xs uppercase tracking-widest hover:bg-white/40 transition-all"
                >
                  Chat with Us
                </Link>
@@ -210,14 +210,14 @@ export function HomePage() {
 function ProcessStep({ num, icon: Icon, title, desc }: { num: string, icon: any, title: string, desc: string }) {
   return (
     <div className="relative z-10 group">
-       <div className="w-24 h-24 bg-[#FCF8E8] rounded-[32px] mx-auto mb-10 flex items-center justify-center text-[#99A88C] shadow-xl group-hover:bg-[#2A3324] group-hover:text-white transition-all duration-500">
+       <div className="w-24 h-24 bg-[#FCF8E8] rounded-[32px] mx-auto mb-10 flex items-center justify-center text-[#99A88C] shadow-xl group-hover:bg-[#99A88C] group-hover:text-white transition-all duration-500">
           <Icon size={32} />
-          <div className="absolute -top-4 right-0 w-10 h-10 bg-[#8A7340] rounded-full flex items-center justify-center text-[#2A3324] text-xs font-black shadow-lg">
+          <div className="absolute -top-4 right-0 w-10 h-10 bg-[#8A7340] rounded-full flex items-center justify-center text-[#99A88C] text-xs font-black shadow-lg">
              {num}
           </div>
        </div>
-       <h4 className="text-2xl font-bold text-[#2A3324] font-serif mb-4 uppercase tracking-tight">{title}</h4>
-       <p className="text-sm font-medium text-[#2A3324]/60 leading-relaxed max-w-xs mx-auto">{desc}</p>
+       <h4 className="text-2xl font-bold text-[#99A88C] font-serif mb-4 uppercase tracking-tight">{title}</h4>
+       <p className="text-sm font-medium text-[#99A88C]/60 leading-relaxed max-w-xs mx-auto">{desc}</p>
     </div>
   );
 }
@@ -236,7 +236,7 @@ function ProgramCard({ title, desc, price, featured = false }: { title: string, 
        <div className="flex items-center justify-between pt-10 border-t border-current opacity-20 group-hover:opacity-100 transition-opacity">
           <span className="text-3xl font-black font-serif">{price}</span>
           <div className="w-12 h-12 rounded-2xl bg-current/5 flex items-center justify-center">
-            <ArrowRight size={24} className={featured ? 'text-[#8A7340]' : 'text-[#2A3324]'} />
+            <ArrowRight size={24} className={featured ? 'text-[#8A7340]' : 'text-[#99A88C]'} />
           </div>
        </div>
     </div>
