@@ -8,13 +8,12 @@ const HomePage = lazy(() => import("./pages/HomePage").then(m => ({ default: m.H
 const ProgramsPage = lazy(() => import("./pages/ProgramsPage").then(m => ({ default: m.ProgramsPage })));
 const BookSessionPage = lazy(() => import("./pages/BookSessionPage").then(m => ({ default: m.BookSessionPage })));
 const ConfirmationPage = lazy(() => import("./pages/ConfirmationPage").then(m => ({ default: m.ConfirmationPage })));
+
 // Lazy load portal components
 const DashboardPage = lazy(() => import("./pages/DashboardPage").then(m => ({ default: m.DashboardPage })));
 const ProgressPage = lazy(() => import("./pages/ProgressPage").then(m => ({ default: m.ProgressPage })));
 const MessagingPage = lazy(() => import("./pages/MessagingPage").then(m => ({ default: m.MessagingPage })));
-const ResourcesPage = lazy(() => import("./pages/ResourcesPage").then(m => ({ default: m.ResourcesPage })));
 const ProfilePage = lazy(() => import("./pages/ProfilePage").then(m => ({ default: m.ProfilePage })));
-const OnboardingPage = lazy(() => import("./pages/OnboardingPage").then(m => ({ default: m.OnboardingPage })));
 const NotificationsPage = lazy(() => import("./pages/NotificationsPage").then(m => ({ default: m.NotificationsPage })));
 const JournalPage = lazy(() => import("./pages/JournalPage").then(m => ({ default: m.JournalPage })));
 
@@ -26,18 +25,15 @@ const AboutPage = lazy(() => import("./pages/AboutPage").then(m => ({ default: m
 const PricingPage = lazy(() => import("./pages/PricingPage").then(m => ({ default: m.PricingPage })));
 const ContactPage = lazy(() => import("./pages/ContactPage").then(m => ({ default: m.ContactPage })));
 
-// Coach Pages
-const CoachSchedulePage = lazy(() => import("./pages/CoachSchedulePage").then(m => ({ default: m.CoachSchedulePage })));
-const CoachClientsPage = lazy(() => import("./pages/coach/clients/CoachClientListPage").then(m => ({ default: m.CoachClientListPage })));
-const CoachEarningsPage = lazy(() => import("./pages/CoachEarningsPage").then(m => ({ default: m.CoachEarningsPage })));
-const VideoSessionPage = lazy(() => import("./pages/VideoSessionPage").then(m => ({ default: m.VideoSessionPage })));
-const AvailabilityPage = lazy(() => import("./pages/AvailabilityPage").then(m => ({ default: m.AvailabilityPage })));
-
 // Client Sessions
 const AllSessions = lazy(() => import("./pages/client/sessions/AllSessionsPage").then(m => ({ default: m.AllSessionsPage })));
 const SessionDetail = lazy(() => import("./pages/client/sessions/SessionDetailPage").then(m => ({ default: m.ClientSessionDetailPage })));
 const SessionRoom = lazy(() => import("./pages/client/sessions/SessionRoomPage").then(m => ({ default: m.ClientSessionRoomPage })));
 const FeedbackPage = lazy(() => import("./pages/client/sessions/FeedbackPage").then(m => ({ default: m.ClientFeedbackPage })));
+
+// Client Library
+const AllResources = lazy(() => import("./pages/client/library/AllResourcesPage").then(m => ({ default: m.AllResourcesPage })));
+const ResourceDetail = lazy(() => import("./pages/client/library/ResourceDetailPage").then(m => ({ default: m.ClientResourceDetailPage })));
 
 // Coach Discovery
 const BrowseCoaches = lazy(() => import("./pages/client/coach/BrowseCoachesPage").then(m => ({ default: m.ClientBrowseCoachesPage })));
@@ -59,13 +55,16 @@ const BookStep3 = lazy(() => import("./pages/client/booking/BookStep3Page").then
 const CoachWelcome = lazy(() => import("./pages/coach/onboarding/CoachWelcomePage").then(m => ({ default: m.CoachWelcomePage })));
 const CoachProfile = lazy(() => import("./pages/coach/onboarding/CoachProfileSetupPage").then(m => ({ default: m.CoachProfileSetupPage })));
 
-// Coach Schedule
+// Coach Pages
+const CoachSchedulePage = lazy(() => import("./pages/CoachSchedulePage").then(m => ({ default: m.CoachSchedulePage })));
+const CoachClientsPage = lazy(() => import("./pages/coach/clients/CoachClientListPage").then(m => ({ default: m.CoachClientListPage })));
+const CoachEarningsPage = lazy(() => import("./pages/CoachEarningsPage").then(m => ({ default: m.CoachEarningsPage })));
 const CoachMonthView = lazy(() => import("./pages/coach/schedule/CoachMonthViewPage").then(m => ({ default: m.CoachMonthViewPage })));
 
 // Loading component
 const PageLoader = () => (
-  <div className="flex items-center justify-center min-h-screen bg-[#F5EFE6]">
-    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#3D5247]"></div>
+  <div className="flex items-center justify-center min-h-screen bg-[#FCF8E8]">
+    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#99A88C]"></div>
   </div>
 );
 
@@ -85,7 +84,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="/auth/login" replace /> },
       { path: "login", element: withSuspense(AuthPage) },
-      { path: "register", element: withSuspense(AuthPage) }, // Reusing AuthPage for now
+      { path: "register", element: withSuspense(AuthPage) }, 
       { path: "verify", element: withSuspense(OTPVerifyPage) },
     ]
   },
@@ -110,7 +109,6 @@ export const router = createBrowserRouter([
       { path: "programs", element: withSuspense(ProgramsPage) },
       { path: "pricing", element: withSuspense(PricingPage) },
       { path: "contact", element: withSuspense(ContactPage) },
-      { path: "resources", element: withSuspense(ResourcesPage) },
       { path: "book", element: withSuspense(BookSessionPage) },
     ],
   },
@@ -135,7 +133,6 @@ export const router = createBrowserRouter([
           { path: "step-1", element: withSuspense(BookStep1) },
           { path: "step-2", element: withSuspense(BookStep2) },
           { path: "step-3", element: withSuspense(BookStep3) },
-          { path: "confirm", element: <Navigate to="/portal/book/step-3" replace /> },
         ]
       },
       { path: "progress", element: withSuspense(ProgressPage) },
@@ -146,7 +143,13 @@ export const router = createBrowserRouter([
           { path: ":id", element: withSuspense(CoachDetail) },
         ]
       },
-      { path: "library", element: withSuspense(ResourcesPage) },
+      { 
+        path: "library",
+        children: [
+          { index: true, element: withSuspense(AllResources) },
+          { path: ":id", element: withSuspense(ResourceDetail) },
+        ]
+      },
       { path: "messages", element: withSuspense(MessagingPage) },
       { path: "profile", element: withSuspense(ProfilePage) },
       { path: "notifications", element: withSuspense(NotificationsPage) },
@@ -175,21 +178,8 @@ export const router = createBrowserRouter([
         ]
       },
       { path: "clients", element: withSuspense(CoachClientsPage) },
-      { path: "sessions", element: withSuspense(SessionsPage) },
       { path: "messages", element: withSuspense(MessagingPage) },
       { path: "earnings", element: withSuspense(CoachEarningsPage) },
-      { path: "resources", element: withSuspense(ResourcesPage) },
-    ]
-  },
-  // ADMIN PORTAL
-  {
-    path: "/admin",
-    element: <AppLayout />,
-    children: [
-      { index: true, element: withSuspense(DashboardPage) },
-      { path: "users", element: withSuspense(DashboardPage) }, // Placeholder
-      { path: "coaches", element: withSuspense(DashboardPage) }, // Placeholder
-      { path: "analytics", element: withSuspense(DashboardPage) }, // Placeholder
     ]
   },
   // SESSION
@@ -201,7 +191,4 @@ export const router = createBrowserRouter([
     path: "/confirmation",
     element: withSuspense(ConfirmationPage),
   },
-  // Legacy Redirects
-  { path: "/app/*", element: <Navigate to="/portal" replace /> },
-  { path: "/dashboard", element: <Navigate to="/portal" replace /> },
 ]);
