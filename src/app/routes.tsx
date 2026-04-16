@@ -39,6 +39,10 @@ const SessionDetail = lazy(() => import("./pages/client/sessions/SessionDetailPa
 const SessionRoom = lazy(() => import("./pages/client/sessions/SessionRoomPage").then(m => ({ default: m.ClientSessionRoomPage })));
 const FeedbackPage = lazy(() => import("./pages/client/sessions/FeedbackPage").then(m => ({ default: m.ClientFeedbackPage })));
 
+// Coach Discovery
+const BrowseCoaches = lazy(() => import("./pages/client/coach/BrowseCoachesPage").then(m => ({ default: m.ClientBrowseCoachesPage })));
+const CoachDetail = lazy(() => import("./pages/client/coach/CoachDetailPage").then(m => ({ default: m.ClientCoachDetailPage })));
+
 // Client Onboarding
 const ClientWelcome = lazy(() => import("./pages/client/onboarding/WelcomePage").then(m => ({ default: m.ClientWelcomePage })));
 const ClientGoals = lazy(() => import("./pages/client/onboarding/GoalsPage").then(m => ({ default: m.ClientGoalsPage })));
@@ -135,6 +139,13 @@ export const router = createBrowserRouter([
         ]
       },
       { path: "progress", element: withSuspense(ProgressPage) },
+      { 
+        path: "browse-coaches",
+        children: [
+          { index: true, element: withSuspense(BrowseCoaches) },
+          { path: ":id", element: withSuspense(CoachDetail) },
+        ]
+      },
       { path: "library", element: withSuspense(ResourcesPage) },
       { path: "messages", element: withSuspense(MessagingPage) },
       { path: "profile", element: withSuspense(ProfilePage) },
