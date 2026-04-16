@@ -78,10 +78,10 @@ export function OnboardingPage() {
             <currentStep.icon size={32} className="text-[#C4A35A]" />
           </div>
           
-          <h1 className="text-3xl md:text-4xl font-bold text-[#99A88C] font-serif mb-3 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#5E6C54] font-serif mb-3 leading-tight">
             {currentStep.title}
           </h1>
-          <p className="text-sm text-[#99A88C]/60 font-medium mb-12 leading-relaxed">
+          <p className="text-sm text-[#5E6C54]/60 font-medium mb-12 leading-relaxed">
             {currentStep.subtitle}
           </p>
 
@@ -95,13 +95,13 @@ export function OnboardingPage() {
                   className={`w-full rounded-[24px] p-6 flex items-center justify-between group border transition-all active:scale-[0.98] ${
                     isActive 
                       ? "bg-[#99A88C] border-transparent text-white shadow-2xl translate-x-1" 
-                      : "bg-white border-[#99A88C]/10 text-[#99A88C] hover:border-[#99A88C] hover:bg-[#EDF2EE] shadow-sm"
+                      : "bg-white border-[#99A88C]/10 text-[#5E6C54] hover:border-[#99A88C] hover:bg-[#EDF2EE] shadow-sm"
                   }`}
                 >
-                  <span className={`text-xs font-bold uppercase tracking-wider ${isActive ? "text-white" : "text-[#99A88C]"}`}>
+                  <span className={`text-xs font-bold uppercase tracking-wider ${isActive ? "text-white" : "text-[#5E6C54]"}`}>
                     {option}
                   </span>
-                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all ${isActive ? "bg-[#99A88C] text-white" : "bg-[#FCF8E8] text-[#99A88C]"}`}>
+                  <div className={`w-8 h-8 rounded-xl flex items-center justify-center transition-all ${isActive ? "bg-[#99A88C] text-white" : "bg-[#FCF8E8] text-[#5E6C54]"}`}>
                     {isActive ? <Check size={16} /> : <ChevronRight size={18} />}
                   </div>
                 </button>
@@ -114,7 +114,7 @@ export function OnboardingPage() {
       <div className="mt-12 text-center relative z-10">
         <button 
           onClick={() => navigate("/portal")}
-          className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#99A88C]/40 hover:text-[#99A88C] transition-all border-b border-[#99A88C]/10 pb-1"
+          className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.3em] text-[#5E6C54]/40 hover:text-[#5E6C54] transition-all border-b border-[#99A88C]/10 pb-1"
         >
           Skip Introduction <ArrowRight size={12} />
         </button>

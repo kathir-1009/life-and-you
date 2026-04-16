@@ -116,7 +116,7 @@ export function Sidebar() {
               <item.icon size={18} className={active ? "text-white" : "group-hover:text-white"} />
               <span className="text-xs font-bold tracking-wide flex-1">{item.label}</span>
               {item.badge && (
-                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${active ? 'bg-white/20 text-white' : 'bg-[#C4A35A] text-[#99A88C]'}`}>{item.badge}</span>
+                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${active ? 'bg-white/20 text-white' : 'bg-[#C4A35A] text-[#5E6C54]'}`}>{item.badge}</span>
               )}
             </Link>
           );

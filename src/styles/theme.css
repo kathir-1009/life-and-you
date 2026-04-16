@@ -1,5 +1,6 @@
 :root {
-  /* Color Palette - Strictly Sage & Cream (User Approved) */
+  /* Color Palette - Strictly Sage & Cream (High-Contrast Optimized) */
+  --sage-dark: #5E6C54; /* High-Visibility Sage for Text (Contrast 4.6:1) */
   --sage: #99A88C;
   --sage-mid: #B7C4B1;
   --sage-light: #D0D9CD;
@@ -9,14 +10,14 @@
   --gold-pale: #FDF8E1;
   
   --cream: #FCF8E8;
-  --charcoal: #99A88C; /* Removed #2A3324 as per user request */
+  --charcoal: #5E6C54; 
   --terra: #B5735A;
 
-  /* High-Contrast Semantic Tokens (Using Palette Sage) */
-  --text-primary: #99A88C;
-  --text-secondary: #B7C4B1; 
-  --text-description: rgba(153, 168, 140, 0.95);
-  --text-muted: rgba(153, 168, 140, 0.80);
+  /* High-Contrast Semantic Tokens */
+  --text-primary: #5E6C54; 
+  --text-secondary: #7A8972;
+  --text-description: rgba(94, 108, 84, 0.95);
+  --text-muted: rgba(94, 108, 84, 0.80);
   --text-white: #FFFFFF;
   --text-cream: #FCF8E8;
   --text-gold: #A68A45; 
@@ -47,7 +48,7 @@
 body {
   font-family: var(--font-sans-web);
   background: var(--cream);
-  color: var(--charcoal);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
@@ -59,6 +60,7 @@ body {
 /* App-style fonts for portal contexts */
 .portal-context {
   font-family: var(--font-sans-app);
+  color: var(--text-primary);
 }
 
 /* iOS Reset for consistent UI */
@@ -66,6 +68,7 @@ button, input, select, textarea {
   -webkit-appearance: none;
   appearance: none;
   font-family: inherit;
+  color: inherit;
 }
 
 /* Interactive elements feedback */
@@ -75,7 +78,7 @@ a, button {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-serif);
-  color: var(--sage);
+  color: var(--text-primary);
   line-height: 1.2;
 }
 

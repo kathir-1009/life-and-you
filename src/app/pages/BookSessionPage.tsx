@@ -54,16 +54,16 @@ export function BookSessionPage() {
                   <SectionLabel icon={CalendarIcon}>Step 1: Focus Date</SectionLabel>
                   <div className="bg-[#FBF5E6] rounded-[32px] p-6 border border-[#99A88C]/5 shadow-inner">
                     <div className="flex items-center justify-between mb-8">
-                      <h3 className="font-bold text-[#99A88C] font-serif uppercase tracking-widest text-base">April 2026</h3>
+                      <h3 className="font-bold text-[#5E6C54] font-serif uppercase tracking-widest text-base">April 2026</h3>
                       <div className="flex gap-3">
-                        <button className="p-2.5 bg-white rounded-xl text-[#99A88C] shadow-sm hover:scale-105 transition-transform"><ChevronLeft size={20} /></button>
-                        <button className="p-2.5 bg-white rounded-xl text-[#99A88C] shadow-sm hover:scale-105 transition-transform"><ChevronRight size={20} /></button>
+                        <button className="p-2.5 bg-white rounded-xl text-[#5E6C54] shadow-sm hover:scale-105 transition-transform"><ChevronLeft size={20} /></button>
+                        <button className="p-2.5 bg-white rounded-xl text-[#5E6C54] shadow-sm hover:scale-105 transition-transform"><ChevronRight size={20} /></button>
                       </div>
                     </div>
 
                     <div className="grid grid-cols-7 gap-3 mb-4">
                       {["S", "M", "T", "W", "T", "F", "S"].map((d, idx) => (
-                        <div key={`${d}-${idx}`} className="text-center text-[10px] font-black text-[#99A88C]/40 uppercase tracking-widest">{d}</div>
+                        <div key={`${d}-${idx}`} className="text-center text-[10px] font-black text-[#5E6C54]/40 uppercase tracking-widest">{d}</div>
                       ))}
                     </div>
 
@@ -78,7 +78,7 @@ export function BookSessionPage() {
                             disabled={!isAvailable}
                             onClick={() => setSelectedDate(day)}
                             className={`aspect-square rounded-2xl text-xs font-black transition-all relative flex items-center justify-center ${
-                              isSelected ? 'bg-[#99A88C] text-white shadow-xl shadow-[#99A88C]/20 scale-105 z-10' : isAvailable ? 'text-[#99A88C] bg-white border border-[#99A88C]/5 hover:border-[#99A88C] hover:scale-105' : 'text-[#99A88C]/20 opacity-30 cursor-not-allowed'
+                              isSelected ? 'bg-[#99A88C] text-white shadow-xl shadow-[#99A88C]/20 scale-105 z-10' : isAvailable ? 'text-[#5E6C54] bg-white border border-[#99A88C]/5 hover:border-[#99A88C] hover:scale-105' : 'text-[#5E6C54]/20 opacity-30 cursor-not-allowed'
                             }`}
                           >
                             {day}
@@ -102,7 +102,7 @@ export function BookSessionPage() {
                           disabled={isBooked}
                           onClick={() => setSelectedTime(time)}
                           className={`py-5 rounded-[24px] text-[11px] font-black uppercase tracking-widest border transition-all flex flex-col items-center justify-center ${
-                            isSelected ? 'bg-[#99A88C] border-transparent text-white shadow-2xl scale-[1.02] z-10' : isBooked ? 'bg-[#FCF8E8] border-transparent text-[#99A88C]/20 cursor-not-allowed opacity-50' : 'bg-white border-[#99A88C]/10 text-[#99A88C] hover:border-[#99A88C] hover:bg-[#FBF5E6]'
+                            isSelected ? 'bg-[#99A88C] border-transparent text-white shadow-2xl scale-[1.02] z-10' : isBooked ? 'bg-[#FCF8E8] border-transparent text-[#5E6C54]/20 cursor-not-allowed opacity-50' : 'bg-white border-[#99A88C]/10 text-[#5E6C54] hover:border-[#99A88C] hover:bg-[#FBF5E6]'
                           }`}
                         >
                           {isBooked ? "Reserved" : time}
@@ -123,12 +123,12 @@ export function BookSessionPage() {
                
                <div className={`p-6 rounded-[32px] border transition-all flex items-center justify-between mb-8 ${anonymous ? 'bg-[#EDF2EE] border-[#99A88C] shadow-sm' : 'bg-[#FCF8E8] border-transparent'}`}>
                   <div className="flex items-center gap-4">
-                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${anonymous ? 'bg-[#99A88C] text-[#A68A45]' : 'bg-[#99A88C]/10 text-[#99A88C]'}`}>
+                     <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${anonymous ? 'bg-[#99A88C] text-[#A68A45]' : 'bg-[#99A88C]/10 text-[#5E6C54]'}`}>
                         <Lock size={20} />
                      </div>
                      <div>
-                        <h4 className="text-sm font-black text-[#99A88C] uppercase tracking-tight">Identity Guard</h4>
-                        <p className="text-[10px] text-[#99A88C]/60 font-bold uppercase tracking-widest mt-1">Concealed Session</p>
+                        <h4 className="text-sm font-black text-[#5E6C54] uppercase tracking-tight">Identity Guard</h4>
+                        <p className="text-[10px] text-[#5E6C54]/60 font-bold uppercase tracking-widest mt-1">Concealed Session</p>
                      </div>
                   </div>
                   <button 
@@ -148,7 +148,7 @@ export function BookSessionPage() {
                         key={c}
                         onClick={() => toggleConcern(c)}
                         className={`px-6 py-3 rounded-full text-[10px] font-black uppercase tracking-widest border transition-all ${
-                          isSelected ? 'bg-[#99A88C] border-transparent text-white shadow-xl scale-105' : 'bg-white border-[#99A88C]/10 text-[#99A88C]/60 hover:border-[#99A88C]'
+                          isSelected ? 'bg-[#99A88C] border-transparent text-white shadow-xl scale-105' : 'bg-white border-[#99A88C]/10 text-[#5E6C54]/60 hover:border-[#99A88C]'
                         }`}
                       >
                         {c}
@@ -165,7 +165,7 @@ export function BookSessionPage() {
                     Confirm & Proceed
                     <ArrowRight size={20} />
                   </button>
-                  <p className="text-center text-[9px] text-[#99A88C]/40 font-bold uppercase tracking-widest mt-6">Secure Sanctuary Protocol Active</p>
+                  <p className="text-center text-[9px] text-[#5E6C54]/40 font-bold uppercase tracking-widest mt-6">Secure Sanctuary Protocol Active</p>
                </div>
             </div>
           </div>

@@ -55,7 +55,7 @@ export function Navigation() {
                   <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain" />
                </div>
                <div className="flex flex-col">
-                  <span className="text-xl font-bold text-[#99A88C] leading-none tracking-tight font-serif">Life & You</span>
+                  <span className="text-xl font-bold text-[#5E6C54] leading-none tracking-tight font-serif">Life & You</span>
                   <span className="text-[10px] font-bold text-[#C4A35A] uppercase tracking-[0.1em] mt-1">UAE & Global</span>
                </div>
             </Link>
@@ -68,13 +68,13 @@ export function Navigation() {
                   to={link.path}
                   className={`px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
                     isActive(link.path)
-                      ? "text-[#99A88C] bg-[#EDF2EE]"
-                      : "text-[#99A88C]/60 hover:text-[#99A88C] hover:bg-[#FCF8E8]"
+                      ? "text-[#5E6C54] bg-[#EDF2EE]"
+                      : "text-[#5E6C54]/60 hover:text-[#5E6C54] hover:bg-[#FCF8E8]"
                   }`}
                 >
                   {link.label}
                   {link.badge && (
-                    <span className="px-1.5 py-0.5 bg-[#C4A35A] text-[#99A88C] text-[8px] font-black rounded tracking-tighter shrink-0">{link.badge}</span>
+                    <span className="px-1.5 py-0.5 bg-[#C4A35A] text-[#5E6C54] text-[8px] font-black rounded tracking-tighter shrink-0">{link.badge}</span>
                   )}
                 </Link>
               ))}
@@ -93,7 +93,7 @@ export function Navigation() {
                 <div className="flex items-center gap-4">
                   <Link 
                     to="/auth/login"
-                    className="text-[11px] font-bold uppercase tracking-widest text-[#99A88C] hover:text-[#C4A35A] transition-all"
+                    className="text-[11px] font-bold uppercase tracking-widest text-[#5E6C54] hover:text-[#C4A35A] transition-all"
                   >
                     Sign In
                   </Link>
@@ -110,7 +110,7 @@ export function Navigation() {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#99A88C]"
+              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#5E6C54]"
             >
               {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -128,12 +128,12 @@ export function Navigation() {
                     className={`px-6 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest flex items-center justify-between ${
                       isActive(link.path)
                         ? "bg-[#99A88C] text-white shadow-lg shadow-[#99A88C]/20"
-                        : "bg-[#FCF8E8] text-[#99A88C]"
+                        : "bg-[#FCF8E8] text-[#5E6C54]"
                     }`}
                   >
                     <div className="flex items-center gap-2">
                        {link.label}
-                       {link.badge && <span className="bg-[#C4A35A] text-[#99A88C] text-[8px] px-1 rounded">{link.badge}</span>}
+                       {link.badge && <span className="bg-[#C4A35A] text-[#5E6C54] text-[8px] px-1 rounded">{link.badge}</span>}
                     </div>
                     <ArrowRight size={14} className="opacity-40" />
                   </Link>
@@ -153,7 +153,7 @@ export function Navigation() {
                       <Link
                         to="/auth/login"
                         onClick={() => setMobileMenuOpen(false)}
-                        className="px-6 py-4 text-xs font-bold text-center text-[#99A88C] bg-white border border-[#99A88C]/10 rounded-2xl uppercase tracking-widest"
+                        className="px-6 py-4 text-xs font-bold text-center text-[#5E6C54] bg-white border border-[#99A88C]/10 rounded-2xl uppercase tracking-widest"
                       >
                         Sign In
                       </Link>

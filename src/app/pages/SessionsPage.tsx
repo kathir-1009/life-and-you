@@ -44,20 +44,20 @@ export function SessionsPage() {
       {/* Header with Search */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
-           <h1 className="text-3xl lg:text-4xl font-bold text-[#99A88C] font-serif mb-2">My Sessions</h1>
-           <p className="text-[#99A88C]/60 text-sm font-medium">Manage your breakthroughs and journey history.</p>
+           <h1 className="text-3xl lg:text-4xl font-bold text-[#5E6C54] font-serif mb-2">My Sessions</h1>
+           <p className="text-[#5E6C54]/60 text-sm font-medium">Manage your breakthroughs and journey history.</p>
         </div>
 
         <div className="flex items-center gap-3">
            <div className="relative flex-1 lg:w-72">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#99A88C]/30" size={18} />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5E6C54]/30" size={18} />
               <input 
                 type="text" 
                 placeholder="Search sessions..." 
                 className="w-full bg-white border border-[#99A88C]/10 pl-12 pr-4 py-3 rounded-2xl text-xs outline-none focus:border-[#C4A35A] transition-all"
               />
            </div>
-           <button className="p-3 bg-white border border-[#99A88C]/10 rounded-2xl text-[#99A88C] hover:bg-[#FCF8E8] transition-colors">
+           <button className="p-3 bg-white border border-[#99A88C]/10 rounded-2xl text-[#5E6C54] hover:bg-[#FCF8E8] transition-colors">
               <Filter size={18} />
            </button>
         </div>
@@ -75,22 +75,22 @@ export function SessionsPage() {
               <div>
                  <div className="flex items-center justify-between mb-8">
                     <div className="flex items-center gap-3">
-                       <div className="w-10 h-10 bg-[#EDF2EE] rounded-xl flex items-center justify-center text-[#99A88C]">
+                       <div className="w-10 h-10 bg-[#EDF2EE] rounded-xl flex items-center justify-center text-[#5E6C54]">
                           <Calendar size={18} />
                        </div>
                        <div>
-                          <p className="text-xs font-black text-[#99A88C] uppercase tracking-widest">{session.date}</p>
+                          <p className="text-xs font-black text-[#5E6C54] uppercase tracking-widest">{session.date}</p>
                           <p className="text-[10px] text-[#A68A45] font-black uppercase mt-0.5">{session.time}</p>
                        </div>
                     </div>
-                    <button className="p-2 text-[#99A88C]/20 hover:text-[#99A88C] transition-colors"><MoreVertical size={18} /></button>
+                    <button className="p-2 text-[#5E6C54]/20 hover:text-[#5E6C54] transition-colors"><MoreVertical size={18} /></button>
                  </div>
 
                  <div className="mb-8">
-                    <h3 className="text-xl font-bold text-[#99A88C] font-serif mb-2">{session.type}</h3>
+                    <h3 className="text-xl font-bold text-[#5E6C54] font-serif mb-2">{session.type}</h3>
                     <div className="flex items-center gap-2">
-                       <div className="w-5 h-5 bg-[#99A88C]/10 rounded-full flex items-center justify-center text-[#99A88C]"><User size={10} /></div>
-                       <span className="text-xs font-bold text-[#99A88C]/60">{session.partner}</span>
+                       <div className="w-5 h-5 bg-[#99A88C]/10 rounded-full flex items-center justify-center text-[#5E6C54]"><User size={10} /></div>
+                       <span className="text-xs font-bold text-[#5E6C54]/60">{session.partner}</span>
                     </div>
                  </div>
               </div>
@@ -98,7 +98,7 @@ export function SessionsPage() {
               <div className="pt-6 border-t border-[#FCF8E8] flex items-center justify-between">
                  <div className="flex items-center gap-2">
                     <div className={`w-2 h-2 rounded-full ${session.isUpcoming ? 'bg-green-500 animate-pulse' : 'bg-[#99A88C]/20'}`} />
-                    <span className="text-[10px] font-black text-[#99A88C]/40 uppercase tracking-widest">{session.status}</span>
+                    <span className="text-[10px] font-black text-[#5E6C54]/40 uppercase tracking-widest">{session.status}</span>
                  </div>
                  
                  {session.isUpcoming ? (
@@ -122,12 +122,12 @@ export function SessionsPage() {
              to="/portal/book"
              className="border-2 border-dashed border-[#99A88C]/20 rounded-[32px] p-8 flex flex-col items-center justify-center text-center gap-4 group hover:border-[#99A88C]/40 hover:bg-white transition-all min-h-[280px]"
            >
-              <div className="w-16 h-16 bg-[#FCF8E8] rounded-full flex items-center justify-center text-[#99A88C] group-hover:scale-110 transition-transform">
+              <div className="w-16 h-16 bg-[#FCF8E8] rounded-full flex items-center justify-center text-[#5E6C54] group-hover:scale-110 transition-transform">
                  <Calendar size={28} />
               </div>
               <div>
-                 <p className="text-sm font-black text-[#99A88C] uppercase tracking-widest mb-1">Book New Session</p>
-                 <p className="text-xs text-[#99A88C]/40 font-bold max-w-[160px] mx-auto uppercase tracking-tighter">Your transformation is just one click away.</p>
+                 <p className="text-sm font-black text-[#5E6C54] uppercase tracking-widest mb-1">Book New Session</p>
+                 <p className="text-xs text-[#5E6C54]/40 font-bold max-w-[160px] mx-auto uppercase tracking-tighter">Your transformation is just one click away.</p>
               </div>
            </Link>
          )}
@@ -140,7 +140,7 @@ function TabButton({ children, active, onClick }: { children: React.ReactNode, a
   return (
     <button 
       onClick={onClick}
-      className={`relative px-4 py-2 text-xs font-black uppercase tracking-widest transition-all ${active ? 'text-[#99A88C]' : 'text-[#99A88C]/40 hover:text-[#99A88C]'}`}
+      className={`relative px-4 py-2 text-xs font-black uppercase tracking-widest transition-all ${active ? 'text-[#5E6C54]' : 'text-[#5E6C54]/40 hover:text-[#5E6C54]'}`}
     >
       {children}
       {active && (
