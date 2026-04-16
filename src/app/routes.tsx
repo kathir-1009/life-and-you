@@ -28,12 +28,16 @@ const ContactPage = lazy(() => import("./pages/ContactPage").then(m => ({ defaul
 
 // Coach Pages
 const CoachSchedulePage = lazy(() => import("./pages/CoachSchedulePage").then(m => ({ default: m.CoachSchedulePage })));
-const CoachClientsPage = lazy(() => import("./pages/CoachClientsPage").then(m => ({ default: m.CoachClientsPage })));
+const CoachClientsPage = lazy(() => import("./pages/coach/clients/CoachClientListPage").then(m => ({ default: m.CoachClientListPage })));
 const CoachEarningsPage = lazy(() => import("./pages/CoachEarningsPage").then(m => ({ default: m.CoachEarningsPage })));
 const VideoSessionPage = lazy(() => import("./pages/VideoSessionPage").then(m => ({ default: m.VideoSessionPage })));
 const AvailabilityPage = lazy(() => import("./pages/AvailabilityPage").then(m => ({ default: m.AvailabilityPage })));
 
-const SessionsPage = lazy(() => import("./pages/SessionsPage").then(m => ({ default: m.SessionsPage })));
+// Client Sessions
+const AllSessions = lazy(() => import("./pages/client/sessions/AllSessionsPage").then(m => ({ default: m.AllSessionsPage })));
+const SessionDetail = lazy(() => import("./pages/client/sessions/SessionDetailPage").then(m => ({ default: m.ClientSessionDetailPage })));
+const SessionRoom = lazy(() => import("./pages/client/sessions/SessionRoomPage").then(m => ({ default: m.ClientSessionRoomPage })));
+const FeedbackPage = lazy(() => import("./pages/client/sessions/FeedbackPage").then(m => ({ default: m.ClientFeedbackPage })));
 
 // Client Onboarding
 const ClientWelcome = lazy(() => import("./pages/client/onboarding/WelcomePage").then(m => ({ default: m.ClientWelcomePage })));
@@ -50,6 +54,9 @@ const BookStep3 = lazy(() => import("./pages/client/booking/BookStep3Page").then
 // Coach Onboarding
 const CoachWelcome = lazy(() => import("./pages/coach/onboarding/CoachWelcomePage").then(m => ({ default: m.CoachWelcomePage })));
 const CoachProfile = lazy(() => import("./pages/coach/onboarding/CoachProfileSetupPage").then(m => ({ default: m.CoachProfileSetupPage })));
+
+// Coach Schedule
+const CoachMonthView = lazy(() => import("./pages/coach/schedule/CoachMonthViewPage").then(m => ({ default: m.CoachMonthViewPage })));
 
 // Loading component
 const PageLoader = () => (
@@ -109,7 +116,14 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { index: true, element: withSuspense(DashboardPage) },
-      { path: "sessions", element: withSuspense(SessionsPage) },
+      { 
+        path: "sessions",
+        children: [
+          { index: true, element: withSuspense(AllSessions) },
+          { path: ":id", element: withSuspense(SessionDetail) },
+          { path: "feedback", element: withSuspense(FeedbackPage) },
+        ]
+      },
       { 
         path: "book",
         children: [
@@ -142,7 +156,13 @@ export const router = createBrowserRouter([
           { path: "profile", element: withSuspense(CoachProfile) },
         ]
       },
-      { path: "schedule", element: withSuspense(CoachSchedulePage) },
+      { 
+        path: "schedule",
+        children: [
+          { index: true, element: withSuspense(CoachMonthView) },
+          { path: "month", element: withSuspense(CoachMonthView) },
+        ]
+      },
       { path: "clients", element: withSuspense(CoachClientsPage) },
       { path: "sessions", element: withSuspense(SessionsPage) },
       { path: "messages", element: withSuspense(MessagingPage) },
@@ -164,7 +184,7 @@ export const router = createBrowserRouter([
   // SESSION
   {
     path: "/session/:id",
-    element: withSuspense(VideoSessionPage),
+    element: withSuspense(SessionRoom),
   },
   {
     path: "/confirmation",
