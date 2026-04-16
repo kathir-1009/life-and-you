@@ -35,6 +35,22 @@ const AvailabilityPage = lazy(() => import("./pages/AvailabilityPage").then(m =>
 
 const SessionsPage = lazy(() => import("./pages/SessionsPage").then(m => ({ default: m.SessionsPage })));
 
+// Client Onboarding
+const ClientWelcome = lazy(() => import("./pages/client/onboarding/WelcomePage").then(m => ({ default: m.ClientWelcomePage })));
+const ClientGoals = lazy(() => import("./pages/client/onboarding/GoalsPage").then(m => ({ default: m.ClientGoalsPage })));
+const ClientPrivacy = lazy(() => import("./pages/client/onboarding/PrivacySettingsPage").then(m => ({ default: m.ClientPrivacyModePage })));
+const ClientNotifs = lazy(() => import("./pages/client/onboarding/NotificationPrefsPage").then(m => ({ default: m.ClientNotificationPrefsPage })));
+const ClientComplete = lazy(() => import("./pages/client/onboarding/OnboardingCompletePage").then(m => ({ default: m.ClientOnboardingCompletePage })));
+
+// Client Booking
+const BookStep1 = lazy(() => import("./pages/client/booking/BookStep1Page").then(m => ({ default: m.BookSessionStep1Page })));
+const BookStep2 = lazy(() => import("./pages/client/booking/BookStep2Page").then(m => ({ default: m.BookSessionStep2Page })));
+const BookStep3 = lazy(() => import("./pages/client/booking/BookStep3Page").then(m => ({ default: m.BookSessionStep3Page })));
+
+// Coach Onboarding
+const CoachWelcome = lazy(() => import("./pages/coach/onboarding/CoachWelcomePage").then(m => ({ default: m.CoachWelcomePage })));
+const CoachProfile = lazy(() => import("./pages/coach/onboarding/CoachProfileSetupPage").then(m => ({ default: m.CoachProfileSetupPage })));
+
 // Loading component
 const PageLoader = () => (
   <div className="flex items-center justify-center min-h-screen bg-[#F5EFE6]">
@@ -64,7 +80,14 @@ export const router = createBrowserRouter([
   },
   {
     path: "/onboarding",
-    element: withSuspense(OnboardingPage),
+    children: [
+      { index: true, element: <Navigate to="/onboarding/welcome" replace /> },
+      { path: "welcome", element: withSuspense(ClientWelcome) },
+      { path: "goals", element: withSuspense(ClientGoals) },
+      { path: "privacy", element: withSuspense(ClientPrivacy) },
+      { path: "notifications", element: withSuspense(ClientNotifs) },
+      { path: "complete", element: withSuspense(ClientComplete) },
+    ]
   },
   // PUBLIC WEBSITE
   {
@@ -87,7 +110,16 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: withSuspense(DashboardPage) },
       { path: "sessions", element: withSuspense(SessionsPage) },
-      { path: "book", element: withSuspense(BookSessionPage) },
+      { 
+        path: "book",
+        children: [
+          { index: true, element: withSuspense(BookStep1) },
+          { path: "step-1", element: withSuspense(BookStep1) },
+          { path: "step-2", element: withSuspense(BookStep2) },
+          { path: "step-3", element: withSuspense(BookStep3) },
+          { path: "confirm", element: <Navigate to="/portal/book/step-3" replace /> },
+        ]
+      },
       { path: "progress", element: withSuspense(ProgressPage) },
       { path: "library", element: withSuspense(ResourcesPage) },
       { path: "messages", element: withSuspense(MessagingPage) },
@@ -102,6 +134,14 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { index: true, element: withSuspense(DashboardPage) },
+      { 
+        path: "onboarding",
+        children: [
+          { index: true, element: <Navigate to="/coach/onboarding/welcome" replace /> },
+          { path: "welcome", element: withSuspense(CoachWelcome) },
+          { path: "profile", element: withSuspense(CoachProfile) },
+        ]
+      },
       { path: "schedule", element: withSuspense(CoachSchedulePage) },
       { path: "clients", element: withSuspense(CoachClientsPage) },
       { path: "sessions", element: withSuspense(SessionsPage) },
