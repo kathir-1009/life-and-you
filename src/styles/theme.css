@@ -1,25 +1,25 @@
 :root {
-  /* Color Palette - UI Architecture Document v1.0 */
-  --sage: #3D5247;
-  --sage-mid: #5A7265;
-  --sage-light: #B5C4BA;
-  --sage-pale: #EDF2EE;
+  /* Color Palette - Updated to Sage Green & Cream v1.1 */
+  --sage: #99A88C;
+  --sage-mid: #B7C4B1;
+  --sage-light: #D0D9CD;
+  --sage-pale: #E3EAE0;
   
-  --gold: #C4A35A;
-  --gold-pale: #FBF5E6;
+  --gold: #A68A45;
+  --gold-pale: #FDF8E1;
   
-  --cream: #F5EFE6;
-  --charcoal: #1C2320;
+  --cream: #FCF8E8;
+  --charcoal: #2A3324; /* Adjusted to a deeper dark green for harmony */
   --terra: #B5735A;
 
   /* High-Contrast Semantic Tokens */
-  --text-primary: #1C2320;
-  --text-secondary: #3D5247;
-  --text-description: rgba(28, 35, 32, 0.75);
-  --text-muted: rgba(28, 35, 32, 0.55);
+  --text-primary: #2A3324;
+  --text-secondary: #99A88C;
+  --text-description: rgba(42, 51, 36, 0.75);
+  --text-muted: rgba(42, 51, 36, 0.55);
   --text-white: #FFFFFF;
-  --text-cream: #F5EFE6;
-  --text-gold: #A68A45; /* Darker gold for better contrast on cream */
+  --text-cream: #FCF8E8;
+  --text-gold: #8A7340; /* Refined for the new cream background */
   
   /* Font Families */
   --font-serif: 'Cormorant Garamond', serif; /* Display */
