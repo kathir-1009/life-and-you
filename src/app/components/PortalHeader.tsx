@@ -105,18 +105,18 @@ export function PortalHeader() {
                  {navItems.map((item, idx) => {
                    const active = isActive(item.path);
                    return (
-                     <Link 
-                       key={idx}
-                       to={item.path}
-                       className={`flex flex-col items-center gap-2 px-8 py-4 min-w-[120px] transition-all relative group ${active ? 'text-[#99A88C]' : 'text-[#99A88C]/40 hover:text-[#99A88C]'}`}
-                     >
-                        <item.icon size={26} className={`transition-transform duration-300 ${active ? 'scale-110' : 'group-hover:scale-110'}`} />
-                        <span className={`text-xs font-bold tracking-wide transition-all ${active ? 'opacity-100' : 'opacity-60 group-hover:opacity-100'}`}>{item.label}</span>
-                        {active && (
-                          <div className="absolute bottom-0 left-6 right-6 h-1 bg-[#3D5247] rounded-t-full shadow-[0_-4px_10px_rgba(61,82,71,0.2)]" />
-                        )}
-                        <span className="absolute top-1 right-1 opacity-0 group-hover:opacity-10 text-[8px] font-black uppercase pointer-events-none">{item.desc}</span>
-                     </Link>
+                      <Link 
+                        key={idx}
+                        to={item.path}
+                        className={`flex flex-col items-center gap-2 px-8 py-4 min-w-[120px] transition-all relative group ${active ? 'text-[#2A3324]' : 'text-[#2A3324]/60 hover:text-[#2A3324]'}`}
+                      >
+                         <item.icon size={26} className={`transition-transform duration-300 ${active ? 'scale-110 opacity-100' : 'opacity-50 group-hover:opacity-100 group-hover:scale-110'}`} />
+                         <span className={`text-[11px] font-bold tracking-wide transition-all ${active ? 'opacity-100' : 'opacity-70 group-hover:opacity-100'}`}>{item.label}</span>
+                         {active && (
+                           <div className="absolute bottom-0 left-6 right-6 h-1 bg-[#2A3324] rounded-t-full shadow-[0_-4px_10px_rgba(42,51,36,0.2)]" />
+                         )}
+                         <span className="absolute top-1 right-1 opacity-0 group-hover:opacity-10 text-[8px] font-black uppercase pointer-events-none">{item.desc}</span>
+                      </Link>
                    )
                  })}
               </div>

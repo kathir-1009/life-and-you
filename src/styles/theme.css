@@ -14,12 +14,12 @@
 
   /* High-Contrast Semantic Tokens */
   --text-primary: #2A3324;
-  --text-secondary: #99A88C;
-  --text-description: rgba(42, 51, 36, 0.75);
-  --text-muted: rgba(42, 51, 36, 0.55);
+  --text-secondary: #4A5D4E; /* Darkened secondary green for readability */
+  --text-description: rgba(42, 51, 36, 0.90);
+  --text-muted: rgba(42, 51, 36, 0.75);
   --text-white: #FFFFFF;
   --text-cream: #FCF8E8;
-  --text-gold: #8A7340; /* Refined for the new cream background */
+  --text-gold: #8A7340; 
   
   /* Font Families */
   --font-serif: 'Cormorant Garamond', serif; /* Display */

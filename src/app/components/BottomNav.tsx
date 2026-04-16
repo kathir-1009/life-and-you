@@ -25,7 +25,7 @@ export function BottomNav() {
             to={item.path}
             className="flex flex-col items-center gap-1.5 relative group"
           >
-            <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${active ? 'bg-[#99A88C] text-white shadow-lg shadow-black/10 scale-100 sm:scale-110 -translate-y-1' : 'text-[#99A88C]/40 hover:text-[#99A88C]'}`}>
+            <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${active ? 'bg-[#99A88C] text-white shadow-lg shadow-black/10 scale-100 sm:scale-110 -translate-y-1' : 'text-[#2A3324]/50 hover:text-[#2A3324]'}`}>
               <item.icon size={22} />
               {item.badge && !active && (
                 <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#8A7340] rounded-full border-2 border-white" />
@@ -37,7 +37,7 @@ export function BottomNav() {
               )}
             </div>
             {!active && (
-              <span className="text-[8px] font-bold text-[#99A88C]/50 uppercase tracking-widest group-hover:text-[#99A88C] transition-all">
+              <span className="text-[10px] font-bold text-[#2A3324]/80 uppercase tracking-widest group-hover:text-[#2A3324] transition-all">
                 {item.label}
               </span>
             )}
