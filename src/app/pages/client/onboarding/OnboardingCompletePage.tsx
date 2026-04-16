@@ -1,5 +1,6 @@
 import { Link } from "react-router";
-import { Check2All, Sparkles } from "react-bootstrap-icons";
+import { Check2All } from "react-bootstrap-icons";
+import { Sparkles } from "lucide-react";
 
 export function ClientOnboardingCompletePage() {
   return (

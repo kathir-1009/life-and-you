@@ -1,13 +1,20 @@
 import { Link, useLocation } from "react-router";
-import { Home, MessageCircle, Calendar, User, TrendingUp, LogOut, ShieldCheck, Star, Compass, EyeOff, Eye, Book, Clock } from "lucide-react";
+import { Home, MessageCircle, Calendar, User, TrendingUp, LogOut, ShieldCheck, Star, Compass, EyeOff, Eye, Book, Clock, LucideIcon } from "lucide-react";
 import { useUser } from "../context/UserContext";
+
+interface NavItem {
+  icon: LucideIcon;
+  label: string;
+  path: string;
+  badge?: string;
+}
 
 export function Sidebar() {
   const location = useLocation();
   const { isAnonymous, setIsAnonymous, user, role } = useUser();
   const isActive = (path: string) => location.pathname === path;
 
-  const clientNav = [
+  const clientNav: NavItem[] = [
     { icon: Home, label: "Dashboard", path: "/portal" },
     { icon: Calendar, label: "My Sessions", path: "/portal/sessions" },
     { icon: Compass, label: "Book Session", path: "/portal/book" },
@@ -17,7 +24,7 @@ export function Sidebar() {
     { icon: Star, label: "Journal", path: "/portal/journal" },
   ];
 
-  const coachNav = [
+  const coachNav: NavItem[] = [
     { icon: Home, label: "Dashboard", path: "/coach" },
     { icon: Calendar, label: "Schedule", path: "/coach/schedule" },
     { icon: User, label: "Clients", path: "/coach/clients" },
@@ -27,7 +34,7 @@ export function Sidebar() {
     { icon: TrendingUp, label: "Earnings", path: "/coach/earnings" },
   ];
 
-  const adminNav = [
+  const adminNav: NavItem[] = [
     { icon: Home, label: "Dashboard", path: "/admin" },
     { icon: User, label: "Users", path: "/admin/users" },
     { icon: ShieldCheck, label: "Coaches", path: "/admin/coaches" },
