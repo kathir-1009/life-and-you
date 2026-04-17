@@ -5,32 +5,32 @@ export function ProfilePage() {
   const { role, setRole, user } = useUser();
   return (
     <div className="min-h-screen bg-cream pb-32 portal-context">
-      {/* High-Concept Profile Header */}
-      <div className="relative pt-20 pb-20 bg-[#5E6C54] overflow-hidden">
-        {/* Abstract Cinematic Shapes */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[80px]" />
-        
-        <div className="relative z-10 flex flex-col items-center">
-           <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.4em] mb-8 opacity-60">My Profile</p>
-           
-           <div className="relative group">
-              <div className="w-32 h-32 rounded-full border-4 border-[#FCF8E8] shadow-2xl overflow-hidden relative z-10">
-                 <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
-              </div>
-              <div className="absolute inset-0 bg-[#A68A45]/20 rounded-full blur-2xl group-hover:scale-110 transition-transform" />
-           </div>
-           
-           <div className="mt-8 text-center px-6">
-              <h1 className="text-3xl md:text-5xl font-black text-[#FFFFFF] tracking-tight leading-none mb-4">{user.name}</h1>
-              <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20">
-                 <ShieldCheck size={14} className="text-[#99A88C]" />
-                 <span className="text-[10px] text-white/80 font-black uppercase tracking-widest">Premium Member</span>
-              </div>
-           </div>
-        </div>
-        
-        {/* Curvature Element */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[150%] h-[120px] bg-[#FCF8E8] rounded-t-[100%] z-0" />
+      {/* Cinematic Tall Header - Perfect Style */}
+      <div className="relative">
+         {/* Tall Colored Header */}
+         <div className="bg-[#5E6C54] pt-16 pb-32 px-8 rounded-b-[64px] relative overflow-hidden text-center">
+            {/* Ambient Background Glows */}
+            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
+            
+            <div className="relative z-10 flex flex-col items-center">
+               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.4em] mb-8">My Profile</p>
+               
+               <div className="relative group">
+                  <div className="w-28 h-28 rounded-full border-4 border-[#FCF8E8] shadow-2xl overflow-hidden relative z-10">
+                     <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
+                  </div>
+                  <div className="absolute inset-0 bg-[#A68A45]/20 rounded-full blur-2xl transition-transform group-hover:scale-110" />
+               </div>
+               
+               <div className="mt-6">
+                  <h1 className="text-3xl font-black text-[#FFFFFF] tracking-tight mb-3">{user.name}</h1>
+                  <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-5 py-1.5 rounded-full border border-[#FFFFFF]/20">
+                     <ShieldCheck size={14} className="text-[#99A88C]" />
+                     <span className="text-[9px] text-[#FFFFFF]/90 font-black uppercase tracking-widest">Premium Member</span>
+                  </div>
+               </div>
+            </div>
+         </div>
       </div>
 
       <div className="max-w-xl mx-auto px-4 sm:px-6 relative z-10 space-y-12">
@@ -80,7 +80,7 @@ export function ProfilePage() {
 
 function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-[10px] font-black text-sage-dark/60 uppercase tracking-[0.25em] px-4 pt-2">
+    <h3 className="text-[10px] font-black text-[#5E6C54] opacity-40 uppercase tracking-[0.25em] px-4 pt-2">
       {children}
     </h3>
   );
