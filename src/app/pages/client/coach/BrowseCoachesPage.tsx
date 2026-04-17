@@ -12,22 +12,22 @@ export function ClientBrowseCoachesPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700 px-4 md:px-0 portal-context pb-20">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div className="bg-[#FFFFFF] p-6 rounded-[32px] md:p-0 md:bg-transparent shadow-sm md:shadow-none flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
-           <h1 className="text-3xl lg:text-4xl font-bold text-sage-dark font-serif mb-2 uppercase tracking-tight">Mentorship Sanctuary</h1>
-           <p className="text-sage-dark/60 text-[11px] font-bold uppercase tracking-widest">Find the mentor that resonates with your emotional frequency.</p>
+           <h1 className="text-3xl lg:text-4xl font-bold text-[#5E6C54] font-serif mb-2 uppercase tracking-tight">Mentorship Sanctuary</h1>
+           <p className="text-[#5E6C54]/60 text-[11px] font-bold uppercase tracking-widest">Find the mentor that resonates with your emotional frequency.</p>
         </div>
 
         <div className="flex items-center gap-3">
            <div className="relative flex-1 lg:w-72">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-sage-dark/30" size={18} />
+              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5E6C54]/30" size={18} />
               <input 
                 type="text" 
                 placeholder="Search mentors..." 
-                className="w-full bg-white border border-sage/10 pl-12 pr-4 py-3 rounded-2xl text-[11px] font-bold uppercase tracking-widest outline-none focus:border-sage transition-all"
+                className="w-full bg-[#FFFFFF] border border-[#99A88C]/10 pl-12 pr-4 py-3 rounded-2xl text-[11px] font-bold uppercase tracking-widest outline-none focus:border-[#99A88C] transition-all"
               />
            </div>
-           <button className="p-3 bg-white border border-sage/10 rounded-2xl text-sage-dark hover:bg-cream transition-colors shadow-sm">
+           <button className="p-3 bg-[#FFFFFF] border border-[#99A88C]/10 rounded-2xl text-[#5E6C54] hover:bg-[#FCF8E8] transition-colors shadow-sm">
               <Filter size={18} />
            </button>
         </div>
