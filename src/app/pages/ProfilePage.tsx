@@ -6,40 +6,43 @@ export function ProfilePage() {
   return (
     <div className="min-h-screen bg-cream pb-32 portal-context">
       {/* High-Concept Profile Header */}
-      <div className="relative h-96 bg-[#99A88C] overflow-hidden">
-        {/* Abstract Curved Shape */}
-        <div className="absolute top-0 left-0 w-full h-full bg-[#FFFFFF]/5 backdrop-blur-3xl" />
-        <div className="absolute -top-[50%] -left-[10%] w-[120%] h-[150%] bg-[#5E6C54] rounded-[100%] transition-transform duration-1000" />
+      <div className="relative pt-20 pb-20 bg-[#5E6C54] overflow-hidden">
+        {/* Abstract Cinematic Shapes */}
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[80px]" />
         
-        <div className="relative z-10 pt-20 flex flex-col items-center">
-           <h2 className="text-white text-lg font-bold tracking-widest uppercase mb-8">Profile</h2>
+        <div className="relative z-10 flex flex-col items-center">
+           <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.4em] mb-8 opacity-60">My Profile</p>
            
-           <div className="relative">
-              <div className="w-28 h-28 rounded-full border-4 border-[#FCF8E8] shadow-2xl overflow-hidden bg-[#FCF8E8]">
+           <div className="relative group">
+              <div className="w-32 h-32 rounded-full border-4 border-[#FCF8E8] shadow-2xl overflow-hidden relative z-10">
                  <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
               </div>
+              <div className="absolute inset-0 bg-[#A68A45]/20 rounded-full blur-2xl group-hover:scale-110 transition-transform" />
            </div>
            
-           <div className="mt-6 text-center">
-              <h1 className="text-3xl font-bold text-[#FFFFFF] font-serif mb-2">{user.name}</h1>
-              <div className="inline-flex items-center gap-2 bg-[#FCF8E8] px-6 py-1.5 rounded-full shadow-lg">
+           <div className="mt-8 text-center px-6">
+              <h1 className="text-3xl md:text-5xl font-black text-[#FFFFFF] tracking-tight leading-none mb-4">{user.name}</h1>
+              <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-6 py-2 rounded-full border border-white/20">
                  <ShieldCheck size={14} className="text-[#99A88C]" />
-                 <span className="text-[10px] text-[#5E6C54] font-black uppercase tracking-widest">Verified Account</span>
+                 <span className="text-[10px] text-white/80 font-black uppercase tracking-widest">Premium Member</span>
               </div>
            </div>
         </div>
+        
+        {/* Curvature Element */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[150%] h-[120px] bg-[#FCF8E8] rounded-t-[100%] z-0" />
       </div>
 
-      <div className="max-w-xl mx-auto px-4 sm:px-6 -mt-16 relative z-20 space-y-8">
-        {/* App-Style Summary Cards */}
-        <div className="grid grid-cols-2 gap-6">
-           <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-xl border border-[#99A88C]/10 text-center group hover:scale-105 transition-all">
-              <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Sessions</p>
-              <p className="text-4xl font-bold text-[#5E6C54] font-serif">24</p>
+      <div className="max-w-xl mx-auto px-4 sm:px-6 relative z-10 space-y-12">
+        {/* Floating App-Style Summary Cards */}
+        <div className="grid grid-cols-2 gap-6 -mt-12">
+           <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-[0_20px_50px_rgba(94,108,84,0.1)] border border-[#99A88C]/10 text-center hover:scale-105 transition-all">
+              <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Total Journey</p>
+              <p className="text-4xl font-black text-[#5E6C54] tracking-tight">24<span className="text-xs text-[#99A88C] ml-1">Pts</span></p>
            </div>
-           <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-xl border border-[#99A88C]/10 text-center group hover:scale-105 transition-all">
-              <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Check-ins</p>
-              <p className="text-4xl font-bold text-[#A68A45] font-serif">08</p>
+           <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-[0_20px_50px_rgba(94,108,84,0.1)] border border-[#99A88C]/10 text-center hover:scale-105 transition-all">
+              <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Path Streak</p>
+              <p className="text-4xl font-black text-[#A68A45] tracking-tight">08<span className="text-xs text-[#99A88C] ml-1">Days</span></p>
            </div>
         </div>
 
