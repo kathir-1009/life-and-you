@@ -80,6 +80,10 @@ export const router = createBrowserRouter([
     element: withSuspense(SplashPage),
   },
   {
+    path: "/splash",
+    element: withSuspense(SplashPage),
+  },
+  {
     path: "/auth",
     children: [
       { index: true, element: <Navigate to="/auth/login" replace /> },
