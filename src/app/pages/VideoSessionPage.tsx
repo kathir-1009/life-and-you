@@ -38,7 +38,7 @@ export function VideoSessionPage() {
   };
 
   return (
-    <div className="h-screen bg-[#1A1D14] flex flex-col overflow-hidden relative text-white">
+    <div className="h-screen bg-[#1A1D14] flex flex-col overflow-hidden relative text-[#FFFFFF]">
       {/* Cinematic Backdrop (Simulating Video Background) */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-[url('/img/about/about-01.jpg')] bg-cover bg-center opacity-40 blur-sm scale-105" />
@@ -48,8 +48,8 @@ export function VideoSessionPage() {
       {/* Top Bar */}
       <div className="relative z-20 flex items-center justify-between p-6 md:p-10 pointer-events-none">
         <div className="flex items-center gap-4 pointer-events-auto">
-          <div className="bg-white/10 backdrop-blur-xl border border-white/10 px-4 py-2 rounded-2xl flex items-center gap-3">
-             <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+          <div className="bg-[#FFFFFF]/10 backdrop-blur-xl border border-[#FFFFFF]/10 px-4 py-2 rounded-2xl flex items-center gap-3">
+             <div className="w-2 h-2 bg-[#EF4444] rounded-full animate-pulse" />
              <span className="text-xs font-black uppercase tracking-widest">{formatTime(timeElapsed)}</span>
           </div>
           <div className="bg-[#8B9A71]/20 backdrop-blur-xl border border-[#8B9A71]/30 px-4 py-2 rounded-2xl flex items-center gap-3">
@@ -59,10 +59,10 @@ export function VideoSessionPage() {
         </div>
 
         <div className="flex items-center gap-3 pointer-events-auto">
-           <button className="w-12 h-12 bg-white/5 backdrop-blur-xl rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all border border-white/5">
+           <button className="w-12 h-12 bg-[#FFFFFF]/5 backdrop-blur-xl rounded-2xl flex items-center justify-center hover:bg-[#FFFFFF]/10 transition-all border border-[#FFFFFF]/5">
               <Users size={20} />
            </button>
-           <button className="w-12 h-12 bg-white/5 backdrop-blur-xl rounded-2xl flex items-center justify-center hover:bg-white/10 transition-all border border-white/5">
+           <button className="w-12 h-12 bg-[#FFFFFF]/5 backdrop-blur-xl rounded-2xl flex items-center justify-center hover:bg-[#FFFFFF]/10 transition-all border border-[#FFFFFF]/5">
               <Settings size={20} />
            </button>
         </div>
@@ -78,13 +78,13 @@ export function VideoSessionPage() {
              alt="Participant" 
            />
            <div className="absolute bottom-10 left-10">
-              <div className="bg-black/40 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10">
+              <div className="bg-[#000000]/40 backdrop-blur-md px-6 py-3 rounded-2xl border border-[#FFFFFF]/10">
                  <h3 className="text-lg font-black">{role === 'coach' ? "Sarah Jenkins" : "Coach Sharma"}</h3>
-                 <p className="text-xs font-bold text-white/60 tracking-wide">{role === 'coach' ? "Active Client" : "Lead Guide"}</p>
+                 <p className="text-xs font-bold text-[#FFFFFF]/60 tracking-wide">{role === 'coach' ? "Active Client" : "Lead Guide"}</p>
               </div>
            </div>
            
-           <button className="absolute top-10 right-10 w-12 h-12 bg-black/40 backdrop-blur-md rounded-2xl flex items-center justify-center border border-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
+           <button className="absolute top-10 right-10 w-12 h-12 bg-[#000000]/40 backdrop-blur-md rounded-2xl flex items-center justify-center border border-[#FFFFFF]/10 opacity-0 group-hover:opacity-100 transition-opacity">
               <Maximize2 size={20} />
            </button>
         </div>
@@ -97,7 +97,7 @@ export function VideoSessionPage() {
            {!isVideoOff && (
              <img src="/img/user/anonymous.png" className="w-full h-full object-cover grayscale" alt="Self" />
            )}
-           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+           <div className="absolute inset-0 bg-gradient-to-t from-[#000000]/60 to-[rgba(0,0,0,0)] opacity-0 group-hover:opacity-100 transition-opacity" />
            <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity">
               <span className="text-[10px] font-black uppercase tracking-widest">You (Anonymous)</span>
            </div>
@@ -106,37 +106,37 @@ export function VideoSessionPage() {
 
       {/* Control Strip */}
       <div className="relative z-20 pb-12 px-6 flex justify-center">
-         <div className="bg-[#2D3324]/80 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-5 flex items-center gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+         <div className="bg-[#2D3324]/80 backdrop-blur-2xl border border-[#FFFFFF]/10 rounded-full px-8 py-5 flex items-center gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
             <button 
               onClick={() => setIsMuted(!isMuted)}
-              className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${isMuted ? 'bg-red-500 text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}
+              className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${isMuted ? 'bg-[#EF4444] text-[#FFFFFF]' : 'bg-[#FFFFFF]/10 text-[#FFFFFF] hover:bg-[#FFFFFF]/20'}`}
             >
                {isMuted ? <MicOff size={24} /> : <Mic size={24} />}
             </button>
             <button 
               onClick={() => setIsVideoOff(!isVideoOff)}
-              className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${isVideoOff ? 'bg-red-500 text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}
+              className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${isVideoOff ? 'bg-[#EF4444] text-[#FFFFFF]' : 'bg-[#FFFFFF]/10 text-[#FFFFFF] hover:bg-[#FFFFFF]/20'}`}
             >
                {isVideoOff ? <VideoOff size={24} /> : <VideoIcon size={24} />}
             </button>
             
-            <div className="w-[1px] h-10 bg-white/10" />
+            <div className="w-[1px] h-10 bg-[#FFFFFF]/10" />
             
-            <button className="w-14 h-14 rounded-2xl bg-white/10 text-white flex items-center justify-center hover:bg-white/20 transition-all">
+            <button className="w-14 h-14 rounded-2xl bg-[#FFFFFF]/10 text-[#FFFFFF] flex items-center justify-center hover:bg-[#FFFFFF]/20 transition-all">
                <Hand size={24} />
             </button>
             <button 
               onClick={() => setShowChat(!showChat)}
-              className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${showChat ? 'bg-[#8B9A71] text-[#2D3324]' : 'bg-white/10 text-white hover:bg-white/20'}`}
+              className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-all ${showChat ? 'bg-[#8B9A71] text-[#2D3324]' : 'bg-[#FFFFFF]/10 text-[#FFFFFF] hover:bg-[#FFFFFF]/20'}`}
             >
                <MessageCircle size={24} />
             </button>
             
-            <div className="w-[1px] h-10 bg-white/10" />
+            <div className="w-[1px] h-10 bg-[#FFFFFF]/10" />
 
             <button 
               onClick={() => navigate('/app/dashboard')}
-              className="w-20 h-14 bg-red-600 text-white rounded-[20px] flex items-center justify-center hover:bg-red-700 transition-all shadow-lg shadow-red-600/20"
+              className="w-20 h-14 bg-[#DC2626] text-[#FFFFFF] rounded-[20px] flex items-center justify-center hover:bg-[#B91C1C] transition-all shadow-lg shadow-[#DC2626]/20"
             >
                <PhoneOff size={28} />
             </button>
@@ -145,14 +145,14 @@ export function VideoSessionPage() {
 
       {/* Floating Side Info */}
       <div className="absolute right-10 top-1/2 -translate-y-1/2 z-20 hidden xl:flex flex-col gap-4">
-          <div className="bg-black/20 backdrop-blur-xl p-6 rounded-[32px] border border-white/5 w-64">
+          <div className="bg-[#000000]/20 backdrop-blur-xl p-6 rounded-[32px] border border-[#FFFFFF]/5 w-64">
              <div className="flex items-center gap-3 mb-6">
                 <Clock size={16} className="text-[#8B9A71]" />
                 <span className="text-xs font-black uppercase tracking-widest text-[#CED2BA]">Session Info</span>
              </div>
-             <p className="text-sm font-bold text-white/60 mb-1">Standard Intake</p>
-             <p className="text-lg font-black text-white mb-4">45 Minutes Residual</p>
-             <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+             <p className="text-sm font-bold text-[#FFFFFF]/60 mb-1">Standard Intake</p>
+             <p className="text-lg font-black text-[#FFFFFF] mb-4">45 Minutes Residual</p>
+             <div className="h-1 w-full bg-[#FFFFFF]/5 rounded-full overflow-hidden">
                 <div className="h-full bg-[#8B9A71] w-2/3" />
              </div>
           </div>

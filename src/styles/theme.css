@@ -73,7 +73,7 @@ button, input, select, textarea {
 
 /* Interactive elements feedback */
 a, button {
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -100,7 +100,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
+  background: rgba(0,0,0,0);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {

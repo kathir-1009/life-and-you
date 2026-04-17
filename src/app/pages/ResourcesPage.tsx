@@ -76,17 +76,17 @@ export function ResourcesPage() {
     <div className="bg-[#FAF9F6] min-h-screen pb-32">
       {/* Search Header */}
       <section className="bg-[#2D3324] pt-16 pb-28 px-6 relative overflow-hidden text-center">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(139,154,113,0.1)_0%,_transparent_70%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(139,154,113,0.1)_0%,rgba(0,0,0,0)_70%)]" />
         <div className="max-w-4xl mx-auto relative z-10">
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-8">Knowledge <span className="text-[#8B9A71]">Vault.</span></h1>
-            <p className="text-lg text-white/60 mb-12 font-medium">Curated tools for your cognitive transformation.</p>
+            <h1 className="text-5xl md:text-7xl font-black text-[#FFFFFF] mb-8">Knowledge <span className="text-[#8B9A71]">Vault.</span></h1>
+            <p className="text-lg text-[#FFFFFF]/60 mb-12 font-medium">Curated tools for your cognitive transformation.</p>
             
             <div className="relative group max-w-2xl mx-auto">
                 <Search className="absolute left-6 top-1/2 -track-y-1/2 text-[#8B9A71]" size={20} />
                 <input 
                     type="text" 
                     placeholder="Search techniques, articles, or workshops..." 
-                    className="w-full pl-16 pr-8 py-6 bg-white/5 border border-white/10 rounded-pill text-white outline-none focus:border-[#8B9A71] focus:bg-white/10 transition-all placeholder:text-white/20"
+                    className="w-full pl-16 pr-8 py-6 bg-[#FFFFFF]/5 border border-[#FFFFFF]/10 rounded-pill text-[#FFFFFF] outline-none focus:border-[#8B9A71] focus:bg-[#FFFFFF]/10 transition-all placeholder:text-[#FFFFFF]/20"
                 />
             </div>
         </div>
@@ -94,15 +94,15 @@ export function ResourcesPage() {
 
       {/* Filter Tabs */}
       <div className="max-w-7xl mx-auto px-6 -mt-12 relative z-30">
-        <div className="bg-white p-2 rounded-[32px] shadow-premium flex items-center gap-2 overflow-x-auto scrollbar-hide border border-[rgba(139,154,113,0.1)]">
+        <div className="bg-[#FFFFFF] p-2 rounded-[32px] shadow-premium flex items-center gap-2 overflow-x-auto scrollbar-hide border border-[rgba(139,154,113,0.1)]">
             {resourceCategories.map(cat => (
               <button
                 key={cat.id}
                 onClick={() => setActiveFilter(cat.id)}
                 className={`flex items-center gap-3 px-8 py-4 rounded-[24px] text-[10px] font-black uppercase tracking-[0.2em] transition-all min-w-max ${
                   activeFilter === cat.id 
-                    ? 'bg-[#2D3324] text-white shadow-lg' 
-                    : 'bg-transparent text-[#545454] hover:bg-[#F8F9FA]'
+                    ? 'bg-[#2D3324] text-[#FFFFFF] shadow-lg' 
+                    : 'bg-[#00000000] text-[#545454] hover:bg-[#F8F9FA]'
                 }`}
               >
                 <cat.icon size={14} className={activeFilter === cat.id ? 'text-[#8B9A71]' : 'text-[#8B9A71]/60'} />
@@ -119,15 +119,15 @@ export function ResourcesPage() {
             {resources
                 .filter(r => activeFilter === 'all' || r.type.toLowerCase() === activeFilter)
                 .map((resource, i) => (
-                  <div key={i} className="group bg-white rounded-[48px] overflow-hidden border border-[rgba(139,154,113,0.08)] shadow-sm hover:shadow-premium transition-all hover:scale-[1.02] flex flex-col h-full">
+                  <div key={i} className="group bg-[#FFFFFF] rounded-[48px] overflow-hidden border border-[rgba(139,154,113,0.08)] shadow-sm hover:shadow-premium transition-all hover:scale-[1.02] flex flex-col h-full">
                     <div className={`h-56 relative flex items-center justify-center ${resource.color}`}>
-                       <span className="absolute top-8 left-8 text-[9px] font-black text-white/50 tracking-widest uppercase">{resource.type}</span>
+                       <span className="absolute top-8 left-8 text-[9px] font-black text-[#FFFFFF]/50 tracking-widest uppercase">{resource.type}</span>
                        {resource.locked && (
-                         <div className="absolute top-8 right-8 w-10 h-10 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-white">
+                         <div className="absolute top-8 right-8 w-10 h-10 bg-[#FFFFFF]/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-[#FFFFFF]">
                             <Lock size={16} />
                          </div>
                        )}
-                       <resource.icon size={64} className="text-white/80 group-hover:scale-125 transition-transform duration-500" />
+                       <resource.icon size={64} className="text-[#FFFFFF]/80 group-hover:scale-125 transition-transform duration-500" />
                     </div>
                     
                     <div className="p-10 flex-1 flex flex-col">
@@ -138,7 +138,7 @@ export function ResourcesPage() {
                       
                       <div className="mt-auto flex items-center justify-between pt-8 border-t border-[rgba(139,154,113,0.05)]">
                          <span className="text-[10px] text-[#545454] opacity-40 font-bold uppercase tracking-widest italic">{resource.readTime}</span>
-                         <button className="w-12 h-12 rounded-2xl bg-[#F8F9FA] text-[#2D3324] flex items-center justify-center hover:bg-[#2D3324] hover:text-white transition-all shadow-sm">
+                         <button className="w-12 h-12 rounded-2xl bg-[#F8F9FA] text-[#2D3324] flex items-center justify-center hover:bg-[#2D3324] hover:text-[#FFFFFF] transition-all shadow-sm">
                             <ArrowRight size={20} />
                          </button>
                       </div>
@@ -158,10 +158,10 @@ export function ResourcesPage() {
                  <Sparkles size={40} />
               </div>
               <div className="flex-1 text-center md:text-left">
-                  <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Can't find what you need?</h2>
-                  <p className="text-white/60 font-medium text-lg max-w-xl">Our coaches curate personalized reading lists and meditation tracks for every client. Book a discovery call to get your custom blueprint.</p>
+                  <h2 className="text-3xl md:text-5xl font-black text-[#FFFFFF] mb-6">Can't find what you need?</h2>
+                  <p className="text-[#FFFFFF]/60 font-medium text-lg max-w-xl">Our coaches curate personalized reading lists and meditation tracks for every client. Book a discovery call to get your custom blueprint.</p>
               </div>
-              <button className="px-12 py-6 bg-[#8B9A71] text-[#2D3324] rounded-pill text-xs font-black uppercase tracking-widest hover:bg-white transition-all shadow-xl shadow-[#8B9A71]/20">
+              <button className="px-12 py-6 bg-[#8B9A71] text-[#2D3324] rounded-pill text-xs font-black uppercase tracking-widest hover:bg-[#FFFFFF] transition-all shadow-xl shadow-[#8B9A71]/20">
                  Request Blueprint
               </button>
            </div>

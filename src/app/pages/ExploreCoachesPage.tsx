@@ -78,9 +78,9 @@ export function ExploreCoachesPage() {
     <div className="bg-[#FAF9F6] min-h-screen pb-32">
       {/* Header & Search */}
       <section className="bg-[#2D3324] pt-12 pb-20 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(139,154,113,0.1)_0%,_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,154,113,0.1)_0%,rgba(0,0,0,0)_60%)]" />
         <div className="max-w-7xl mx-auto relative z-10">
-           <h1 className="text-4xl md:text-6xl font-black text-white mb-8">Discover your <br/><span className="text-[#8B9A71]">Ideal Guide.</span></h1>
+           <h1 className="text-4xl md:text-6xl font-black text-[#FFFFFF] mb-8">Discover your <br/><span className="text-[#8B9A71]">Ideal Guide.</span></h1>
            
            <div className="flex flex-col md:flex-row gap-4 max-w-4xl">
               <div className="relative flex-1 group">
@@ -88,10 +88,10 @@ export function ExploreCoachesPage() {
                  <input 
                     type="text" 
                     placeholder="Search by specialty, name, or goal..." 
-                    className="w-full pl-16 pr-8 py-5 bg-white/10 border border-white/20 rounded-[24px] text-white outline-none focus:border-[#8B9A71] focus:bg-white/15 transition-all font-medium placeholder:text-white/40"
+                    className="w-full pl-16 pr-8 py-5 bg-[#FFFFFF]/10 border border-[#FFFFFF]/20 rounded-[24px] text-[#FFFFFF] outline-none focus:border-[#8B9A71] focus:bg-[#FFFFFF]/15 transition-all font-medium placeholder:text-[#FFFFFF]/40"
                  />
               </div>
-              <button className="px-8 py-5 bg-[#8B9A71] text-[#2D3324] rounded-[24px] font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-white transition-all shadow-xl">
+              <button className="px-8 py-5 bg-[#8B9A71] text-[#2D3324] rounded-[24px] font-black uppercase tracking-widest flex items-center justify-center gap-3 hover:bg-[#FFFFFF] transition-all shadow-xl">
                  <Filter size={20} />
                  Apply Filters
               </button>
@@ -101,14 +101,14 @@ export function ExploreCoachesPage() {
 
       {/* Categories Bar */}
       <div className="max-w-7xl mx-auto px-6 -mt-10 relative z-30">
-        <div className="bg-white p-3 rounded-[32px] shadow-premium flex items-center gap-3 overflow-x-auto scrollbar-hide border border-[rgba(139,154,113,0.1)]">
+        <div className="bg-[#FFFFFF] p-3 rounded-[32px] shadow-premium flex items-center gap-3 overflow-x-auto scrollbar-hide border border-[rgba(139,154,113,0.1)]">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
                 className={`px-8 py-4 rounded-[22px] text-[10px] font-black uppercase tracking-widest transition-all min-w-max ${
                   activeTab === cat 
-                    ? 'bg-[#2D3324] text-white shadow-lg' 
+                    ? 'bg-[#2D3324] text-[#FFFFFF] shadow-lg' 
                     : 'bg-transparent text-[#545454] hover:bg-[#F8F9FA]'
                 }`}
               >
@@ -123,7 +123,7 @@ export function ExploreCoachesPage() {
         <div className="max-w-7xl mx-auto">
            <div className="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-10">
               {coaches.map(coach => (
-                <div key={coach.id} className="group bg-white rounded-[48px] overflow-hidden border border-[rgba(139,154,113,0.08)] shadow-sm hover:shadow-premium transition-all hover:scale-[1.01] flex flex-col">
+                <div key={coach.id} className="group bg-[#FFFFFF] rounded-[48px] overflow-hidden border border-[rgba(139,154,113,0.08)] shadow-sm hover:shadow-premium transition-all hover:scale-[1.01] flex flex-col">
                    {/* Top Visual */}
                    <Link to={`/app/coach/${coach.id}`} className="h-64 relative bg-[#2D3324] overflow-hidden block">
                       <img src={coach.img} alt={coach.name} className="w-full h-full object-cover opacity-60 group-hover:opacity-90 transition-opacity duration-700 group-hover:scale-110 transition-transform" />
@@ -134,7 +134,7 @@ export function ExploreCoachesPage() {
 
                       <div className="absolute bottom-8 left-8 flex gap-2">
                         {coach.tags.map(t => (
-                          <span key={t} className="bg-white/10 backdrop-blur-md text-white text-[9px] font-black px-3 py-1.5 rounded-xl border border-white/20 uppercase tracking-widest">
+                          <span key={t} className="bg-[#FFFFFF]/10 backdrop-blur-md text-[#FFFFFF] text-[9px] font-black px-3 py-1.5 rounded-xl border border-[#FFFFFF]/20 uppercase tracking-widest">
                              {t}
                           </span>
                         ))}
@@ -159,11 +159,11 @@ export function ExploreCoachesPage() {
                       <div className="pt-8 border-t border-[rgba(139,154,113,0.05)] mt-auto flex items-center gap-4">
                          <button 
                            onClick={() => navigate(`/app/book?coach=${coach.id}`)}
-                           className="flex-1 bg-[#2D3324] text-white py-5 rounded-[24px] text-[11px] font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl active:scale-[0.98]"
+                           className="flex-1 bg-[#2D3324] text-[#FFFFFF] py-5 rounded-[24px] text-[11px] font-black uppercase tracking-widest hover:bg-[#000000] transition-all shadow-xl active:scale-[0.98]"
                          >
                             Book Session
                          </button>
-                         <button className="w-16 h-16 bg-[#F8F9FA] rounded-[24px] flex items-center justify-center text-[#8B9A71] hover:bg-[#8B9A71] hover:text-white transition-all shadow-sm">
+                         <button className="w-16 h-16 bg-[#F8F9FA] rounded-[24px] flex items-center justify-center text-[#8B9A71] hover:bg-[#8B9A71] hover:text-[#FFFFFF] transition-all shadow-sm">
                             <MessageCircle size={22} />
                          </button>
                       </div>
@@ -182,17 +182,17 @@ export function ExploreCoachesPage() {
             <div className="max-w-xl text-center md:text-left relative z-10">
                <h2 className="text-3xl md:text-5xl font-black text-[#2D3324] mb-8 leading-[1.1]">Unsure who fits <br/>your <span className="text-[#8B9A71]">journey?</span></h2>
                <p className="text-[#545454] font-medium text-lg opacity-80 mb-10">Our AI-Matching algorithm pairs you with the perfect coach based on your core linguistic and sensory targets.</p>
-               <button className="px-12 py-5 bg-[#2D3324] text-white rounded-pill text-[11px] font-black uppercase tracking-widest shadow-2xl hover:scale-105 transition-all">Start Matching Quiz</button>
+               <button className="px-12 py-5 bg-[#2D3324] text-[#FFFFFF] rounded-pill text-[11px] font-black uppercase tracking-widest shadow-2xl hover:scale-105 transition-all">Start Matching Quiz</button>
             </div>
 
             <div className="hidden lg:flex items-center gap-6">
-                <div className="w-48 h-64 bg-white rounded-[32px] p-8 shadow-premium border border-[rgba(139,154,113,0.1)] flex flex-col items-center justify-center text-center">
+                <div className="w-48 h-64 bg-[#FFFFFF] rounded-[32px] p-8 shadow-premium border border-[rgba(139,154,113,0.1)] flex flex-col items-center justify-center text-center">
                    <Target className="text-[#8B9A71] mb-6" size={48} />
                    <div className="text-[10px] font-black text-[#545454] uppercase tracking-widest">Precision <br/>Targeting</div>
                 </div>
                 <div className="w-48 h-64 bg-[#8B9A71] rounded-[32px] p-8 shadow-premium border border-[rgba(139,154,113,0.1)] flex flex-col items-center justify-center text-center -translate-y-8">
                    <Shield className="text-white mb-6" size={48} />
-                   <div className="text-[10px] font-black text-white uppercase tracking-widest">Global <br/>Anonymity</div>
+                   <div className="text-[10px] font-black text-[#FFFFFF] uppercase tracking-widest">Global <br/>Anonymity</div>
                 </div>
             </div>
          </div>
