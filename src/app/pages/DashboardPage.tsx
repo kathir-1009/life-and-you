@@ -16,42 +16,42 @@ export function DashboardPage() {
 
   return (
     <div className="animate-in fade-in duration-700 portal-context pb-20">
-      {/* Cinematic Overlapping Header */}
-      <div className="relative">
-         {/* Tall Colored Header */}
-         <div className="bg-[#5E6C54] pt-16 pb-32 px-8 rounded-b-[64px] relative overflow-hidden">
-            {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FFFFFF]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
-            <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#99A88C]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-[80px]" />
+      {/* Modern Curved Header - App Aesthetic */}
+      <div className="relative pt-12 pb-24 bg-[#5E6C54] overflow-hidden">
+         {/* Ambient Background Glows */}
+         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FFFFFF]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
+         <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#99A88C]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-[80px]" />
+         
+         <div className="flex items-center justify-between relative z-10 max-w-4xl mx-auto px-8">
+            <div>
+               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] mb-2 opacity-60">Welcome back,</p>
+               <h1 className="text-3xl md:text-5xl font-black text-[#FFFFFF] tracking-tight leading-none mb-1">
+                  {isAnonymous ? "Wellness Seeker" : user.name.split(' ')[0]}
+               </h1>
+            </div>
             
-            <div className="flex items-center justify-between relative z-10 max-w-4xl mx-auto">
-               <div>
-                  <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] mb-2 opacity-60">Welcome back,</p>
-                  <h1 className="text-3xl md:text-5xl font-black text-[#FFFFFF] tracking-tight leading-none mb-1">
-                     {isAnonymous ? "Wellness Seeker" : user.name.split(' ')[0]}
-                  </h1>
-               </div>
-               
-               <div className="relative flex items-center gap-4">
-                  <button className="w-12 h-12 bg-[#FFFFFF]/10 rounded-2xl flex items-center justify-center text-white border border-white/10 hover:bg-white/20 transition-all">
-                     <Bell size={20} />
-                  </button>
-                  <div className="w-14 h-14 rounded-[24px] border-4 border-white/20 overflow-hidden shadow-2xl skew-x-1 hover:skew-x-0 transition-transform">
-                     <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
-                  </div>
+            <div className="relative flex items-center gap-4">
+               <button className="w-12 h-12 bg-[#FFFFFF]/10 rounded-2xl flex items-center justify-center text-white border border-white/10 hover:bg-white/20 transition-all">
+                  <Bell size={20} />
+               </button>
+               <div className="w-14 h-14 rounded-[24px] border-4 border-white/20 overflow-hidden shadow-2xl transition-transform hover:scale-105">
+                  <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
                </div>
             </div>
          </div>
 
-         {/* Overlapping Search/Action Bar */}
-         <div className="max-w-4xl mx-auto px-6 -mt-10 relative z-20">
-            <div className="bg-[#FFFFFF] p-3 rounded-[32px] shadow-[0_20px_50px_rgba(94,108,84,0.15)] border border-[#99A88C]/5 flex items-center gap-4">
-               <div className="flex-1 relative group">
-                  <Download className="absolute left-6 top-1/2 -translate-y-1/2 text-[#99A88C]" size={18} />
-                  <div className="w-full pl-16 pr-6 py-4 bg-[#FCF8E8] rounded-2xl text-[#5E6C54] text-[11px] font-black uppercase tracking-widest flex items-center justify-between cursor-pointer hover:bg-white transition-all shadow-inner border border-transparent hover:border-[#99A88C]/20">
-                     <span>Explore Your Wellness Journey</span>
-                     <ArrowRight size={16} />
-                  </div>
+         {/* Curvature Element */}
+         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[150%] h-[100px] bg-[#FCF8E8] rounded-t-[100%] z-0" />
+      </div>
+
+      {/* Overlapping Search/Action Bar */}
+      <div className="max-w-4xl mx-auto px-6 -mt-12 relative z-20">
+         <div className="bg-[#FFFFFF] p-3 rounded-[32px] shadow-[0_20px_50px_rgba(94,108,84,0.15)] border border-[#99A88C]/5 flex items-center gap-4">
+            <div className="flex-1 relative group">
+               <Download className="absolute left-6 top-1/2 -translate-y-1/2 text-[#99A88C]" size={18} />
+               <div className="w-full pl-16 pr-6 py-4 bg-[#FCF8E8] rounded-2xl text-[#5E6C54] text-[11px] font-black uppercase tracking-widest flex items-center justify-between cursor-pointer hover:bg-white transition-all shadow-inner border border-transparent hover:border-[#99A88C]/20">
+                  <span>Explore Your Wellness Journey</span>
+                  <ArrowRight size={16} />
                </div>
             </div>
          </div>
