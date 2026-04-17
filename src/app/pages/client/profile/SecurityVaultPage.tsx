@@ -21,8 +21,8 @@ export function SecurityVaultPage() {
                <div className="w-16 h-16 bg-[#FFFFFF]/10 rounded-3xl flex items-center justify-center mb-6 backdrop-blur-md border border-[#FFFFFF]/10">
                   <Lock size={28} className="text-[#99A88C]" />
                </div>
-               <h1 className="text-3xl font-black tracking-tight mb-2">Security Vault</h1>
-               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] opacity-80">Protect your journey & privacy</p>
+               <h1 className="text-4xl font-black tracking-tight mb-2 !text-[#FFFFFF]" style={{ color: '#FFFFFF' }}>Security Vault</h1>
+               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] !text-[#99A88C]">Protect your journey & privacy</p>
             </div>
          </div>
       </div>

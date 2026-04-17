@@ -28,8 +28,8 @@ export function PersonalInfoPage() {
                      <Camera size={14} />
                   </button>
                </div>
-               <h1 className="text-3xl font-black tracking-tight mb-2">Personal Identity</h1>
-               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] opacity-80">Update your public presence</p>
+               <h1 className="text-4xl font-black tracking-tight mb-2 !text-[#FFFFFF]" style={{ color: '#FFFFFF' }}>Personal Identity</h1>
+               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] !text-[#99A88C]">Update your public presence</p>
             </div>
          </div>
       </div>
@@ -43,8 +43,8 @@ export function PersonalInfoPage() {
             <InfoField label="Primary Location" value="Mumbai, India" icon={MapPin} />
          </div>
 
-         <button className="w-full bg-[#5E6C54] text-white py-6 rounded-[40px] shadow-2xl shadow-[#5E6C54]/20 font-black uppercase tracking-[0.2em] active:scale-[0.98] transition-all">
-            Save Changes
+         <button className="w-full bg-[#5E6C54] py-6 rounded-[40px] shadow-2xl shadow-[#5E6C54]/20 font-black uppercase tracking-[0.2em] active:scale-[0.98] transition-all">
+            <span className="!text-[#FFFFFF]" style={{ color: '#FFFFFF' }}>Save Changes</span>
          </button>
       </div>
     </div>

@@ -27,8 +27,8 @@ export function BillingHistoryPage() {
                <div className="w-16 h-16 bg-[#FFFFFF]/10 rounded-3xl flex items-center justify-center mx-auto mb-6 backdrop-blur-md border border-[#FFFFFF]/10">
                   <CreditCard size={28} className="text-[#99A88C]" />
                </div>
-               <h1 className="text-3xl font-black tracking-tight mb-2">Billing History</h1>
-               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] opacity-80">Manage your subscription & invoices</p>
+               <h1 className="text-4xl font-black tracking-tight mb-2 !text-[#FFFFFF]" style={{ color: '#FFFFFF' }}>Billing History</h1>
+               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] !text-[#99A88C]">Manage your subscription & invoices</p>
             </div>
          </div>
       </div>
