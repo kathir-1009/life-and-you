@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { Settings, Bell, Lock, CreditCard, HelpCircle, LogOut, Edit2, ChevronRight, User, ShieldCheck } from "lucide-react";
 import { useUser } from "../context/UserContext";
 
@@ -50,13 +51,13 @@ export function ProfilePage() {
         <div className="space-y-6">
           <SectionTitle>Profile</SectionTitle>
           <div className="bg-[#FFFFFF] rounded-[44px] overflow-hidden border border-[#99A88C]/10 shadow-2xl">
-            <MenuItem icon={User} label="Personal Information" color="bg-[#99A88C]/10" />
-            <MenuItem icon={Settings} label="My Bookings & Sessions" color="bg-[#99A88C]/10" />
-            <MenuItem icon={Edit2} label="My Wellness Journals" color="bg-[#99A88C]/10" />
-            <MenuItem icon={Bell} label="Notices & Bulletins" color="bg-[#99A88C]/10" />
-            <MenuItem icon={Lock} label="Security Vault" color="bg-[#99A88C]/10" />
-            <MenuItem icon={CreditCard} label="Billing History" color="bg-[#99A88C]/10" />
-            <MenuItem icon={HelpCircle} label="Evolution Support" color="bg-[#99A88C]/10" />
+            <MenuItem icon={User} label="Personal Information" color="bg-[#99A88C]/10" to="/portal/profile/personal" />
+            <MenuItem icon={Settings} label="My Bookings & Sessions" color="bg-[#99A88C]/10" to="/portal/sessions" />
+            <MenuItem icon={Edit2} label="My Wellness Journals" color="bg-[#99A88C]/10" to="/portal/journal" />
+            <MenuItem icon={Bell} label="Notices & Bulletins" color="bg-[#99A88C]/10" to="/portal/notifications" />
+            <MenuItem icon={Lock} label="Security Vault" color="bg-[#99A88C]/10" to="/portal/profile/security" />
+            <MenuItem icon={CreditCard} label="Billing History" color="bg-[#99A88C]/10" to="/portal/profile/billing" />
+            <MenuItem icon={HelpCircle} label="Evolution Support" color="bg-[#99A88C]/10" to="/portal/profile/support" />
           </div>
 
           <button className="w-full bg-[#FFFFFF] p-6 rounded-[44px] border border-red-50 flex items-center justify-center gap-4 group hover:bg-red-50 transition-all shadow-xl">
@@ -88,9 +89,9 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
   );
 }
 
-function MenuItem({ icon: Icon, label, color, badge }: { icon: any, label: string, color: string, badge?: string }) {
+function MenuItem({ icon: Icon, label, color, badge, to }: { icon: any, label: string, color: string, badge?: string, to: string }) {
   return (
-    <button className="w-full flex items-center gap-6 p-6 hover:bg-[#FCF8E8] transition-all group active:opacity-70 border-b border-[#99A88C]/5 last:border-none">
+    <Link to={to} className="w-full flex items-center gap-6 p-6 hover:bg-[#FCF8E8] transition-all group active:opacity-70 border-b border-[#99A88C]/5 last:border-none">
       <div className={`w-12 h-12 ${color} rounded-2xl flex items-center justify-center text-[#99A88C] shadow-sm group-hover:scale-110 transition-all`}>
         <Icon size={22} />
       </div>
@@ -101,6 +102,6 @@ function MenuItem({ icon: Icon, label, color, badge }: { icon: any, label: strin
         <span className="bg-[#A68A45] text-[#FFFFFF] text-[9px] font-bold px-3 py-1 rounded-full">{badge}</span>
       )}
       <ChevronRight size={18} className="text-[#99A88C]/30 group-hover:text-[#99A88C] group-hover:translate-x-2 transition-all" />
-    </button>
+    </Link>
   );
 }

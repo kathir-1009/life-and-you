@@ -51,6 +51,12 @@ const BookStep1 = lazy(() => import("./pages/client/booking/BookStep1Page").then
 const BookStep2 = lazy(() => import("./pages/client/booking/BookStep2Page").then(m => ({ default: m.BookSessionStep2Page })));
 const BookStep3 = lazy(() => import("./pages/client/booking/BookStep3Page").then(m => ({ default: m.BookSessionStep3Page })));
 
+// Client Profile Subpages
+const PersonalInfo = lazy(() => import("./pages/client/profile/PersonalInfoPage").then(m => ({ default: m.PersonalInfoPage })));
+const BillingHistory = lazy(() => import("./pages/client/profile/BillingHistoryPage").then(m => ({ default: m.BillingHistoryPage })));
+const SecurityVault = lazy(() => import("./pages/client/profile/SecurityVaultPage").then(m => ({ default: m.SecurityVaultPage })));
+const SupportPage = lazy(() => import("./pages/HelpSupportPage").then(m => ({ default: m.HelpSupportPage })));
+
 // Coach Onboarding
 const CoachWelcome = lazy(() => import("./pages/coach/onboarding/CoachWelcomePage").then(m => ({ default: m.CoachWelcomePage })));
 const CoachProfile = lazy(() => import("./pages/coach/onboarding/CoachProfileSetupPage").then(m => ({ default: m.CoachProfileSetupPage })));
@@ -155,7 +161,16 @@ export const router = createBrowserRouter([
         ]
       },
       { path: "messages", element: withSuspense(MessagingPage) },
-      { path: "profile", element: withSuspense(ProfilePage) },
+      { 
+        path: "profile", 
+        children: [
+          { index: true, element: withSuspense(ProfilePage) },
+          { path: "personal", element: withSuspense(PersonalInfo) },
+          { path: "billing", element: withSuspense(BillingHistory) },
+          { path: "security", element: withSuspense(SecurityVault) },
+          { path: "support", element: withSuspense(SupportPage) },
+        ] 
+      },
       { path: "notifications", element: withSuspense(NotificationsPage) },
       { path: "journal", element: withSuspense(JournalPage) },
     ]
