@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Download, Bell } from "react-bootstrap-icons";
+import { Download, Bell, ArrowRight } from "react-bootstrap-icons";
 import { useUser } from "../context/UserContext";
 import { AnonBadge } from "../components/shared/AnonBadge";
 import { HeroStats } from "../components/dashboard/HeroStats";
@@ -16,27 +16,44 @@ export function DashboardPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-700 px-4 md:px-0">
-      {/* Header Area */}
-      <div className="bg-[#FFFFFF] p-8 rounded-[40px] border border-[#99A88C]/10 md:border-none md:p-0 md:bg-transparent shadow-xl md:shadow-none flex flex-col md:flex-row md:items-end justify-between gap-6 mb-4">
-        <div>
-          <div className="flex items-center gap-3 mb-2">
-            <h1 className="text-3xl md:text-4xl font-bold text-[#5E6C54] font-serif">
-              Good afternoon, Sarah
-            </h1>
-            {isAnonymous && <AnonBadge />}
-          </div>
-          <p className="text-[#5E6C54]/80 font-bold uppercase tracking-widest text-[10px]">Week 6 · 8 Sessions Completed</p>
+      {/* Premium Header - App Aesthetic */}
+      <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-xl border border-[#99A88C]/10 md:bg-transparent md:border-none md:shadow-none md:p-0">
+        <div className="flex items-center justify-between mb-8">
+           <div className="flex items-center gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-[#FCF8E8] border border-[#99A88C]/10 flex items-center justify-center overflow-hidden shadow-sm">
+                 <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                 <p className="text-[10px] font-black text-[#99A88C] uppercase tracking-widest mb-0.5">Hello,</p>
+                 <h1 className="text-2xl font-black text-[#5E6C54] tracking-tight">
+                    {isAnonymous ? "Wellness Seeker" : user.name.split(' ')[0]}
+                 </h1>
+              </div>
+           </div>
+           
+           <div className="flex gap-3">
+              <button className="w-12 h-12 bg-[#FCF8E8] rounded-2xl flex items-center justify-center text-[#5E6C54] relative hover:scale-105 transition-all">
+                 <Bell size={20} />
+                 <span className="absolute top-3.5 right-3.5 w-2 h-2 bg-[#A68A45] rounded-full border-2 border-[#FFFFFF]" />
+              </button>
+           </div>
         </div>
-        
-        <div className="flex items-center gap-3">
-           <button className="p-3 bg-[#FFFFFF] rounded-2xl border border-[#99A88C]/10 text-[#5E6C54] relative">
-              <Bell size={20} />
-              <span className="absolute top-2.5 right-2.5 w-2.5 h-2.5 bg-[#A68A45] rounded-full border-2 border-[#FFFFFF]" />
-           </button>
-           <button className="flex items-center gap-2 px-6 py-3 bg-[#99A88C] text-[#FFFFFF] rounded-2xl text-xs font-bold uppercase tracking-widest shadow-lg shadow-[#99A88C]/10 hover:bg-[#99A88C] transition-all">
-              <Download size={16} />
-              Export Summary
-           </button>
+
+        <div className="mb-10">
+           <h2 className="text-xl md:text-2xl font-bold text-[#5E6C54] font-serif leading-tight">
+              Every day is a new opportunity to <span className="text-[#99A88C]">grow and give your best</span>
+           </h2>
+        </div>
+
+        {/* Integrated Search Console */}
+        <div className="relative group mb-4">
+           <div className="absolute left-6 top-1/2 -translate-y-1/2 text-[#99A88C]">
+              <Download size={18} />
+           </div>
+           <div className="w-full pl-16 pr-8 py-5 bg-[#FCF8E8] rounded-full text-[#5E6C54] text-xs font-bold uppercase tracking-widest flex items-center justify-between group-hover:bg-[#FFFFFF] transition-all border border-transparent group-hover:border-[#99A88C]/20 shadow-inner">
+              <span>Generate Performance Report</span>
+              <ArrowRight size={16} />
+           </div>
         </div>
       </div>
 
