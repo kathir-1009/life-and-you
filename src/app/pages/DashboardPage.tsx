@@ -26,8 +26,8 @@ export function DashboardPage() {
             
             <div className="flex items-center justify-between relative z-10 max-w-4xl mx-auto">
                <div>
-                  <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] mb-3">Welcome back,</p>
-                  <h1 className="text-4xl md:text-6xl font-black text-[#FFFFFF] tracking-tight leading-none">
+                  <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.4em] mb-4">Welcome back,</p>
+                  <h1 className="text-5xl md:text-7xl font-black text-white !text-white tracking-tighter leading-none" style={{ color: '#FFFFFF' }}>
                      {isAnonymous ? "Wellness Seeker" : user.name.split(' ')[0]}
                   </h1>
                </div>
