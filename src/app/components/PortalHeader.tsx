@@ -50,10 +50,10 @@ export function PortalHeader() {
   return (
     <header className="hidden lg:block relative font-sans-app">
       {/* Cinematic Top Background - Fixed Layering */}
-      <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-r from-[#99A88C] via-[#99A88C] to-[#B7C4B1] overflow-hidden z-0">
+      <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-r from-sage via-sage to-[#B7C4B1] overflow-hidden z-0">
          <div className="absolute inset-0 bg-[url('/img/bg/pattern-bg.png')] opacity-10 mix-blend-overlay" />
-         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#99A88C]/10 rounded-full blur-[120px]" />
-         <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-[#8A7340]/10 rounded-full blur-[100px]" />
+         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sage/10 rounded-full blur-[120px]" />
+         <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-gold-dark/10 rounded-full blur-[100px]" />
       </div>
 
       <div className="max-w-[1440px] mx-auto px-10 relative z-10">
@@ -65,14 +65,14 @@ export function PortalHeader() {
                </div>
                <div>
                   <h1 className="text-2xl font-bold text-white tracking-tight leading-none font-serif">Life & You</h1>
-                  <p className="text-[10px] font-black text-[#8A7340] uppercase tracking-[0.3em] mt-1.5">Sanctuary Portal</p>
+                  <p className="text-[10px] font-black text-gold-dark uppercase tracking-[0.3em] mt-1.5">Sanctuary Portal</p>
                </div>
             </Link>
 
             <div className="flex items-center gap-10">
                <div className="flex items-center gap-6">
-                  <button className="text-white/40 hover:text-[#8A7340] transition-all"><Bell size={20} /></button>
-                  <button className="text-white/40 hover:text-[#8A7340] transition-all"><ChatRightDots size={20} /></button>
+                  <button className="text-white/40 hover:text-gold-dark transition-all"><Bell size={20} /></button>
+                  <button className="text-white/40 hover:text-gold-dark transition-all"><ChatRightDots size={20} /></button>
                </div>
                
                <div className="h-10 w-[1px] bg-white/10" />
@@ -80,13 +80,13 @@ export function PortalHeader() {
                <div className="flex items-center gap-5">
                   <div className="text-right">
                      <p className="text-sm font-black text-white leading-none tracking-tight">{user.name}</p>
-                     <p className="text-[10px] text-[#8A7340] font-black uppercase tracking-widest mt-1.5 opacity-90">{role} Access</p>
+                     <p className="text-[10px] text-gold-dark font-black uppercase tracking-widest mt-1.5 opacity-90">{role} Access</p>
                   </div>
                   <div className="relative group/avatar">
                     <div className="w-12 h-12 rounded-2xl overflow-hidden border-2 border-white/20 shadow-2xl group-hover/avatar:border-[#A68A45] transition-all">
                        <img src={user.avatar} className="w-full h-full object-cover" alt="User" />
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-[#99A88C] rounded-full" />
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-sage rounded-full" />
                   </div>
                   <button 
                     onClick={() => { sessionStorage.clear(); window.location.href = "/splash"; }}
@@ -100,7 +100,7 @@ export function PortalHeader() {
 
         {/* Floating Navigation Card (MakeMyTrip Style) */}
         <div className="mt-4 translate-y-6 relative z-20">
-           <div className="bg-white rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-[#99A88C]/5 p-2 flex items-center justify-between">
+           <div className="bg-white rounded-[24px] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-sage/5 p-2 flex items-center justify-between">
               <div className="flex items-center">
                  {navItems.map((item, idx) => {
                    const active = isActive(item.path);
@@ -124,7 +124,7 @@ export function PortalHeader() {
               <div className="pr-8 pl-4">
                  <Link 
                    to="/portal/book" 
-                   className="bg-gradient-to-r from-[#99A88C] to-[#2D3324] text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl hover:scale-[1.03] transition-all block focus:ring-4 ring-[#99A88C]/20"
+                   className="bg-gradient-to-r from-sage to-[#2D3324] text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl hover:scale-[1.03] transition-all block focus:ring-4 ring-sage/20"
                  >
                    Instant Booking
                  </Link>

@@ -29,24 +29,24 @@ export function ConfirmationPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] flex flex-col items-center justify-center p-6 relative overflow-hidden portal-context">
+    <div className="min-h-screen bg-cream flex flex-col items-center justify-center p-6 relative overflow-hidden portal-context">
       {/* Background patterns */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#99A88C]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#C4A35A]/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-[100px]" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-sage/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gold/5 rounded-full translate-y-1/2 -translate-x-1/2 blur-[100px]" />
 
       <div className="max-w-md w-full relative z-10 text-center">
         {/* Success burst */}
         <div className="mb-8 relative inline-block">
-          <div className="w-24 h-24 bg-[#99A88C] rounded-[32px] flex items-center justify-center text-white shadow-2xl animate-in zoom-in duration-500">
-            <Check size={48} strokeWidth={3} className="text-[#C4A35A]" />
+          <div className="w-24 h-24 bg-sage rounded-[32px] flex items-center justify-center text-white shadow-2xl animate-in zoom-in duration-500">
+            <Check size={48} strokeWidth={3} className="text-gold" />
           </div>
-          <div className="absolute -top-2 -right-2 px-3 py-1 bg-[#C4A35A] rounded-full text-[#5E6C54] text-[10px] font-bold shadow-lg">
+          <div className="absolute -top-2 -right-2 px-3 py-1 bg-gold rounded-full text-sage-dark text-[10px] font-bold shadow-lg">
              MATCHED
           </div>
         </div>
 
-        <h1 className="text-4xl font-bold text-[#5E6C54] font-serif mb-3 tracking-tight">You're All Set!</h1>
-        <p className="text-sm text-[#5E6C54]/60 mb-10 leading-relaxed font-medium px-4">
+        <h1 className="text-4xl font-bold text-sage-dark font-serif mb-3 tracking-tight">You're All Set!</h1>
+        <p className="text-sm text-sage-dark/60 mb-10 leading-relaxed font-medium px-4">
           Step forward with clarity. Your session has been secured, and we've dispatched a formal confirmation to your inbox.
         </p>
 
@@ -64,11 +64,11 @@ export function ConfirmationPage() {
         <div className="space-y-4">
           <Link
             to="/portal"
-            className="group w-full bg-[#99A88C] text-white rounded-2xl py-5 text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-2xl shadow-black/10 hover:bg-black transition-all"
+            className="group w-full bg-sage text-white rounded-2xl py-5 text-xs font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-3 shadow-2xl shadow-black/10 hover:bg-black transition-all"
           >
             Go to Dashboard <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
           </Link>
-          <div className="text-[10px] text-[#5E6C54]/40 font-bold uppercase tracking-widest bg-[#99A88C]/5 py-3 rounded-2xl border border-[#99A88C]/10">
+          <div className="text-[10px] text-sage-dark/40 font-bold uppercase tracking-widest bg-sage/5 py-3 rounded-2xl border border-sage/10">
              ✦ A calendar invite has been sent ✦
           </div>
         </div>
@@ -81,12 +81,12 @@ function DetailRow({ icon: Icon, label, value, highlighted }: { icon: any, label
   return (
     <div className="flex items-center justify-between py-1">
        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-xl bg-[#EDF2EE] flex items-center justify-center text-[#5E6C54]">
+          <div className="w-8 h-8 rounded-xl bg-sage-light flex items-center justify-center text-sage-dark">
              <Icon size={14} />
           </div>
-          <span className="text-[10px] font-bold text-[#5E6C54]/40 uppercase tracking-widest">{label}</span>
+          <span className="text-[10px] font-bold text-sage-dark/40 uppercase tracking-widest">{label}</span>
        </div>
-       <span className={`text-xs font-bold ${highlighted ? 'text-[#C4A35A]' : 'text-[#5E6C54]'}`}>{value}</span>
+       <span className={`text-xs font-bold ${highlighted ? 'text-gold' : 'text-sage-dark'}`}>{value}</span>
     </div>
   );
 }

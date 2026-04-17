@@ -2,3 +2,12 @@
 @source '../**/*.{js,ts,jsx,tsx}';
 
 @import 'tw-animate-css';
+
+@theme {
+  --color-sage: #99A88C;
+  --color-sage-dark: #5E6C54;
+  --color-sage-light: #EDF2EE;
+  --color-cream: #FCF8E8;
+  --color-gold: #C4A35A;
+  --color-gold-dark: #8A7340;
+}

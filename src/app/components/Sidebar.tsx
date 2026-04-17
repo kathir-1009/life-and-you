@@ -1,13 +1,20 @@
 import { Link, useLocation } from "react-router";
-import { Home, MessageCircle, Calendar, User, TrendingUp, LogOut, ShieldCheck, Star, Compass, EyeOff, Eye, Book, Clock } from "lucide-react";
+import { Home, MessageCircle, Calendar, User, TrendingUp, LogOut, ShieldCheck, Star, Compass, EyeOff, Eye, Book, Clock, LucideIcon } from "lucide-react";
 import { useUser } from "../context/UserContext";
+
+interface NavItem {
+  icon: LucideIcon;
+  label: string;
+  path: string;
+  badge?: string;
+}
 
 export function Sidebar() {
   const location = useLocation();
   const { isAnonymous, setIsAnonymous, user, role } = useUser();
   const isActive = (path: string) => location.pathname === path;
 
-  const clientNav = [
+  const clientNav: NavItem[] = [
     { icon: Home, label: "Dashboard", path: "/portal" },
     { icon: Calendar, label: "My Sessions", path: "/portal/sessions" },
     { icon: Compass, label: "Book Session", path: "/portal/book" },
@@ -17,7 +24,7 @@ export function Sidebar() {
     { icon: Star, label: "Journal", path: "/portal/journal" },
   ];
 
-  const coachNav = [
+  const coachNav: NavItem[] = [
     { icon: Home, label: "Dashboard", path: "/coach" },
     { icon: Calendar, label: "Schedule", path: "/coach/schedule" },
     { icon: User, label: "Clients", path: "/coach/clients" },
@@ -27,7 +34,7 @@ export function Sidebar() {
     { icon: TrendingUp, label: "Earnings", path: "/coach/earnings" },
   ];
 
-  const adminNav = [
+  const adminNav: NavItem[] = [
     { icon: Home, label: "Dashboard", path: "/admin" },
     { icon: User, label: "Users", path: "/admin/users" },
     { icon: ShieldCheck, label: "Coaches", path: "/admin/coaches" },
@@ -40,9 +47,9 @@ export function Sidebar() {
   const navItems = role === 'coach' ? coachNav : role === 'admin' ? adminNav : clientNav;
 
   return (
-    <div className="w-80 h-screen sticky top-0 bg-[#99A88C] flex flex-col p-8 border-r border-[#99A88C]/20 shadow-2xl overflow-y-auto hidden lg:flex custom-scrollbar">
+    <div className="w-80 h-screen sticky top-0 bg-sage flex flex-col p-8 border-r border-sage/20 shadow-2xl overflow-y-auto hidden lg:flex custom-scrollbar">
       {/* Background Decor */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-[#99A88C]/5 rounded-full -translate-y-1/2 -translate-x-1/2 blur-[80px]" />
+      <div className="absolute top-0 left-0 w-64 h-64 bg-sage/5 rounded-full -translate-y-1/2 -translate-x-1/2 blur-[80px]" />
       
       {/* Logo Area */}
       <div className="mb-12 relative z-10 flex items-center gap-4">
@@ -81,14 +88,14 @@ export function Sidebar() {
           {role === 'client' && (
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                 <div className={`p-1.5 rounded-lg ${isAnonymous ? 'bg-[#99A88C] text-white' : 'bg-white/10 text-white/40'}`}>
+                 <div className={`p-1.5 rounded-lg ${isAnonymous ? 'bg-sage text-white' : 'bg-white/10 text-white/40'}`}>
                     {isAnonymous ? <EyeOff size={14} /> : <Eye size={14} />}
                  </div>
                  <span className="text-[10px] font-bold text-white/60 uppercase tracking-wider">Privacy Mode</span>
               </div>
               <button 
                 onClick={() => setIsAnonymous(!isAnonymous)}
-                className={`w-9 h-5 rounded-full relative transition-all ${isAnonymous ? 'bg-[#99A88C]' : 'bg-white/10'}`}
+                className={`w-9 h-5 rounded-full relative transition-all ${isAnonymous ? 'bg-sage' : 'bg-white/10'}`}
               >
                  <div className={`absolute top-0.5 w-4 h-4 bg-white rounded-full transition-all ${isAnonymous ? 'right-0.5' : 'left-0.5'}`} />
               </button>
@@ -109,14 +116,14 @@ export function Sidebar() {
               to={item.path}
               className={`flex items-center gap-4 px-5 py-3.5 rounded-[16px] transition-all group ${
                 active 
-                  ? "bg-[#99A88C] text-white shadow-lg shadow-black/20" 
+                  ? "bg-sage text-white shadow-lg shadow-black/20" 
                   : "text-white/40 hover:bg-white/5 hover:text-white"
               }`}
             >
               <item.icon size={18} className={active ? "text-white" : "group-hover:text-white"} />
               <span className="text-xs font-bold tracking-wide flex-1">{item.label}</span>
               {item.badge && (
-                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${active ? 'bg-white/20 text-white' : 'bg-[#C4A35A] text-[#5E6C54]'}`}>{item.badge}</span>
+                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded ${active ? 'bg-white/20 text-white' : 'bg-gold text-sage-dark'}`}>{item.badge}</span>
               )}
             </Link>
           );

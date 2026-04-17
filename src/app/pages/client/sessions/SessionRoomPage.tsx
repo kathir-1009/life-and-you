@@ -22,8 +22,8 @@ export function ClientSessionRoomPage() {
   return (
     <div className="min-h-screen bg-[#1C2320] flex flex-col relative overflow-hidden">
       {/* Dynamic Background Blur */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#99A88C]/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#8A7340]/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-sage/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-gold-dark/10 rounded-full blur-[100px] pointer-events-none" />
 
       {/* Top Bar */}
       <div className="h-20 px-8 flex items-center justify-between relative z-20">
@@ -33,15 +33,15 @@ export function ClientSessionRoomPage() {
                <span className="text-white text-[10px] font-black uppercase tracking-widest">{formatTime(timer)}</span>
             </div>
             <div className="flex items-center gap-3 text-white/40">
-               <ShieldLockFill size={14} className="text-[#8A7340]" />
+               <ShieldLockFill size={14} className="text-gold-dark" />
                <span className="text-[10px] font-black uppercase tracking-[0.2em]">Zero-Trace Protocol Active</span>
             </div>
          </div>
 
          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-3 bg-[#FCF8E8] px-4 py-2 rounded-2xl shadow-xl">
-               <PatchCheckFill size={16} className="text-[#99A88C]" />
-               <span className="text-[#5E6C54] text-[10px] font-black uppercase tracking-widest">Coach Sharma Connected</span>
+            <div className="flex items-center gap-3 bg-cream px-4 py-2 rounded-2xl shadow-xl">
+               <PatchCheckFill size={16} className="text-sage" />
+               <span className="text-sage-dark text-[10px] font-black uppercase tracking-widest">Coach Sharma Connected</span>
             </div>
          </div>
       </div>
@@ -53,7 +53,7 @@ export function ClientSessionRoomPage() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
             
             {/* Mock Mentor Image/Avatar */}
-            <div className="w-32 h-32 bg-[#99A88C] rounded-full flex items-center justify-center text-white text-4xl font-serif">
+            <div className="w-32 h-32 bg-sage rounded-full flex items-center justify-center text-white text-4xl font-serif">
                KS
             </div>
             
@@ -93,7 +93,7 @@ export function ClientSessionRoomPage() {
                   <input 
                     type="text" 
                     placeholder="Reflect here..."
-                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-xs text-white outline-none focus:border-[#99A88C] transition-all"
+                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-3 text-xs text-white outline-none focus:border-sage transition-all"
                   />
                   <ChatDotsFill className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40" size={14} />
                </div>
@@ -139,7 +139,7 @@ function ControlCircle({ icon: Icon, active, danger, onClick }: { icon: any, act
 function ChatBubble({ msg, sender, isMe }: { msg: string, sender: string, isMe?: boolean }) {
   return (
     <div className={`flex flex-col ${isMe ? 'items-end' : 'items-start'}`}>
-       <div className={`px-4 py-2 rounded-2xl text-[11px] font-medium leading-relaxed max-w-[80%] ${isMe ? 'bg-[#99A88C] text-white rounded-tr-none' : 'bg-white/10 text-white rounded-tl-none'}`}>
+       <div className={`px-4 py-2 rounded-2xl text-[11px] font-medium leading-relaxed max-w-[80%] ${isMe ? 'bg-sage text-white rounded-tr-none' : 'bg-white/10 text-white rounded-tl-none'}`}>
           {msg}
        </div>
     </div>
