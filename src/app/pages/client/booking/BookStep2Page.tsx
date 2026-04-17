@@ -64,19 +64,19 @@ export function BookSessionStep2Page() {
                   onClick={() => setSelectedCoach(coach.id)}
                   className={`flex-shrink-0 w-64 p-6 rounded-[32px] border-2 transition-all text-left flex items-center gap-4 ${
                     selectedCoach === coach.id 
-                    ? 'bg-white border-[#5E6C54] shadow-xl' 
-                    : 'bg-white/50 border-transparent hover:border-[#99A88C]/30'
+                    ? 'bg-[#5E6C54] border-transparent shadow-xl !text-[#FFFFFF]' 
+                    : 'bg-white/50 border-transparent hover:border-[#99A88C]/30 text-[#5E6C54]'
                   }`}
                 >
                    <div className="w-14 h-14 bg-[#FCF8E8] rounded-2xl overflow-hidden shadow-sm flex-shrink-0">
                       <img src={coach.img} alt={coach.name} className="w-full h-full object-cover" />
                    </div>
                    <div className="overflow-hidden">
-                      <h4 className="text-xs font-black text-[#5E6C54] uppercase truncate">{coach.name}</h4>
-                      <p className="text-[10px] text-[#5E6C54]/40 font-bold uppercase truncate">{coach.specialty}</p>
+                      <h4 className={`text-xs font-black uppercase truncate ${selectedCoach === coach.id ? 'text-[#FFFFFF]' : 'text-[#5E6C54]'}`}>{coach.name}</h4>
+                      <p className={`text-[10px] font-bold uppercase truncate ${selectedCoach === coach.id ? 'text-[#99A88C]' : 'text-[#5E6C54]/40'}`}>{coach.specialty}</p>
                       <div className="flex items-center gap-1 mt-1">
                          <StarFill size={8} className="text-[#A68A45]" />
-                         <span className="text-[9px] font-black text-[#A68A45]">{coach.rating}</span>
+                         <span className={`text-[9px] font-black ${selectedCoach === coach.id ? 'text-[#A68A45]' : 'text-[#A68A45]'}`}>{coach.rating}</span>
                       </div>
                    </div>
                 </button>
@@ -122,12 +122,13 @@ export function BookSessionStep2Page() {
                       onClick={() => setSelectedTime(time)}
                       className={`w-full p-6 rounded-[32px] border-2 transition-all font-black text-sm tracking-tight flex justify-between items-center ${
                         selectedTime === time 
-                          ? 'bg-[#5E6C54] border-transparent text-[#FFFFFF] shadow-xl' 
+                          ? 'bg-[#5E6C54] border-transparent !text-[#FFFFFF] shadow-xl' 
                           : 'bg-[#FFFFFF] border-[#99A88C]/10 text-[#5E6C54] hover:border-[#99A88C]/40'
                       }`}
+                      style={{ color: selectedTime === time ? '#FFFFFF' : '#5E6C54' }}
                     >
-                       <span>{time}</span>
-                       {selectedTime === time && <ArrowRight size={18} />}
+                       <span className={selectedTime === time ? 'text-[#FFFFFF]' : ''}>{time}</span>
+                       {selectedTime === time && <ArrowRight size={18} className="text-[#FFFFFF]" />}
                     </button>
                  ))}
               </div>
