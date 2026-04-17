@@ -7,6 +7,8 @@ export function BookSessionStep2Page() {
   const navigate = useNavigate();
   const [selectedTime, setSelectedTime] = useState<string | null>(null);
   const [selectedCoach, setSelectedCoach] = useState<number | null>(1);
+  const [viewDate, setViewDate] = useState(new Date(2026, 2, 1)); // Default to March 2026
+  const [selectedDate, setSelectedDate] = useState<number>(14);
   const times = ["09:00 AM", "11:30 AM", "02:00 PM", "04:30 PM", "07:00 PM"];
 
   const coaches = [
@@ -14,6 +16,18 @@ export function BookSessionStep2Page() {
     { id: 2, name: "Sarah Jenkins", specialty: "NLP Master", rating: 5.0, img: "/img/about/account-02.jpg" },
     { id: 3, name: "Benjamin K.", specialty: "Growth Catalyst", rating: 4.8, img: "/img/about/account-05.jpg" },
   ];
+
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const daysInMonth = new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 0).getDate();
+  const firstDayOfMonth = new Date(viewDate.getFullYear(), viewDate.getMonth(), 1).getDay();
+
+  const handlePrevMonth = () => {
+    setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() - 1, 1));
+  };
+
+  const handleNextMonth = () => {
+    setViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth() + 1, 1));
+  };
 
   return (
     <div className="min-h-screen bg-[#FCF8E8] pb-32 portal-context">
@@ -87,26 +101,32 @@ export function BookSessionStep2Page() {
         <div className="grid lg:grid-cols-12 gap-12">
            <div className="lg:col-span-7 bg-[#FFFFFF] p-10 rounded-[48px] border border-[#99A88C]/10 shadow-2xl text-center">
               <div className="flex items-center justify-between mb-10 px-4">
-                 <h3 className="text-base font-black text-[#5E6C54] uppercase tracking-widest">March 2026</h3>
+                 <h3 className="text-base font-black text-[#5E6C54] uppercase tracking-widest">{monthNames[viewDate.getMonth()]} {viewDate.getFullYear()}</h3>
                  <div className="flex gap-2">
-                    <button className="w-8 h-8 rounded-full border border-[#99A88C]/10 flex items-center justify-center text-[#99A88C] hover:bg-[#FCF8E8] transition-colors"><ChevronLeft size={16} /></button>
-                    <button className="w-8 h-8 rounded-full border border-[#99A88C]/10 flex items-center justify-center text-[#99A88C] hover:bg-[#FCF8E8] transition-colors rotate-180"><ChevronLeft size={16} /></button>
+                    <button onClick={handlePrevMonth} className="w-8 h-8 rounded-full border border-[#99A88C]/10 flex items-center justify-center text-[#99A88C] hover:bg-[#FCF8E8] transition-colors"><ChevronLeft size={16} /></button>
+                    <button onClick={handleNextMonth} className="w-8 h-8 rounded-full border border-[#99A88C]/10 flex items-center justify-center text-[#99A88C] hover:bg-[#FCF8E8] transition-colors rotate-180"><ChevronLeft size={16} /></button>
                  </div>
               </div>
               
               <div className="grid grid-cols-7 gap-4">
                  {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(d => <span key={d} className="text-[10px] font-black text-[#5E6C54]/30 mb-4">{d}</span>)}
-                 {[...Array(31)].map((_, i) => (
-                    <button 
-                      key={i} 
-                      className={`w-10 h-10 rounded-2xl flex items-center justify-center text-xs font-bold transition-all ${
-                        i === 13 ? 'bg-[#5E6C54] !text-[#FFFFFF] shadow-lg' : 'hover:bg-[#FCF8E8] text-[#5E6C54]'
-                      }`}
-                      style={i === 13 ? { color: '#FFFFFF' } : {}}
-                    >
-                      {i + 1}
-                    </button>
-                 ))}
+                 {[...Array(firstDayOfMonth)].map((_, i) => <div key={`empty-${i}`} />)}
+                 {[...Array(daysInMonth)].map((_, i) => {
+                    const day = i + 1;
+                    const isSelected = selectedDate === day;
+                    return (
+                      <button 
+                        key={day} 
+                        onClick={() => setSelectedDate(day)}
+                        className={`w-10 h-10 rounded-2xl flex items-center justify-center text-xs font-bold transition-all ${
+                          isSelected ? 'bg-[#5E6C54] !text-[#FFFFFF] shadow-lg' : 'hover:bg-[#FCF8E8] text-[#5E6C54]'
+                        }`}
+                        style={isSelected ? { color: '#FFFFFF' } : {}}
+                      >
+                        {day}
+                      </button>
+                    );
+                 })}
               </div>
            </div>
            
