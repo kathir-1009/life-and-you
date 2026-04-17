@@ -1,9 +1,9 @@
 import { Link } from "react-router";
-import { Settings, Bell, Lock, CreditCard, HelpCircle, LogOut, Edit2, ChevronRight, User, ShieldCheck } from "lucide-react";
+import { Settings, Bell, Lock, CreditCard, HelpCircle, LogOut, Edit2, ChevronRight, User, ShieldCheck, EyeOff } from "lucide-react";
 import { useUser } from "../context/UserContext";
 
 export function ProfilePage() {
-  const { role, setRole, user } = useUser();
+  const { role, setRole, user, isAnonymous, setIsAnonymous } = useUser();
   return (
     <div className="min-h-screen bg-cream pb-32 portal-context">
       {/* Cinematic Full-Width Header */}
@@ -51,6 +51,23 @@ export function ProfilePage() {
         <div className="space-y-6">
           <SectionTitle>Profile</SectionTitle>
           <div className="bg-[#FFFFFF] rounded-[44px] overflow-hidden border border-[#99A88C]/10 shadow-2xl">
+            {/* Anonymous Mode Toggle */}
+            <div className="w-full flex items-center gap-6 p-6 border-b border-[#99A88C]/5 hover:bg-[#FCF8E8]/30 transition-all">
+              <div className={`w-12 h-12 transition-all duration-300 rounded-2xl flex items-center justify-center shadow-sm ${isAnonymous ? 'bg-[#5E6C54] text-white' : 'bg-[#99A88C]/10 text-[#99A88C]'}`}>
+                <EyeOff size={22} />
+              </div>
+              <div className="flex-1 text-left">
+                <span className="block text-xs font-black text-[#5E6C54] uppercase tracking-widest mb-0.5">Anonymous Mode</span>
+                <span className="block text-[10px] text-[#5E6C54]/40 font-bold uppercase tracking-tight">{isAnonymous ? 'Identity Hidden' : 'Public Profile'}</span>
+              </div>
+              <button 
+                onClick={() => setIsAnonymous(!isAnonymous)}
+                className={`w-14 h-8 rounded-full relative transition-all duration-300 shadow-inner ${isAnonymous ? 'bg-[#5E6C54]' : 'bg-[#99A88C]/20'}`}
+              >
+                <div className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-md transition-all duration-300 ${isAnonymous ? 'left-7' : 'left-1'}`} />
+              </button>
+            </div>
+
             <MenuItem icon={User} label="Personal Information" color="bg-[#99A88C]/10" to="/portal/profile/personal" />
             <MenuItem icon={Settings} label="My Bookings & Sessions" color="bg-[#99A88C]/10" to="/portal/sessions" />
             <MenuItem icon={Edit2} label="My Wellness Journals" color="bg-[#99A88C]/10" to="/portal/journal" />
