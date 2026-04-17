@@ -100,8 +100,9 @@ export function BookSessionStep2Page() {
                     <button 
                       key={i} 
                       className={`w-10 h-10 rounded-2xl flex items-center justify-center text-xs font-bold transition-all ${
-                        i === 13 ? 'bg-[#5E6C54] text-[#FFFFFF] shadow-lg' : 'hover:bg-[#FCF8E8] text-[#5E6C54]'
+                        i === 13 ? 'bg-[#5E6C54] !text-[#FFFFFF] shadow-lg' : 'hover:bg-[#FCF8E8] text-[#5E6C54]'
                       }`}
+                      style={i === 13 ? { color: '#FFFFFF' } : {}}
                     >
                       {i + 1}
                     </button>
