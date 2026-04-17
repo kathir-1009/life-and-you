@@ -5,12 +5,12 @@ export function ProfilePage() {
   const { role, setRole, user } = useUser();
   return (
     <div className="min-h-screen bg-cream pb-32 portal-context">
-      {/* Cinematic Tall Header - Perfect Style */}
+      {/* Cinematic Full-Width Header */}
       <div className="relative">
-         {/* Tall Colored Header */}
-         <div className="bg-[#5E6C54] pt-16 pb-32 px-8 rounded-b-[64px] relative overflow-hidden text-center">
+         {/* Deep Colored Canopy - Touches all edges */}
+         <div className="bg-[#5E6C54] pt-20 pb-40 px-6 rounded-b-[100px] md:rounded-b-[120px] relative overflow-hidden text-center">
             {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
             
             <div className="relative z-10 flex flex-col items-center">
                <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.4em] mb-8">My Profile</p>

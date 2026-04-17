@@ -16,12 +16,12 @@ export function DashboardPage() {
 
   return (
     <div className="animate-in fade-in duration-700 portal-context pb-20">
-      {/* Cinematic Tall Header - Perfect Style */}
+      {/* Cinematic Full-Width Header */}
       <div className="relative">
-         {/* Tall Colored Header */}
-         <div className="bg-[#5E6C54] pt-16 pb-32 px-8 rounded-b-[64px] relative overflow-hidden">
+         {/* Deep Colored Canopy - Touches all edges */}
+         <div className="bg-[#5E6C54] pt-20 pb-40 px-6 rounded-b-[100px] md:rounded-b-[120px] relative overflow-hidden">
             {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#FFFFFF]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
+            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFFFFF]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
             <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#99A88C]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-[80px]" />
             
             <div className="flex items-center justify-between relative z-10 max-w-4xl mx-auto">
