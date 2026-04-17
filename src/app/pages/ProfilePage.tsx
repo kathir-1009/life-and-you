@@ -23,10 +23,10 @@ export function ProfilePage() {
                </div>
                
                <div className="mt-6">
-                  <h1 className="text-3xl font-black text-[#FFFFFF] tracking-tight mb-3">{user.name}</h1>
-                  <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-5 py-1.5 rounded-full border border-[#FFFFFF]/20">
+                  <h1 className="text-4xl md:text-6xl font-black text-[#FFFFFF] tracking-tight mb-4">{user.name}</h1>
+                  <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-6 py-2 rounded-full border border-[#FFFFFF]/20">
                      <ShieldCheck size={14} className="text-[#99A88C]" />
-                     <span className="text-[9px] text-[#FFFFFF]/90 font-black uppercase tracking-widest">Premium Member</span>
+                     <span className="text-[10px] text-[#FFFFFF] font-black uppercase tracking-widest">Premium Member</span>
                   </div>
                </div>
             </div>

@@ -26,8 +26,8 @@ export function DashboardPage() {
             
             <div className="flex items-center justify-between relative z-10 max-w-4xl mx-auto">
                <div>
-                  <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] mb-2">Welcome back,</p>
-                  <h1 className="text-3xl md:text-5xl font-black text-[#FFFFFF] tracking-tight leading-none mb-1">
+                  <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] mb-3">Welcome back,</p>
+                  <h1 className="text-4xl md:text-6xl font-black text-[#FFFFFF] tracking-tight leading-none">
                      {isAnonymous ? "Wellness Seeker" : user.name.split(' ')[0]}
                   </h1>
                </div>
@@ -91,7 +91,7 @@ export function DashboardPage() {
                      <div className="w-16 h-16 bg-[#FFFFFF] rounded-[24px] shadow-sm border border-[#99A88C]/10 flex items-center justify-center text-[#99A88C] group-hover:bg-[#5E6C54] group-hover:text-[#FFFFFF] group-hover:shadow-xl group-hover:-translate-y-1 transition-all duration-300">
                         <item.icon size={22} className="transition-transform group-hover:scale-110" />
                      </div>
-                     <span className="text-[9px] font-black text-[#5E6C54]/60 uppercase tracking-widest">{item.label}</span>
+                     <span className="text-[10px] font-black text-[#5E6C54] uppercase tracking-widest">{item.label}</span>
                   </div>
                ))}
             </div>
