@@ -16,7 +16,7 @@ export function BottomNav() {
   ];
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 lg:hidden bg-white/10 backdrop-blur-2xl border-t border-white/10 px-4 sm:px-6 py-1 sm:py-3 pb-3 flex items-center justify-between z-50 rounded-t-[28px] sm:rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+    <div className="fixed bottom-0 left-0 right-0 lg:hidden bg-[#FFFFFF]/10 backdrop-blur-2xl border-t border-[#FFFFFF]/10 px-4 sm:px-6 py-1 sm:py-3 pb-3 flex items-center justify-between z-50 rounded-t-[28px] sm:rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
       {navItems.map((item) => {
         const active = isActive(item.path);
         return (
@@ -25,13 +25,13 @@ export function BottomNav() {
             to={item.path}
             className="flex flex-col items-center gap-1.5 relative group"
           >
-            <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${active ? 'bg-sage text-white shadow-lg shadow-black/10 scale-100 sm:scale-110 -translate-y-1' : 'text-[#2A3324]/50 hover:text-[#2A3324]'}`}>
+            <div className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl flex items-center justify-center transition-all duration-300 ${active ? 'bg-[#99A88C] text-[#FFFFFF] shadow-lg shadow-[#000000]/10 scale-100 sm:scale-110 -translate-y-1' : 'text-[#2A3324]/50 hover:text-[#2A3324]'}`}>
               <item.icon size={22} />
               {item.badge && !active && (
-                <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-gold-dark rounded-full border-2 border-white" />
+                <div className="absolute top-2.5 right-2.5 w-2 h-2 bg-gold-dark rounded-full border-2 border-[#FFFFFF]" />
               )}
               {item.label === "Account" && isAnonymous && !active && (
-                <div className="absolute -top-1 -right-1 w-5 h-5 bg-gold-dark rounded-full flex items-center justify-center text-[#2A3324] border-2 border-white">
+                <div className="absolute -top-1 -right-1 w-5 h-5 bg-gold-dark rounded-full flex items-center justify-center text-[#2A3324] border-2 border-[#FFFFFF]">
                    <EyeSlash size={10} />
                 </div>
               )}

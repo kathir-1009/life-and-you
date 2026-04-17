@@ -76,7 +76,7 @@ const withSuspense = (Component: React.ComponentType) => (
 
 export const router = createBrowserRouter([
   {
-    path: "/splash",
+    path: "/",
     element: withSuspense(SplashPage),
   },
   {
@@ -99,9 +99,8 @@ export const router = createBrowserRouter([
       { path: "complete", element: withSuspense(ClientComplete) },
     ]
   },
-  // PUBLIC WEBSITE
   {
-    path: "/",
+    path: "/home",
     element: <MainLayout />,
     children: [
       { index: true, element: withSuspense(HomePage) },

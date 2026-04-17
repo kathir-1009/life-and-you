@@ -18,7 +18,7 @@ export function Navigation() {
   const isActive = (path: string) => location.pathname === path;
 
   const navLinks = [
-    { path: "/", label: "Home" },
+    { path: "/home", label: "Home" },
     { path: "/about-us", label: "About" },
     { path: "/programs", label: "Programs" },
     { path: "/book", label: "Book a Session", badge: "NEW" },
@@ -50,7 +50,7 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/home" className="flex items-center gap-3">
                <div className="w-10 h-10">
                   <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain" />
                </div>
