@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Search, Plus, Filter, Book, Edit3, Trash2, Shield, Calendar, Heart, Brain, Star } from "lucide-react";
+import { Search, Plus, Filter, Book, Edit3, Trash2, Shield, Calendar, Heart, Brain, Star, ChevronLeft } from "lucide-react";
+import { useNavigate } from "react-router";
 
 export function JournalPage() {
+  const navigate = useNavigate();
   const [entries, setEntries] = useState([
     {
       id: 1,
@@ -34,23 +36,41 @@ export function JournalPage() {
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen pb-32">
-       {/* Header */}
-       <div className="bg-[#4E5540] py-12 px-6 md:px-12 rounded-b-[40px] relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
-          <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
-             <div>
-                <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-3 py-1 mb-4 border border-white/10">
-                   <Shield size={12} className="text-[#CED2BA]" />
-                   <span className="text-[10px] text-white/80 font-black uppercase tracking-widest">End-to-End Encrypted</span>
-                </div>
-                <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">My Sanctuary</h1>
-                <p className="text-[#CED2BA] mt-2 text-sm font-medium opacity-80">A private space for your inner dialogue</p>
-             </div>
-             <button className="bg-[#8B9A71] text-[#2D3324] px-10 py-5 rounded-pill text-xs font-black uppercase tracking-widest flex items-center gap-3 shadow-[0_20px_40px_rgba(139,154,113,0.3)] hover:bg-white transition-all transform hover:-translate-y-1 active:scale-95">
-                <Plus size={20} /> New Entry
-             </button>
-          </div>
-       </div>
+        {/* Cinematic Header - Mobile Only */}
+        <div className="lg:hidden relative">
+           <button 
+              onClick={() => navigate(-1)}
+              className="absolute top-12 left-6 z-20 w-10 h-10 bg-[#FFFFFF]/10 backdrop-blur-md rounded-xl flex items-center justify-center text-white border border-[#FFFFFF]/10 active:scale-95 transition-all"
+           >
+              <ChevronLeft size={20} />
+           </button>
+
+           <div className="bg-[#5E6C54] pt-24 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50" />
+              <div className="relative z-10">
+                 <h1 className="text-3xl font-black tracking-tight mb-2 !text-[#FFFFFF]" style={{ color: '#FFFFFF' }}>My Sanctuary</h1>
+                 <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] !text-[#99A88C]">A private space for your inner dialogue</p>
+              </div>
+           </div>
+        </div>
+
+        {/* Original Header - Desktop Only */}
+        <div className="hidden lg:block bg-[#4E5540] py-16 px-12 rounded-b-[40px] relative overflow-hidden">
+           <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
+           <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+              <div>
+                 <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-3 py-1 mb-4 border border-white/10">
+                    <Shield size={12} className="text-[#CED2BA]" />
+                    <span className="text-[10px] text-white/80 font-black uppercase tracking-widest">End-to-End Encrypted</span>
+                 </div>
+                 <h1 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">My Sanctuary</h1>
+                 <p className="text-[#CED2BA] mt-2 text-sm font-medium opacity-80">A private space for your inner dialogue</p>
+              </div>
+              <button className="bg-[#8B9A71] text-[#2D3324] px-10 py-5 rounded-pill text-xs font-black uppercase tracking-widest flex items-center gap-3 shadow-[0_20px_40px_rgba(139,154,113,0.3)] hover:bg-white transition-all transform hover:-translate-y-1 active:scale-95">
+                 <Plus size={20} /> New Entry
+              </button>
+           </div>
+        </div>
 
        <div className="max-w-7xl mx-auto px-6 mt-12 grid grid-cols-1 lg:grid-cols-4 gap-10">
           {/* Sidebar / Filters & Search */}

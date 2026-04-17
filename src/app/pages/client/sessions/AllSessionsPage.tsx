@@ -1,9 +1,10 @@
-import { useState } from "react";
 import { Calendar3, Clock, Person, ChevronRight, PlayFill, ThreeDotsVertical, Search, Filter } from "react-bootstrap-icons";
 import { useUser } from "../../../context/UserContext";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { ChevronLeft } from "lucide-react";
 
 export function AllSessionsPage() {
+  const navigate = useNavigate();
   const { role } = useUser();
   const [tab, setTab] = useState<"upcoming" | "history">("upcoming");
 
@@ -41,8 +42,26 @@ export function AllSessionsPage() {
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700 px-4 md:px-0 portal-context pb-20">
-      {/* Header with Search */}
-      <div className="bg-[#FFFFFF] p-6 rounded-[32px] md:p-0 md:bg-transparent shadow-sm md:shadow-none flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+      {/* Cinematic Header - Mobile Only */}
+      <div className="lg:hidden relative -mx-4 -mt-8">
+         <button 
+            onClick={() => navigate(-1)}
+            className="absolute top-12 left-6 z-20 w-10 h-10 bg-[#FFFFFF]/10 backdrop-blur-md rounded-xl flex items-center justify-center text-white border border-[#FFFFFF]/10 active:scale-95 transition-all"
+         >
+            <ChevronLeft size={20} />
+         </button>
+
+         <div className="bg-[#5E6C54] pt-24 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50" />
+            <div className="relative z-10">
+               <h1 className="text-3xl font-black tracking-tight mb-2 !text-[#FFFFFF]" style={{ color: '#FFFFFF' }}>My Sessions</h1>
+               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] !text-[#99A88C]">Breakthroughs & Journey History</p>
+            </div>
+         </div>
+      </div>
+
+      {/* Header with Search - Desktop with Mobile Hidden */}
+      <div className="hidden lg:flex bg-[#FFFFFF] p-6 rounded-[32px] md:p-0 md:bg-transparent shadow-sm md:shadow-none flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div>
            <h1 className="text-3xl lg:text-4xl font-bold text-[#5E6C54] font-serif mb-2 uppercase tracking-tight">My Sessions</h1>
            <p className="text-[#5E6C54]/60 text-[11px] font-bold uppercase tracking-widest">Manage your breakthroughs and journey history.</p>

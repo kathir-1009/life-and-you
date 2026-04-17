@@ -1,13 +1,33 @@
-import { Link, useParams } from "react-router";
+import { Link, useParams, useNavigate } from "react-router";
 import { ArrowLeft, CameraVideoFill, Calendar2CheckFill, ClockFill, FileEarmarkTextFill, PatchCheckFill, Trash3Fill, CalendarXFill } from "react-bootstrap-icons";
+import { ChevronLeft } from "lucide-react";
 
 export function ClientSessionDetailPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-cream pb-32 portal-context">
+      {/* Cinematic Header - Mobile Only */}
+      <div className="lg:hidden relative">
+         <button 
+            onClick={() => navigate(-1)}
+            className="absolute top-12 left-6 z-20 w-10 h-10 bg-[#FFFFFF]/10 backdrop-blur-md rounded-xl flex items-center justify-center text-white border border-[#FFFFFF]/10 active:scale-95 transition-all"
+         >
+            <ChevronLeft size={20} />
+         </button>
+
+         <div className="bg-[#5E6C54] pt-24 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50" />
+            <div className="relative z-10">
+               <h1 className="text-2xl font-black tracking-tight mb-2 !text-[#FFFFFF]" style={{ color: '#FFFFFF' }}>Session Details</h1>
+               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] !text-[#99A88C]">Deep dive into your progress</p>
+            </div>
+         </div>
+      </div>
+
       <div className="max-w-4xl mx-auto px-6 pt-16">
-        <Link to="/portal/sessions" className="inline-flex items-center gap-2 text-sage-dark/60 hover:text-sage-dark transition-all mb-12">
+        <Link to="/portal/sessions" className="hidden lg:inline-flex items-center gap-2 text-sage-dark/60 hover:text-sage-dark transition-all mb-12">
            <ArrowLeft size={20} />
            <span className="font-bold text-xs uppercase tracking-widest">Back to All Sessions</span>
         </Link>

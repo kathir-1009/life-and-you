@@ -11,7 +11,8 @@ import {
   MessageCircle,
   Video,
   Target,
-  Heart
+  Heart,
+  ChevronLeft
 } from "lucide-react";
 
 export function ExploreCoachesPage() {
@@ -76,8 +77,26 @@ export function ExploreCoachesPage() {
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen pb-32">
-      {/* Header & Search */}
-      <section className="bg-[#2D3324] pt-12 pb-20 px-6 relative overflow-hidden">
+      {/* Cinematic Header - Mobile Only */}
+      <div className="lg:hidden relative">
+         <button 
+            onClick={() => navigate(-1)}
+            className="absolute top-12 left-6 z-20 w-10 h-10 bg-[#FFFFFF]/10 backdrop-blur-md rounded-xl flex items-center justify-center text-white border border-[#FFFFFF]/10 active:scale-95 transition-all"
+         >
+            <ChevronLeft size={20} />
+         </button>
+
+         <div className="bg-[#5E6C54] pt-24 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50" />
+            <div className="relative z-10">
+               <h1 className="text-3xl font-black tracking-tight mb-2 !text-[#FFFFFF]" style={{ color: '#FFFFFF' }}>Discover Guides</h1>
+               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] !text-[#99A88C]">Find your ideal path match</p>
+            </div>
+         </div>
+      </div>
+
+      {/* Header & Search - Desktop Only */}
+      <section className="hidden lg:block bg-[#2D3324] pt-12 pb-20 px-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(139,154,113,0.1)_0%,rgba(0,0,0,0)_60%)]" />
         <div className="max-w-7xl mx-auto relative z-10">
            <h1 className="text-4xl md:text-6xl font-black text-[#FFFFFF] mb-8">Discover your <br/><span className="text-[#8B9A71]">Ideal Guide.</span></h1>

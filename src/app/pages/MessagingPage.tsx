@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, Send, Lock, MoreVertical, Plus, Smile } from "lucide-react";
+import { ArrowLeft, Send, Lock, MoreVertical, Plus, Smile, ChevronLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router";
 
 export function MessagingPage() {
@@ -32,10 +32,10 @@ export function MessagingPage() {
   return (
     <div className="h-[100dvh] bg-[#F8F9FA] flex flex-col overflow-hidden">
       {/* Premium Chat Header */}
-      <div className="bg-[#2D3324] px-6 py-4 flex items-center justify-between shadow-lg relative z-20">
+      <div className="bg-[#2D3324] px-6 py-5 flex items-center justify-between shadow-lg relative z-20">
         <div className="flex items-center gap-4">
-          <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-white">
-            <ArrowLeft size={20} />
+          <button onClick={() => navigate(-1)} className="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-white active:scale-95 transition-all">
+            <ChevronLeft size={22} />
           </button>
           
           <div className="flex items-center gap-3">

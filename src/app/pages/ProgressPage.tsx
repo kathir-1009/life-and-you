@@ -1,7 +1,8 @@
-import { TrendingUp, Award, Calendar, ChevronRight, Star, Heart, Shield, ArrowRight, BarChart3 } from "lucide-react";
-import { Link } from "react-router";
+import { TrendingUp, Award, Calendar, ChevronRight, Star, Heart, Shield, ArrowRight, BarChart3, ChevronLeft } from "lucide-react";
+import { Link, useNavigate } from "react-router";
 
 export function ProgressPage() {
+  const navigate = useNavigate();
   const weekData = [
     { day: "Mon", height: 60, val: 6 },
     { day: "Tue", height: 75, val: 7.5 },
@@ -14,8 +15,26 @@ export function ProgressPage() {
 
   return (
     <div className="min-h-screen bg-cream pb-32 portal-context">
-      {/* Cinematic Header */}
-      <div className="bg-sage pt-12 pb-24 lg:pb-32 px-6 lg:px-10 md:rounded-b-[80px] relative overflow-hidden">
+      {/* Cinematic Header - Mobile Only */}
+      <div className="lg:hidden relative">
+         <button 
+            onClick={() => navigate(-1)}
+            className="absolute top-12 left-6 z-20 w-10 h-10 bg-[#FFFFFF]/10 backdrop-blur-md rounded-xl flex items-center justify-center text-white border border-[#FFFFFF]/10 active:scale-95 transition-all"
+         >
+            <ChevronLeft size={20} />
+         </button>
+
+         <div className="bg-[#5E6C54] pt-24 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50" />
+            <div className="relative z-10">
+               <h1 className="text-4xl font-black tracking-tight mb-2 !text-[#FFFFFF]" style={{ color: '#FFFFFF' }}>Your Growth</h1>
+               <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.3em] !text-[#99A88C]">Evolution Tracker</p>
+            </div>
+         </div>
+      </div>
+
+      {/* Original Header - Desktop Only */}
+      <div className="hidden lg:block bg-sage pt-12 pb-24 lg:pb-32 px-6 lg:px-10 md:rounded-b-[80px] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[120px]" />
         
         <div className="max-w-6xl mx-auto relative z-10">
