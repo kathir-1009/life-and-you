@@ -36,7 +36,7 @@ const AllResources = lazy(() => import("./pages/client/library/AllResourcesPage"
 const ResourceDetail = lazy(() => import("./pages/client/library/ResourceDetailPage").then(m => ({ default: m.ClientResourceDetailPage })));
 
 // Coach Discovery
-const BrowseCoaches = lazy(() => import("./pages/client/coach/BrowseCoachesPage").then(m => ({ default: m.ClientBrowseCoachesPage })));
+const ExploreCoaches = lazy(() => import("./pages/ExploreCoachesPage").then(m => ({ default: m.ExploreCoachesPage })));
 const CoachDetail = lazy(() => import("./pages/client/coach/CoachDetailPage").then(m => ({ default: m.ClientCoachDetailPage })));
 
 // Client Onboarding
@@ -147,9 +147,9 @@ export const router = createBrowserRouter([
       },
       { path: "progress", element: withSuspense(ProgressPage) },
       { 
-        path: "browse-coaches",
+        path: "explore",
         children: [
-          { index: true, element: withSuspense(BrowseCoaches) },
+          { index: true, element: withSuspense(ExploreCoaches) },
           { path: ":id", element: withSuspense(CoachDetail) },
         ]
       },
