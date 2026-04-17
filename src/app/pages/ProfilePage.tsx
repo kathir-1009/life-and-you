@@ -8,7 +8,7 @@ export function ProfilePage() {
       {/* Cinematic Full-Width Header */}
       <div className="relative">
          {/* Deep Colored Canopy - Touches all edges */}
-         <div className="bg-[#5E6C54] pt-20 pb-40 px-6 rounded-b-[100px] md:rounded-b-[120px] relative overflow-hidden text-center">
+         <div className="bg-[#5E6C54] pt-16 pb-32 px-6 rounded-b-[100px] md:rounded-b-[120px] relative overflow-hidden text-center">
             {/* Ambient Background Glows */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
             
@@ -23,10 +23,10 @@ export function ProfilePage() {
                </div>
                
                <div className="mt-6">
-                  <h1 className="text-4xl md:text-6xl font-black text-[#FFFFFF] tracking-tight mb-4">{user.name}</h1>
-                  <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-6 py-2 rounded-full border border-[#FFFFFF]/20">
+                  <h1 className="text-5xl md:text-7xl font-black text-white !text-white tracking-tighter mb-4" style={{ color: '#FFFFFF' }}>{user.name}</h1>
+                  <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-6 py-2 rounded-full border border-[#FFFFFF]/30">
                      <ShieldCheck size={14} className="text-[#99A88C]" />
-                     <span className="text-[10px] text-[#FFFFFF] font-black uppercase tracking-widest">Premium Member</span>
+                     <span className="text-[10px] text-white !text-white font-black uppercase tracking-widest">Premium Member</span>
                   </div>
                </div>
             </div>
@@ -51,6 +51,8 @@ export function ProfilePage() {
           <SectionTitle>Profile</SectionTitle>
           <div className="bg-[#FFFFFF] rounded-[44px] overflow-hidden border border-[#99A88C]/10 shadow-2xl">
             <MenuItem icon={User} label="Personal Information" color="bg-[#99A88C]/10" />
+            <MenuItem icon={Settings} label="My Bookings & Sessions" color="bg-[#99A88C]/10" />
+            <MenuItem icon={Edit2} label="My Wellness Journals" color="bg-[#99A88C]/10" />
             <MenuItem icon={Bell} label="Notices & Bulletins" color="bg-[#99A88C]/10" />
             <MenuItem icon={Lock} label="Security Vault" color="bg-[#99A88C]/10" />
             <MenuItem icon={CreditCard} label="Billing History" color="bg-[#99A88C]/10" />

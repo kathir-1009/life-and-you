@@ -19,7 +19,7 @@ export function DashboardPage() {
       {/* Cinematic Full-Width Header */}
       <div className="relative">
          {/* Deep Colored Canopy - Touches all edges */}
-         <div className="bg-[#5E6C54] pt-20 pb-40 px-6 rounded-b-[100px] md:rounded-b-[120px] relative overflow-hidden">
+         <div className="bg-[#5E6C54] pt-20 pb-32 px-6 rounded-b-[100px] md:rounded-b-[120px] relative overflow-hidden">
             {/* Ambient Background Glows */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFFFFF]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
             <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#99A88C]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-[80px]" />
