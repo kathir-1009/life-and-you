@@ -1,5 +1,5 @@
 import { ChevronLeft, CreditCard, Download, ExternalLink } from "lucide-react";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 
 export function BillingHistoryPage() {
   const navigate = useNavigate();
@@ -70,10 +70,13 @@ export function BillingHistoryPage() {
             ))}
          </div>
 
-         <button className="w-full bg-[#FFFFFF]/50 py-6 rounded-[40px] border border-[#99A88C]/10 flex items-center justify-center gap-3 text-[#5E6C54]/60 hover:bg-white transition-all group">
+         <Link 
+            to="/portal/profile/payment"
+            className="w-full bg-[#FFFFFF]/50 py-6 rounded-[40px] border border-[#99A88C]/10 flex items-center justify-center gap-3 text-[#5E6C54]/60 hover:bg-white transition-all group"
+         >
             <ExternalLink size={16} />
             <span className="text-[10px] font-black uppercase tracking-widest">Update Payment Method</span>
-         </button>
+         </Link>
       </div>
     </div>
   );

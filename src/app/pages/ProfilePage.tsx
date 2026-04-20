@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Settings, Bell, Lock, CreditCard, HelpCircle, LogOut, Edit2, ChevronRight, User, ShieldCheck, EyeOff } from "lucide-react";
+import { Settings, Bell, Lock, CreditCard, HelpCircle, LogOut, Edit2, ChevronRight, User, ShieldCheck, EyeOff, Plus } from "lucide-react";
 import { useUser } from "../context/UserContext";
 
 export function ProfilePage() {
@@ -74,6 +74,7 @@ export function ProfilePage() {
             <MenuItem icon={Bell} label="Notices & Bulletins" color="bg-[#99A88C]/10" to="/portal/notifications" />
             <MenuItem icon={Lock} label="Security Vault" color="bg-[#99A88C]/10" to="/portal/profile/security" />
             <MenuItem icon={CreditCard} label="Billing History" color="bg-[#99A88C]/10" to="/portal/profile/billing" />
+            <MenuItem icon={Plus} label="Update Payment Method" color="bg-[#99A88C]/10" to="/portal/profile/payment" />
             <MenuItem icon={HelpCircle} label="Evolution Support" color="bg-[#99A88C]/10" to="/portal/profile/support" />
           </div>
 
