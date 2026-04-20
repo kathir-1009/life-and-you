@@ -45,16 +45,17 @@ export function UpdatePaymentPage() {
                     onClick={() => setSelectedCard(card.id)}
                     className={`w-full p-6 rounded-[32px] border-2 transition-all text-left flex items-center gap-6 ${
                       selectedCard === card.id 
-                      ? 'bg-[#5E6C54] border-transparent shadow-2xl text-white' 
-                      : 'bg-white border-[#99A88C]/10 text-[#5E6C54] hover:border-[#99A88C]/30'
+                      ? 'bg-[#5E6C54] border-transparent shadow-2xl !text-white' 
+                      : 'bg-white border-[#99A88C]/10 !text-[#5E6C54] hover:border-[#99A88C]/30'
                     }`}
+                    style={selectedCard === card.id ? { color: '#FFFFFF' } : { color: '#5E6C54' }}
                   >
                      <div className={`w-14 h-10 rounded-lg flex items-center justify-center font-black text-[10px] uppercase ${selectedCard === card.id ? 'bg-white/10 border border-white/20' : 'bg-[#FCF8E8]'}`}>
                         {card.type}
                      </div>
                      <div className="flex-1">
-                        <p className={`text-xs font-black uppercase tracking-widest ${selectedCard === card.id ? 'text-white' : 'text-[#5E6C54]'}`}>**** **** **** {card.last4}</p>
-                        <p className={`text-[10px] font-bold ${selectedCard === card.id ? 'text-[#99A88C]' : 'text-[#5E6C54]/40'}`}>Expires {card.expiry}</p>
+                        <p className={`text-xs font-black uppercase tracking-widest ${selectedCard === card.id ? '!text-white' : '!text-[#5E6C54]'}`}>**** **** **** {card.last4}</p>
+                        <p className={`text-[10px] font-bold ${selectedCard === card.id ? '!text-[#99A88C]' : '!text-[#5E6C54]/40'}`}>Expires {card.expiry}</p>
                      </div>
                      {selectedCard === card.id ? (
                         <CheckCircle2 size={24} className="text-[#A68A45]" />
@@ -123,7 +124,10 @@ export function UpdatePaymentPage() {
                </div>
             </div>
 
-            <button className="w-full bg-[#5E6C54] text-white py-6 rounded-[32px] font-black text-[10px] uppercase tracking-[0.3em] shadow-xl hover:scale-[1.02] active:scale-100 transition-all mt-4">
+            <button 
+              className="w-full bg-[#5E6C54] !text-white py-6 rounded-[32px] font-black text-[10px] uppercase tracking-[0.3em] shadow-xl hover:scale-[1.02] active:scale-100 transition-all mt-4"
+              style={{ color: '#FFFFFF' }}
+            >
                Secure Instrument & Update
             </button>
             <p className="text-[9px] text-[#5E6C54]/30 font-bold uppercase tracking-tight text-center">
