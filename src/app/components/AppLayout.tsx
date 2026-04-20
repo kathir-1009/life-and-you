@@ -1,4 +1,4 @@
-import { Outlet, useLocation, Navigate } from "react-router";
+import { Outlet, useLocation, Navigate, ScrollRestoration } from "react-router";
 import { BottomNav } from "./BottomNav";
 import { PortalHeader } from "./PortalHeader";
 import { useEffect, useState } from "react";
@@ -33,6 +33,7 @@ export function AppLayout() {
 
   return (
     <div className="min-h-screen bg-[#FCF8E8] flex flex-col portal-context">
+      <ScrollRestoration />
       {/* Horizontal Nav - Desktop Only */}
       <PortalHeader />
 
