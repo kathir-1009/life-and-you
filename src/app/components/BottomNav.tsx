@@ -1,19 +1,29 @@
 import { Link, useLocation } from "react-router";
-import { House, ChatRightDots, GraphUp, Person, Compass, EyeSlash } from "react-bootstrap-icons";
+import { House, ChatRightDots, GraphUp, Person, Compass, EyeSlash, JournalBookmarkFill, CalendarCheckFill } from "react-bootstrap-icons";
 import { useUser } from "../context/UserContext";
 
 export function BottomNav() {
   const location = useLocation();
-  const { isAnonymous } = useUser();
+  const { isAnonymous, role } = useUser();
   const isActive = (path: string) => location.pathname === path;
 
-  const navItems = [
+  const clientNav = [
     { icon: House, label: "Home", path: "/portal" },
-    { icon: Compass, label: "Book", path: "/portal/book" },
     { icon: GraphUp, label: "Progress", path: "/portal/progress" },
+    { icon: Compass, label: "Book", path: "/portal/book" },
+    { icon: JournalBookmarkFill, label: "Journal", path: "/portal/journal" },
     { icon: ChatRightDots, label: "Chat", path: "/portal/messages", badge: true },
-    { icon: Person, label: "Account", path: "/portal/profile" },
+    { icon: Person, label: "Profile", path: "/portal/profile" },
   ];
+
+  const coachNav = [
+    { icon: House, label: "Home", path: "/coach" },
+    { icon: CalendarCheckFill, label: "Schedule", path: "/coach/schedule" },
+    { icon: ChatRightDots, label: "Chat", path: "/coach/messages", badge: true },
+    { icon: Person, label: "Profile", path: "/portal/profile" }, // Profile is shared
+  ];
+
+  const navItems = role === 'coach' ? coachNav : clientNav;
 
   return (
     <div className="fixed bottom-0 left-0 right-0 lg:hidden bg-[#FFFFFF]/10 backdrop-blur-2xl border-t border-[#FFFFFF]/10 px-4 sm:px-6 py-1 sm:py-3 pb-3 flex items-center justify-between z-50 rounded-t-[28px] sm:rounded-t-[32px] shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">

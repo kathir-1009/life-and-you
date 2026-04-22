@@ -47,17 +47,18 @@ export function HeroSection() {
         <div className="lg:col-span-5 relative hidden lg:block animate-in fade-in zoom-in duration-1000 delay-300">
            <div className="absolute inset-0 bg-gradient-to-br from-sage/20 to-transparent rounded-[80px] blur-3xl -z-10 scale-110" />
            <div className="relative z-10">
-              <div className="bg-sage rounded-[60px] p-2 shadow-2xl overflow-hidden aspect-[4/5]">
+              <div className="bg-sage rounded-[60px] p-2 shadow-2xl overflow-hidden aspect-[4/5] relative">
                 <img 
                   src="/img/banner/banner-img-111.png" 
                   alt="Sanctuary Session" 
-                  className="w-full h-full object-cover rounded-[54px] opacity-90 hover:scale-105 transition-transform duration-700" 
+                  className="w-full h-full object-cover rounded-[54px] opacity-90 hover:scale-105 transition-transform duration-1000" 
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-sage-dark/30 to-transparent pointer-events-none" />
               </div>
            </div>
            
            {/* Dynamic Floaties */}
-           <div className="absolute -bottom-12 -left-12 bg-white/80 backdrop-blur-2xl p-8 rounded-[40px] shadow-2xl border border-white z-20 max-w-xs animate-bounce-slow">
+           <div className="absolute -bottom-12 -left-12 bg-white/80 backdrop-blur-2xl p-8 rounded-[40px] shadow-2xl border border-white z-20 max-w-xs animate-in slide-in-from-bottom-10 duration-1000 delay-500">
               <div className="flex items-center gap-4 mb-4">
                  <div className="w-14 h-14 bg-sage rounded-2xl flex items-center justify-center text-gold-dark shadow-lg">
                     <Lock size={28} />
@@ -70,6 +71,13 @@ export function HeroSection() {
               <p className="text-xs text-sage-dark/70 font-bold leading-relaxed italic">
                 "The first platform where I felt safe being truly honest."
               </p>
+           </div>
+
+           <div className="absolute top-1/4 -right-12 bg-gold text-sage-dark p-6 rounded-[32px] shadow-2xl border border-white/20 z-20 animate-in slide-in-from-right-10 duration-1000 delay-700">
+              <div className="flex items-center gap-3">
+                 <div className="w-3 h-3 bg-sage-dark rounded-full animate-pulse" />
+                 <span className="text-[10px] font-black uppercase tracking-[0.2em]">124 Active Sessions</span>
+              </div>
            </div>
         </div>
       </div>

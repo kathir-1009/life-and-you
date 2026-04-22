@@ -1,5 +1,6 @@
 import { TrendingUp, Award, Calendar, ChevronRight, Star, Heart, Shield, ArrowRight, BarChart3, ChevronLeft } from "lucide-react";
 import { Link, useNavigate } from "react-router";
+import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
 
 export function ProgressPage() {
   const navigate = useNavigate();
@@ -75,20 +76,27 @@ export function ProgressPage() {
                      <button className="text-[10px] font-black text-[#A68A45] uppercase tracking-widest border border-[#A68A45]/20 px-6 py-2.5 rounded-full hover:bg-[#A68A45] hover:text-white transition-all">Download Report</button>
                   </div>
                   
-                  <div className="flex items-end justify-between h-56 lg:h-80 gap-3">
-                     {weekData.map((data, i) => (
-                        <div key={i} className="flex-1 flex flex-col items-center gap-6 group justify-end h-full">
-                           <div 
-                              className={`w-full max-w-[48px] rounded-full transition-all duration-1000 relative flex justify-center items-center group shadow-md ${i === 4 ? 'bg-sage' : 'bg-sage hover:bg-[#A68A45]'}`}
-                              style={{ height: `${data.height}%` }}
-                           >
-                              <div className="absolute -top-10 opacity-0 group-hover:opacity-100 transition-all bg-sage text-white text-[10px] font-black px-2 py-1 rounded-lg">
-                                 {data.val}
-                              </div>
-                           </div>
-                           <span className="text-[10px] lg:text-xs font-black text-sage-dark/40 uppercase tracking-widest">{data.day}</span>
-                        </div>
-                     ))}
+                  <div className="h-64 lg:h-80 w-full">
+                     <ResponsiveContainer width="100%" height="100%">
+                        <AreaChart
+                           data={weekData.map(d => ({ name: d.day, val: d.val }))}
+                           margin={{ top: 10, right: 10, left: -20, bottom: 0 }}
+                        >
+                           <defs>
+                              <linearGradient id="progressGradient" x1="0" y1="0" x2="0" y2="1">
+                                 <stop offset="5%" stopColor="#A68A45" stopOpacity={0.3}/>
+                                 <stop offset="95%" stopColor="#A68A45" stopOpacity={0}/>
+                              </linearGradient>
+                           </defs>
+                           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" opacity={0.5} />
+                           <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 10, fontWeight: 700, fill: '#5E6C54', opacity: 0.4 }} />
+                           <YAxis axisLine={false} tickLine={false} tick={false} />
+                           <Tooltip 
+                              contentStyle={{ borderRadius: '16px', border: 'none', boxShadow: '0 10px 30px rgba(0,0,0,0.1)', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase' }}
+                           />
+                           <Area type="monotone" dataKey="val" stroke="#A68A45" strokeWidth={4} fillOpacity={1} fill="url(#progressGradient)" />
+                        </AreaChart>
+                     </ResponsiveContainer>
                   </div>
                </div>
 

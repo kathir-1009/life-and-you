@@ -24,6 +24,11 @@ const OTPVerifyPage = lazy(() => import("./pages/OTPVerifyPage").then(m => ({ de
 const AboutPage = lazy(() => import("./pages/AboutPage").then(m => ({ default: m.AboutPage })));
 const PricingPage = lazy(() => import("./pages/PricingPage").then(m => ({ default: m.PricingPage })));
 const ContactPage = lazy(() => import("./pages/ContactPage").then(m => ({ default: m.ContactPage })));
+const BlogPage = lazy(() => import("./pages/BlogPage").then(m => ({ default: m.BlogPage })));
+const CoachDirectoryPage = lazy(() => import("./pages/PublicCoachDirectoryPage").then(m => ({ default: m.PublicCoachDirectoryPage })));
+const FAQPage = lazy(() => import("./pages/FAQPage").then(m => ({ default: m.FAQPage })));
+const ForgotPasswordPage = lazy(() => import("./pages/ForgotPasswordPage").then(m => ({ default: m.ForgotPasswordPage })));
+const ResetPasswordPage = lazy(() => import("./pages/ResetPasswordPage").then(m => ({ default: m.ResetPasswordPage })));
 
 // Client Sessions
 const AllSessions = lazy(() => import("./pages/client/sessions/AllSessionsPage").then(m => ({ default: m.AllSessionsPage })));
@@ -57,6 +62,8 @@ const BillingHistory = lazy(() => import("./pages/client/profile/BillingHistoryP
 const SecurityVault = lazy(() => import("./pages/client/profile/SecurityVaultPage").then(m => ({ default: m.SecurityVaultPage })));
 const UpdatePayment = lazy(() => import("./pages/client/profile/UpdatePaymentPage").then(m => ({ default: m.UpdatePaymentPage })));
 const SupportPage = lazy(() => import("./pages/HelpSupportPage").then(m => ({ default: m.HelpSupportPage })));
+const GoalsTracker = lazy(() => import("./pages/client/GoalsTrackerPage").then(m => ({ default: m.GoalsTrackerPage })));
+const MoodCheckin = lazy(() => import("./pages/client/MoodCheckinPage").then(m => ({ default: m.MoodCheckinPage })));
 
 // Coach Onboarding
 const CoachWelcome = lazy(() => import("./pages/coach/onboarding/CoachWelcomePage").then(m => ({ default: m.CoachWelcomePage })));
@@ -67,6 +74,18 @@ const CoachSchedulePage = lazy(() => import("./pages/CoachSchedulePage").then(m 
 const CoachClientsPage = lazy(() => import("./pages/coach/clients/CoachClientListPage").then(m => ({ default: m.CoachClientListPage })));
 const CoachEarningsPage = lazy(() => import("./pages/CoachEarningsPage").then(m => ({ default: m.CoachEarningsPage })));
 const CoachMonthView = lazy(() => import("./pages/coach/schedule/CoachMonthViewPage").then(m => ({ default: m.CoachMonthViewPage })));
+const AvailabilityPage = lazy(() => import("./pages/AvailabilityPage").then(m => ({ default: m.AvailabilityPage })));
+const CoachSessionList = lazy(() => import("./pages/coach/sessions/CoachSessionListPage").then(m => ({ default: m.CoachSessionListPage })));
+const CoachClientProfile = lazy(() => import("./pages/coach/clients/CoachClientProfilePage").then(m => ({ default: m.CoachClientProfilePage })));
+
+// Admin Pages
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboardPage").then(m => ({ default: m.AdminDashboardPage })));
+const AdminUsers = lazy(() => import("./pages/admin/AdminUsersPage").then(m => ({ default: m.AdminUsersPage })));
+const AdminCoaches = lazy(() => import("./pages/admin/AdminCoachesPage").then(m => ({ default: m.AdminCoachesPage })));
+const AdminSessions = lazy(() => import("./pages/admin/AdminSessionsPage").then(m => ({ default: m.AdminSessionsPage })));
+const AdminContent = lazy(() => import("./pages/admin/AdminContentPage").then(m => ({ default: m.AdminContentPage })));
+const AdminAnalytics = lazy(() => import("./pages/admin/AdminAnalyticsPage").then(m => ({ default: m.AdminAnalyticsPage })));
+const AdminBilling = lazy(() => import("./pages/admin/AdminBillingPage").then(m => ({ default: m.AdminBillingPage })));
 
 // Loading component
 const PageLoader = () => (
@@ -97,6 +116,8 @@ export const router = createBrowserRouter([
       { path: "login", element: withSuspense(AuthPage) },
       { path: "register", element: withSuspense(AuthPage) }, 
       { path: "verify", element: withSuspense(OTPVerifyPage) },
+      { path: "forgot-password", element: withSuspense(ForgotPasswordPage) },
+      { path: "reset-password", element: withSuspense(ResetPasswordPage) },
     ]
   },
   {
@@ -120,6 +141,9 @@ export const router = createBrowserRouter([
       { path: "pricing", element: withSuspense(PricingPage) },
       { path: "contact", element: withSuspense(ContactPage) },
       { path: "book", element: withSuspense(BookSessionPage) },
+      { path: "blog", element: withSuspense(BlogPage) },
+      { path: "coaches", element: withSuspense(CoachDirectoryPage) },
+      { path: "faq", element: withSuspense(FAQPage) },
     ],
   },
   // CLIENT PORTAL
@@ -175,6 +199,8 @@ export const router = createBrowserRouter([
       },
       { path: "notifications", element: withSuspense(NotificationsPage) },
       { path: "journal", element: withSuspense(JournalPage) },
+      { path: "goals", element: withSuspense(GoalsTracker) },
+      { path: "mood", element: withSuspense(MoodCheckin) },
     ]
   },
   // COACH CONSOLE
@@ -198,9 +224,31 @@ export const router = createBrowserRouter([
           { path: "month", element: withSuspense(CoachMonthView) },
         ]
       },
-      { path: "clients", element: withSuspense(CoachClientsPage) },
+      { 
+        path: "clients", 
+        children: [
+          { index: true, element: withSuspense(CoachClientsPage) },
+          { path: ":id", element: withSuspense(CoachClientProfile) },
+        ] 
+      },
+      { path: "sessions", element: withSuspense(CoachSessionList) },
       { path: "messages", element: withSuspense(MessagingPage) },
       { path: "earnings", element: withSuspense(CoachEarningsPage) },
+      { path: "availability", element: withSuspense(AvailabilityPage) },
+    ]
+  },
+  // ADMIN PANEL
+  {
+    path: "/admin",
+    element: <AppLayout />,
+    children: [
+      { index: true, element: withSuspense(AdminDashboard) },
+      { path: "users", element: withSuspense(AdminUsers) },
+      { path: "coaches", element: withSuspense(AdminCoaches) },
+      { path: "sessions", element: withSuspense(AdminSessions) },
+      { path: "content", element: withSuspense(AdminContent) },
+      { path: "analytics", element: withSuspense(AdminAnalytics) },
+      { path: "billing", element: withSuspense(AdminBilling) },
     ]
   },
   // SESSION
