@@ -10,13 +10,8 @@ export function AuthPage() {
 
   const handleAuth = (e: React.FormEvent) => {
     e.preventDefault();
-    // Mock successful login
-    sessionStorage.setItem("portal_access", "true");
-    
-    // Route based on role
-    if (role === 'admin') navigate("/admin");
-    else if (role === 'coach') navigate("/coach");
-    else navigate("/portal");
+    // Route to OTP screen
+    navigate("/auth/verify", { state: { mode } });
   };
 
   return (

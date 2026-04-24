@@ -1,11 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { ChevronLeft, RefreshCw, CheckCircle2, ShieldCheck, Mail } from "lucide-react";
+import { useUser } from "../context/UserContext";
 
 export function OTPVerifyPage() {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { role } = useUser();
+  const mode = location.state?.mode || "login";
 
   const handleChange = (index: number, value: string) => {
     if (value.length > 1) value = value.slice(-1);
@@ -28,10 +32,18 @@ export function OTPVerifyPage() {
     if (otp.every(v => v !== "")) {
       // Set secure portal access flag
       sessionStorage.setItem("portal_access", "true");
-      const timer = setTimeout(() => navigate("/onboarding"), 1000);
+      const timer = setTimeout(() => {
+        if (mode === "register") {
+          navigate("/onboarding");
+        } else {
+          if (role === 'admin') navigate("/admin");
+          else if (role === 'coach') navigate("/coach");
+          else navigate("/portal");
+        }
+      }, 1000);
       return () => clearTimeout(timer);
     }
-  }, [otp, navigate]);
+  }, [otp, navigate, mode, role]);
 
   return (
     <div className="min-h-[100dvh] bg-cream flex flex-col p-6 sm:p-8 portal-context">
