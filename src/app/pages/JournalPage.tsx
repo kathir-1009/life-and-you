@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { Plus, Search, Filter, ThreeDotsVertical, JournalBookmarkFill, Quote, TypeBold, TypeItalic, TypeUnderline, ListUl, Link45deg, Save2Fill, Trash3Fill, Calendar3, ChevronLeft, Shield } from "react-bootstrap-icons";
+import { Plus, Search, Filter, ThreeDotsVertical, JournalBookmarkFill, Quote, TypeBold, TypeItalic, TypeStrikethrough, ListUl, ListOl, Save2Fill, Trash3Fill, Calendar3, ChevronLeft, Shield } from "react-bootstrap-icons";
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
 
-function ToolbarButton({ icon: Icon }: { icon: any }) {
+function ToolbarButton({ icon: Icon, onClick, isActive = false }: { icon: any, onClick?: () => void, isActive?: boolean }) {
   return (
-    <button className="p-2 text-[#5E6C54]/40 hover:text-[#5E6C54] hover:bg-white rounded-lg transition-all">
+    <button 
+      onClick={onClick}
+      className={`p-2 rounded-lg transition-all ${isActive ? 'bg-[#5E6C54] text-white shadow-md' : 'text-[#5E6C54]/40 hover:text-[#5E6C54] hover:bg-white'}`}
+    >
        <Icon size={16} />
     </button>
   );
@@ -12,6 +17,18 @@ function ToolbarButton({ icon: Icon }: { icon: any }) {
 
 export function JournalPage() {
   const navigate = useNavigate();
+
+  const editor = useEditor({
+    extensions: [
+      StarterKit,
+    ],
+    content: '<p>Begin your reflection sanctuary here...</p>',
+    editorProps: {
+      attributes: {
+        class: 'prose prose-sage prose-lg max-w-none w-full bg-transparent min-h-[400px] text-lg font-medium text-sage-dark/70 leading-relaxed outline-none border-none custom-scrollbar focus:outline-none',
+      },
+    },
+  });
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen pb-32 portal-context">
@@ -54,20 +71,48 @@ export function JournalPage() {
             <div className="bg-white rounded-[48px] p-8 lg:p-12 border border-sage/5 shadow-premium">
                {/* Toolbar */}
                <div className="flex flex-wrap items-center gap-2 mb-8 pb-6 border-b border-sage/5">
-                  <div className="flex bg-cream rounded-xl p-1 gap-1">
-                     <ToolbarButton icon={TypeBold} />
-                     <ToolbarButton icon={TypeItalic} />
-                     <ToolbarButton icon={TypeUnderline} />
-                  </div>
-                  <div className="flex bg-cream rounded-xl p-1 gap-1">
-                     <ToolbarButton icon={ListUl} />
-                     <ToolbarButton icon={Link45deg} />
-                  </div>
-                  <div className="flex bg-cream rounded-xl p-1 gap-1">
-                     <ToolbarButton icon={Quote} />
-                  </div>
+                  {editor && (
+                    <>
+                      <div className="flex bg-cream rounded-xl p-1 gap-1 shadow-inner">
+                         <ToolbarButton 
+                            icon={TypeBold} 
+                            onClick={() => editor.chain().focus().toggleBold().run()} 
+                            isActive={editor.isActive('bold')} 
+                         />
+                         <ToolbarButton 
+                            icon={TypeItalic} 
+                            onClick={() => editor.chain().focus().toggleItalic().run()} 
+                            isActive={editor.isActive('italic')} 
+                         />
+                         <ToolbarButton 
+                            icon={TypeStrikethrough} 
+                            onClick={() => editor.chain().focus().toggleStrike().run()} 
+                            isActive={editor.isActive('strike')} 
+                         />
+                      </div>
+                      <div className="flex bg-cream rounded-xl p-1 gap-1 shadow-inner">
+                         <ToolbarButton 
+                            icon={ListUl} 
+                            onClick={() => editor.chain().focus().toggleBulletList().run()} 
+                            isActive={editor.isActive('bulletList')} 
+                         />
+                         <ToolbarButton 
+                            icon={ListOl} 
+                            onClick={() => editor.chain().focus().toggleOrderedList().run()} 
+                            isActive={editor.isActive('orderedList')} 
+                         />
+                      </div>
+                      <div className="flex bg-cream rounded-xl p-1 gap-1 shadow-inner">
+                         <ToolbarButton 
+                            icon={Quote} 
+                            onClick={() => editor.chain().focus().toggleBlockquote().run()} 
+                            isActive={editor.isActive('blockquote')} 
+                         />
+                      </div>
+                    </>
+                  )}
                   <div className="ml-auto">
-                     <button className="flex items-center gap-2 px-6 py-2.5 bg-sage text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-sage-dark transition-all">
+                     <button className="flex items-center gap-2 px-6 py-2.5 bg-sage text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-sage-dark transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5">
                         <Save2Fill size={14} /> Commit Entry
                      </button>
                   </div>
@@ -79,10 +124,9 @@ export function JournalPage() {
                      placeholder="Entry Protocol Title..." 
                      className="w-full bg-transparent text-3xl lg:text-4xl font-bold text-sage-dark font-serif outline-none border-none placeholder:text-sage-dark/10"
                   />
-                  <textarea 
-                     placeholder="Begin your reflection sanctuary here..."
-                     className="w-full bg-transparent min-h-[400px] text-lg font-medium text-sage-dark/70 leading-relaxed outline-none border-none resize-none placeholder:text-sage-dark/10 custom-scrollbar"
-                  />
+                  <div className="min-h-[400px]">
+                    <EditorContent editor={editor} />
+                  </div>
                </div>
             </div>
          </div>
@@ -91,7 +135,7 @@ export function JournalPage() {
          <div className="space-y-8">
             <div className="flex items-center justify-between px-2">
                <h3 className="text-[11px] font-black text-sage-dark uppercase tracking-[0.4em]">Previous Records</h3>
-               <button className="text-[10px] font-black text-sage uppercase tracking-widest"><Search size={14} /></button>
+               <button className="text-[10px] font-black text-sage uppercase tracking-widest hover:bg-sage/10 p-2 rounded-full transition-colors"><Search size={14} /></button>
             </div>
             
             <div className="space-y-4">
@@ -100,7 +144,7 @@ export function JournalPage() {
                   { date: "April 18, 2026", title: "Workplace Triggers", preview: "Identified the core trigger for Tuesday's anxiety surge..." },
                   { date: "April 15, 2026", title: "Weekly Synthesis", preview: "Growth score is up 12%. Energy levels are stabilizing..." }
                ].map((entry, i) => (
-                  <div key={i} className="bg-white p-6 rounded-[32px] border border-sage/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group">
+                  <div key={i} className="bg-white p-6 rounded-[32px] border border-sage/5 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all group cursor-pointer">
                      <div className="flex items-center justify-between mb-4">
                         <span className="text-[9px] font-black text-sage-dark/30 uppercase tracking-widest flex items-center gap-2">
                            <Calendar3 size={10} /> {entry.date}
@@ -110,7 +154,7 @@ export function JournalPage() {
                            <button className="text-sage-dark/20 hover:text-red-400"><Trash3Fill size={14} /></button>
                         </div>
                      </div>
-                     <h4 className="text-base font-bold text-sage-dark font-serif mb-2">{entry.title}</h4>
+                     <h4 className="text-base font-bold text-sage-dark font-serif mb-2 group-hover:text-sage transition-colors">{entry.title}</h4>
                      <p className="text-xs text-sage-dark/50 line-clamp-2 leading-relaxed italic">"{entry.preview}"</p>
                   </div>
                ))}

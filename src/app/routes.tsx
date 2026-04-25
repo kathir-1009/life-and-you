@@ -64,6 +64,7 @@ const UpdatePayment = lazy(() => import("./pages/client/profile/UpdatePaymentPag
 const SupportPage = lazy(() => import("./pages/HelpSupportPage").then(m => ({ default: m.HelpSupportPage })));
 const GoalsTracker = lazy(() => import("./pages/client/GoalsTrackerPage").then(m => ({ default: m.GoalsTrackerPage })));
 const MoodCheckin = lazy(() => import("./pages/client/MoodCheckinPage").then(m => ({ default: m.MoodCheckinPage })));
+const CertificatesPage = lazy(() => import("./pages/client/profile/CertificatesPage").then(m => ({ default: m.CertificatesPage })));
 
 // Coach Onboarding
 const CoachWelcome = lazy(() => import("./pages/coach/onboarding/CoachWelcomePage").then(m => ({ default: m.CoachWelcomePage })));
@@ -73,6 +74,8 @@ const CoachProfile = lazy(() => import("./pages/coach/onboarding/CoachProfileSet
 const CoachSchedulePage = lazy(() => import("./pages/CoachSchedulePage").then(m => ({ default: m.CoachSchedulePage })));
 const CoachClientsPage = lazy(() => import("./pages/coach/clients/CoachClientListPage").then(m => ({ default: m.CoachClientListPage })));
 const CoachEarningsPage = lazy(() => import("./pages/CoachEarningsPage").then(m => ({ default: m.CoachEarningsPage })));
+const CoachPayoutManagerPage = lazy(() => import("./pages/coach/earnings/CoachPayoutManagerPage").then(m => ({ default: m.CoachPayoutManagerPage })));
+const CoachResourcesPage = lazy(() => import("./pages/coach/resources/CoachResourcesPage").then(m => ({ default: m.CoachResourcesPage })));
 const CoachMonthView = lazy(() => import("./pages/coach/schedule/CoachMonthViewPage").then(m => ({ default: m.CoachMonthViewPage })));
 const AvailabilityPage = lazy(() => import("./pages/AvailabilityPage").then(m => ({ default: m.AvailabilityPage })));
 const CoachSessionList = lazy(() => import("./pages/coach/sessions/CoachSessionListPage").then(m => ({ default: m.CoachSessionListPage })));
@@ -201,6 +204,7 @@ export const router = createBrowserRouter([
       { path: "journal", element: withSuspense(JournalPage) },
       { path: "goals", element: withSuspense(GoalsTracker) },
       { path: "mood", element: withSuspense(MoodCheckin) },
+      { path: "certificates", element: withSuspense(CertificatesPage) },
     ]
   },
   // COACH CONSOLE
@@ -233,8 +237,15 @@ export const router = createBrowserRouter([
       },
       { path: "sessions", element: withSuspense(CoachSessionList) },
       { path: "messages", element: withSuspense(MessagingPage) },
-      { path: "earnings", element: withSuspense(CoachEarningsPage) },
+      { 
+        path: "earnings", 
+        children: [
+          { index: true, element: withSuspense(CoachEarningsPage) },
+          { path: "payout", element: withSuspense(CoachPayoutManagerPage) },
+        ]
+      },
       { path: "availability", element: withSuspense(AvailabilityPage) },
+      { path: "resources", element: withSuspense(CoachResourcesPage) },
     ]
   },
   // ADMIN PANEL
