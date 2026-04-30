@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router";
 import { lazy, Suspense } from "react";
 import { MainLayout } from "./components/MainLayout";
 import { AppLayout } from "./components/AppLayout";
+import { AdminLayout } from "./components/AdminLayout";
 
 // Lazy load pages
 const HomePage = lazy(() => import("./pages/HomePage").then(m => ({ default: m.HomePage })));
@@ -251,7 +252,7 @@ export const router = createBrowserRouter([
   // ADMIN PANEL
   {
     path: "/admin",
-    element: <AppLayout />,
+    element: <AdminLayout />,
     children: [
       { index: true, element: withSuspense(AdminDashboard) },
       { path: "users", element: withSuspense(AdminUsers) },

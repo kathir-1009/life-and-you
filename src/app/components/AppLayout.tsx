@@ -1,6 +1,6 @@
 import { Outlet, useLocation, Navigate, ScrollRestoration } from "react-router";
 import { BottomNav } from "./BottomNav";
-import { PortalHeader } from "./PortalHeader";
+import { Sidebar } from "./Sidebar";
 import { useEffect, useState } from "react";
 import { useUser } from "../context/UserContext";
 
@@ -11,7 +11,6 @@ export function AppLayout() {
   
   const isPortal = location.pathname.startsWith("/portal");
   const isCoach = location.pathname.startsWith("/coach");
-  const isAdmin = location.pathname.startsWith("/admin");
   const isChat = location.pathname.includes("/messages");
 
   useEffect(() => {
@@ -27,23 +26,48 @@ export function AppLayout() {
   }
 
   // Simple Role Guard
-  if (isPortal && role !== 'client') return <Navigate to="/coach" replace />;
-  if (isCoach && role !== 'coach') return <Navigate to="/portal" replace />;
-  if (isAdmin && role !== 'admin') return <Navigate to="/portal" replace />;
+  if (isPortal && role !== 'client') {
+    return <Navigate to={role === 'admin' ? '/admin' : '/coach'} replace />;
+  }
+  if (isCoach && role !== 'coach') {
+    return <Navigate to={role === 'admin' ? '/admin' : '/portal'} replace />;
+  }
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] flex flex-col portal-context">
+    <div className="min-h-screen bg-[#FCF8E8] flex portal-context overflow-hidden">
       <ScrollRestoration />
-      {/* Horizontal Nav - Desktop Only */}
-      <PortalHeader />
+      
+      {/* Sidebar - Desktop Only (hidden lg:flex inside Sidebar component) */}
+      {!isChat && <Sidebar />}
 
-      <div className={`flex-1 flex flex-col ${isChat ? 'h-[100dvh]' : 'min-h-[100dvh] relative overflow-x-hidden'}`}>
-        <main className={`flex-1 relative z-10 w-full max-w-[1440px] mx-auto p-0 lg:p-10 ${!isChat && 'lg:pt-20'}`}>
-          <Outlet />
-        </main>
+      {/* Main Content Area */}
+      <div className={`flex-1 flex flex-col ${isChat ? 'h-[100dvh]' : 'h-[100dvh]'} overflow-x-hidden relative`}>
+        
+        {/* Mobile Header */}
+        {!isChat && (
+          <div className="lg:hidden bg-sage text-white p-4 flex items-center gap-3 relative z-50 shadow-md">
+            <div className="w-8 h-8">
+               <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain brightness-[10]" />
+            </div>
+            <div>
+               <h1 className="text-sm font-bold tracking-tight leading-none font-serif">Life & You</h1>
+               <span className="text-[8px] font-bold text-[#B5C4BA] uppercase tracking-[0.2em] mt-0.5 block">Portal Access</span>
+            </div>
+          </div>
+        )}
+
+        <div className="flex-1 overflow-y-auto">
+          <main className={`relative z-10 w-full max-w-[1440px] mx-auto p-0 lg:p-10 ${!isChat && 'lg:pt-10'}`}>
+            <Outlet />
+          </main>
+        </div>
         
         {/* BottomNav - Mobile Only */}
-        {!isChat && <BottomNav />}
+        {!isChat && (
+          <div className="lg:hidden relative z-50">
+            <BottomNav />
+          </div>
+        )}
       </div>
     </div>
   );

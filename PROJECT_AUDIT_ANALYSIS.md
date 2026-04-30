@@ -14,7 +14,7 @@ Styling:      Tailwind CSS 4.1.12
 UI Library:   Radix UI (40+ components)
 Forms:        React Hook Form 7.55
 Charts:       Recharts 2.15.2
-Icons:        Lucide React 0.487
+Icons:        Lucide React 0.487        
 Notifications: Sonner 2.0.3
 ```
 

@@ -132,9 +132,9 @@ export function Sidebar() {
 
       {/* Account Profile Bottom Link */}
       <Link
-        to="/app/profile"
+        to={role === 'client' ? "/portal/profile" : role === 'coach' ? "/coach" : "/admin"}
         className={`flex items-center gap-4 px-6 py-4 rounded-[24px] transition-all mb-4 relative z-10 ${
-          isActive("/app/profile") ? "bg-[#8B9A71] text-white" : "text-white/50 hover:bg-white/5 hover:text-white"
+          isActive(role === 'client' ? "/portal/profile" : "") ? "bg-[#8B9A71] text-white" : "text-white/50 hover:bg-white/5 hover:text-white"
         }`}
       >
         <User size={20} />
