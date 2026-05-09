@@ -49,7 +49,7 @@ export function AboutPage() {
               </div>
 
               <button 
-                onClick={() => navigate("/app/book")}
+                onClick={() => navigate("/portal/book")}
                 className="inline-flex items-center gap-4 px-10 py-5 bg-[#8B9A71] text-white rounded-pill font-extrabold text-sm uppercase tracking-widest shadow-2xl shadow-[#8B9A71]/20 hover:scale-105 transition-all"
               >
                 Meet Your Coach <ArrowRight size={18} />
@@ -112,7 +112,7 @@ export function AboutPage() {
                     {coach.tags.map(t => <span key={t} className="text-[8px] font-black uppercase tracking-widest bg-[#F8F9FA] text-[#545454]/60 px-3 py-1.5 rounded-full border border-[rgba(139,154,113,0.05)]">{t}</span>)}
                   </div>
                   
-                  <Link to="/app/book" className="w-full bg-[#2D3324] text-white py-5 rounded-pill text-[10px] font-extrabold uppercase tracking-widest text-center shadow-lg hover:bg-[#1C1A1E] transition-all">
+                  <Link to="/portal/book" className="w-full bg-[#2D3324] text-white py-5 rounded-pill text-[10px] font-extrabold uppercase tracking-widest text-center shadow-lg hover:bg-[#1C1A1E] transition-all">
                     Book Breakthrough
                   </Link>
                </div>

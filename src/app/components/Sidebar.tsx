@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router";
-import { Home, MessageCircle, Calendar, User, TrendingUp, LogOut, ShieldCheck, Star, Compass, EyeOff, Eye, Book, Clock, LucideIcon } from "lucide-react";
+import { Home, MessageCircle, Calendar, User, TrendingUp, LogOut, Star, Compass, EyeOff, Eye, Book, Clock, LucideIcon } from "lucide-react";
 import { useUser } from "../context/UserContext";
 
 interface NavItem {
@@ -30,21 +30,14 @@ export function Sidebar() {
     { icon: User, label: "Clients", path: "/coach/clients" },
     { icon: Clock, label: "Sessions", path: "/coach/sessions" },
     { icon: MessageCircle, label: "Messages", path: "/coach/messages", badge: "12" },
-    { icon: Book, label: "Resources", path: "/coach/resources" },
+    { icon: Book, label: "Notes", path: "/coach/notes" },
+    { icon: Star, label: "Resources", path: "/coach/resources" },
     { icon: TrendingUp, label: "Earnings", path: "/coach/earnings" },
   ];
 
-  const adminNav: NavItem[] = [
-    { icon: Home, label: "Dashboard", path: "/admin" },
-    { icon: User, label: "Users", path: "/admin/users" },
-    { icon: ShieldCheck, label: "Coaches", path: "/admin/coaches" },
-    { icon: Clock, label: "Sessions", path: "/admin/sessions" },
-    { icon: Book, label: "Content", path: "/admin/content" },
-    { icon: TrendingUp, label: "Analytics", path: "/admin/analytics" },
-    { icon: TrendingUp, label: "Billing", path: "/admin/billing" },
-  ];
-
-  const navItems = role === 'coach' ? coachNav : role === 'admin' ? adminNav : clientNav;
+  const navItems = role === 'coach' ? coachNav : clientNav;
+  const profilePath = role === 'coach' ? "/coach/profile" : "/portal/profile";
+  const portalLabel = role === 'coach' ? "Coach Workspace" : "Portal Home";
 
   return (
     <div className="w-80 h-screen sticky top-0 bg-sage flex flex-col p-8 border-r border-sage/20 shadow-2xl overflow-y-auto hidden lg:flex custom-scrollbar">
@@ -78,9 +71,11 @@ export function Sidebar() {
                {(isAnonymous && role === 'client') && <div className="absolute inset-0 bg-black/40 flex items-center justify-center text-white"><EyeOff size={14} /></div>}
             </div>
             <div className="flex flex-col">
-               <span className="text-xs font-bold text-white leading-tight">{(isAnonymous && role === 'client') ? "Anonymous User" : user.name}</span>
+               <span className="text-xs font-bold text-white leading-tight">
+                 {(isAnonymous && role === 'client') ? "Anonymous User" : user.name}
+               </span>
                <span className="text-[10px] text-[#B5C4BA] uppercase tracking-wider mt-0.5">
-                 {role === 'admin' ? "Platform Admin" : role === 'coach' ? "Certified Coach" : "Client"}
+                 {role === 'coach' ? "Certified Coach" : "Client"}
                </span>
             </div>
          </div>
@@ -106,7 +101,7 @@ export function Sidebar() {
       {/* Navigation Groups */}
       <div className="flex-1 space-y-1 relative z-10">
         <p className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-4 ml-4">
-          {role === 'admin' ? "Admin Console" : role === 'coach' ? "Coach Workspace" : "Portal Home"}
+          {portalLabel}
         </p>
         {navItems.map((item) => {
           const active = isActive(item.path);
@@ -132,9 +127,9 @@ export function Sidebar() {
 
       {/* Account Profile Bottom Link */}
       <Link
-        to={role === 'client' ? "/portal/profile" : role === 'coach' ? "/coach" : "/admin"}
+        to={profilePath}
         className={`flex items-center gap-4 px-6 py-4 rounded-[24px] transition-all mb-4 relative z-10 ${
-          isActive(role === 'client' ? "/portal/profile" : "") ? "bg-[#8B9A71] text-white" : "text-white/50 hover:bg-white/5 hover:text-white"
+          isActive(profilePath) ? "bg-[#8B9A71] text-white" : "text-white/50 hover:bg-white/5 hover:text-white"
         }`}
       >
         <User size={20} />

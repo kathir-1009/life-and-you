@@ -9,7 +9,7 @@ export function CoachEarningsPage() {
   ];
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen pb-32">
+    <div className="bg-[#FAF9F6] min-h-screen pb-32 portal-context">
       <div className="bg-[#2D3324] py-12 px-6 md:px-12 rounded-b-[32px] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#8B9A71]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
         

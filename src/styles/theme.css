@@ -22,10 +22,13 @@
   --text-cream: #FCF8E8;
   --text-gold: #A68A45; 
   
-  /* Font Families */
-  --font-serif: 'Cormorant Garamond', serif; /* Display */
-  --font-sans-web: 'DM Sans', sans-serif;    /* Web Body */
-  --font-sans-app: 'Nunito', sans-serif;     /* App Body */
+  /* ── Font Families ──
+     ONE body font everywhere: Nunito (friendly, clean, highly legible)
+     Display/headings: Cormorant Garamond (elegant serif for brand moments)
+     DM Sans kept as an alias but not actively split by context anymore.
+  */
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Nunito', 'DM Sans', system-ui, sans-serif;
   
   /* Modern UI Tokens */
   --radius-sm: 8px;
@@ -45,21 +48,21 @@
   --tracking-widest: 0.25em;
 }
 
-body {
-  font-family: var(--font-sans-web);
+/* ── Global Body: Nunito everywhere ── */
+html, body {
+  font-family: var(--font-body);
   background: var(--cream);
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
-  /* Prevent font scaling in landscape on iOS */
-  -webkit-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
 }
 
-/* App-style fonts for portal contexts */
+/* portal-context: same font, just ensures it's never overridden by a parent scope */
 .portal-context {
-  font-family: var(--font-sans-app);
+  font-family: var(--font-body);
   color: var(--text-primary);
 }
 
@@ -76,22 +79,25 @@ a, button {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-serif);
-  color: var(--text-primary);
-  line-height: 1.2;
-}
-
+/* ── Headings: Cormorant Garamond for brand display moments only ──
+   Regular paragraph text should NEVER use font-serif.
+   Only use .font-serif on: page titles, large KPI numbers, hero quotes.
+*/
 .font-serif {
   font-family: var(--font-serif);
 }
 
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Legacy aliases — kept so existing classes don't break */
 .font-sans-web {
-  font-family: var(--font-sans-web);
+  font-family: var(--font-body);
 }
 
 .font-sans-app {
-  font-family: var(--font-sans-app);
+  font-family: var(--font-body);
 }
 
 /* Premium Scrollbar */
@@ -151,4 +157,3 @@ h1, h2, h3, h4, h5, h6 {
 .animate-width-grow {
   animation: width-grow 1.5s ease-out forwards;
 }
-

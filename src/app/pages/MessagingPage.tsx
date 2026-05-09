@@ -30,7 +30,7 @@ export function MessagingPage() {
   ];
 
   return (
-    <div className="h-[100dvh] bg-[#F8F9FA] flex flex-col overflow-hidden">
+    <div className="h-[100dvh] bg-[#F8F9FA] flex flex-col overflow-hidden portal-context">
       {/* Premium Chat Header */}
       <div className="bg-[#2D3324] px-6 py-5 flex items-center justify-between shadow-lg relative z-20">
         <div className="flex items-center gap-4">

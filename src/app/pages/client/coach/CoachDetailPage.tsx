@@ -7,7 +7,7 @@ export function ClientCoachDetailPage() {
   return (
     <div className="min-h-screen bg-cream pb-32 portal-context">
       <div className="max-w-6xl mx-auto px-6 pt-16">
-        <Link to="/portal/browse-coaches" className="inline-flex items-center gap-2 text-sage-dark/60 hover:text-sage-dark transition-all mb-12">
+        <Link to="/portal/coaches" className="inline-flex items-center gap-2 text-sage-dark/60 hover:text-sage-dark transition-all mb-12">
            <ArrowLeft size={20} />
            <span className="font-bold text-xs uppercase tracking-widest">Back to Directory</span>
         </Link>

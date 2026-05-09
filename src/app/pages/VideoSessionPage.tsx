@@ -135,7 +135,7 @@ export function VideoSessionPage() {
             <div className="w-[1px] h-10 bg-[#FFFFFF]/10" />
 
             <button 
-              onClick={() => navigate('/app/dashboard')}
+              onClick={() => navigate('/portal')}
               className="w-20 h-14 bg-[#DC2626] text-[#FFFFFF] rounded-[20px] flex items-center justify-center hover:bg-[#B91C1C] transition-all shadow-lg shadow-[#DC2626]/20"
             >
                <PhoneOff size={28} />

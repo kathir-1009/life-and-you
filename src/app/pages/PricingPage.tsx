@@ -120,7 +120,7 @@ export function PricingPage() {
               </div>
 
               <Link
-                to="/app/book"
+                to="/portal/book"
                 className={`w-full py-5 rounded-pill flex items-center justify-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] transition-all ${
                   plan.popular
                     ? "bg-[#8B9A71] text-white shadow-2xl hover:bg-[#A9B891]"

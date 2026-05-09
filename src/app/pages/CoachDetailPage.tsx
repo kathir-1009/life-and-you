@@ -104,7 +104,7 @@ export function CoachDetailPage() {
                </div>
 
                <button 
-                 onClick={() => navigate(`/app/book?coach=${coach.id}`)}
+                 onClick={() => navigate(`/portal/book?coach=${coach.id}`)}
                  className="w-full bg-[#8B9A71] text-white py-6 rounded-pill text-[11px] font-black uppercase tracking-widest shadow-xl hover:bg-white hover:text-[#2D3324] transition-all mb-4"
                >
                   Reserve Slot Now

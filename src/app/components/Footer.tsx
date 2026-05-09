@@ -26,9 +26,9 @@ export function Footer() {
           {
             title: "Services",
             links: [
-              { label: "Book Breakthrough", path: "/app/book" },
-              { label: "Secure Portal", path: "/app/dashboard" },
-              { label: "Growth Vault", path: "/app/resources" },
+              { label: "Book Breakthrough", path: "/portal/book" },
+              { label: "Secure Portal", path: "/portal" },
+              { label: "Growth Vault", path: "/portal/library" },
               { label: "Pricing System", path: "/pricing" },
             ],
           },

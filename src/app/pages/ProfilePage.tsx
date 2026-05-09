@@ -1,33 +1,34 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Settings, Bell, Lock, CreditCard, HelpCircle, LogOut, Edit2, ChevronRight, User, ShieldCheck, EyeOff, Plus } from "lucide-react";
 import { useUser } from "../context/UserContext";
 
 export function ProfilePage() {
   const { role, setRole, user, isAnonymous, setIsAnonymous } = useUser();
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-cream pb-32 portal-context">
       {/* Cinematic Full-Width Header */}
       <div className="relative">
          {/* Deep Colored Canopy - Touches all edges */}
-         <div className="bg-[#5E6C54] pt-16 pb-32 px-6 rounded-b-[100px] md:rounded-b-[120px] relative overflow-hidden text-center">
+         <div className="bg-[#5E6C54] pt-12 pb-24 px-6 rounded-b-[60px] md:rounded-b-[80px] relative overflow-hidden text-center">
             {/* Ambient Background Glows */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
+            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[80px]" />
             
             <div className="relative z-10 flex flex-col items-center">
                <p className="text-[#99A88C] text-[10px] font-black uppercase tracking-[0.4em] mb-8">My Profile</p>
                
                <div className="relative group">
-                  <div className="w-28 h-28 rounded-full border-4 border-[#FCF8E8] shadow-2xl overflow-hidden relative z-10">
+                  <div className="w-20 h-20 rounded-full border-[3px] border-[#FCF8E8] shadow-2xl overflow-hidden relative z-10">
                      <img src={user.avatar} alt="Profile" className="w-full h-full object-cover" />
                   </div>
-                  <div className="absolute inset-0 bg-[#A68A45]/20 rounded-full blur-2xl transition-transform group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-[#A68A45]/20 rounded-full blur-xl transition-transform group-hover:scale-110" />
                </div>
                
-               <div className="mt-6">
-                  <h1 className="text-5xl md:text-7xl font-black text-white !text-white tracking-tighter mb-4" style={{ color: '#FFFFFF' }}>{user.name}</h1>
-                  <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-6 py-2 rounded-full border border-[#FFFFFF]/30">
-                     <ShieldCheck size={14} className="text-[#99A88C]" />
-                     <span className="text-[10px] text-white !text-white font-black uppercase tracking-widest">Premium Member</span>
+               <div className="mt-4">
+                  <h1 className="text-3xl md:text-4xl font-black text-white !text-white tracking-tight mb-3" style={{ color: '#FFFFFF' }}>{user.name}</h1>
+                  <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#FFFFFF]/30">
+                     <ShieldCheck size={12} className="text-[#99A88C]" />
+                     <span className="text-[9px] text-white !text-white font-black uppercase tracking-widest">Premium Member</span>
                   </div>
                </div>
             </div>
@@ -78,7 +79,10 @@ export function ProfilePage() {
             <MenuItem icon={HelpCircle} label="Evolution Support" color="bg-[#99A88C]/10" to="/portal/profile/support" />
           </div>
 
-          <button className="w-full bg-[#FFFFFF] p-6 rounded-[44px] border border-red-50 flex items-center justify-center gap-4 group hover:bg-red-50 transition-all shadow-xl">
+          <button 
+             onClick={() => navigate('/')}
+             className="w-full bg-[#FFFFFF] p-6 rounded-[44px] border border-red-50 flex items-center justify-center gap-4 group hover:bg-red-50 transition-all shadow-xl"
+          >
              <div className="w-12 h-12 bg-red-50 group-hover:bg-red-100 rounded-2xl flex items-center justify-center text-red-500 transition-all shadow-sm">
                <LogOut size={22} />
              </div>

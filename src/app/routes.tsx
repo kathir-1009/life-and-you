@@ -2,7 +2,6 @@ import { createBrowserRouter, Navigate } from "react-router";
 import { lazy, Suspense } from "react";
 import { MainLayout } from "./components/MainLayout";
 import { AppLayout } from "./components/AppLayout";
-import { AdminLayout } from "./components/AdminLayout";
 
 // Lazy load pages
 const HomePage = lazy(() => import("./pages/HomePage").then(m => ({ default: m.HomePage })));
@@ -72,7 +71,8 @@ const CoachWelcome = lazy(() => import("./pages/coach/onboarding/CoachWelcomePag
 const CoachProfile = lazy(() => import("./pages/coach/onboarding/CoachProfileSetupPage").then(m => ({ default: m.CoachProfileSetupPage })));
 
 // Coach Pages
-const CoachSchedulePage = lazy(() => import("./pages/CoachSchedulePage").then(m => ({ default: m.CoachSchedulePage })));
+const CoachDashboardPage = lazy(() => import("./pages/coach/CoachDashboardPage").then(m => ({ default: m.CoachDashboardPage })));
+const CoachNotesPage = lazy(() => import("./pages/coach/CoachNotesPage").then(m => ({ default: m.CoachNotesPage })));
 const CoachClientsPage = lazy(() => import("./pages/coach/clients/CoachClientListPage").then(m => ({ default: m.CoachClientListPage })));
 const CoachEarningsPage = lazy(() => import("./pages/CoachEarningsPage").then(m => ({ default: m.CoachEarningsPage })));
 const CoachPayoutManagerPage = lazy(() => import("./pages/coach/earnings/CoachPayoutManagerPage").then(m => ({ default: m.CoachPayoutManagerPage })));
@@ -81,15 +81,6 @@ const CoachMonthView = lazy(() => import("./pages/coach/schedule/CoachMonthViewP
 const AvailabilityPage = lazy(() => import("./pages/AvailabilityPage").then(m => ({ default: m.AvailabilityPage })));
 const CoachSessionList = lazy(() => import("./pages/coach/sessions/CoachSessionListPage").then(m => ({ default: m.CoachSessionListPage })));
 const CoachClientProfile = lazy(() => import("./pages/coach/clients/CoachClientProfilePage").then(m => ({ default: m.CoachClientProfilePage })));
-
-// Admin Pages
-const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboardPage").then(m => ({ default: m.AdminDashboardPage })));
-const AdminUsers = lazy(() => import("./pages/admin/AdminUsersPage").then(m => ({ default: m.AdminUsersPage })));
-const AdminCoaches = lazy(() => import("./pages/admin/AdminCoachesPage").then(m => ({ default: m.AdminCoachesPage })));
-const AdminSessions = lazy(() => import("./pages/admin/AdminSessionsPage").then(m => ({ default: m.AdminSessionsPage })));
-const AdminContent = lazy(() => import("./pages/admin/AdminContentPage").then(m => ({ default: m.AdminContentPage })));
-const AdminAnalytics = lazy(() => import("./pages/admin/AdminAnalyticsPage").then(m => ({ default: m.AdminAnalyticsPage })));
-const AdminBilling = lazy(() => import("./pages/admin/AdminBillingPage").then(m => ({ default: m.AdminBillingPage })));
 
 // Loading component
 const PageLoader = () => (
@@ -118,7 +109,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="/auth/login" replace /> },
       { path: "login", element: withSuspense(AuthPage) },
-      { path: "register", element: withSuspense(AuthPage) }, 
+      { path: "register", element: withSuspense(AuthPage) },
       { path: "verify", element: withSuspense(OTPVerifyPage) },
       { path: "forgot-password", element: withSuspense(ForgotPasswordPage) },
       { path: "reset-password", element: withSuspense(ResetPasswordPage) },
@@ -156,7 +147,7 @@ export const router = createBrowserRouter([
     element: <AppLayout />,
     children: [
       { index: true, element: withSuspense(DashboardPage) },
-      { 
+      {
         path: "sessions",
         children: [
           { index: true, element: withSuspense(AllSessions) },
@@ -164,7 +155,7 @@ export const router = createBrowserRouter([
           { path: "feedback", element: withSuspense(FeedbackPage) },
         ]
       },
-      { 
+      {
         path: "book",
         children: [
           { index: true, element: withSuspense(BookStep1) },
@@ -175,14 +166,21 @@ export const router = createBrowserRouter([
         ]
       },
       { path: "progress", element: withSuspense(ProgressPage) },
-      { 
+      {
         path: "explore",
         children: [
           { index: true, element: withSuspense(ExploreCoaches) },
           { path: ":id", element: withSuspense(CoachDetail) },
         ]
       },
-      { 
+      {
+        path: "coaches",
+        children: [
+          { index: true, element: withSuspense(ExploreCoaches) },
+          { path: ":id", element: withSuspense(CoachDetail) },
+        ]
+      },
+      {
         path: "library",
         children: [
           { index: true, element: withSuspense(AllResources) },
@@ -190,8 +188,8 @@ export const router = createBrowserRouter([
         ]
       },
       { path: "messages", element: withSuspense(MessagingPage) },
-      { 
-        path: "profile", 
+      {
+        path: "profile",
         children: [
           { index: true, element: withSuspense(ProfilePage) },
           { path: "personal", element: withSuspense(PersonalInfo) },
@@ -199,7 +197,7 @@ export const router = createBrowserRouter([
           { path: "payment", element: withSuspense(UpdatePayment) },
           { path: "security", element: withSuspense(SecurityVault) },
           { path: "support", element: withSuspense(SupportPage) },
-        ] 
+        ]
       },
       { path: "notifications", element: withSuspense(NotificationsPage) },
       { path: "journal", element: withSuspense(JournalPage) },
@@ -213,8 +211,8 @@ export const router = createBrowserRouter([
     path: "/coach",
     element: <AppLayout />,
     children: [
-      { index: true, element: withSuspense(DashboardPage) },
-      { 
+      { index: true, element: withSuspense(CoachDashboardPage) },
+      {
         path: "onboarding",
         children: [
           { index: true, element: <Navigate to="/coach/onboarding/welcome" replace /> },
@@ -222,24 +220,24 @@ export const router = createBrowserRouter([
           { path: "profile", element: withSuspense(CoachProfile) },
         ]
       },
-      { 
+      {
         path: "schedule",
         children: [
           { index: true, element: withSuspense(CoachMonthView) },
           { path: "month", element: withSuspense(CoachMonthView) },
         ]
       },
-      { 
-        path: "clients", 
+      {
+        path: "clients",
         children: [
           { index: true, element: withSuspense(CoachClientsPage) },
           { path: ":id", element: withSuspense(CoachClientProfile) },
-        ] 
+        ]
       },
       { path: "sessions", element: withSuspense(CoachSessionList) },
       { path: "messages", element: withSuspense(MessagingPage) },
-      { 
-        path: "earnings", 
+      {
+        path: "earnings",
         children: [
           { index: true, element: withSuspense(CoachEarningsPage) },
           { path: "payout", element: withSuspense(CoachPayoutManagerPage) },
@@ -247,23 +245,18 @@ export const router = createBrowserRouter([
       },
       { path: "availability", element: withSuspense(AvailabilityPage) },
       { path: "resources", element: withSuspense(CoachResourcesPage) },
+      {
+        path: "notes",
+        children: [
+          { index: true, element: withSuspense(CoachNotesPage) },
+          { path: ":sessionId", element: withSuspense(CoachNotesPage) },
+        ]
+      },
+      // Coach profile / settings — uses ProfilePage with role-based rendering
+      { path: "profile", element: withSuspense(ProfilePage) },
     ]
   },
-  // ADMIN PANEL
-  {
-    path: "/admin",
-    element: <AdminLayout />,
-    children: [
-      { index: true, element: withSuspense(AdminDashboard) },
-      { path: "users", element: withSuspense(AdminUsers) },
-      { path: "coaches", element: withSuspense(AdminCoaches) },
-      { path: "sessions", element: withSuspense(AdminSessions) },
-      { path: "content", element: withSuspense(AdminContent) },
-      { path: "analytics", element: withSuspense(AdminAnalytics) },
-      { path: "billing", element: withSuspense(AdminBilling) },
-    ]
-  },
-  // SESSION
+  // SESSION ROOM
   {
     path: "/session/:id",
     element: withSuspense(SessionRoom),

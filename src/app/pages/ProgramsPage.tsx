@@ -100,7 +100,7 @@ export function ProgramsPage() {
                       <div className="text-[10px] font-black text-[#8B9A71] uppercase tracking-[0.1em] mt-1">{program.sessions}</div>
                    </div>
                    <Link
-                      to="/app/book"
+                      to="/portal/book"
                       className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-all ${program.color === 'bg-[#2D3324]' ? 'bg-[#2D3324] text-white' : 'bg-[#F8F9FA] text-[#8B9A71]'}`}
                     >
                       <ArrowRight size={20} />

@@ -97,7 +97,7 @@ export function AllResourcesPage() {
       </section>
 
       {/* Filter Tabs */}
-      <div className="max-w-7xl mx-auto px-6 -mt-10 relative z-30">
+      <div className="max-w-7xl mx-auto px-6 mt-4 lg:-mt-10 relative z-30">
         <div className="bg-white p-2 rounded-[36px] shadow-2xl flex items-center gap-2 overflow-x-auto scrollbar-hide border border-sage/10">
             {resourceCategories.map(cat => (
               <button

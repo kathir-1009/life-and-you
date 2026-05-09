@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router";
-import { Mail, ArrowRight, Lock, User, ChevronLeft, ShieldCheck, Github, Chrome } from "lucide-react";
+import { Mail, ArrowRight, Lock, User, ChevronLeft, Chrome } from "lucide-react";
 import { useUser } from "../context/UserContext";
+
+// Official Apple SVG logo
+function AppleIcon({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 814 1000" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-38.8-155.5-127.4C46 790.8 0 663 0 541.8c0-207.7 135.4-317.5 267.8-317.5 70.7 0 129.5 46.4 173.9 46.4 42.8 0 109.9-49.1 188.3-49.1 30.5 0 135.5 2.6 208 98.9zm-155-181.3c35.7-43.7 60.1-104.6 60.1-165.5 0-8.4-.6-16.9-2-24.7-57.3 2.2-125.8 38.3-167 84.8-30.5 34.4-60.7 95.3-60.7 157.1 0 8.4 1.3 16.9 2 19.5 3.9.6 10.4 1.3 16.9 1.3 51.1 0 115.2-34.4 150.7-72.5z" />
+    </svg>
+  );
+}
 
 export function AuthPage() {
   const { role, setRole } = useUser();
@@ -10,135 +19,162 @@ export function AuthPage() {
 
   const handleAuth = (e: React.FormEvent) => {
     e.preventDefault();
-    // Route to OTP screen
     navigate("/auth/verify", { state: { mode } });
   };
 
+  const isLogin = mode === "login";
+
   return (
-    <div className="min-h-[100dvh] bg-cream flex items-center justify-center px-6 py-12 portal-context">
-      {/* Decorative Accents */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-sage/5 rounded-full blur-[120px] -z-0 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -z-0 pointer-events-none" />
+    <div className="min-h-[100dvh] bg-[#2D3324] flex items-center justify-center px-6 py-12 relative overflow-hidden">
+      {/* Same ambient gradients as Splash */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8B9A71] rounded-full blur-[120px] opacity-20 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#4E5540] rounded-full blur-[150px] opacity-25 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,#2D3324_100%)] opacity-60 pointer-events-none" />
 
       <div className="max-w-md w-full relative z-10">
         {/* Logo & Back */}
-        <div className="flex items-center justify-between mb-12">
-           <Link to="/" className="p-3 bg-white rounded-2xl border border-sage/10 text-sage-dark shadow-sm hover:bg-sage-light transition-colors">
-              <ChevronLeft size={20} />
-           </Link>
-           <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="h-8 brightness-0 opacity-80" />
-           <div className="w-12" />
+        <div className="flex items-center justify-between mb-10">
+          <Link to="/splash" className="p-3 bg-white/10 rounded-2xl border border-white/10 text-white hover:bg-white/20 transition-colors">
+            <ChevronLeft size={20} />
+          </Link>
+          <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="h-8 brightness-[10] opacity-90" />
+          <div className="w-12" />
         </div>
 
-        {/* Card */}
-        <div className="bg-white/70 backdrop-blur-xl border border-white p-8 md:p-10 rounded-[40px] shadow-2xl">
+        {/* Card — glassmorphism on dark green */}
+        <div className="bg-white p-8 md:p-10 rounded-[40px] shadow-2xl">
+
+          {/* Header */}
           <div className="text-center mb-10">
-            {role === 'admin' && (
-              <div className="inline-flex items-center gap-2 bg-sage text-gold px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest mb-4">
-                <ShieldCheck size={12} />
-                Admin Oversight
-              </div>
-            )}
-            <h1 className="text-3xl font-bold text-sage-dark font-serif mb-2">
-              {mode === "login" ? "Welcome Back" : "Start Journey"}
+            <h1 className="text-3xl font-bold text-[#2D3324] font-serif mb-2">
+              {isLogin ? "Welcome Back" : "Create Account"}
             </h1>
-            <p className="text-sage-dark/60 text-sm font-medium">
-              {mode === "login" 
-                ? `Access your ${role} dashboard` 
-                : "Join the sanctuary for coaching"}
+            <p className="text-[#2D3324]/50 text-sm font-medium">
+              {isLogin
+                ? "Sign in to continue your wellness journey"
+                : "Join Life & You — start your first session today"}
             </p>
           </div>
 
           {/* Social Auth */}
           <div className="grid grid-cols-2 gap-4 mb-8">
-             <button className="flex items-center justify-center gap-3 py-3 px-4 bg-white border border-sage/10 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-sage-light transition-all">
-                <Chrome size={16} className="text-sage-dark" />
-                Google
-             </button>
-             <button className="flex items-center justify-center gap-3 py-3 px-4 bg-sage text-white rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-black transition-all">
-                <Github size={16} />
-                Apple
-             </button>
+            <button className="flex items-center justify-center gap-2.5 py-3.5 px-4 bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl text-[10px] font-bold uppercase tracking-widest text-[#2D3324] hover:bg-[#E3EAE0] transition-all">
+              <Chrome size={16} />
+              Google
+            </button>
+            <button className="flex items-center justify-center gap-2.5 py-3.5 px-4 bg-[#2D3324] border border-[#2D3324] text-white rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-[#1a1d14] transition-all">
+              <AppleIcon size={15} />
+              Apple
+            </button>
           </div>
 
           <div className="relative mb-8 flex items-center">
-             <div className="flex-1 border-t border-sage/10"></div>
-             <span className="mx-4 text-[10px] font-bold text-sage-dark/30 uppercase tracking-widest">Or with email</span>
-             <div className="flex-1 border-t border-sage/10"></div>
+            <div className="flex-1 border-t border-[#2D3324]/10" />
+            <span className="mx-4 text-[10px] font-bold text-[#2D3324]/30 uppercase tracking-widest">Or with email</span>
+            <div className="flex-1 border-t border-[#2D3324]/10" />
           </div>
 
           {/* Form */}
           <form className="space-y-4" onSubmit={handleAuth}>
-            {mode === "register" && (
+            {!isLogin && (
               <div className="space-y-1">
-                 <label className="text-[10px] font-bold text-sage-dark/40 uppercase tracking-widest ml-2">Display Name (Optional)</label>
-                 <div className="relative">
-                   <User className="absolute left-4 top-1/2 -translate-y-1/2 text-sage-dark/30" size={18} />
-                   <input 
-                     type="text" 
-                     placeholder="e.g. WellnessSeeker" 
-                     className="w-full bg-white/50 border border-sage/10 rounded-2xl pl-12 pr-4 py-4 text-sm outline-none focus:border-gold focus:bg-white transition-all"
-                   />
-                 </div>
+                <label className="text-[10px] font-bold text-[#2D3324]/50 uppercase tracking-widest ml-2">
+                  Full Name
+                </label>
+                <div className="relative">
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30" size={18} />
+                  <input
+                    type="text"
+                    placeholder="Your name"
+                    className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-all placeholder:text-[#2D3324]/30"
+                  />
+                </div>
               </div>
             )}
-            
+
             <div className="space-y-1">
-               <label className="text-[10px] font-bold text-sage-dark/40 uppercase tracking-widest ml-2">Email Identity (Optional for testing)</label>
-               <div className="relative">
-                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-sage-dark/30" size={18} />
-                 <input 
-                   type="email" 
-                   placeholder="test@example.com" 
-                   className="w-full bg-white/50 border border-sage/10 rounded-2xl pl-12 pr-4 py-4 text-sm outline-none focus:border-gold focus:bg-white transition-all"
-                 />
-               </div>
+                <label className="text-[10px] font-bold text-[#2D3324]/50 uppercase tracking-widest ml-2">
+                  Email Address
+                </label>
+              <div className="relative">
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30" size={18} />
+                  <input
+                    type="email"
+                    placeholder="you@example.com"
+                    className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-all placeholder:text-[#2D3324]/30"
+                  />
+              </div>
             </div>
 
             <div className="space-y-1">
-               <label className="text-[10px] font-bold text-sage-dark/40 uppercase tracking-widest ml-2">Access Key (Optional)</label>
-               <div className="relative">
-                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-sage-dark/30" size={18} />
-                 <input 
-                   type="password" 
-                   placeholder="Any key works" 
-                   className="w-full bg-white/50 border border-sage/10 rounded-2xl pl-12 pr-4 py-4 text-sm outline-none focus:border-gold focus:bg-white transition-all"
-                 />
-               </div>
+                <label className="text-[10px] font-bold text-[#2D3324]/50 uppercase tracking-widest ml-2">
+                  Password
+                </label>
+              <div className="relative">
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30" size={18} />
+                  <input
+                    type="password"
+                    placeholder={isLogin ? "Enter your password" : "Create a password"}
+                    className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-all placeholder:text-[#2D3324]/30"
+                  />
+              </div>
             </div>
 
-            <div className="pt-6">
-               <button 
-                 type="submit"
-                 className="w-full bg-sage text-white py-5 rounded-2xl flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-widest shadow-xl shadow-sage/10 hover:bg-sage transition-all"
-               >
-                 {mode === "login" ? "Request Access" : "Join Platform"}
-                 <ArrowRight size={18} />
-               </button>
+            {isLogin && (
+              <div className="flex justify-end">
+                <Link to="/auth/forgot-password" className="text-[10px] font-bold text-[#8B9A71] hover:text-[#4E5540] transition-colors uppercase tracking-widest">
+                  Forgot password?
+                </Link>
+              </div>
+            )}
+
+            <div className="pt-4">
+              <button
+                type="submit"
+                className="w-full bg-[#2D3324] text-white py-5 rounded-2xl flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-widest shadow-xl hover:bg-[#1a1d14] transition-all active:scale-[0.98]"
+              >
+                {isLogin ? "Sign In" : "Register"}
+                <ArrowRight size={18} />
+              </button>
             </div>
           </form>
 
-          {/* Role Toggle for convenience in demo */}
-          <div className="mt-8 pt-8 border-t border-sage/5 flex justify-center gap-4">
-             <button onClick={() => setRole('client')} className={`text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-lg ${role === 'client' ? 'bg-sage text-white' : 'text-sage-dark/50'}`}>Patient</button>
-             <button onClick={() => setRole('coach')} className={`text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-lg ${role === 'coach' ? 'bg-sage text-white' : 'text-sage-dark/50'}`}>Doctor</button>
-             <button onClick={() => setRole('admin')} className={`text-[9px] font-bold uppercase tracking-widest px-3 py-1 rounded-lg ${role === 'admin' ? 'bg-sage text-white' : 'text-sage-dark/50'}`}>Admin</button>
+          {/* Role Toggle — demo only */}
+          <div className="mt-8 pt-8 border-t border-[#2D3324]/8">
+            <p className="text-center text-[9px] font-bold text-[#2D3324]/30 uppercase tracking-widest mb-3">
+              Demo — Sign in as
+            </p>
+            <div className="flex justify-center gap-3">
+              <button
+                onClick={() => setRole('client')}
+                className={`text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-xl transition-all ${role === 'client' ? 'bg-[#2D3324] text-white shadow-sm' : 'text-[#2D3324]/40 hover:text-[#2D3324]'}`}
+              >
+                Client
+              </button>
+              <button
+                onClick={() => setRole('coach')}
+                className={`text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-xl transition-all ${role === 'coach' ? 'bg-[#2D3324] text-white shadow-sm' : 'text-[#2D3324]/40 hover:text-[#2D3324]'}`}
+              >
+                Coach
+              </button>
+            </div>
           </div>
 
-          <div className="mt-6 text-center text-xs font-medium text-sage-dark/60">
-            {mode === "login" ? "Need an identity?" : "Already part of us?"}{" "}
-            <button 
-              onClick={() => setMode(mode === "login" ? "register" : "login")}
-              className="text-gold font-bold hover:underline"
+          {/* Switch mode */}
+          <div className="mt-6 text-center text-xs font-medium text-[#2D3324]/50">
+            {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
+            <button
+              onClick={() => setMode(isLogin ? "register" : "login")}
+              className="text-[#8B9A71] font-bold hover:text-[#2D3324] transition-colors"
             >
-              {mode === "login" ? "Onboard Now" : "Port Back In"}
+              {isLogin ? "Register" : "Sign In"}
             </button>
           </div>
         </div>
 
-        <p className="mt-8 text-center text-[10px] text-sage-dark/30 font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">
-           <Lock size={12} />
-           Sanctuary Grade Encryption Active
+        <p className="mt-8 text-center text-[10px] text-white/20 font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">
+          <Lock size={12} />
+          End-to-end encrypted · Your data stays private
         </p>
       </div>
     </div>

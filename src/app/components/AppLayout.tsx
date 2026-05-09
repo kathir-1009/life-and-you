@@ -25,12 +25,12 @@ export function AppLayout() {
     return <Navigate to="/auth/login" replace state={{ from: location }} />;
   }
 
-  // Simple Role Guard
+  // Role Guards — redirect to correct portal if wrong role lands here
   if (isPortal && role !== 'client') {
-    return <Navigate to={role === 'admin' ? '/admin' : '/coach'} replace />;
+    return <Navigate to="/coach" replace />;
   }
   if (isCoach && role !== 'coach') {
-    return <Navigate to={role === 'admin' ? '/admin' : '/portal'} replace />;
+    return <Navigate to="/portal" replace />;
   }
 
   return (
@@ -45,13 +45,15 @@ export function AppLayout() {
         
         {/* Mobile Header */}
         {!isChat && (
-          <div className="lg:hidden bg-sage text-white p-4 flex items-center gap-3 relative z-50 shadow-md">
+          <div className="lg:hidden bg-[#2D3324] text-white p-4 flex items-center gap-3 relative z-50">
             <div className="w-8 h-8">
                <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain brightness-[10]" />
             </div>
             <div>
                <h1 className="text-sm font-bold tracking-tight leading-none font-serif">Life & You</h1>
-               <span className="text-[8px] font-bold text-[#B5C4BA] uppercase tracking-[0.2em] mt-0.5 block">Portal Access</span>
+               <span className="text-[8px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-0.5 block">
+                 {role === 'coach' ? 'Coach Console' : 'Portal Access'}
+               </span>
             </div>
           </div>
         )}
