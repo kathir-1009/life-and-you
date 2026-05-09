@@ -78,6 +78,7 @@ const CoachEarningsPage = lazy(() => import("./pages/CoachEarningsPage").then(m 
 const CoachPayoutManagerPage = lazy(() => import("./pages/coach/earnings/CoachPayoutManagerPage").then(m => ({ default: m.CoachPayoutManagerPage })));
 const CoachResourcesPage = lazy(() => import("./pages/coach/resources/CoachResourcesPage").then(m => ({ default: m.CoachResourcesPage })));
 const CoachMonthView = lazy(() => import("./pages/coach/schedule/CoachMonthViewPage").then(m => ({ default: m.CoachMonthViewPage })));
+const CoachAddSchedule = lazy(() => import("./pages/coach/schedule/CoachAddSchedulePage").then(m => ({ default: m.CoachAddSchedulePage })));
 const AvailabilityPage = lazy(() => import("./pages/AvailabilityPage").then(m => ({ default: m.AvailabilityPage })));
 const CoachSessionList = lazy(() => import("./pages/coach/sessions/CoachSessionListPage").then(m => ({ default: m.CoachSessionListPage })));
 const CoachClientProfile = lazy(() => import("./pages/coach/clients/CoachClientProfilePage").then(m => ({ default: m.CoachClientProfilePage })));
@@ -225,6 +226,7 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: withSuspense(CoachMonthView) },
           { path: "month", element: withSuspense(CoachMonthView) },
+          { path: "add", element: withSuspense(CoachAddSchedule) },
         ]
       },
       {

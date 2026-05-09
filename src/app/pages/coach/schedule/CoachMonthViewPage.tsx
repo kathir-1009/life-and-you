@@ -15,7 +15,7 @@ export function CoachMonthViewPage() {
 
         <div className="flex items-center gap-3">
            <Link 
-             to="/coach/availability"
+             to="/coach/schedule/add"
              className="px-8 py-4 bg-sage-dark text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl hover:scale-105 transition-all flex items-center gap-3"
            >
               <PlusLg /> Add Availability
