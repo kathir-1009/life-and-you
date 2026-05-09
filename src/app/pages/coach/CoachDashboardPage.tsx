@@ -76,17 +76,17 @@ export function CoachDashboardPage() {
   });
 
   const kpis = [
-    { label: "Today", value: "4", sub: "sessions", icon: CalendarCheckFill, color: "bg-[#5E6C54]", accent: "#99A88C" },
-    { label: "This Week", value: "21", sub: "sessions", icon: ClockHistory, color: "bg-[#99A88C]", accent: "#FCF8E8" },
-    { label: "Active Clients", value: "18", sub: "clients", icon: PeopleFill, color: "bg-[#A68A45]", accent: "#FCF8E8" },
-    { label: "Avg Rating", value: "4.9", sub: "/ 5.0 ⭐", icon: StarFill, color: "bg-[#5E6C54]", accent: "#A68A45" },
+    { label: "Today", value: "4", sub: "sessions", icon: CalendarCheckFill, bg: "bg-white", text: "text-[#5E6C54]", iconColor: "text-[#99A88C]", border: "border border-[#99A88C]/20" },
+    { label: "This Week", value: "21", sub: "sessions", icon: ClockHistory, bg: "bg-white", text: "text-[#5E6C54]", iconColor: "text-[#A68A45]", border: "border border-[#99A88C]/20" },
+    { label: "Active Clients", value: "18", sub: "clients", icon: PeopleFill, bg: "bg-[#5E6C54]", text: "text-white", iconColor: "text-[#99A88C]", border: "border border-white/10 shadow-lg shadow-[#5E6C54]/30" },
+    { label: "Avg Rating", value: "4.9", sub: "/ 5.0 ⭐", icon: StarFill, bg: "bg-white", text: "text-[#5E6C54]", iconColor: "text-[#A68A45]", border: "border border-[#99A88C]/20" },
   ];
 
   return (
     <div className="animate-in fade-in duration-700 portal-context pb-24 lg:pb-10">
       {/* ── Cinematic Header ── */}
       <div className="relative -mx-0 lg:-mx-10 -mt-0 lg:-mt-10">
-        <div className="bg-[#5E6C54] pt-14 pb-36 px-6 lg:px-16 relative overflow-hidden">
+        <div className="bg-[#5E6C54] pt-14 pb-36 px-6 lg:px-16 relative overflow-hidden rounded-b-[40px] md:rounded-b-[60px]">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3 blur-[120px]" />
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#99A88C]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-[80px]" />
 
@@ -122,14 +122,16 @@ export function CoachDashboardPage() {
             {kpis.map((kpi, i) => (
               <div
                 key={i}
-                className={`${kpi.color} rounded-[32px] p-6 text-white relative overflow-hidden group shadow-xl hover:-translate-y-1 transition-all cursor-pointer`}
+                className={`${kpi.bg} ${kpi.text} ${kpi.border} rounded-[32px] p-6 relative overflow-hidden group shadow-xl hover:-translate-y-1 transition-all cursor-pointer`}
               >
-                <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:scale-150 transition-transform" />
+                {kpi.bg === "bg-[#5E6C54]" && (
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:scale-150 transition-transform" />
+                )}
                 <div className="relative z-10">
-                  <kpi.icon size={18} className="mb-3 opacity-60" />
+                  <kpi.icon size={18} className={`mb-3 ${kpi.iconColor}`} />
                   <p className="text-3xl font-black font-serif leading-none mb-1">{kpi.value}</p>
-                  <p className="text-[9px] font-black uppercase tracking-[0.25em] opacity-60">{kpi.sub}</p>
-                  <p className="text-[8px] font-black uppercase tracking-widest opacity-40 mt-1">{kpi.label}</p>
+                  <p className={`text-[9px] font-black uppercase tracking-[0.25em] ${kpi.bg === "bg-white" ? "text-[#99A88C]" : "opacity-60"}`}>{kpi.sub}</p>
+                  <p className={`text-[8px] font-black uppercase tracking-widest mt-1 ${kpi.bg === "bg-white" ? "text-[#5E6C54]/40" : "opacity-40"}`}>{kpi.label}</p>
                 </div>
               </div>
             ))}
@@ -143,17 +145,17 @@ export function CoachDashboardPage() {
         {/* ── Quick Actions ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {[
-            { icon: PlusCircleFill, label: "Add Slot", to: "/coach/availability", color: "bg-[#5E6C54]" },
-            { icon: Upload, label: "Upload Resource", to: "/coach/resources", color: "bg-[#99A88C]" },
-            { icon: ChatDotsFill, label: "Message Client", to: "/coach/messages", color: "bg-[#A68A45]" },
-            { icon: Wallet2, label: "View Earnings", to: "/coach/earnings", color: "bg-[#5E6C54]" },
+            { icon: PlusCircleFill, label: "Add Slot", to: "/coach/availability", styles: "bg-white text-[#5E6C54] border border-[#99A88C]/20 hover:border-[#99A88C]" },
+            { icon: Upload, label: "Upload Resource", to: "/coach/resources", styles: "bg-white text-[#5E6C54] border border-[#99A88C]/20 hover:border-[#99A88C]" },
+            { icon: ChatDotsFill, label: "Message Client", to: "/coach/messages", styles: "bg-[#5E6C54] text-white border border-[#5E6C54] shadow-lg shadow-[#5E6C54]/20" },
+            { icon: Wallet2, label: "View Earnings", to: "/coach/earnings", styles: "bg-white text-[#5E6C54] border border-[#99A88C]/20 hover:border-[#99A88C]" },
           ].map((action, i) => (
             <Link
               key={i}
               to={action.to}
-              className={`${action.color} rounded-[24px] p-5 text-white flex items-center gap-3 shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all group`}
+              className={`${action.styles} rounded-[24px] p-5 flex items-center gap-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all group`}
             >
-              <action.icon size={18} className="shrink-0" />
+              <action.icon size={18} className={`shrink-0 ${action.styles.includes('bg-[#5E6C54]') ? 'text-[#99A88C]' : 'text-[#A68A45]'}`} />
               <span className="text-[10px] font-black uppercase tracking-widest leading-tight">{action.label}</span>
               <ArrowUpRight size={14} className="ml-auto opacity-40 group-hover:opacity-100 transition-opacity" />
             </Link>
