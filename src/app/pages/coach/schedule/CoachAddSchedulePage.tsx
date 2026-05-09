@@ -26,9 +26,9 @@ export function CoachAddSchedulePage() {
       <div className="max-w-2xl mx-auto">
         <button 
           onClick={() => navigate(-1)}
-          className="flex items-center gap-2 text-sage-dark/60 hover:text-sage-dark transition-colors mb-6 md:mb-8 text-[10px] font-black uppercase tracking-widest"
+          className="flex items-center gap-2 text-sage-dark hover:text-sage transition-colors mb-6 md:mb-8 text-[11px] md:text-xs font-black uppercase tracking-widest"
         >
-          <ChevronLeft /> Back to Schedule
+          <ChevronLeft className="stroke-[3px]" /> Back to Schedule
         </button>
 
         <div className="bg-white rounded-[32px] md:rounded-[48px] border border-sage/10 shadow-xl p-6 md:p-12">
@@ -120,9 +120,9 @@ export function CoachAddSchedulePage() {
 
               <button 
                 type="submit"
-                className="w-full py-5 md:py-6 bg-sage-dark text-white rounded-[20px] md:rounded-[24px] font-black text-[10px] md:text-xs uppercase tracking-[0.3em] shadow-xl shadow-sage-dark/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-4"
+                className="w-full py-5 md:py-6 bg-sage-dark text-white rounded-[20px] md:rounded-[24px] font-black text-xs md:text-sm uppercase tracking-[0.2em] shadow-xl shadow-sage-dark/20 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-4"
               >
-                <Save size={16} /> Finalize Slot
+                <Save size={18} /> Finalize Slot
               </button>
             </form>
           )}
