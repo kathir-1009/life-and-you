@@ -28,7 +28,9 @@ export function ProfilePage() {
                   <h1 className="text-3xl md:text-4xl font-black text-white !text-white tracking-tight mb-3" style={{ color: '#FFFFFF' }}>{user.name}</h1>
                   <div className="inline-flex items-center gap-2 bg-[#FFFFFF]/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-[#FFFFFF]/30">
                      <ShieldCheck size={12} className="text-[#99A88C]" />
-                     <span className="text-[9px] text-white !text-white font-black uppercase tracking-widest">Premium Member</span>
+                     <span className="text-[9px] text-white !text-white font-black uppercase tracking-widest">
+                        {role === 'coach' ? 'Certified Coach' : 'Premium Member'}
+                     </span>
                   </div>
                </div>
             </div>
@@ -38,45 +40,75 @@ export function ProfilePage() {
       <div className="max-w-xl mx-auto px-4 sm:px-6 relative z-10 space-y-12">
         {/* Floating App-Style Summary Cards */}
         <div className="grid grid-cols-2 gap-6 -mt-12">
-           <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-[0_20px_50px_rgba(94,108,84,0.1)] border border-[#99A88C]/10 text-center hover:scale-105 transition-all">
-              <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Total Journey</p>
-              <p className="text-4xl font-black text-[#5E6C54] tracking-tight">24<span className="text-xs text-[#99A88C] ml-1">Pts</span></p>
-           </div>
-           <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-[0_20px_50px_rgba(94,108,84,0.1)] border border-[#99A88C]/10 text-center hover:scale-105 transition-all">
-              <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Path Streak</p>
-              <p className="text-4xl font-black text-[#A68A45] tracking-tight">08<span className="text-xs text-[#99A88C] ml-1">Days</span></p>
-           </div>
+           {role === 'client' ? (
+             <>
+               <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-[0_20px_50px_rgba(94,108,84,0.1)] border border-[#99A88C]/10 text-center hover:scale-105 transition-all">
+                  <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Total Journey</p>
+                  <p className="text-4xl font-black text-[#5E6C54] tracking-tight">24<span className="text-xs text-[#99A88C] ml-1">Pts</span></p>
+               </div>
+               <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-[0_20px_50px_rgba(94,108,84,0.1)] border border-[#99A88C]/10 text-center hover:scale-105 transition-all">
+                  <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Path Streak</p>
+                  <p className="text-4xl font-black text-[#A68A45] tracking-tight">08<span className="text-xs text-[#99A88C] ml-1">Days</span></p>
+               </div>
+             </>
+           ) : (
+             <>
+               <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-[0_20px_50px_rgba(94,108,84,0.1)] border border-[#99A88C]/10 text-center hover:scale-105 transition-all">
+                  <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Impact Score</p>
+                  <p className="text-4xl font-black text-[#5E6C54] tracking-tight">4.9<span className="text-xs text-[#99A88C] ml-1">/5</span></p>
+               </div>
+               <div className="bg-[#FFFFFF] p-8 rounded-[40px] shadow-[0_20px_50px_rgba(94,108,84,0.1)] border border-[#99A88C]/10 text-center hover:scale-105 transition-all">
+                  <p className="text-[10px] text-[#5E6C54]/40 font-black uppercase tracking-widest mb-2">Active Clients</p>
+                  <p className="text-4xl font-black text-[#A68A45] tracking-tight">18</p>
+               </div>
+             </>
+           )}
         </div>
 
         {/* Settings Menu Sections */}
         <div className="space-y-6">
           <SectionTitle>Profile</SectionTitle>
           <div className="bg-[#FFFFFF] rounded-[44px] overflow-hidden border border-[#99A88C]/10 shadow-2xl">
-            {/* Anonymous Mode Toggle */}
-            <div className="w-full flex items-center gap-6 p-6 border-b border-[#99A88C]/5 hover:bg-[#FCF8E8]/30 transition-all">
-              <div className={`w-12 h-12 transition-all duration-300 rounded-2xl flex items-center justify-center shadow-sm ${isAnonymous ? 'bg-[#5E6C54] text-white' : 'bg-[#99A88C]/10 text-[#99A88C]'}`}>
-                <EyeOff size={22} />
+            {/* Anonymous Mode Toggle - Client Only */}
+            {role === 'client' && (
+              <div className="w-full flex items-center gap-6 p-6 border-b border-[#99A88C]/5 hover:bg-[#FCF8E8]/30 transition-all">
+                <div className={`w-12 h-12 transition-all duration-300 rounded-2xl flex items-center justify-center shadow-sm ${isAnonymous ? 'bg-[#5E6C54] text-white' : 'bg-[#99A88C]/10 text-[#99A88C]'}`}>
+                  <EyeOff size={22} />
+                </div>
+                <div className="flex-1 text-left">
+                  <span className="block text-xs font-black text-[#5E6C54] uppercase tracking-widest mb-0.5">Anonymous Mode</span>
+                  <span className="block text-[10px] text-[#5E6C54]/40 font-bold uppercase tracking-tight">{isAnonymous ? 'Identity Hidden' : 'Public Profile'}</span>
+                </div>
+                <button 
+                  onClick={() => setIsAnonymous(!isAnonymous)}
+                  className={`w-14 h-8 rounded-full relative transition-all duration-300 shadow-inner ${isAnonymous ? 'bg-[#5E6C54]' : 'bg-[#99A88C]/20'}`}
+                >
+                  <div className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-md transition-all duration-300 ${isAnonymous ? 'left-7' : 'left-1'}`} />
+                </button>
               </div>
-              <div className="flex-1 text-left">
-                <span className="block text-xs font-black text-[#5E6C54] uppercase tracking-widest mb-0.5">Anonymous Mode</span>
-                <span className="block text-[10px] text-[#5E6C54]/40 font-bold uppercase tracking-tight">{isAnonymous ? 'Identity Hidden' : 'Public Profile'}</span>
-              </div>
-              <button 
-                onClick={() => setIsAnonymous(!isAnonymous)}
-                className={`w-14 h-8 rounded-full relative transition-all duration-300 shadow-inner ${isAnonymous ? 'bg-[#5E6C54]' : 'bg-[#99A88C]/20'}`}
-              >
-                <div className={`absolute top-1 w-6 h-6 bg-white rounded-full shadow-md transition-all duration-300 ${isAnonymous ? 'left-7' : 'left-1'}`} />
-              </button>
-            </div>
+            )}
 
-            <MenuItem icon={User} label="Personal Information" color="bg-[#99A88C]/10" to="/portal/profile/personal" />
-            <MenuItem icon={Settings} label="My Bookings & Sessions" color="bg-[#99A88C]/10" to="/portal/sessions" />
-            <MenuItem icon={Edit2} label="My Wellness Journals" color="bg-[#99A88C]/10" to="/portal/journal" />
-            <MenuItem icon={Bell} label="Notices & Bulletins" color="bg-[#99A88C]/10" to="/portal/notifications" />
-            <MenuItem icon={Lock} label="Security Vault" color="bg-[#99A88C]/10" to="/portal/profile/security" />
-            <MenuItem icon={CreditCard} label="Billing History" color="bg-[#99A88C]/10" to="/portal/profile/billing" />
-            <MenuItem icon={Plus} label="Update Payment Method" color="bg-[#99A88C]/10" to="/portal/profile/payment" />
-            <MenuItem icon={HelpCircle} label="Evolution Support" color="bg-[#99A88C]/10" to="/portal/profile/support" />
+            {role === 'client' ? (
+              <>
+                <MenuItem icon={User} label="Personal Information" color="bg-[#99A88C]/10" to="/portal/profile/personal" />
+                <MenuItem icon={Settings} label="My Bookings & Sessions" color="bg-[#99A88C]/10" to="/portal/sessions" />
+                <MenuItem icon={Edit2} label="My Wellness Journals" color="bg-[#99A88C]/10" to="/portal/journal" />
+                <MenuItem icon={Bell} label="Notices & Bulletins" color="bg-[#99A88C]/10" to="/portal/notifications" />
+                <MenuItem icon={Lock} label="Security Vault" color="bg-[#99A88C]/10" to="/portal/profile/security" />
+                <MenuItem icon={CreditCard} label="Billing History" color="bg-[#99A88C]/10" to="/portal/profile/billing" />
+                <MenuItem icon={Plus} label="Update Payment Method" color="bg-[#99A88C]/10" to="/portal/profile/payment" />
+                <MenuItem icon={HelpCircle} label="Evolution Support" color="bg-[#99A88C]/10" to="/portal/profile/support" />
+              </>
+            ) : (
+              <>
+                <MenuItem icon={User} label="Professional Profile" color="bg-[#99A88C]/10" to="/coach/onboarding/profile" />
+                <MenuItem icon={Settings} label="My Schedule" color="bg-[#99A88C]/10" to="/coach/schedule" />
+                <MenuItem icon={Bell} label="Resource Library" color="bg-[#99A88C]/10" to="/coach/resources" />
+                <MenuItem icon={CreditCard} label="Earnings & Payouts" color="bg-[#99A88C]/10" to="/coach/earnings" />
+                <MenuItem icon={Lock} label="Security Vault" color="bg-[#99A88C]/10" to="/portal/profile/security" />
+                <MenuItem icon={HelpCircle} label="Evolution Support" color="bg-[#99A88C]/10" to="/portal/profile/support" />
+              </>
+            )}
           </div>
 
           <button 

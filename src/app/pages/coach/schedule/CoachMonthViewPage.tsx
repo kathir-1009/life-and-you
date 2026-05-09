@@ -25,10 +25,10 @@ export function CoachMonthViewPage() {
 
       <div className="grid lg:grid-cols-12 gap-8">
          {/* Calendar Main View */}
-         <div className="lg:col-span-8 bg-white rounded-[48px] border border-sage/10 shadow-sm p-10">
-            <div className="flex items-center justify-between mb-12">
+         <div className="lg:col-span-8 bg-white rounded-[48px] border border-sage/10 shadow-sm p-6 lg:p-10">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 lg:mb-12">
                <h3 className="text-2xl font-bold text-sage-dark font-serif uppercase tracking-tight">{currentMonth}</h3>
-               <div className="flex items-center gap-4">
+               <div className="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
                   <div className="flex items-center bg-cream rounded-xl p-1 border border-sage/10">
                      <ViewButton active>Month</ViewButton>
                      <ViewButton>Week</ViewButton>
@@ -41,32 +41,40 @@ export function CoachMonthViewPage() {
                </div>
             </div>
 
-            <div className="grid grid-cols-7 gap-px bg-sage/10 rounded-3xl overflow-hidden border border-sage/10">
-               {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(day => (
-                 <div key={day} className="bg-cream p-4 text-center text-[10px] font-black text-sage-dark/40 uppercase tracking-widest border-b border-sage/10">
-                    {day}
-                 </div>
-               ))}
-               {[...Array(35)].map((_, i) => {
-                 const day = i - 2; // Offset for month start
-                 const isToday = day === 14;
-                 const hasSession = [15, 18, 22].includes(day);
-                 
-                 return (
-                   <div key={i} className={`min-h-[120px] bg-white p-4 border-r border-b border-sage/5 transition-all hover:bg-cream/30 group cursor-pointer`}>
-                      <span className={`text-[11px] font-bold ${day > 0 && day <= 31 ? (isToday ? 'bg-sage text-white w-6 h-6 rounded-lg flex items-center justify-center' : 'text-sage-dark') : 'text-sage-dark/10'}`}>
-                         {day > 0 && day <= 31 ? day : ''}
-                      </span>
-                      {hasSession && (
-                        <div className="mt-4 space-y-1">
-                           <div className="bg-sage-dark/10 border-l-2 border-sage-dark p-2 rounded-r-lg">
-                              <p className="text-[8px] font-black text-sage-dark uppercase tracking-tighter truncate">10:00 AM • Sarah M.</p>
-                           </div>
-                        </div>
-                      )}
-                   </div>
-                 );
-               })}
+            <div className="bg-sage/10 rounded-2xl md:rounded-3xl overflow-hidden border border-sage/10">
+               <div className="grid grid-cols-7 gap-px">
+                  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(day => (
+                    <div key={day} className="bg-cream py-2 md:p-4 text-center text-[8px] md:text-[10px] font-black text-sage-dark/40 uppercase tracking-widest border-b border-sage/10 truncate">
+                       <span className="hidden md:inline">{day}</span>
+                       <span className="md:hidden">{day.slice(0, 1)}</span>
+                    </div>
+                  ))}
+                  {[...Array(35)].map((_, i) => {
+                    const day = i - 2; // Offset for month start
+                    const isToday = day === 14;
+                    const hasSession = [15, 18, 22].includes(day);
+                    
+                    return (
+                      <div key={i} className={`min-h-[60px] md:min-h-[120px] bg-white p-1 md:p-4 border-r border-b border-sage/5 transition-all hover:bg-cream/30 group cursor-pointer flex flex-col items-center md:items-start`}>
+                         <span className={`text-[10px] md:text-[11px] font-bold ${day > 0 && day <= 31 ? (isToday ? 'bg-sage text-white w-5 h-5 md:w-6 md:h-6 rounded-lg flex items-center justify-center' : 'text-sage-dark') : 'text-sage-dark/10'}`}>
+                            {day > 0 && day <= 31 ? day : ''}
+                         </span>
+                         {hasSession && (
+                           <>
+                             {/* Mobile Dot */}
+                             <div className="mt-1 md:hidden w-1.5 h-1.5 rounded-full bg-sage-dark" />
+                             {/* Desktop Text */}
+                             <div className="hidden md:block mt-4 space-y-1 w-full">
+                                <div className="bg-sage-dark/10 border-l-2 border-sage-dark p-2 rounded-r-lg">
+                                   <p className="text-[8px] font-black text-sage-dark uppercase tracking-tighter truncate">10:00 AM • Sarah</p>
+                                </div>
+                             </div>
+                           </>
+                         )}
+                      </div>
+                    );
+                  })}
+               </div>
             </div>
          </div>
 

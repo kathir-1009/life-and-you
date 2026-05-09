@@ -141,7 +141,7 @@ export function CoachDashboardPage() {
       <div className="max-w-5xl mx-auto px-6 lg:px-16 mt-10 space-y-10">
 
         {/* ── Quick Actions ── */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { icon: PlusCircleFill, label: "Add Slot", to: "/coach/availability", color: "bg-[#5E6C54]" },
             { icon: Upload, label: "Upload Resource", to: "/coach/resources", color: "bg-[#99A88C]" },
