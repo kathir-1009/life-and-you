@@ -47,12 +47,18 @@ export function AuthPage() {
           {/* Header */}
           <div className="text-center mb-10">
             <h1 className="text-3xl font-bold text-[#2D3324] font-serif mb-2">
-              {isLogin ? "Welcome Back" : "Create Account"}
+              {isLogin 
+                ? "Welcome Back" 
+                : (role === 'coach' ? "Join the Circle" : "Create Account")
+              }
             </h1>
             <p className="text-[#2D3324]/50 text-sm font-medium">
               {isLogin
-                ? "Sign in to continue your wellness journey"
-                : "Join Life & You — start your first session today"}
+                ? "Sign in to continue your journey"
+                : (role === 'coach' 
+                    ? "Apply to become a mentor and guide others" 
+                    : "Join Life & You — start your first session today")
+              }
             </p>
           </div>
 
@@ -85,7 +91,8 @@ export function AuthPage() {
                   <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30" size={18} />
                   <input
                     type="text"
-                    placeholder="Your name"
+                    required
+                    placeholder={role === 'coach' ? "Your professional name" : "Your name"}
                     className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-all placeholder:text-[#2D3324]/30"
                   />
                 </div>
@@ -100,6 +107,7 @@ export function AuthPage() {
                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30" size={18} />
                   <input
                     type="email"
+                    required
                     placeholder="you@example.com"
                     className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-all placeholder:text-[#2D3324]/30"
                   />
@@ -114,7 +122,8 @@ export function AuthPage() {
                   <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30" size={18} />
                   <input
                     type="password"
-                    placeholder={isLogin ? "Enter your password" : "Create a password"}
+                    required
+                    placeholder={isLogin ? "Enter your password" : "Create a secure password"}
                     className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-all placeholder:text-[#2D3324]/30"
                   />
               </div>
@@ -133,7 +142,10 @@ export function AuthPage() {
                 type="submit"
                 className="w-full bg-[#2D3324] text-white py-5 rounded-2xl flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-widest shadow-xl hover:bg-[#1a1d14] transition-all active:scale-[0.98]"
               >
-                {isLogin ? "Sign In" : "Register"}
+                {isLogin 
+                  ? "Sign In" 
+                  : (role === 'coach' ? "Apply Now" : "Register")
+                }
                 <ArrowRight size={18} />
               </button>
             </div>

@@ -32,7 +32,8 @@ export function OTPVerifyPage() {
       sessionStorage.setItem("portal_access", "true");
       const timer = setTimeout(() => {
         if (mode === "register") {
-          navigate("/onboarding");
+          if (role === "coach") navigate("/coach/onboarding");
+          else navigate("/onboarding");
         } else {
           if (role === "coach") navigate("/coach");
           else navigate("/portal");
