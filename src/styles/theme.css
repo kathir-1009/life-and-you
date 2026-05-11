@@ -7,6 +7,7 @@
   --sage-pale: #E3EAE0;
   
   --gold: #A68A45;
+  --color-gold-dark: #8A7340;
   --gold-pale: #FDF8E1;
   
   --cream: #FCF8E8;
@@ -28,7 +29,8 @@
      DM Sans kept as an alias but not actively split by context anymore.
   */
   --font-serif: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Nunito', 'DM Sans', system-ui, sans-serif;
+  --font-sans: 'Nunito', 'DM Sans', system-ui, sans-serif;
+  --font-body: var(--font-sans);
   
   /* Modern UI Tokens */
   --radius-sm: 8px;

@@ -10,4 +10,6 @@
   --color-cream: #FCF8E8;
   --color-gold: #C4A35A;
   --color-gold-dark: #8A7340;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Nunito', 'DM Sans', system-ui, sans-serif;
 }
