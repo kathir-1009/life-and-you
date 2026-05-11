@@ -1,13 +1,14 @@
 import { Outlet, useLocation, Navigate, ScrollRestoration } from "react-router";
 import { BottomNav } from "./BottomNav";
 import { Sidebar } from "./Sidebar";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useUser } from "../context/UserContext";
 
 export function AppLayout() {
   const location = useLocation();
   const { role } = useUser();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   
   const isPortal = location.pathname.startsWith("/portal");
   const isCoach = location.pathname.startsWith("/coach");
@@ -18,6 +19,13 @@ export function AppLayout() {
     const authStatus = sessionStorage.getItem("portal_access") === "true";
     setIsAuthenticated(authStatus);
   }, []);
+
+  useEffect(() => {
+    // Reset scroll to top on route change
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo(0, 0);
+    }
+  }, [location.pathname]);
 
   if (isAuthenticated === null) return null;
 
@@ -58,7 +66,7 @@ export function AppLayout() {
           </div>
         )}
 
-        <div className="flex-1 overflow-y-auto">
+        <div ref={scrollRef} className="flex-1 overflow-y-auto">
           <main className={`relative z-10 w-full max-w-[1440px] mx-auto p-0 lg:p-10 ${!isChat && 'lg:pt-10'}`}>
             <Outlet />
           </main>
