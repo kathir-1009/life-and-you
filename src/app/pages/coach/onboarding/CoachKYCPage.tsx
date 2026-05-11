@@ -42,6 +42,9 @@ export function CoachKYCPage() {
                 isUploaded={files.some(f => f.id === 'bg')}
                 onUpload={() => handleUpload('bg')}
               />
+            </div>
+           </div>
+
            <div className="pt-8 border-t border-sage/10 space-y-4">
               <label className="flex items-start gap-4 p-5 bg-cream/50 rounded-[24px] cursor-pointer transition-all hover:bg-white group">
                  <input type="checkbox" className="mt-1 w-4 h-4 accent-sage shrink-0" />
@@ -67,10 +70,10 @@ export function CoachKYCPage() {
           </button>
           <Link 
             to="/coach/onboarding/complete" 
-            className={`flex-1 py-5 rounded-full font-bold text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-3 ${
+            className={`flex-1 py-5 rounded-full font-bold text-[10px] uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 ${
               files.length >= 2 
                 ? 'bg-sage-dark text-white hover:scale-[1.02] shadow-xl' 
-                : 'bg-sage-dark/20 text-white cursor-not-allowed'
+                : 'bg-sage/10 text-sage-dark/30 cursor-not-allowed border border-sage/5'
             }`}
           >
             Submit Application <ArrowRight size={18} />
