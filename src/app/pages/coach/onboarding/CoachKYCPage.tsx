@@ -42,6 +42,22 @@ export function CoachKYCPage() {
                 isUploaded={files.some(f => f.id === 'bg')}
                 onUpload={() => handleUpload('bg')}
               />
+           <div className="pt-8 border-t border-sage/10 space-y-4">
+              <label className="flex items-start gap-4 p-5 bg-cream/50 rounded-[24px] cursor-pointer transition-all hover:bg-white group">
+                 <input type="checkbox" className="mt-1 w-4 h-4 accent-sage shrink-0" />
+                 <div className="text-left">
+                    <p className="text-[10px] font-black text-sage-dark uppercase tracking-widest leading-tight">I agree to the Terms of Service & Privacy Policy</p>
+                    <p className="text-[8px] font-bold text-sage-dark/40 uppercase mt-1">Read the mentor agreement and platform standards</p>
+                 </div>
+              </label>
+              
+              <label className="flex items-start gap-4 p-5 bg-cream/50 rounded-[24px] cursor-pointer transition-all hover:bg-white group">
+                 <input type="checkbox" className="mt-1 w-4 h-4 accent-sage shrink-0" />
+                 <div className="text-left">
+                    <p className="text-[10px] font-black text-sage-dark uppercase tracking-widest leading-tight">Professional Code of Conduct</p>
+                    <p className="text-[8px] font-bold text-sage-dark/40 uppercase mt-1">I certify that all provided documentation is authentic</p>
+                 </div>
+              </label>
            </div>
         </div>
         
