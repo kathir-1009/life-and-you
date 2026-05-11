@@ -19,8 +19,15 @@ export function CoachCredentialsPage() {
                  <label className="text-[10px] font-black text-sage-dark uppercase tracking-widest ml-4">Coaching Categories *</label>
                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {['Life Coaching', 'Mental Wellness', 'Relationships', 'Career Pivot', 'NLP Coaching', 'Mindfulness'].map(cat => (
-                      <label key={cat} className="flex items-center gap-2 p-3 bg-cream/50 rounded-xl border border-transparent cursor-pointer transition-all has-[:checked]:bg-sage/10 has-[:checked]:border-sage/20">
-                         <input type="checkbox" className="w-3.5 h-3.5 accent-sage" />
+                      <label key={cat} className="flex items-center gap-3 p-3 bg-cream/50 rounded-xl border border-transparent cursor-pointer transition-all hover:bg-white has-[:checked]:bg-sage/10 has-[:checked]:border-sage/20 group">
+                         <div className="relative w-4 h-4 shrink-0">
+                            <input type="checkbox" className="peer absolute inset-0 opacity-0 cursor-pointer z-10" />
+                            <div className="absolute inset-0 bg-white border-2 border-sage/20 rounded-md transition-all peer-checked:bg-sage peer-checked:border-sage flex items-center justify-center">
+                               <svg className="w-2.5 h-2.5 text-white scale-0 peer-checked:scale-100 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="5">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                               </svg>
+                            </div>
+                         </div>
                          <span className="text-[9px] font-bold text-sage-dark uppercase tracking-tight">{cat}</span>
                       </label>
                     ))}
@@ -44,8 +51,15 @@ export function CoachCredentialsPage() {
                  <label className="text-[10px] font-black text-sage-dark uppercase tracking-widest ml-4">Coaching Styles</label>
                  <div className="flex flex-wrap gap-3">
                     {['1-to-1 Coaching', 'Group Coaching', 'Online Workshops'].map(style => (
-                      <label key={style} className="flex items-center gap-2 p-3 bg-cream/50 rounded-xl border border-transparent cursor-pointer transition-all has-[:checked]:bg-sage/10 has-[:checked]:border-sage/20">
-                         <input type="checkbox" className="w-3.5 h-3.5 accent-sage" />
+                      <label key={style} className="flex items-center gap-3 p-3 bg-cream/50 rounded-xl border border-transparent cursor-pointer transition-all hover:bg-white has-[:checked]:bg-sage/10 has-[:checked]:border-sage/20 group">
+                         <div className="relative w-4 h-4 shrink-0">
+                            <input type="checkbox" className="peer absolute inset-0 opacity-0 cursor-pointer z-10" />
+                            <div className="absolute inset-0 bg-white border-2 border-sage/20 rounded-md transition-all peer-checked:bg-sage peer-checked:border-sage flex items-center justify-center">
+                               <svg className="w-2.5 h-2.5 text-white scale-0 peer-checked:scale-100 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="5">
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                               </svg>
+                            </div>
+                         </div>
                          <span className="text-[9px] font-bold text-sage-dark uppercase tracking-tight">{style}</span>
                       </label>
                     ))}

@@ -61,16 +61,23 @@ export function CoachKYCPage() {
            <div className="pt-10 border-t border-sage/5 space-y-6">
               <p className="text-[10px] font-black text-sage uppercase tracking-[0.3em]">7. Platform Agreement</p>
               <div className="space-y-4">
-                 {[
-                   { id: 'info', label: 'I confirm all provided information is correct' },
-                   { id: 'policies', label: "I agree to the platform's Professional Policies" },
-                   { id: 'confidentiality', label: 'I agree to strict Client Confidentiality rules' }
-                 ].map(ag => (
-                   <label key={ag.id} className="flex items-center gap-4 p-5 bg-cream/50 rounded-[24px] cursor-pointer transition-all hover:bg-white border border-transparent hover:border-sage/20 group">
-                      <input type="checkbox" className="w-5 h-5 accent-sage shrink-0" />
-                      <span className="text-[11px] font-bold text-sage-dark uppercase tracking-wide leading-tight">{ag.label} *</span>
-                   </label>
-                 ))}
+                  {[
+                    { id: 'info', label: 'I confirm all provided information is correct' },
+                    { id: 'policies', label: "I agree to the platform's Professional Policies" },
+                    { id: 'confidentiality', label: 'I agree to strict Client Confidentiality rules' }
+                  ].map(ag => (
+                    <label key={ag.id} className="flex items-center gap-5 p-5 bg-cream/50 rounded-[24px] cursor-pointer transition-all hover:bg-white border border-transparent hover:border-sage/20 group">
+                       <div className="relative w-6 h-6 shrink-0">
+                          <input type="checkbox" className="peer absolute inset-0 opacity-0 cursor-pointer z-10" />
+                          <div className="absolute inset-0 bg-white border-2 border-sage/20 rounded-lg transition-all peer-checked:bg-sage peer-checked:border-sage flex items-center justify-center">
+                             <svg className="w-3.5 h-3.5 text-white scale-0 peer-checked:scale-100 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                             </svg>
+                          </div>
+                       </div>
+                       <span className="text-[11px] font-bold text-sage-dark uppercase tracking-wide leading-tight">{ag.label} *</span>
+                    </label>
+                  ))}
               </div>
            </div>
         </div>
