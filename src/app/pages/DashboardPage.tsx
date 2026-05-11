@@ -6,7 +6,6 @@ import { useUser } from "../context/UserContext";
 import { UpcomingSession } from "../components/dashboard/UpcomingSession";
 import { RecentHistory } from "../components/dashboard/RecentHistory";
 import { DashboardSidebar } from "../components/dashboard/DashboardSidebar";
-import { DashboardSidebar } from "../components/dashboard/DashboardSidebar";
 
 // Recommended coaches mock data
 const RECOMMENDED_COACHES = [
