@@ -4,10 +4,13 @@ import { Sidebar } from "./Sidebar";
 import { useEffect, useState, useRef } from "react";
 import { useUser } from "../context/UserContext";
 
+import { List as MenuIcon } from "react-bootstrap-icons";
+
 export function AppLayout() {
   const location = useLocation();
   const { role } = useUser();
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   
   const isPortal = location.pathname.startsWith("/portal");
@@ -25,6 +28,7 @@ export function AppLayout() {
     if (scrollRef.current) {
       scrollRef.current.scrollTo(0, 0);
     }
+    setIsSidebarOpen(false); // Close sidebar on route change
   }, [location.pathname]);
 
   if (isAuthenticated === null) return null;
@@ -33,7 +37,7 @@ export function AppLayout() {
     return <Navigate to="/auth/login" replace state={{ from: location }} />;
   }
 
-  // Role Guards — redirect to correct portal if wrong role lands here
+  // Role Guards
   if (isPortal && role !== 'client') {
     return <Navigate to="/coach" replace />;
   }
@@ -42,26 +46,39 @@ export function AppLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] flex portal-context overflow-hidden">
+    <div className="min-h-screen bg-[#FCF8E8] flex portal-context overflow-hidden font-sans">
       <ScrollRestoration />
       
-      {/* Sidebar - Desktop Only (hidden lg:flex inside Sidebar component) */}
-      {!isChat && <Sidebar />}
+      {/* Sidebar - Desktop Sticky / Mobile Drawer */}
+      {!isChat && (
+        <Sidebar 
+          isOpen={isSidebarOpen} 
+          onClose={() => setIsSidebarOpen(false)} 
+        />
+      )}
 
       {/* Main Content Area */}
-      <div className={`flex-1 flex flex-col ${isChat ? 'h-[100dvh]' : 'h-[100dvh]'} overflow-x-hidden relative`}>
+      <div className={`flex-1 flex flex-col h-[100dvh] overflow-x-hidden relative`}>
         
         {/* Mobile Header */}
         {!isChat && (
-          <div className="lg:hidden bg-[#2D3324] text-white p-4 flex items-center gap-3 relative z-50">
-            <div className="w-8 h-8">
-               <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain brightness-[10]" />
-            </div>
-            <div>
-               <h1 className="text-sm font-bold tracking-tight leading-none font-serif">Life & You</h1>
-               <span className="text-[8px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-0.5 block">
-                 {role === 'coach' ? 'Coach Console' : 'Portal Access'}
-               </span>
+          <div className="lg:hidden bg-[#2D3324] text-white p-4 flex items-center justify-between relative z-50 shadow-md">
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => setIsSidebarOpen(true)}
+                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-xl text-white"
+              >
+                <MenuIcon size={24} />
+              </button>
+              <div className="w-8 h-8">
+                 <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain brightness-[10]" />
+              </div>
+              <div>
+                 <h1 className="text-sm font-bold tracking-tight leading-none font-serif">Life & You</h1>
+                 <span className="text-[8px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-0.5 block">
+                   {role === 'coach' ? 'Coach Console' : 'Portal Access'}
+                 </span>
+              </div>
             </div>
           </div>
         )}
