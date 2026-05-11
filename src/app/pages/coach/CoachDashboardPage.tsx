@@ -143,21 +143,26 @@ export function CoachDashboardPage() {
       <div className="max-w-5xl mx-auto px-6 lg:px-16 mt-10 space-y-10">
 
         {/* ── Quick Actions ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { icon: PlusCircleFill, label: "Add Slot", to: "/coach/availability", styles: "bg-white text-[#5E6C54] border border-[#99A88C]/20 hover:border-[#99A88C]" },
-            { icon: Upload, label: "Upload Resource", to: "/coach/resources", styles: "bg-white text-[#5E6C54] border border-[#99A88C]/20 hover:border-[#99A88C]" },
-            { icon: ChatDotsFill, label: "Message Client", to: "/coach/messages", styles: "bg-[#5E6C54] text-white border border-[#5E6C54] shadow-lg shadow-[#5E6C54]/20" },
-            { icon: Wallet2, label: "View Earnings", to: "/coach/earnings", styles: "bg-white text-[#5E6C54] border border-[#99A88C]/20 hover:border-[#99A88C]" },
+            { icon: PlusCircleFill, label: "Add Slot", to: "/coach/schedule/add", bg: "bg-white", text: "text-[#5E6C54]", iconColor: "text-[#A68A45]" },
+            { icon: ClockHistory, label: "Session History", to: "/coach/reports/sessions", bg: "bg-white", text: "text-[#5E6C54]", iconColor: "text-[#99A88C]" },
+            { icon: ChatDotsFill, label: "Message Client", to: "/coach/messages", bg: "bg-[#5E6C54]", text: "text-white", iconColor: "text-[#99A88C]" },
+            { icon: Wallet2, label: "View Earnings", to: "/coach/reports/earnings", bg: "bg-white", text: "text-[#5E6C54]", iconColor: "text-[#A68A45]" },
           ].map((action, i) => (
             <Link
               key={i}
               to={action.to}
-              className={`${action.styles} rounded-[24px] p-5 flex items-center gap-3 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all group`}
+              className={`${action.bg} ${action.text} rounded-[28px] p-5 flex items-center gap-4 shadow-sm border border-[#99A88C]/10 hover:shadow-xl hover:border-[#99A88C]/30 hover:-translate-y-1 transition-all group relative overflow-hidden`}
             >
-              <action.icon size={18} className={`shrink-0 ${action.styles.includes('bg-[#5E6C54]') ? 'text-[#99A88C]' : 'text-[#A68A45]'}`} />
-              <span className="text-[10px] font-black uppercase tracking-widest leading-tight">{action.label}</span>
-              <ArrowUpRight size={14} className="ml-auto opacity-40 group-hover:opacity-100 transition-opacity" />
+              {action.bg === "bg-[#5E6C54]" && (
+                <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl group-hover:scale-150 transition-transform" />
+              )}
+              <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 ${action.bg === "bg-white" ? "bg-cream" : "bg-white/10"}`}>
+                <action.icon size={18} className={action.iconColor} />
+              </div>
+              <span className="text-[10px] font-black uppercase tracking-[0.2em]">{action.label}</span>
+              <ArrowUpRight size={14} className="ml-auto opacity-20 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
             </Link>
           ))}
         </div>

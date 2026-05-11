@@ -85,6 +85,8 @@ const CoachAddSchedule = lazy(() => import("./pages/coach/schedule/CoachAddSched
 const AvailabilityPage = lazy(() => import("./pages/AvailabilityPage").then(m => ({ default: m.AvailabilityPage })));
 const CoachSessionList = lazy(() => import("./pages/coach/sessions/CoachSessionListPage").then(m => ({ default: m.CoachSessionListPage })));
 const CoachClientProfile = lazy(() => import("./pages/coach/clients/CoachClientProfilePage").then(m => ({ default: m.CoachClientProfilePage })));
+const CoachSessionHistory = lazy(() => import("./pages/coach/reports/CoachSessionHistoryPage").then(m => ({ default: m.CoachSessionHistoryPage })));
+const CoachEarningsReport = lazy(() => import("./pages/coach/reports/CoachEarningsReportPage").then(m => ({ default: m.CoachEarningsReportPage })));
 
 // Loading component
 const PageLoader = () => (
@@ -258,6 +260,13 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: withSuspense(CoachNotesPage) },
           { path: ":sessionId", element: withSuspense(CoachNotesPage) },
+        ]
+      },
+      {
+        path: "reports",
+        children: [
+          { path: "sessions", element: withSuspense(CoachSessionHistory) },
+          { path: "earnings", element: withSuspense(CoachEarningsReport) },
         ]
       },
       // Coach profile / settings — uses ProfilePage with role-based rendering
