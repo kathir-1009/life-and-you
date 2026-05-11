@@ -153,7 +153,7 @@ export function CoachDashboardPage() {
             <Link
               key={i}
               to={action.to}
-              className={`${action.bg} ${action.text} rounded-[28px] p-5 flex items-center gap-4 shadow-sm border border-[#99A88C]/10 hover:shadow-xl hover:border-[#99A88C]/30 hover:-translate-y-1 transition-all group relative overflow-hidden`}
+              className={`${action.bg} ${action.text} rounded-[28px] p-5 flex items-center gap-4 shadow-sm border border-sage/10 hover:shadow-xl hover:border-sage/30 hover:-translate-y-1 transition-all group relative overflow-hidden`}
             >
               {action.bg === "bg-[#5E6C54]" && (
                 <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-xl group-hover:scale-150 transition-transform" />
@@ -161,7 +161,7 @@ export function CoachDashboardPage() {
               <div className={`w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 ${action.bg === "bg-white" ? "bg-cream" : "bg-white/10"}`}>
                 <action.icon size={18} className={action.iconColor} />
               </div>
-              <span className="text-[10px] font-black uppercase tracking-[0.2em]">{action.label}</span>
+              <span className="text-[11px] font-bold font-serif uppercase tracking-widest">{action.label}</span>
               <ArrowUpRight size={14} className="ml-auto opacity-20 group-hover:opacity-100 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
             </Link>
           ))}
