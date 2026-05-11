@@ -70,6 +70,7 @@ const CertificatesPage = lazy(() => import("./pages/client/profile/CertificatesP
 const CoachWelcome = lazy(() => import("./pages/coach/onboarding/CoachWelcomePage").then(m => ({ default: m.CoachWelcomePage })));
 const CoachProfile = lazy(() => import("./pages/coach/onboarding/CoachProfileSetupPage").then(m => ({ default: m.CoachProfileSetupPage })));
 const CoachCredentials = lazy(() => import("./pages/coach/onboarding/CoachCredentialsPage").then(m => ({ default: m.CoachCredentialsPage })));
+const CoachSessionDetails = lazy(() => import("./pages/coach/onboarding/CoachSessionDetailsPage").then(m => ({ default: m.CoachSessionDetailsPage })));
 const CoachKYC = lazy(() => import("./pages/coach/onboarding/CoachKYCPage").then(m => ({ default: m.CoachKYCPage })));
 const CoachComplete = lazy(() => import("./pages/coach/onboarding/CoachOnboardingCompletePage").then(m => ({ default: m.CoachOnboardingCompletePage })));
 
@@ -225,6 +226,7 @@ export const router = createBrowserRouter([
           { path: "welcome", element: withSuspense(CoachWelcome) },
           { path: "profile", element: withSuspense(CoachProfile) },
           { path: "credentials", element: withSuspense(CoachCredentials) },
+          { path: "sessions", element: withSuspense(CoachSessionDetails) },
           { path: "kyc", element: withSuspense(CoachKYC) },
           { path: "complete", element: withSuspense(CoachComplete) },
         ]
