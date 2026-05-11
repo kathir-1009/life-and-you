@@ -3,7 +3,7 @@ import { ArrowLeft, ArrowRight, PersonBadgeFill } from "react-bootstrap-icons";
 
 export function CoachProfileSetupPage() {
   return (
-    <div className="min-h-screen bg-cream flex flex-col items-center justify-center p-6 text-center">
+    <div className="min-h-screen bg-cream flex flex-col items-center justify-start md:justify-center p-6 pt-12 md:pt-6 pb-32 md:pb-12 text-center">
       <div className="max-w-2xl w-full bg-white p-12 rounded-[60px] border border-sage/10 shadow-sm">
         <PersonBadgeFill size={48} className="text-sage mb-8 mx-auto" />
         <h1 className="text-3xl font-bold text-sage-dark font-serif mb-4 uppercase">Professional Identity</h1>
