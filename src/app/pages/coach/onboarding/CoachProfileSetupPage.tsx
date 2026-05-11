@@ -26,7 +26,7 @@ export function CoachProfileSetupPage() {
             <ArrowLeft size={24} />
           </Link>
           <Link 
-            to="/coach/availability" 
+            to="/coach/onboarding/credentials" 
             className="flex-1 py-5 bg-sage text-white rounded-full font-bold text-xs uppercase tracking-widest hover:scale-[1.02] shadow-xl transition-all flex items-center justify-center gap-3"
           >
             Save & Continue <ArrowRight size={18} />
