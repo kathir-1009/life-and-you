@@ -6,7 +6,7 @@ import { useUser } from "../context/UserContext";
 import { UpcomingSession } from "../components/dashboard/UpcomingSession";
 import { RecentHistory } from "../components/dashboard/RecentHistory";
 import { DashboardSidebar } from "../components/dashboard/DashboardSidebar";
-import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { DashboardSidebar } from "../components/dashboard/DashboardSidebar";
 
 // Recommended coaches mock data
 const RECOMMENDED_COACHES = [
@@ -60,15 +60,7 @@ const RECOMMENDED_COACHES = [
   },
 ];
 
-const moodData = [
-  { day: "Mon", val: 60 },
-  { day: "Tue", val: 75 },
-  { day: "Wed", val: 55 },
-  { day: "Thu", val: 80 },
-  { day: "Fri", val: 70 },
-  { day: "Sat", val: 90 },
-  { day: "Sun", val: 85 },
-];
+
 
 export function DashboardPage() {
   const { user, isAnonymous } = useUser();
@@ -259,38 +251,6 @@ export function DashboardPage() {
           <DashboardSidebar />
         </div>
 
-        {/* Wellness Rhythm Chart */}
-        <div className="bg-white rounded-[36px] p-6 border border-[#8B9A71]/8 shadow-sm">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h3 className="text-base font-black text-[#2D3324] uppercase tracking-tight">Wellness Rhythm</h3>
-              <p className="text-[9px] font-black text-[#5E6C54]/30 uppercase tracking-[0.3em] mt-0.5">Mood & Biometric Synthesis</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-[#8B9A71] rounded-full" />
-              <span className="text-[9px] font-black text-[#5E6C54]/40 uppercase tracking-widest">Growth</span>
-            </div>
-          </div>
-          <div className="h-44 w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={moodData} margin={{ top: 5, right: 0, left: -20, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="colorMood" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#2D3324" stopOpacity={0.15} />
-                    <stop offset="95%" stopColor="#2D3324" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 9, fontWeight: 700, fill: "#5E6C54", opacity: 0.4 }} />
-                <YAxis axisLine={false} tickLine={false} tick={false} />
-                <Tooltip
-                  contentStyle={{ borderRadius: "12px", border: "none", boxShadow: "0 8px 24px rgba(0,0,0,0.1)", fontSize: "10px", fontWeight: "bold" }}
-                  cursor={{ stroke: "#8B9A71", strokeWidth: 2, strokeDasharray: "4 4" }}
-                />
-                <Area type="monotone" dataKey="val" stroke="#2D3324" strokeWidth={3} fillOpacity={1} fill="url(#colorMood)" />
-              </AreaChart>
-            </ResponsiveContainer>
-          </div>
-        </div>
       </div>
     </div>
   );
