@@ -13,11 +13,11 @@ const revenueData = [
 ];
 
 const transactionHistory = [
-  { id: "T1092", date: "May 10, 2026", desc: "Session Payout - Sarah M.", amount: "+ AED 350", status: "Processed", type: "credit" },
-  { id: "T1091", date: "May 09, 2026", desc: "Monthly Platform Fee", amount: "- AED 150", status: "Processed", type: "debit" },
-  { id: "T1090", date: "May 08, 2026", desc: "Session Payout - Anonymous #421", amount: "+ AED 400", status: "Processed", type: "credit" },
-  { id: "T1089", date: "May 05, 2026", desc: "Withdrawal to Bank (****4210)", amount: "- AED 2500", status: "Pending", type: "debit" },
-  { id: "T1088", date: "May 04, 2026", desc: "Session Payout - Michael C.", amount: "+ AED 350", status: "Processed", type: "credit" },
+  { id: "T1092", date: "May 10, 2026", desc: "Session Payout - Sarah M.", amount: "+ INR 350", status: "Processed", type: "credit" },
+  { id: "T1091", date: "May 09, 2026", desc: "Monthly Platform Fee", amount: "- INR 150", status: "Processed", type: "debit" },
+  { id: "T1090", date: "May 08, 2026", desc: "Session Payout - Anonymous #421", amount: "+ INR 400", status: "Processed", type: "credit" },
+  { id: "T1089", date: "May 05, 2026", desc: "Withdrawal to Bank (****4210)", amount: "- INR 2500", status: "Pending", type: "debit" },
+  { id: "T1088", date: "May 04, 2026", desc: "Session Payout - Michael C.", amount: "+ INR 350", status: "Processed", type: "credit" },
 ];
 
 export function CoachEarningsReportPage() {
@@ -53,7 +53,7 @@ export function CoachEarningsReportPage() {
             <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl" />
             <Wallet2 size={24} className="text-sage mb-6" />
             <p className="text-[10px] font-black uppercase tracking-[0.3em] text-white/50 mb-2">Available Balance</p>
-            <h2 className="text-4xl font-black font-serif leading-none">AED 8,420.50</h2>
+            <h2 className="text-4xl font-black font-serif leading-none">INR 8,420.50</h2>
             <div className="mt-8 flex items-center gap-2 text-[10px] font-black text-sage uppercase tracking-widest bg-white/5 w-fit px-3 py-1.5 rounded-full">
                <ArrowUpRight size={14} /> +12% from last month
             </div>

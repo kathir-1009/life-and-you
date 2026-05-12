@@ -42,20 +42,20 @@ export function ProgramsSection() {
             index={0}
             title="Discovery Call"
             desc="Uncover the root of your barriers in a high-impact session."
-            price="AED 399"
+            price="INR 399"
           />
           <ProgramCard
             index={1}
             title="The Moon Path"
             desc="4 structured sessions + WhatsApp support for deep habit shifts."
-            price="AED 1,499"
+            price="INR 1,499"
             featured={true}
           />
           <ProgramCard
             index={2}
             title="Elite 3 Months"
             desc="Total life transformation package for high-stakes performers."
-            price="AED 3,999"
+            price="INR 3,999"
           />
         </div>
       </div>

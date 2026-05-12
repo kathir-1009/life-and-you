@@ -3,12 +3,12 @@ import { Link } from "react-router";
 import { ChevronLeft, Download, Search, Filter, Calendar3, Clock, Person, StarFill } from "react-bootstrap-icons";
 
 const mockSessions = [
-  { id: "S101", date: "May 10, 2026", time: "09:00 AM", client: "Sarah M.", type: "Anxiety Control", status: "Completed", rating: 5, amount: "AED 350" },
-  { id: "S102", date: "May 09, 2026", time: "11:30 AM", client: "Anonymous #421", type: "Grief Healing", status: "Completed", rating: 5, amount: "AED 400" },
-  { id: "S103", date: "May 08, 2026", time: "02:00 PM", client: "Michael C.", type: "Peak Performance", status: "Completed", rating: 4, amount: "AED 350" },
-  { id: "S104", date: "May 07, 2026", time: "04:30 PM", client: "Elena R.", type: "Self-Confidence", status: "Completed", rating: 5, amount: "AED 350" },
-  { id: "S105", date: "May 06, 2026", time: "10:00 AM", client: "John D.", type: "Career Pivot", status: "Completed", rating: 5, amount: "AED 450" },
-  { id: "S106", date: "May 05, 2026", time: "03:00 PM", client: "Priya K.", type: "Relationship Coaching", status: "Completed", rating: 3, amount: "AED 350" },
+  { id: "S101", date: "May 10, 2026", time: "09:00 AM", client: "Sarah M.", type: "Anxiety Control", status: "Completed", rating: 5, amount: "INR 350" },
+  { id: "S102", date: "May 09, 2026", time: "11:30 AM", client: "Anonymous #421", type: "Grief Healing", status: "Completed", rating: 5, amount: "INR 400" },
+  { id: "S103", date: "May 08, 2026", time: "02:00 PM", client: "Michael C.", type: "Peak Performance", status: "Completed", rating: 4, amount: "INR 350" },
+  { id: "S104", date: "May 07, 2026", time: "04:30 PM", client: "Elena R.", type: "Self-Confidence", status: "Completed", rating: 5, amount: "INR 350" },
+  { id: "S105", date: "May 06, 2026", time: "10:00 AM", client: "John D.", type: "Career Pivot", status: "Completed", rating: 5, amount: "INR 450" },
+  { id: "S106", date: "May 05, 2026", time: "03:00 PM", client: "Priya K.", type: "Relationship Coaching", status: "Completed", rating: 3, amount: "INR 350" },
 ];
 
 export function CoachSessionHistoryPage() {

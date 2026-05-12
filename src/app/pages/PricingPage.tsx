@@ -9,7 +9,7 @@ export function PricingPage() {
   const plans = [
     {
       name: "Single Step",
-      price: "₹2,500",
+      price: "INR 2,500",
       period: "per session",
       desc: "Ideal for immediate breakthroughs or situational guidance.",
       features: [
@@ -23,7 +23,7 @@ export function PricingPage() {
     },
     {
       name: "The Healing Pack",
-      price: "₹8,000",
+      price: "INR 8,000",
       period: "per month",
       desc: "Our hallmark program for consistent, lasting mental shifts.",
       features: [
@@ -39,7 +39,7 @@ export function PricingPage() {
     },
     {
       name: "Breakthrough Quest",
-      price: "₹22,000",
+      price: "INR 22,000",
       period: "3-month journey",
       desc: "Full immersion into personal mastery and cognitive rewiring.",
       features: [

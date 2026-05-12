@@ -44,7 +44,7 @@ export function BookSessionStep3Page() {
            <div className="space-y-8">
               <SummaryItem icon={Calendar2CheckFill} label="Scheduled Time" val="Thursday, March 14, 2026 at 02:00 PM (GST)" />
               <SummaryItem icon={CheckCircleFill} label="Session Type" val="Identity-Shield Video Session" />
-              <SummaryItem icon={CreditCard2BackFill} label="Investment" val="AED 399 (Discovery Session)" />
+              <SummaryItem icon={CreditCard2BackFill} label="Investment" val="INR 399 (Discovery Session)" />
            </div>
            
            <div className="mt-12 pt-8 border-t border-[#99A88C]/10 text-center">

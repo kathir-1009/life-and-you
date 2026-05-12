@@ -149,39 +149,21 @@ export function AuthPage() {
                 <ArrowRight size={18} />
               </button>
             </div>
-          </form>
 
-          {/* Role Toggle — demo only */}
-          <div className="mt-8 pt-8 border-t border-[#2D3324]/8">
-            <p className="text-center text-[9px] font-bold text-[#2D3324]/30 uppercase tracking-widest mb-3">
-              Demo — Sign in as
-            </p>
-            <div className="flex justify-center gap-3">
+            {/* Switch mode */}
+            <div className="mt-4 text-center text-[10px] font-medium text-[#2D3324]/50">
+              {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
               <button
-                onClick={() => setRole('client')}
-                className={`text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-xl transition-all ${role === 'client' ? 'bg-[#2D3324] text-white shadow-sm' : 'text-[#2D3324]/40 hover:text-[#2D3324]'}`}
+                type="button"
+                onClick={() => setMode(isLogin ? "register" : "login")}
+                className="text-[#8B9A71] font-bold hover:text-[#2D3324] transition-colors uppercase tracking-widest"
               >
-                Client
-              </button>
-              <button
-                onClick={() => setRole('coach')}
-                className={`text-[9px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-xl transition-all ${role === 'coach' ? 'bg-[#2D3324] text-white shadow-sm' : 'text-[#2D3324]/40 hover:text-[#2D3324]'}`}
-              >
-                Coach
+                {isLogin ? "Register" : "Sign In"}
               </button>
             </div>
-          </div>
+          </form>
 
-          {/* Switch mode */}
-          <div className="mt-6 text-center text-xs font-medium text-[#2D3324]/50">
-            {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
-            <button
-              onClick={() => setMode(isLogin ? "register" : "login")}
-              className="text-[#8B9A71] font-bold hover:text-[#2D3324] transition-colors"
-            >
-              {isLogin ? "Register" : "Sign In"}
-            </button>
-          </div>
+
         </div>
 
         <p className="mt-8 text-center text-[10px] text-white/20 font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2">

@@ -2,10 +2,10 @@ import { TrendingUp, ArrowUpRight, DollarSign, Download, Calendar, ArrowDownRigh
 
 export function CoachEarningsPage() {
   const transactions = [
-    { date: "Apr 10, 2026", client: "Sarah Jenkins", amount: "+ ₹3,500", status: "Settled", type: "NLP Mastery" },
-    { date: "Apr 08, 2026", client: "Anonymous LY-882", amount: "+ ₹2,800", status: "Settled", type: "Growth Call" },
-    { date: "Apr 05, 2026", client: "Platform Fee", amount: "- ₹1,200", status: "Debit", type: "Platform" },
-    { date: "Apr 02, 2026", client: "Emma Wilson", amount: "+ ₹3,500", status: "Settled", type: "Deep Discovery" },
+    { date: "Apr 10, 2026", client: "Sarah Jenkins", amount: "+ INR 3,500", status: "Settled", type: "NLP Mastery" },
+    { date: "Apr 08, 2026", client: "Anonymous LY-882", amount: "+ INR 2,800", status: "Settled", type: "Growth Call" },
+    { date: "Apr 05, 2026", client: "Platform Fee", amount: "- INR 1,200", status: "Debit", type: "Platform" },
+    { date: "Apr 02, 2026", client: "Emma Wilson", amount: "+ INR 3,500", status: "Settled", type: "Deep Discovery" },
   ];
 
   return (
@@ -20,7 +20,7 @@ export function CoachEarningsPage() {
           </div>
           <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
              <div className="text-[9px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mb-1">Available Balance</div>
-             <div className="text-3xl font-extrabold text-white tracking-tight">₹45,200.00</div>
+             <div className="text-3xl font-extrabold text-white tracking-tight">INR 45,200.00</div>
           </div>
         </div>
       </div>
@@ -30,7 +30,7 @@ export function CoachEarningsPage() {
         <div className="grid md:grid-cols-3 gap-6">
            <StatCard icon={TrendingUp} label="Monthly Growth" val="+12.4%" sub="vs last month" trend="up" />
            <StatCard icon={PieChart} label="Total Sessions" val="142" sub="Across all clients" trend="up" />
-           <StatCard icon={CreditCard} label="Avg. Rate" val="₹3,100" sub="Higher than avg." trend="up" />
+           <StatCard icon={CreditCard} label="Avg. Rate" val="INR 3,100" sub="Higher than avg." trend="up" />
         </div>
 
         {/* Transactions Table */}

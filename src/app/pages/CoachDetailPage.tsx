@@ -14,7 +14,7 @@ export function CoachDetailPage() {
     reviews: 124,
     specialty: "Anxiety & Trauma Recovery",
     experience: "12+ Years",
-    price: "₹3,500/hr",
+    price: "INR 3,500/hr",
     img: "/img/about/account-01.jpg",
     bio: "With over a decade of experience in cognitive behavioral shifts and Neuro-Linguistic Programming, I help high-performers navigate internal barriers while maintaining absolute privacy. My approach is evidence-based and soul-focused.",
     achievements: ["ICF Master Certified", "NLP Gold Standards", "2023 Coach of the Year"],

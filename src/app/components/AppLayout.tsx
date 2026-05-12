@@ -13,6 +13,7 @@ export function AppLayout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   
+  const isOnboarding = location.pathname.includes("/onboarding");
   const isPortal = location.pathname.startsWith("/portal");
   const isCoach = location.pathname.startsWith("/coach");
   const isChat = location.pathname.includes("/messages");
@@ -46,11 +47,11 @@ export function AppLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] flex portal-context overflow-hidden font-sans">
+    <div className={`min-h-screen flex portal-context overflow-hidden font-sans transition-colors duration-700 ${isOnboarding ? 'bg-[#2D3324]' : 'bg-[#FCF8E8]'}`}>
       <ScrollRestoration />
       
       {/* Sidebar - Desktop Sticky / Mobile Drawer */}
-      {!isChat && (
+      {!isChat && !isOnboarding && (
         <Sidebar 
           isOpen={isSidebarOpen} 
           onClose={() => setIsSidebarOpen(false)} 
@@ -61,7 +62,7 @@ export function AppLayout() {
       <div className={`flex-1 flex flex-col h-[100dvh] overflow-x-hidden relative`}>
         
         {/* Mobile Header */}
-        {!isChat && (
+        {!isChat && !isOnboarding && (
           <div className="lg:hidden bg-[#2D3324] text-white p-4 flex items-center justify-between relative z-50 shadow-md">
             <div className="flex items-center gap-3">
               <button 
@@ -84,13 +85,13 @@ export function AppLayout() {
         )}
 
         <div ref={scrollRef} className="flex-1 overflow-y-auto">
-          <main className={`relative z-10 w-full max-w-[1440px] mx-auto p-0 lg:p-10 ${!isChat && 'lg:pt-10'}`}>
+          <main className={`relative z-10 w-full max-w-[1440px] mx-auto p-0 ${!isOnboarding && 'lg:p-10'} ${!isChat && !isOnboarding && 'lg:pt-10'}`}>
             <Outlet />
           </main>
         </div>
         
         {/* BottomNav - Mobile Only */}
-        {!isChat && (
+        {!isChat && !isOnboarding && (
           <div className="lg:hidden relative z-50">
             <BottomNav />
           </div>

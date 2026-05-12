@@ -57,44 +57,8 @@ export function BookSessionStep2Page() {
         
         {/* Step Header */}
         <div className="mb-12 hidden lg:block">
-           <h1 className="text-4xl lg:text-5xl font-black text-[#5E6C54] uppercase tracking-tight leading-none mb-4">When shall we meet?</h1>
-           <p className="text-sm text-[#5E6C54]/40 font-black uppercase tracking-widest">Select your guide and preferred timing</p>
-        </div>
-
-        {/* Coach Selection Hub */}
-        <div className="mb-16">
-           <div className="flex items-center justify-between mb-8 px-2">
-              <h3 className="text-xs font-black text-[#5E6C54] uppercase tracking-widest flex items-center gap-2">
-                 <PersonCircle className="text-[#99A88C]" /> Select Your Guide
-              </h3>
-              <Link to="/portal/explore" className="text-[10px] font-black text-[#A68A45] hover:underline uppercase tracking-widest">Explore All</Link>
-           </div>
-           
-           <div className="flex gap-4 overflow-x-auto pb-6 scrollbar-hide -mx-2 px-2">
-              {coaches.map(coach => (
-                <button 
-                  key={coach.id}
-                  onClick={() => setSelectedCoach(coach.id)}
-                  className={`flex-shrink-0 w-64 p-6 rounded-[32px] border-2 transition-all text-left flex items-center gap-4 ${
-                    selectedCoach === coach.id 
-                    ? 'bg-[#5E6C54] border-transparent shadow-xl !text-[#FFFFFF]' 
-                    : 'bg-white/50 border-transparent hover:border-[#99A88C]/30 text-[#5E6C54]'
-                  }`}
-                >
-                   <div className="w-14 h-14 bg-[#FCF8E8] rounded-2xl overflow-hidden shadow-sm flex-shrink-0">
-                      <img src={coach.img} alt={coach.name} className="w-full h-full object-cover" />
-                   </div>
-                   <div className="overflow-hidden">
-                      <h4 className={`text-xs font-black uppercase truncate ${selectedCoach === coach.id ? 'text-[#FFFFFF]' : 'text-[#5E6C54]'}`}>{coach.name}</h4>
-                      <p className={`text-[10px] font-bold uppercase truncate ${selectedCoach === coach.id ? 'text-[#99A88C]' : 'text-[#5E6C54]/40'}`}>{coach.specialty}</p>
-                      <div className="flex items-center gap-1 mt-1">
-                         <StarFill size={8} className="text-[#A68A45]" />
-                         <span className={`text-[9px] font-black ${selectedCoach === coach.id ? 'text-[#A68A45]' : 'text-[#A68A45]'}`}>{coach.rating}</span>
-                      </div>
-                   </div>
-                </button>
-              ))}
-           </div>
+           <h1 className="text-4xl lg:text-5xl font-black text-[#5E6C54] uppercase tracking-tight leading-none mb-4 italic text-sage-dark">Select Your Slot</h1>
+           <p className="text-sm text-sage-dark/40 font-black uppercase tracking-widest">Phase 2: Secure your premium time window</p>
         </div>
         
         <div className="grid lg:grid-cols-12 gap-12">
@@ -108,7 +72,7 @@ export function BookSessionStep2Page() {
               </div>
               
               <div className="grid grid-cols-7 gap-4">
-                 {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map(d => <span key={d} className="text-[10px] font-black text-[#5E6C54]/30 mb-4">{d}</span>)}
+                 {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((d, idx) => <span key={`${d}-${idx}`} className="text-[10px] font-black text-[#5E6C54]/30 mb-4">{d}</span>)}
                  {[...Array(firstDayOfMonth)].map((_, i) => <div key={`empty-${i}`} />)}
                  {[...Array(daysInMonth)].map((_, i) => {
                     const day = i + 1;

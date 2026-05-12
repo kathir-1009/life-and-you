@@ -3,8 +3,8 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 interface UserContextType {
   isAnonymous: boolean;
   setIsAnonymous: (val: boolean) => void;
-  role: 'client' | 'coach';
-  setRole: (role: 'client' | 'coach') => void;
+  role: 'client' | 'coach' | 'admin';
+  setRole: (role: 'client' | 'coach' | 'admin') => void;
   user: {
     name: string;
     email: string;
@@ -19,17 +19,16 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
     return localStorage.getItem("isAnonymous") === "true";
   });
 
-  const [role, setRole] = useState<'client' | 'coach'>(() => {
+  const [role, setRole] = useState<'client' | 'coach' | 'admin'>(() => {
     const stored = localStorage.getItem("userRole");
-    // Migrate any legacy 'admin' values to 'client'
-    if (stored === 'client' || stored === 'coach') return stored;
+    if (stored === 'client' || stored === 'coach' || stored === 'admin') return stored;
     return 'client';
   });
 
   const user = {
-    name: role === 'coach' ? "Coach Sharma" : "Sarah Jenkins",
-    email: role === 'coach' ? "sharma.coach@lifeandyou.com" : "sarah.j@example.com",
-    avatar: role === 'coach' ? "/img/about/account-02.jpg" : "/img/user/user8.jpg"
+    name: role === 'coach' ? "Coach Sharma" : role === 'admin' ? "System Admin" : "Sarah Jenkins",
+    email: role === 'coach' ? "sharma.coach@lifeandyou.com" : role === 'admin' ? "admin@lifeandyou.com" : "sarah.j@example.com",
+    avatar: role === 'coach' ? "/img/about/account-02.jpg" : role === 'admin' ? "/img/user/admin.jpg" : "/img/user/user8.jpg"
   };
 
   useEffect(() => {

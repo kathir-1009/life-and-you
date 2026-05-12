@@ -5,9 +5,9 @@ export function BillingHistoryPage() {
   const navigate = useNavigate();
   
   const transactions = [
-    { id: "INV-2026-001", date: "Apr 12, 2026", amount: "₹4,999", status: "Paid", plan: "Premium Monthly" },
-    { id: "INV-2026-002", date: "Mar 12, 2026", amount: "₹4,999", status: "Paid", plan: "Premium Monthly" },
-    { id: "INV-2026-003", date: "Feb 12, 2026", amount: "₹4,999", status: "Paid", plan: "Premium Monthly" },
+    { id: "INV-2026-001", date: "Apr 12, 2026", amount: "INR 4,999", status: "Paid", plan: "Premium Monthly" },
+    { id: "INV-2026-002", date: "Mar 12, 2026", amount: "INR 4,999", status: "Paid", plan: "Premium Monthly" },
+    { id: "INV-2026-003", date: "Feb 12, 2026", amount: "INR 4,999", status: "Paid", plan: "Premium Monthly" },
   ];
 
   return (

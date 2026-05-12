@@ -45,7 +45,9 @@ export function PortalHeader() {
     { icon: GraphUp, label: "Analytics", path: "/admin/analytics", desc: "Reports" },
   ];
 
-  const navItems = role === 'coach' ? coachNav : role === 'admin' ? adminNav : clientNav;
+  let navItems = clientNav;
+  if (role === 'coach') navItems = coachNav;
+  else if (role === 'admin') navItems = adminNav;
 
   return (
     <header className="hidden lg:block relative font-sans-app">

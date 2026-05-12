@@ -121,14 +121,6 @@ export function ProfilePage() {
              <span className="text-[11px] font-black text-red-500 uppercase tracking-[0.2em]">Sign out completely</span>
           </button>
 
-          <div className="pt-8 border-t border-[#99A88C]/10">
-             <button 
-                onClick={() => setRole(role === 'client' ? 'coach' : 'client')}
-                className="w-full bg-[#99A88C]/5 text-[#5E6C54] py-4 rounded-2xl text-[10px] font-bold uppercase tracking-widest hover:bg-[#99A88C] hover:text-[#FFFFFF] transition-all"
-             >
-                Switch to {role === 'client' ? 'Coach' : 'Client'} View (Demo)
-             </button>
-          </div>
         </div>
       </div>
     </div>

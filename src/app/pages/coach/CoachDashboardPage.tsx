@@ -271,7 +271,7 @@ export function CoachDashboardPage() {
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h2 className="text-lg font-bold text-[#5E6C54] font-serif uppercase tracking-tight">Weekly Revenue</h2>
-                <p className="text-[9px] font-black text-[#5E6C54]/30 uppercase tracking-[0.3em] mt-0.5">AED · This week</p>
+                <p className="text-[9px] font-black text-[#5E6C54]/30 uppercase tracking-[0.3em] mt-0.5">INR · This week</p>
               </div>
               <Link
                 to="/coach/earnings"
@@ -293,7 +293,7 @@ export function CoachDashboardPage() {
                   <YAxis axisLine={false} tickLine={false} tick={false} />
                   <Tooltip
                     contentStyle={{ borderRadius: "16px", border: "none", boxShadow: "0 10px 30px rgba(0,0,0,0.08)", fontSize: "10px", fontWeight: "bold" }}
-                    formatter={(val: number) => [`AED ${val}`, "Revenue"]}
+                    formatter={(val: number) => [`INR ${val}`, "Revenue"]}
                     cursor={{ stroke: "#99A88C", strokeWidth: 2, strokeDasharray: "4 4" }}
                   />
                   <Area type="monotone" dataKey="revenue" stroke="#99A88C" strokeWidth={3} fillOpacity={1} fill="url(#revenueGrad)" />
