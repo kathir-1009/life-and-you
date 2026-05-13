@@ -46,8 +46,8 @@ export function OTPVerifyPage() {
   return (
     <div className="min-h-[100dvh] bg-[#2D3324] flex flex-col p-6 sm:p-8 relative overflow-hidden">
       {/* Ambient blurs — matches auth page */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#8B9A71] rounded-full blur-[120px] opacity-20 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#4E5540] rounded-full blur-[150px] opacity-25 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#8B9A71] rounded-full blur-[80px] opacity-20 pointer-events-none will-change-transform" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#4E5540] rounded-full blur-[100px] opacity-25 pointer-events-none will-change-transform" />
 
       <div className="max-w-md mx-auto w-full flex-1 flex flex-col relative z-10">
         {/* Back */}
@@ -86,7 +86,7 @@ export function OTPVerifyPage() {
               value={digit}
               onChange={(e) => handleChange(i, e.target.value)}
               onKeyDown={(e) => handleKeyDown(i, e)}
-              className={`w-16 h-20 text-3xl font-bold text-white text-center rounded-[20px] border-2 bg-transparent outline-none transition-all ${
+              className={`w-16 h-20 text-3xl font-bold text-white text-center rounded-[20px] border-2 bg-transparent outline-none transition-[border-color,box-shadow] duration-200 ${
                 digit
                   ? "border-white shadow-[0_0_20px_rgba(139,154,113,0.4)]"
                   : "border-white/25 focus:border-white/80"

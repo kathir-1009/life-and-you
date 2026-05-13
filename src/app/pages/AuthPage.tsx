@@ -27,9 +27,9 @@ export function AuthPage() {
   return (
     <div className="min-h-[100dvh] bg-[#2D3324] flex items-center justify-center px-6 py-12 relative overflow-hidden">
       {/* Same ambient gradients as Splash */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8B9A71] rounded-full blur-[120px] opacity-20 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#4E5540] rounded-full blur-[150px] opacity-25 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,#2D3324_100%)] opacity-60 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8B9A71] rounded-full blur-[80px] opacity-20 pointer-events-none will-change-transform" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#4E5540] rounded-full blur-[100px] opacity-25 pointer-events-none will-change-transform" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,#2D3324_100%)] opacity-60 pointer-events-none will-change-transform" />
 
       <div className="max-w-md w-full relative z-10">
         {/* Logo & Back */}
@@ -88,12 +88,14 @@ export function AuthPage() {
                   Full Name
                 </label>
                 <div className="relative">
-                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30" size={18} />
+                  <User className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30 pointer-events-none" size={18} />
                   <input
                     type="text"
+                    id="fullName"
+                    name="fullName"
                     required
                     placeholder={role === 'coach' ? "Your professional name" : "Your name"}
-                    className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-all placeholder:text-[#2D3324]/30"
+                    className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-[background-color,border-color] duration-200 placeholder:text-[#2D3324]/30"
                   />
                 </div>
               </div>
@@ -104,12 +106,14 @@ export function AuthPage() {
                   Email Address
                 </label>
               <div className="relative">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30" size={18} />
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30 pointer-events-none" size={18} />
                   <input
                     type="email"
+                    id="email"
+                    name="email"
                     required
                     placeholder="you@example.com"
-                    className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-all placeholder:text-[#2D3324]/30"
+                    className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-[background-color,border-color] duration-200 placeholder:text-[#2D3324]/30"
                   />
               </div>
             </div>
@@ -119,12 +123,14 @@ export function AuthPage() {
                   Password
                 </label>
               <div className="relative">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30" size={18} />
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2D3324]/30 pointer-events-none" size={18} />
                   <input
                     type="password"
+                    id="password"
+                    name="password"
                     required
                     placeholder={isLogin ? "Enter your password" : "Create a secure password"}
-                    className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-all placeholder:text-[#2D3324]/30"
+                    className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl pl-12 pr-4 py-4 text-sm text-[#2D3324] outline-none focus:border-[#8B9A71] focus:bg-white transition-[background-color,border-color] duration-200 placeholder:text-[#2D3324]/30"
                   />
               </div>
             </div>

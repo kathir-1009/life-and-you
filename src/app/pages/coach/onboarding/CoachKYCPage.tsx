@@ -12,12 +12,13 @@ export function CoachKYCPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start md:justify-center p-6 pt-12 md:pt-6 pb-32 md:pb-12 text-center relative overflow-hidden">
+    <div className="min-h-screen bg-[#2D3324] flex flex-col items-center justify-start md:justify-center p-6 pt-12 md:pt-6 pb-32 md:pb-12 text-center relative overflow-hidden">
       {/* Cinematic Background Glows */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8B9A71] rounded-full blur-[120px] opacity-20 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#4E5540] rounded-full blur-[150px] opacity-25 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8B9A71] rounded-full blur-[80px] opacity-20 pointer-events-none will-change-transform" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#4E5540] rounded-full blur-[100px] opacity-25 pointer-events-none will-change-transform" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,#2D3324_100%)] opacity-60 pointer-events-none will-change-transform" />
 
-      <div className="max-w-3xl w-full bg-[#FCF8E8] p-8 md:p-14 pb-16 md:pb-24 rounded-[48px] md:rounded-[64px] shadow-[0_32px_64px_rgba(0,0,0,0.3)] animate-in fade-in slide-in-from-bottom-4 duration-700 relative z-10 border border-white/20">
+      <div className="max-w-3xl w-full bg-white p-8 md:p-14 pb-16 md:pb-24 rounded-[48px] md:rounded-[64px] shadow-[0_32px_64px_rgba(0,0,0,0.3)] animate-in fade-in slide-in-from-bottom-4 duration-700 relative z-10 border border-white/20">
         <div className="w-16 h-16 bg-[#2D3324] rounded-2xl flex items-center justify-center text-white mb-8 mx-auto shadow-xl">
            <ShieldCheck size={32} />
         </div>
@@ -73,10 +74,10 @@ export function CoachKYCPage() {
                     { id: 'policies', label: "I agree to the platform's Professional Policies" },
                     { id: 'confidentiality', label: 'I agree to strict Client Confidentiality rules' }
                   ].map(ag => (
-                    <label key={ag.id} className="flex items-center gap-6 p-6 bg-white/50 rounded-[32px] cursor-pointer transition-all hover:bg-white border border-[#2D3324]/10 hover:border-[#2D3324]/20 group">
+                    <label key={ag.id} className="flex items-center gap-6 p-6 bg-[#F3F5F0] rounded-[32px] cursor-pointer transition-all hover:bg-white border border-[#8B9A71]/20 hover:border-[#8B9A71]/40 group">
                        <div className="relative w-6 h-6 shrink-0">
                           <input type="checkbox" className="peer absolute inset-0 opacity-0 cursor-pointer z-10" />
-                          <div className="absolute inset-0 bg-white border-2 border-[#2D3324]/10 rounded-xl transition-all peer-checked:bg-[#2D3324] peer-checked:border-[#2D3324] flex items-center justify-center">
+                          <div className="absolute inset-0 bg-white border-2 border-[#8B9A71]/20 rounded-xl transition-all peer-checked:bg-[#2D3324] peer-checked:border-[#2D3324] flex items-center justify-center">
                              <svg className="w-4 h-4 text-white scale-0 peer-checked:scale-100 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                              </svg>
@@ -90,7 +91,7 @@ export function CoachKYCPage() {
         </div>
         
         <div className="flex items-center justify-between gap-6 pt-10 border-t border-[#2D3324]/5">
-          <button onClick={() => navigate(-1)} className="w-14 h-14 bg-white/50 rounded-2xl flex items-center justify-center text-[#2D3324]/40 hover:text-[#2D3324] hover:bg-white transition-all border border-[#2D3324]/10">
+          <button onClick={() => navigate(-1)} className="w-14 h-14 bg-[#F3F5F0] rounded-2xl flex items-center justify-center text-[#2D3324]/40 hover:text-[#2D3324] hover:bg-white transition-all border border-[#8B9A71]/20">
             <ArrowLeft size={24} />
           </button>
           <Link 
@@ -98,7 +99,7 @@ export function CoachKYCPage() {
             className={`flex-1 py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-4 ${
               files.length >= 2 
                 ? 'bg-[#2D3324] text-white hover:scale-[1.02] hover:bg-[#1a1d14] shadow-2xl' 
-                : 'bg-[#2D3324]/5 text-[#2D3324]/20 cursor-not-allowed border border-[#2D3324]/10'
+                : 'bg-[#2D3324]/5 text-[#2D3324]/20 cursor-not-allowed border border-[#8B9A71]/20'
             }`}
           >
             Submit Application <ArrowRight size={18} />
@@ -116,7 +117,7 @@ function InputGroup({ label, placeholder, type = "text" }: { label: string, plac
        <input 
          type={type} 
          placeholder={placeholder}
-         className="w-full bg-white/50 border border-[#2D3324]/10 rounded-2xl px-8 py-5 text-sm text-[#2D3324] focus:bg-white focus:border-[#8B9A71]/30 transition-all outline-none placeholder:text-[#2D3324]/20"
+         className="w-full bg-[#F3F5F0] border border-[#8B9A71]/20 rounded-2xl px-8 py-5 text-sm text-[#2D3324] focus:bg-white focus:border-[#8B9A71]/30 transition-all outline-none placeholder:text-[#2D3324]/20"
        />
     </div>
   );
@@ -125,7 +126,7 @@ function InputGroup({ label, placeholder, type = "text" }: { label: string, plac
 function UploadBox({ title, description, isUploaded, onUpload }: { title: string, description: string, isUploaded: boolean, onUpload: () => void }) {
   return (
     <div className={`p-6 rounded-[32px] border-2 border-dashed transition-all flex items-center justify-between gap-4 ${
-      isUploaded ? 'bg-[#8B9A71]/20 border-[#8B9A71]/40' : 'bg-white/50 border-[#2D3324]/10 hover:border-[#8B9A71]/30 cursor-pointer'
+      isUploaded ? 'bg-[#8B9A71]/20 border-[#8B9A71]/40' : 'bg-[#F3F5F0] border-[#8B9A71]/20 hover:border-[#8B9A71]/40 cursor-pointer'
     }`} onClick={!isUploaded ? onUpload : undefined}>
       <div className="flex items-center gap-4">
         <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${isUploaded ? 'bg-[#2D3324] text-white' : 'bg-[#2D3324]/5 text-[#2D3324]/40 shadow-sm'}`}>

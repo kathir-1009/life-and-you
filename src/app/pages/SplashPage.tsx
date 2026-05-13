@@ -24,10 +24,10 @@ export function SplashPage() {
   return (
     <div className="min-h-screen bg-[#2D3324] flex flex-col items-center justify-center p-6 relative overflow-hidden">
       {/* Immersive Background Gradients */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#8B9A71] rounded-full filter blur-[120px] opacity-20 -translate-y-1/2 translate-x-1/2 transition-all duration-1000 animate-pulse" />
-      <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-[#4E5540] rounded-full filter blur-[150px] opacity-30 translate-y-1/2 -translate-x-1/2 transition-all duration-1000" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#4E5540] rounded-full filter blur-[100px] opacity-10 animate-pulse delay-500" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,#2D3324_100%)] opacity-80 z-[1]" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#8B9A71] rounded-full blur-[80px] opacity-20 -translate-y-1/2 translate-x-1/2 transition-all duration-1000 animate-pulse will-change-transform" />
+      <div className="absolute bottom-0 left-0 w-[700px] h-[700px] bg-[#4E5540] rounded-full blur-[100px] opacity-30 translate-y-1/2 -translate-x-1/2 transition-all duration-1000 will-change-transform" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#4E5540] rounded-full blur-[80px] opacity-10 animate-pulse delay-500 will-change-transform" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,rgba(0,0,0,0)_0%,#2D3324_100%)] opacity-80 z-[1] pointer-events-none will-change-transform" />
 
       {/* Floating Decorative Elements */}
       <div className="absolute top-[18%] left-[12%] opacity-20 animate-bounce delay-100">
