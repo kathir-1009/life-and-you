@@ -55,10 +55,11 @@ export function CoachSessionListPage() {
   const filteredSessions = sessions.filter(s => tab === 'upcoming' ? s.isUpcoming : !s.isUpcoming);
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700 px-4 md:px-0 portal-context pb-20">
+    <div className="bg-[#F4F7FA] min-h-screen pb-32 portal-context animate-in fade-in duration-700">
       
       {/* Compact Header - Mobile Only */}
-      <div className="lg:hidden bg-[#2D3324] text-white px-6 py-6 rounded-b-[40px] relative overflow-hidden flex items-center gap-4 shadow-xl z-20">
+      <div className="relative lg:hidden">
+        <div className="bg-[#2D3324] pt-8 pb-8 px-6 rounded-b-[40px] relative overflow-hidden flex items-center gap-4 shadow-xl z-20">
          <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50 pointer-events-none" />
          <button 
             onClick={() => navigate(-1)}
@@ -71,10 +72,10 @@ export function CoachSessionListPage() {
             <p className="text-[#8B9A71] text-[9px] font-black uppercase tracking-[0.2em] mt-1">Your Professional Schedule</p>
          </div>
       </div>
-          
+      </div>
 
       {/* Header with Search - Desktop with Mobile Hidden */}
-      <div className="hidden lg:flex bg-[#FFFFFF] p-6 rounded-[32px] md:p-0 md:bg-transparent shadow-sm md:shadow-none flex-col lg:flex-row lg:items-center justify-between gap-6">
+      <div className="hidden lg:flex bg-white p-6 rounded-[32px] md:p-0 md:bg-transparent shadow-sm md:shadow-none flex-col lg:flex-row lg:items-center justify-between gap-6 px-4 md:px-0 mt-8">
         <div>
            <h1 className="text-3xl lg:text-4xl font-bold text-[#5E6C54] font-serif mb-2 uppercase tracking-tight">Managed Sessions</h1>
            <p className="text-[#5E6C54]/60 text-[11px] font-bold uppercase tracking-widest">Track and manage your professional coaching sessions.</p>
@@ -96,14 +97,14 @@ export function CoachSessionListPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-4 border-b border-sage/10 pb-1">
+      <div className="flex gap-4 border-b border-[#8B9A71]/20 pb-1 px-4 md:px-0 mt-6 lg:mt-0">
          <TabButton active={tab === 'upcoming'} onClick={() => setTab('upcoming')}>Upcoming ({sessions.filter(s => s.isUpcoming).length})</TabButton>
          <TabButton active={tab === 'history'} onClick={() => setTab('history')}>Previous Sessions</TabButton>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0 mt-6">
          {filteredSessions.map((session) => (
-           <div key={session.id} className="bg-white rounded-[40px] p-6 lg:p-10 border border-sage/5 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+           <div key={session.id} className="bg-white rounded-[40px] p-6 lg:p-10 border border-[#8B9A71]/10 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
               <div>
                  <div className="flex items-center justify-between mb-10">
                     <div className="flex items-center gap-4">
