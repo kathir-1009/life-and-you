@@ -12,7 +12,7 @@ export function UpdatePaymentPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] pb-32 portal-context animate-in fade-in slide-in-from-bottom-8 duration-700">
+    <div className="min-h-screen bg-[#FFFFFF] pb-32 portal-context animate-in fade-in slide-in-from-bottom-8 duration-700">
       {/* Cinematic Full-Width Header */}
       <div className="relative">
          <button 
@@ -22,7 +22,7 @@ export function UpdatePaymentPage() {
             <ChevronLeft size={20} />
          </button>
 
-         <div className="bg-[#5E6C54] pt-28 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white">
+         <div className="bg-[#2D3324] pt-28 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white border-t border-white/5">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl overflow-hidden" />
             <div className="relative z-10">
                <div className="w-16 h-16 bg-[#A68A45] rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-2xl">
@@ -50,7 +50,7 @@ export function UpdatePaymentPage() {
                     }`}
                     style={selectedCard === card.id ? { color: '#FFFFFF' } : { color: '#5E6C54' }}
                   >
-                     <div className={`w-14 h-10 rounded-lg flex items-center justify-center font-black text-[10px] uppercase ${selectedCard === card.id ? 'bg-white/10 border border-white/20' : 'bg-[#FCF8E8]'}`}>
+                     <div className={`w-14 h-10 rounded-lg flex items-center justify-center font-black text-[10px] uppercase ${selectedCard === card.id ? 'bg-white/10 border border-white/20' : 'bg-[#FFFFFF]'}`}>
                         {card.type}
                      </div>
                      <div className="flex-1">
@@ -84,7 +84,7 @@ export function UpdatePaymentPage() {
                   <label className="text-[10px] font-black text-[#5E6C54]/40 uppercase tracking-widest ml-4">Cardholder Name</label>
                   <input 
                     type="text" 
-                    className="w-full bg-[#FCF8E8]/50 border-2 border-transparent rounded-[24px] px-6 py-4 text-sm font-bold outline-none focus:border-[#99A88C] focus:bg-white transition-all"
+                    className="w-full bg-[#FFFFFF]/50 border-2 border-transparent rounded-[24px] px-6 py-4 text-sm font-bold outline-none focus:border-[#99A88C] focus:bg-white transition-all"
                     placeholder="JAMIE SMITH"
                   />
                </div>
@@ -94,7 +94,7 @@ export function UpdatePaymentPage() {
                   <div className="relative">
                      <input 
                         type="text" 
-                        className="w-full bg-[#FCF8E8]/50 border-2 border-transparent rounded-[24px] px-6 py-4 text-sm font-bold outline-none focus:border-[#99A88C] focus:bg-white transition-all"
+                        className="w-full bg-[#FFFFFF]/50 border-2 border-transparent rounded-[24px] px-6 py-4 text-sm font-bold outline-none focus:border-[#99A88C] focus:bg-white transition-all"
                         placeholder="0000 0000 0000 0000"
                      />
                      <CreditCard size={18} className="absolute right-6 top-1/2 -translate-y-1/2 text-[#99A88C]" />
@@ -106,7 +106,7 @@ export function UpdatePaymentPage() {
                      <label className="text-[10px] font-black text-[#5E6C54]/40 uppercase tracking-widest ml-4">Expiry</label>
                      <input 
                         type="text" 
-                        className="w-full bg-[#FCF8E8]/50 border-2 border-transparent rounded-[24px] px-6 py-4 text-sm font-bold outline-none focus:border-[#99A88C] focus:bg-white transition-all"
+                        className="w-full bg-[#FFFFFF]/50 border-2 border-transparent rounded-[24px] px-6 py-4 text-sm font-bold outline-none focus:border-[#99A88C] focus:bg-white transition-all"
                         placeholder="MM / YY"
                      />
                   </div>
@@ -115,7 +115,7 @@ export function UpdatePaymentPage() {
                      <div className="relative">
                         <input 
                            type="password" 
-                           className="w-full bg-[#FCF8E8]/50 border-2 border-transparent rounded-[24px] px-6 py-4 text-sm font-bold outline-none focus:border-[#99A88C] focus:bg-white transition-all"
+                           className="w-full bg-[#FFFFFF]/50 border-2 border-transparent rounded-[24px] px-6 py-4 text-sm font-bold outline-none focus:border-[#99A88C] focus:bg-white transition-all"
                            placeholder="***"
                         />
                         <Lock size={18} className="absolute right-6 top-1/2 -translate-y-1/2 text-[#99A88C]" />

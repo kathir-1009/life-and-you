@@ -9,13 +9,13 @@ export function CoachEarningsPage() {
   ];
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen pb-32 portal-context">
+    <div className="bg-[#F4F7FA] min-h-screen pb-32 portal-context">
       <div className="bg-[#2D3324] py-12 px-6 md:px-12 rounded-b-[32px] relative overflow-hidden">
         <div className="absolute top-0 right-0 w-80 h-80 bg-[#8B9A71]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
         
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
           <div>
-            <h1 className="text-3xl md:text-5xl font-extrabold text-[#FAF9F6] leading-tight tracking-tight">Earnings</h1>
+            <h1 className="text-3xl md:text-5xl font-extrabold text-[#F4F7FA] leading-tight tracking-tight">Earnings</h1>
             <p className="text-[#8B9A71] mt-1 text-sm font-bold uppercase tracking-widest opacity-90">Track your professional growth</p>
           </div>
           <div className="bg-white/5 backdrop-blur-md rounded-2xl p-6 border border-white/10">
@@ -54,7 +54,7 @@ export function CoachEarningsPage() {
                  </thead>
                  <tbody className="divide-y divide-[rgba(139,154,113,0.05)]">
                     {transactions.map((t, i) => (
-                      <tr key={i} className="hover:bg-[#FAF9F6] transition-colors group">
+                      <tr key={i} className="hover:bg-[#F4F7FA] transition-colors group">
                          <td className="px-10 py-8">
                            <div className="text-sm font-bold text-[#545454]">{t.date}</div>
                          </td>

@@ -9,7 +9,7 @@ export function ClientOnboardingCompletePage() {
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#4E5540] rounded-full blur-[150px] opacity-25 pointer-events-none" />
       
       <div className="relative z-10 max-w-xl w-full">
-        <div className="w-24 h-24 bg-[#FCF8E8] rounded-[32px] flex items-center justify-center text-[#2D3324] mx-auto mb-10 shadow-2xl animate-in zoom-in duration-700">
+        <div className="w-24 h-24 bg-[#FFFFFF] rounded-[32px] flex items-center justify-center text-[#2D3324] mx-auto mb-10 shadow-2xl animate-in zoom-in duration-700">
           <CheckCircle size={48} />
         </div>
         
@@ -20,7 +20,7 @@ export function ClientOnboardingCompletePage() {
         
         <Link 
           to="/portal" 
-          className="px-16 py-6 bg-[#FCF8E8] text-[#2D3324] rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all inline-block hover:bg-white"
+          className="px-16 py-6 bg-[#FFFFFF] text-[#2D3324] rounded-2xl font-black text-xs uppercase tracking-widest hover:scale-105 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transition-all inline-block hover:bg-white"
         >
           Enter Dashboard
         </Link>

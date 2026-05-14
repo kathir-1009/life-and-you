@@ -3,10 +3,10 @@ import { SessionCard } from "../../components/shared/SessionCard";
 
 export function RecentHistory() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
        <div className="flex items-center justify-between px-2">
-          <h3 className="text-xl font-bold text-sage-dark font-serif">Recent Sessions</h3>
-          <Link to="/portal/sessions" className="text-xs font-bold text-gold uppercase tracking-widest">View All</Link>
+          <h3 className="text-xl font-black text-[#2D3324] font-serif uppercase tracking-tight italic">Recent Sessions</h3>
+          <Link to="/portal/sessions" className="text-[10px] font-black text-[#8B9A71] uppercase tracking-[0.3em] hover:text-[#2D3324] transition-colors">View All</Link>
        </div>
        <div className="grid gap-4">
           <SessionCard 

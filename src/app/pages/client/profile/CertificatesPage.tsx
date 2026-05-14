@@ -98,7 +98,7 @@ export function CertificatesPage() {
                  <div className="absolute bottom-6 left-6 right-6">
                     <div className="flex items-center gap-2 mb-2">
                        <Award size={16} className="text-[#A68A45]" />
-                       <span className="text-[10px] font-black uppercase tracking-widest text-[#FCF8E8]">{cert.id}</span>
+                       <span className="text-[10px] font-black uppercase tracking-widest text-[#FFFFFF]">{cert.id}</span>
                     </div>
                     <h3 className="text-2xl font-bold text-[#FFFFFF] font-serif leading-tight">{cert.title}</h3>
                  </div>
@@ -132,7 +132,7 @@ export function CertificatesPage() {
                     <p className="text-[10px] font-bold uppercase tracking-widest text-[#5E6C54]/40 mb-4">Acquired Skills</p>
                     <div className="flex flex-wrap gap-2">
                        {cert.skills.map((skill, idx) => (
-                          <span key={idx} className="px-4 py-2 bg-[#FCF8E8] text-[#5E6C54] text-[10px] font-black uppercase tracking-widest rounded-xl border border-[#99A88C]/10">
+                          <span key={idx} className="px-4 py-2 bg-[#FFFFFF] text-[#5E6C54] text-[10px] font-black uppercase tracking-widest rounded-xl border border-[#99A88C]/10">
                              {skill}
                           </span>
                        ))}
@@ -144,7 +144,7 @@ export function CertificatesPage() {
                     <button className="flex-1 py-4 bg-[#5E6C54] text-[#FFFFFF] rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-[#99A88C] transition-all flex items-center justify-center gap-2 shadow-xl shadow-[#5E6C54]/10">
                        <Download size={14} /> Download PDF
                     </button>
-                    <button className="w-14 h-14 bg-[#FCF8E8] text-[#A68A45] rounded-2xl flex items-center justify-center hover:bg-[#A68A45] hover:text-[#FFFFFF] transition-all border border-[#A68A45]/20">
+                    <button className="w-14 h-14 bg-[#FFFFFF] text-[#A68A45] rounded-2xl flex items-center justify-center hover:bg-[#A68A45] hover:text-[#FFFFFF] transition-all border border-[#A68A45]/20">
                        <Share size={16} />
                     </button>
                  </div>

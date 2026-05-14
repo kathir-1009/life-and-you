@@ -169,7 +169,7 @@ export const router = createBrowserRouter([
           { path: "step-1", element: withSuspense(BookStep1) },
           { path: "step-2", element: withSuspense(BookStep2) },
           { path: "step-3", element: withSuspense(BookStep3) },
-          { path: "confirm", element: withSuspense(BookStep3) },
+          { path: "confirm", element: withSuspense(ConfirmationPage) },
         ]
       },
       { path: "progress", element: withSuspense(ProgressPage) },
@@ -272,7 +272,14 @@ export const router = createBrowserRouter([
         ]
       },
       // Coach profile / settings — uses ProfilePage with role-based rendering
-      { path: "profile", element: withSuspense(ProfilePage) },
+      {
+        path: "profile",
+        children: [
+          { index: true, element: withSuspense(ProfilePage) },
+          { path: "security", element: withSuspense(SecurityVault) },
+          { path: "support", element: withSuspense(SupportPage) },
+        ]
+      },
     ]
   },
   // SESSION ROOM

@@ -47,7 +47,7 @@ export function AppLayout() {
   }
 
   return (
-    <div className={`min-h-screen flex portal-context overflow-hidden font-sans transition-colors duration-700 ${isOnboarding ? 'bg-[#2D3324]' : 'bg-[#FCF8E8]'}`}>
+    <div className={`min-h-screen flex portal-context overflow-hidden font-sans transition-colors duration-700 bg-[#F4F7FA]`}>
       <ScrollRestoration />
       
       {/* Sidebar - Desktop Sticky / Mobile Drawer */}
@@ -63,19 +63,19 @@ export function AppLayout() {
         
         {/* Mobile Header */}
         {!isChat && !isOnboarding && (
-          <div className="lg:hidden bg-[#2D3324] text-white p-4 flex items-center justify-between relative z-50 shadow-md">
+          <div className="lg:hidden bg-[#2D3324] text-white p-4 flex items-center justify-between relative z-50 shadow-xl border-b border-[#2D3324]">
             <div className="flex items-center gap-3">
               <button 
                 onClick={() => setIsSidebarOpen(true)}
-                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-xl text-white"
+                className="w-10 h-10 flex items-center justify-center bg-white/5 rounded-xl text-white border border-white/5"
               >
                 <MenuIcon size={24} />
               </button>
               <div className="w-8 h-8">
-                 <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain brightness-[10]" />
+                 <img src="/img/Lifeandyou-logo-1.png" alt="Life & You" className="w-full h-full object-contain brightness-0 invert" />
               </div>
               <div>
-                 <h1 className="text-sm font-bold tracking-tight leading-none font-serif">Life & You</h1>
+                 <h1 className="text-sm font-bold tracking-tight leading-none font-serif text-white">Life & You</h1>
                  <span className="text-[8px] font-bold text-[#8B9A71] uppercase tracking-[0.2em] mt-0.5 block">
                    {role === 'coach' ? 'Coach Console' : 'Portal Access'}
                  </span>

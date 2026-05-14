@@ -11,7 +11,7 @@ export function BillingHistoryPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] pb-32 portal-context animate-in fade-in duration-700">
+    <div className="min-h-screen bg-[#FFFFFF] pb-32 portal-context animate-in fade-in duration-700">
       {/* Cinematic Full-Width Header */}
       <div className="relative">
          <button 
@@ -21,7 +21,7 @@ export function BillingHistoryPage() {
             <ChevronLeft size={20} />
          </button>
 
-         <div className="bg-[#5E6C54] pt-28 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white">
+         <div className="bg-[#2D3324] pt-28 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white border-t border-white/5">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl overflow-hidden" />
             <div className="relative z-10">
                <div className="w-16 h-16 bg-[#FFFFFF]/10 rounded-3xl flex items-center justify-center mx-auto mb-6 backdrop-blur-md border border-[#FFFFFF]/10">
@@ -47,14 +47,14 @@ export function BillingHistoryPage() {
 
          {/* Transactions List */}
          <div className="bg-[#FFFFFF] rounded-[44px] overflow-hidden border border-[#99A88C]/10 shadow-2xl">
-            <div className="p-6 border-b border-[#99A88C]/5 bg-[#FCF8E8]/50">
+            <div className="p-6 border-b border-[#99A88C]/5 bg-[#FFFFFF]/50">
                <h3 className="text-[10px] font-black text-[#5E6C54] uppercase tracking-widest">Recent Transactions</h3>
             </div>
             
             {transactions.map((tx, i) => (
-               <div key={i} className="p-6 flex items-center justify-between border-b border-[#99A88C]/5 last:border-none hover:bg-[#FCF8E8]/30 transition-all">
+               <div key={i} className="p-6 flex items-center justify-between border-b border-[#99A88C]/5 last:border-none hover:bg-[#FFFFFF]/30 transition-all">
                   <div className="flex gap-4 items-center">
-                     <div className="w-12 h-12 bg-[#FCF8E8] rounded-2xl flex items-center justify-center text-[#99A88C]">
+                     <div className="w-12 h-12 bg-[#FFFFFF] rounded-2xl flex items-center justify-center text-[#99A88C]">
                         <Download size={18} />
                      </div>
                      <div>

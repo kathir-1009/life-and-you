@@ -9,7 +9,7 @@ export function AboutPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-[#FAF9F6]">
+    <div className="bg-[#F4F7FA]">
       {/* High-End Split Hero */}
       <section className="min-h-screen grid lg:grid-cols-2">
         <div className="bg-[#2D3324] px-8 md:px-16 py-24 flex flex-col justify-center relative overflow-hidden">
@@ -57,7 +57,7 @@ export function AboutPage() {
            </div>
         </div>
 
-          <div className="bg-[#FAF9F6] p-8 md:p-20 flex items-center justify-center relative overflow-hidden">
+          <div className="bg-[#F4F7FA] p-8 md:p-20 flex items-center justify-center relative overflow-hidden">
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(139,154,113,0.05)_0%,_transparent_70%)]" />
              <img src="/img/about/about-img-1.png" alt="Growth Space" className="relative z-10 w-full max-w-lg drop-shadow-[0_32px_64px_rgba(45,51,36,0.15)] rounded-[64px]" />
           </div>
@@ -102,7 +102,7 @@ export function AboutPage() {
                { name: "Coach Mia L.", role: "Linguistics Lead", tags: ["Self-Worth", "Identity"], img: "account-05.jpg" }
              ].map((coach, i) => (
                <div key={i} className="bg-white rounded-[64px] overflow-hidden border border-[rgba(139,154,113,0.1)] shadow-premium flex flex-col items-center p-12 hover:scale-[1.02] transition-all group">
-                  <div className="w-24 h-24 bg-[#FAF9F6] rounded-[32px] overflow-hidden shadow-xl shadow-[#8B9A71]/10 mb-8 group-hover:scale-110 transition-all border-4 border-white">
+                  <div className="w-24 h-24 bg-[#F4F7FA] rounded-[32px] overflow-hidden shadow-xl shadow-[#8B9A71]/10 mb-8 group-hover:scale-110 transition-all border-4 border-white">
                      <img src={`/img/about/${coach.img}`} alt={coach.name} className="w-full h-full object-cover" />
                   </div>
                   <h4 className="text-2xl font-black text-[#2D3324] mb-2">{coach.name}</h4>

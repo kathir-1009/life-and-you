@@ -76,7 +76,7 @@ export function AllSessionsPage() {
                 className="w-full bg-[#FFFFFF] border border-[#99A88C]/10 pl-12 pr-4 py-3 rounded-2xl text-[11px] font-bold uppercase tracking-widest outline-none focus:border-[#99A88C] transition-all"
               />
            </div>
-           <button className="p-3 bg-[#FFFFFF] border border-[#99A88C]/10 rounded-2xl text-[#5E6C54] hover:bg-[#FCF8E8] transition-colors shadow-sm">
+           <button className="p-3 bg-[#FFFFFF] border border-[#99A88C]/10 rounded-2xl text-[#5E6C54] hover:bg-[#FFFFFF] transition-colors shadow-sm">
               <Filter size={18} />
            </button>
         </div>

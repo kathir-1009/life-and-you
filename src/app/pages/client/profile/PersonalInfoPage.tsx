@@ -7,7 +7,7 @@ export function PersonalInfoPage() {
   const { user } = useUser();
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] pb-32 portal-context animate-in fade-in duration-700">
+    <div className="min-h-screen bg-[#FFFFFF] pb-32 portal-context animate-in fade-in duration-700">
       {/* Cinematic Full-Width Header */}
       <div className="relative">
          <button 
@@ -17,7 +17,7 @@ export function PersonalInfoPage() {
             <ChevronLeft size={20} />
          </button>
 
-         <div className="bg-[#5E6C54] pt-28 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white">
+         <div className="bg-[#2D3324] pt-28 pb-32 px-6 rounded-b-[80px] relative overflow-hidden text-center text-white border-t border-white/5">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
             <div className="relative z-10 flex flex-col items-center">
                <div className="relative mb-6">
@@ -58,7 +58,7 @@ function InfoField({ label, value, icon: Icon }: { label: string, value: string,
          <Icon size={14} className="text-[#99A88C]" />
          <span className="text-[10px] font-black text-[#5E6C54]/40 uppercase tracking-widest">{label}</span>
       </div>
-      <div className="w-full bg-[#FCF8E8]/50 p-5 rounded-[24px] border border-[#99A88C]/5 text-xs font-bold text-[#5E6C54] shadow-inner">
+      <div className="w-full bg-[#FFFFFF]/50 p-5 rounded-[24px] border border-[#99A88C]/5 text-xs font-bold text-[#5E6C54] shadow-inner">
          {value}
       </div>
     </div>

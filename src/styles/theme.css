@@ -10,7 +10,7 @@
   --color-gold-dark: #8A7340;
   --gold-pale: #FDF8E1;
   
-  --cream: #FCF8E8;
+  --cream: #FFFFFF;
   --charcoal: #5E6C54; 
   --terra: #B5735A;
 
@@ -20,7 +20,7 @@
   --text-description: rgba(94, 108, 84, 0.95);
   --text-muted: rgba(94, 108, 84, 0.80);
   --text-white: #FFFFFF;
-  --text-cream: #FCF8E8;
+  --text-cream: #FFFFFF;
   --text-gold: #A68A45; 
   
   /* ── Font Families ──

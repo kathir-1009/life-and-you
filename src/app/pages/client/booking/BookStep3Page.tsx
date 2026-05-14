@@ -6,7 +6,7 @@ export function BookSessionStep3Page() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] pb-32 portal-context">
+    <div className="min-h-screen bg-[#FFFFFF] pb-32 portal-context">
       
       {/* Compact Header - Mobile Only */}
       <div className="lg:hidden bg-[#2D3324] text-white px-6 py-6 rounded-b-[40px] relative overflow-hidden flex items-center gap-4 shadow-xl z-20">

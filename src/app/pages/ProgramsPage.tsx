@@ -47,7 +47,7 @@ export function ProgramsPage() {
   ];
 
   return (
-    <div className="bg-[#FAF9F6]">
+    <div className="bg-[#F4F7FA]">
       {/* Premium Programs Header */}
       <section className="bg-[#2D3324] py-32 px-6 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(139,154,113,0.05)_0%,_transparent_70%)]" />

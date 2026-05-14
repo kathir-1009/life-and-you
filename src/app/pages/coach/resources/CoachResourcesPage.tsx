@@ -91,7 +91,7 @@ export function CoachResourcesPage() {
             />
          </div>
          <div className="flex gap-2">
-            <button className="p-3 bg-[#FFFFFF] border border-[#99A88C]/10 rounded-2xl text-[#5E6C54] hover:bg-[#FCF8E8] transition-colors shadow-sm">
+            <button className="p-3 bg-[#FFFFFF] border border-[#99A88C]/10 rounded-2xl text-[#5E6C54] hover:bg-[#FFFFFF] transition-colors shadow-sm">
                <Filter size={18} />
             </button>
          </div>
@@ -101,7 +101,7 @@ export function CoachResourcesPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
          {resources.map((resource) => (
            <div key={resource.id} className="bg-white rounded-[32px] p-6 border border-sage/5 shadow-sm hover:shadow-xl transition-all group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-[#FCF8E8] rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#FFFFFF] rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
               
               <div className="relative z-10">
                  <div className="flex justify-between items-start mb-6">

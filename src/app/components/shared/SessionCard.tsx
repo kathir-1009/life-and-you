@@ -21,7 +21,7 @@ export function SessionCard({ role, session }: SessionCardProps) {
     <div className="bg-[#FFFFFF] p-5 rounded-[24px] border border-[#99A88C]/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 group hover:border-[#99A88C]/30 transition-all">
       <div className="flex items-center gap-4">
         <div className={`w-14 h-14 rounded-2xl flex flex-col items-center justify-center shrink-0 ${
-          session.status === 'completed' ? 'bg-[#FCF8E8] text-[#5E6C54]' : 'bg-[#99A88C] text-[#FFFFFF]'
+          session.status === 'completed' ? 'bg-[#FFFFFF] text-[#5E6C54]' : 'bg-[#99A88C] text-[#FFFFFF]'
         }`}>
           <span className="text-[10px] font-bold uppercase leading-none mb-1 opacity-70">Mar</span>
           <span className="text-xl font-bold leading-none font-serif">14</span>
@@ -33,7 +33,7 @@ export function SessionCard({ role, session }: SessionCardProps) {
                {role === 'client' ? `Coach ${session.participantName}` : session.participantName}
             </h4>
             {session.isAnonymous && (
-              <span className="text-[9px] font-bold bg-[#FCF8E8] text-[#5E6C54] px-1.5 py-0.5 rounded-md uppercase tracking-wider">Anon</span>
+              <span className="text-[9px] font-bold bg-[#FFFFFF] text-[#5E6C54] px-1.5 py-0.5 rounded-md uppercase tracking-wider">Anon</span>
             )}
           </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] text-[#5E6C54]/50 font-medium">

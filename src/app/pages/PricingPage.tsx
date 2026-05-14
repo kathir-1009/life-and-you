@@ -55,7 +55,7 @@ export function PricingPage() {
   ];
 
   return (
-    <div className="bg-[#FAF9F6]">
+    <div className="bg-[#F4F7FA]">
       {/* Cinematic Pricing Header */}
       <section className="bg-[#2D3324] py-32 px-6 text-center relative overflow-hidden">
         <div className="absolute top-0 left-0 w-96 h-96 bg-[#8B9A71]/5 rounded-full -translate-y-1/2 -translate-x-1/2 blur-[120px]" />

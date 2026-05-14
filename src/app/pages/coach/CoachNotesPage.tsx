@@ -113,7 +113,7 @@ export function CoachNotesPage() {
   };
 
   return (
-    <div className="animate-in fade-in duration-700 portal-context pb-24 lg:pb-10 h-[calc(100dvh-0px)]">
+    <div className="animate-in fade-in duration-700 portal-context">
 
       {/* ── Mobile Header ── */}
       <div className="lg:hidden relative -mx-0 -mt-0 mb-6">
@@ -123,7 +123,7 @@ export function CoachNotesPage() {
         >
           <ChevronLeft size={20} />
         </button>
-        <div className="bg-[#5E6C54] pt-20 pb-28 px-6 rounded-b-[64px] relative overflow-hidden text-center text-white">
+        <div className="bg-[#2D3324] pt-20 pb-28 px-6 rounded-b-[64px] relative overflow-hidden text-center text-white border-t border-white/5">
           <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
           <div className="relative z-10">
             <h1 className="text-3xl font-black tracking-tight mb-1 !text-white" style={{ color: "#fff" }}>Session Notes</h1>
@@ -147,7 +147,7 @@ export function CoachNotesPage() {
                 onChange={(e) => setSearch(e.target.value)}
                 type="text"
                 placeholder="Search notes..."
-                className="w-full pl-9 pr-4 py-2.5 bg-[#FCF8E8] rounded-2xl text-[10px] font-bold uppercase tracking-widest outline-none focus:bg-white focus:ring-1 focus:ring-[#99A88C]/30 transition-all"
+                className="w-full pl-9 pr-4 py-2.5 bg-[#FFFFFF] rounded-2xl text-[10px] font-bold uppercase tracking-widest outline-none focus:bg-white focus:ring-1 focus:ring-[#99A88C]/30 transition-all"
               />
             </div>
           </div>
@@ -161,7 +161,7 @@ export function CoachNotesPage() {
                 className={`w-full text-left p-4 rounded-[20px] transition-all ${
                   selectedNote.id === note.id
                     ? "bg-[#5E6C54] text-white shadow-lg"
-                    : "hover:bg-[#FCF8E8] text-[#5E6C54]"
+                    : "hover:bg-[#FFFFFF] text-[#5E6C54]"
                 }`}
               >
                 <div className="flex items-center justify-between mb-2">
@@ -184,7 +184,7 @@ export function CoachNotesPage() {
         </div>
 
         {/* Right: Editor */}
-        <div className="flex-1 flex flex-col overflow-hidden bg-[#FCF8E8]">
+        <div className="flex-1 flex flex-col overflow-hidden bg-[#FFFFFF]">
           {/* Editor Toolbar */}
           <div className="bg-white border-b border-[#99A88C]/10 px-8 py-4 flex items-center justify-between gap-4 shadow-sm">
             <div className="flex items-center gap-4">
@@ -206,7 +206,7 @@ export function CoachNotesPage() {
 
             <div className="flex items-center gap-3">
               {/* Share with client toggle */}
-              <div className="flex items-center gap-2 px-4 py-2 bg-[#FCF8E8] rounded-2xl">
+              <div className="flex items-center gap-2 px-4 py-2 bg-[#FFFFFF] rounded-2xl">
                 <ShareFill size={12} className="text-[#99A88C]" />
                 <span className="text-[9px] font-black uppercase tracking-widest text-[#5E6C54]/60">Share with client</span>
                 <button
@@ -254,7 +254,7 @@ export function CoachNotesPage() {
                   onChange={(e) => handleField(field.key, e.target.value)}
                   placeholder={field.placeholder}
                   rows={4}
-                  className="w-full bg-[#FCF8E8] rounded-[20px] p-4 text-sm text-[#5E6C54] font-medium resize-none outline-none focus:bg-white focus:ring-2 focus:ring-[#99A88C]/20 transition-all placeholder:text-[#5E6C54]/20 leading-relaxed custom-scrollbar"
+                  className="w-full bg-[#FFFFFF] rounded-[20px] p-4 text-sm text-[#5E6C54] font-medium resize-none outline-none focus:bg-white focus:ring-2 focus:ring-[#99A88C]/20 transition-all placeholder:text-[#5E6C54]/20 leading-relaxed custom-scrollbar"
                 />
               </div>
             ))}
@@ -263,15 +263,17 @@ export function CoachNotesPage() {
       </div>
 
       {/* ── Mobile: Single Pane ── */}
-      <div className="lg:hidden px-4 space-y-6 -mt-14 relative z-10">
-        {/* Note selector */}
-        <div className="bg-white rounded-[32px] p-2 shadow-sm border border-[#99A88C]/5 flex gap-2 overflow-x-auto custom-scrollbar">
+      <div className="lg:hidden px-4 space-y-6 -mt-12 relative z-10 pb-28">
+        {/* Note selector tabs */}
+        <div className="bg-white rounded-[32px] p-2 shadow-sm border border-[#8B9A71]/10 flex gap-2 overflow-x-auto">
           {mockNotes.map((note) => (
             <button
               key={note.id}
               onClick={() => handleSelect(note)}
-              className={`shrink-0 px-5 py-3 rounded-[24px] text-[9px] font-black uppercase tracking-widest transition-all ${
-                selectedNote.id === note.id ? "bg-[#5E6C54] text-white shadow-md" : "text-[#5E6C54]/50 hover:text-[#5E6C54]"
+              className={`shrink-0 px-4 py-2.5 rounded-[20px] text-[9px] font-black uppercase tracking-widest transition-all whitespace-nowrap ${
+                selectedNote.id === note.id
+                  ? "bg-[#2D3324] text-white shadow-md"
+                  : "text-[#2D3324]/50 hover:text-[#2D3324]"
               }`}
             >
               {note.type.split(" ")[0]}
@@ -280,15 +282,17 @@ export function CoachNotesPage() {
         </div>
 
         {/* Session info */}
-        <div className="bg-white rounded-[32px] p-6 shadow-sm border border-[#99A88C]/5">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-[10px] font-black text-[#5E6C54] uppercase tracking-tight">{selectedNote.type}</p>
-              <p className="text-[9px] text-[#5E6C54]/40 font-bold uppercase tracking-widest mt-0.5">{selectedNote.client} · {selectedNote.date}</p>
+        <div className="bg-white rounded-[28px] p-5 shadow-sm border border-[#8B9A71]/10">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-black text-[#2D3324] uppercase tracking-tight truncate">{selectedNote.type}</p>
+              <p className="text-[9px] text-[#8B9A71] font-black uppercase tracking-widest mt-0.5 truncate">{selectedNote.client} · {selectedNote.date}</p>
             </div>
             <button
               onClick={handleSave}
-              className="px-4 py-2 bg-[#5E6C54] text-white rounded-2xl text-[9px] font-black uppercase tracking-widest flex items-center gap-2"
+              className={`flex-shrink-0 px-4 py-2.5 rounded-[14px] text-[9px] font-black uppercase tracking-widest flex items-center gap-2 transition-all ${
+                saved ? "bg-[#8B9A71] text-white" : "bg-[#2D3324] text-white"
+              }`}
             >
               {saved ? <CheckCircleFill size={12} /> : <FloppyFill size={12} />}
               {saved ? "Saved" : "Save"}
@@ -299,16 +303,16 @@ export function CoachNotesPage() {
         {/* Fields */}
         <div className="space-y-4">
           {noteFields.map((field) => (
-            <div key={field.key} className="bg-white rounded-[28px] p-5 shadow-sm border border-[#99A88C]/5">
-              <p className="text-[9px] font-black text-[#5E6C54] uppercase tracking-[0.3em] mb-3 flex items-center gap-2">
+            <div key={field.key} className="bg-white rounded-[24px] p-5 shadow-sm border border-[#8B9A71]/10">
+              <p className="text-[9px] font-black text-[#2D3324] uppercase tracking-[0.25em] mb-3 flex items-center gap-2">
                 <span>{field.emoji}</span> {field.label}
               </p>
               <textarea
                 value={editedNote[field.key] as string}
                 onChange={(e) => handleField(field.key, e.target.value)}
                 placeholder={field.placeholder}
-                rows={3}
-                className="w-full bg-[#FCF8E8] rounded-[16px] p-4 text-sm text-[#5E6C54] font-medium resize-none outline-none focus:ring-2 focus:ring-[#99A88C]/20 transition-all placeholder:text-[#5E6C54]/20 leading-relaxed"
+                rows={4}
+                className="w-full bg-[#F4F7FA] rounded-[14px] p-4 text-sm text-[#2D3324] font-medium resize-none outline-none focus:ring-2 focus:ring-[#8B9A71]/20 transition-all placeholder:text-[#8B9A71]/40 leading-relaxed"
               />
             </div>
           ))}

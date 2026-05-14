@@ -86,7 +86,7 @@ export function CoachDashboardPage() {
     <div className="animate-in fade-in duration-700 portal-context pb-24 lg:pb-10">
       {/* ── Cinematic Header ── */}
       <div className="relative -mx-0 lg:-mx-10 -mt-0 lg:-mt-10">
-        <div className="bg-[#5E6C54] pt-14 pb-36 px-6 lg:px-16 relative overflow-hidden rounded-b-[40px] md:rounded-b-[60px]">
+        <div className="bg-[#2D3324] pt-14 pb-36 px-6 lg:px-16 relative overflow-hidden rounded-b-[40px] md:rounded-b-[60px] border-t border-white/5">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-white/5 rounded-full -translate-y-1/2 translate-x-1/3 blur-[120px]" />
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#99A88C]/10 rounded-full translate-y-1/2 -translate-x-1/4 blur-[80px]" />
 
@@ -194,7 +194,7 @@ export function CoachDashboardPage() {
                   className={`flex items-center gap-4 p-4 rounded-[20px] transition-all group cursor-pointer ${
                     session.status === "active"
                       ? "bg-[#5E6C54] text-white shadow-lg shadow-[#5E6C54]/20"
-                      : "bg-[#FCF8E8] hover:bg-[#EDF2EE]"
+                      : "bg-[#FFFFFF] hover:bg-[#EDF2EE]"
                   }`}
                   style={{ animationDelay: `${i * 60}ms` }}
                 >
@@ -318,10 +318,10 @@ export function CoachDashboardPage() {
               {upcomingSessions.map((s, i) => (
                 <div
                   key={s.id}
-                  className="flex items-center gap-3 p-3 rounded-[16px] hover:bg-[#FCF8E8] transition-all cursor-pointer group"
+                  className="flex items-center gap-3 p-3 rounded-[16px] hover:bg-[#FFFFFF] transition-all cursor-pointer group"
                   style={{ animation: `slideUp 400ms cubic-bezier(0.22, 1, 0.36, 1) ${i * 70}ms both` }}
                 >
-                  <div className="w-9 h-9 bg-[#FCF8E8] rounded-[14px] flex flex-col items-center justify-center shrink-0">
+                  <div className="w-9 h-9 bg-[#FFFFFF] rounded-[14px] flex flex-col items-center justify-center shrink-0">
                     <span className="text-[8px] font-black text-[#5E6C54] uppercase tracking-tight leading-none">{s.date.split(" ")[0]}</span>
                     <span className="text-[10px] font-black text-[#99A88C]">{s.date.split(" ")[1] ?? ""}</span>
                   </div>

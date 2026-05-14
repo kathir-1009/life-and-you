@@ -15,7 +15,7 @@ export function CoachSessionHistoryPage() {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] pb-24 lg:pb-10 animate-in fade-in duration-700">
+    <div className="min-h-screen bg-[#FFFFFF] pb-24 lg:pb-10 animate-in fade-in duration-700">
       <div className="max-w-5xl mx-auto px-6 lg:px-16 pt-10">
         
         {/* Header */}

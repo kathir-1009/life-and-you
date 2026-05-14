@@ -1,107 +1,136 @@
 import { useState } from "react";
-import { PeopleFill, Search, Filter, ThreeDotsVertical, ChatDotsFill, ClockHistory, ArrowRight } from "react-bootstrap-icons";
+import { PeopleFill, Search, Filter, ChatDotsFill, ClockHistory, ArrowRight, PersonFill } from "react-bootstrap-icons";
 import { Link } from "react-router";
 
+const clients = [
+  { id: "C001", name: "Sarah Mitchell", initials: "SM", goal: "Anxiety Control",    status: "Active",         lastSession: "2 days ago",  progress: 82, color: "bg-[#8B9A71]/20 text-[#8B9A71]" },
+  { id: "C002", name: "John Doe",       initials: "JD", goal: "Career Pivot",       status: "Active",         lastSession: "5 days ago",  progress: 45, color: "bg-[#A68A45]/20 text-[#A68A45]" },
+  { id: "C003", name: "Anonymous #124", initials: "AN", goal: "Grief Healing",      status: "High Priority",  lastSession: "Yesterday",   progress: 15, color: "bg-red-100 text-red-400" },
+  { id: "C004", name: "Elena Rodriguez",initials: "ER", goal: "Self-Confidence",    status: "Stable",         lastSession: "1 week ago",  progress: 91, color: "bg-[#2D3324]/10 text-[#2D3324]" },
+];
+
+const STATUS_COLOR: Record<string, string> = {
+  "Active":        "bg-[#8B9A71]/15 text-[#8B9A71]",
+  "High Priority": "bg-red-100 text-red-500",
+  "Stable":        "bg-[#2D3324]/10 text-[#2D3324]",
+};
+
 export function CoachClientListPage() {
-  const clients = [
-    { id: "C001", name: "Sarah Mitchell", goal: "Anxiety Control", status: "Active", lastSession: "2 days ago", progress: 82 },
-    { id: "C002", name: "John Doe", goal: "Career Pivot", status: "Active", lastSession: "5 days ago", progress: 45 },
-    { id: "C003", name: "Anonymous #124", goal: "Grief Healing", status: "High Priority", lastSession: "Yesterday", progress: 15 },
-    { id: "C004", name: "Elena Rodriguez", goal: "Self-Confidence", status: "Stable", lastSession: "1 week ago", progress: 91 },
-  ];
+  const [query, setQuery] = useState("");
+
+  const filtered = clients.filter(c =>
+    c.name.toLowerCase().includes(query.toLowerCase()) ||
+    c.goal.toLowerCase().includes(query.toLowerCase())
+  );
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700 px-4 md:px-0 portal-context pb-20">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+    <div className="min-h-screen bg-[#F4F7FA] animate-in fade-in duration-500 pb-32">
+      <div className="max-w-4xl mx-auto px-4 pt-6 space-y-6">
+
+        {/* Page Header */}
         <div>
-           <h1 className="text-3xl lg:text-4xl font-bold text-sage-dark font-serif mb-2 uppercase tracking-tight">Mentee Directory</h1>
-           <p className="text-sage-dark/60 text-[11px] font-bold uppercase tracking-widest">Track progress and manage relationships with your clients.</p>
+          <h1 className="text-2xl md:text-3xl font-black text-[#2D3324] font-serif uppercase italic tracking-tight">
+            Mentee Directory
+          </h1>
+          <p className="text-[#8B9A71] text-[10px] font-black uppercase tracking-[0.25em] mt-1">
+            Track progress and manage relationships with your clients.
+          </p>
         </div>
 
+        {/* Search bar */}
         <div className="flex items-center gap-3">
-           <div className="relative flex-1 lg:w-72">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-sage-dark/30" size={18} />
-              <input 
-                type="text" 
-                placeholder="Search clients..." 
-                className="w-full bg-white border border-sage/10 pl-12 pr-4 py-3 rounded-2xl text-[11px] font-bold uppercase tracking-widest outline-none focus:border-sage transition-all"
-              />
-           </div>
-           <button className="p-3 bg-white border border-sage/10 rounded-2xl text-sage-dark hover:bg-cream transition-colors shadow-sm">
-              <Filter size={18} />
-           </button>
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8B9A71]" size={16} />
+            <input
+              type="text"
+              placeholder="Search clients..."
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              className="w-full bg-white border border-[#8B9A71]/15 pl-11 pr-4 py-3.5 rounded-[16px] text-[11px] font-black uppercase tracking-widest outline-none focus:border-[#8B9A71]/40 transition-all text-[#2D3324] placeholder-[#8B9A71]/40"
+            />
+          </div>
+          <button className="w-12 h-12 bg-white border border-[#8B9A71]/15 rounded-[14px] flex items-center justify-center text-[#8B9A71] hover:bg-[#2D3324] hover:text-white transition-all shadow-sm">
+            <Filter size={17} />
+          </button>
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-         {clients.map((client) => (
-           <div key={client.id} className="bg-white rounded-[40px] p-8 border border-sage/5 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
+        {/* ── 2 × 2 Grid ── */}
+        <div className="grid grid-cols-2 gap-4">
+          {filtered.map((client) => (
+            <Link
+              key={client.id}
+              to={`/coach/clients/${client.id}`}
+              className="bg-white rounded-[24px] p-5 border border-[#8B9A71]/10 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all group flex flex-col gap-4"
+            >
+              {/* Top row: avatar + chat icon */}
+              <div className="flex items-start justify-between">
+                <div className={`w-12 h-12 rounded-[16px] flex items-center justify-center text-base font-black font-serif shadow-sm ${client.color}`}>
+                  {client.initials}
+                </div>
+                <div className="w-8 h-8 bg-[#F4F7FA] rounded-[10px] flex items-center justify-center text-[#8B9A71] group-hover:bg-[#2D3324] group-hover:text-white transition-all">
+                  <ChatDotsFill size={13} />
+                </div>
+              </div>
+
+              {/* Name + goal */}
               <div>
-                 <div className="flex items-center justify-between mb-8">
-                    <div className="w-14 h-14 bg-cream rounded-2xl flex items-center justify-center text-sage shadow-sm font-serif text-xl font-bold">
-                       {client.name.split(' ').map(n => n[0]).join('')}
-                    </div>
-                    <div className="flex gap-2">
-                       <IconButton icon={ChatDotsFill} />
-                       <IconButton icon={ThreeDotsVertical} />
-                    </div>
-                 </div>
-
-                 <div className="mb-8">
-                    <h3 className="text-xl font-bold text-sage-dark font-serif mb-1 uppercase tracking-tight">{client.name}</h3>
-                    <p className="text-[10px] text-gold-dark font-black uppercase tracking-[0.2em]">{client.goal}</p>
-                 </div>
-
-                 <div className="space-y-4 mb-10">
-                    <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
-                       <span className="text-sage-dark/40">Growth Score</span>
-                       <span className="text-sage">{client.progress}%</span>
-                    </div>
-                    <div className="h-1.5 bg-cream rounded-full overflow-hidden">
-                       <div className="h-full bg-sage rounded-full transition-all duration-1000" style={{ width: `${client.progress}%` }} />
-                    </div>
-                 </div>
+                <h3 className="text-sm font-black text-[#2D3324] tracking-tight leading-tight line-clamp-1">
+                  {client.name}
+                </h3>
+                <p className="text-[9px] text-[#A68A45] font-black uppercase tracking-widest mt-0.5 line-clamp-1">
+                  {client.goal}
+                </p>
               </div>
 
-              <div className="pt-8 border-t border-cream flex items-center justify-between mt-auto">
-                 <div className="flex flex-col gap-1">
-                    <div className="flex items-center gap-2">
-                       <ClockHistory size={12} className="text-sage-dark/30" />
-                       <span className="text-[9px] font-black text-sage-dark/40 uppercase tracking-widest">{client.lastSession}</span>
-                    </div>
-                    <div className="px-2 py-0.5 bg-sage/10 text-sage rounded-full text-[8px] font-black uppercase tracking-widest inline-block w-fit">
-                       {client.status}
-                    </div>
-                 </div>
-                 
-                 <Link 
-                   to={`/coach/clients/${client.id}`}
-                   className="w-12 h-12 bg-sage-dark text-white rounded-2xl flex items-center justify-center shadow-lg group-hover:translate-x-1 transition-transform"
-                 >
-                    <ArrowRight size={20} />
-                 </Link>
+              {/* Progress bar */}
+              <div className="space-y-1.5">
+                <div className="flex justify-between items-center">
+                  <span className="text-[8px] font-black text-[#8B9A71] uppercase tracking-widest">Growth</span>
+                  <span className="text-[9px] font-black text-[#2D3324]">{client.progress}%</span>
+                </div>
+                <div className="h-1.5 bg-[#F4F7FA] rounded-full overflow-hidden">
+                  <div
+                    className="h-full bg-[#2D3324] rounded-full transition-all duration-1000"
+                    style={{ width: `${client.progress}%` }}
+                  />
+                </div>
               </div>
-           </div>
-         ))}
 
-         <button className="border-2 border-dashed border-sage/20 rounded-[40px] p-10 flex flex-col items-center justify-center text-center gap-4 group hover:border-sage/40 hover:bg-white transition-all min-h-[300px] shadow-sm">
-            <div className="w-16 h-16 bg-cream rounded-full flex items-center justify-center text-sage-dark group-hover:scale-110 transition-transform">
-               <PeopleFill size={28} />
+              {/* Footer: last session + status + arrow */}
+              <div className="flex items-center justify-between pt-3 border-t border-[#F4F7FA]">
+                <div>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <ClockHistory size={10} className="text-[#8B9A71]/50" />
+                    <span className="text-[8px] font-black text-[#8B9A71] uppercase tracking-widest">{client.lastSession}</span>
+                  </div>
+                  <span className={`text-[7px] font-black uppercase tracking-widest px-2 py-0.5 rounded-full ${STATUS_COLOR[client.status] || "bg-gray-100 text-gray-500"}`}>
+                    {client.status}
+                  </span>
+                </div>
+                <div className="w-8 h-8 bg-[#2D3324] rounded-[10px] flex items-center justify-center text-white group-hover:bg-[#8B9A71] transition-all shadow-sm">
+                  <ArrowRight size={14} />
+                </div>
+              </div>
+            </Link>
+          ))}
+
+          {/* Add client card */}
+          <button className="border-2 border-dashed border-[#8B9A71]/20 rounded-[24px] p-5 flex flex-col items-center justify-center text-center gap-3 group hover:border-[#8B9A71]/50 hover:bg-white transition-all min-h-[220px]">
+            <div className="w-12 h-12 bg-[#F4F7FA] rounded-[16px] flex items-center justify-center text-[#8B9A71] group-hover:bg-[#2D3324] group-hover:text-white transition-all">
+              <PeopleFill size={22} />
             </div>
             <div>
-               <p className="text-sm font-black text-sage-dark uppercase tracking-widest mb-1">Onboard Client</p>
-               <p className="text-[9px] text-sage-dark/40 font-bold max-w-[160px] mx-auto uppercase tracking-widest">Manually invite a new mentee to your sanctuary.</p>
+              <p className="text-[10px] font-black text-[#2D3324] uppercase tracking-widest mb-1">Onboard Client</p>
+              <p className="text-[8px] text-[#8B9A71] font-black uppercase tracking-widest leading-relaxed max-w-[100px] mx-auto">Invite a new mentee to your sanctuary</p>
             </div>
-         </button>
+          </button>
+        </div>
+
+        {/* Count */}
+        <p className="text-[9px] font-black text-[#8B9A71] uppercase tracking-widest text-center">
+          {filtered.length} of {clients.length} mentees
+        </p>
       </div>
     </div>
-  );
-}
-
-function IconButton({ icon: Icon }: { icon: any }) {
-  return (
-    <button className="p-2.5 bg-white border border-sage/10 rounded-xl text-sage-dark/40 hover:text-sage-dark hover:bg-cream transition-all">
-       <Icon size={16} />
-    </button>
   );
 }

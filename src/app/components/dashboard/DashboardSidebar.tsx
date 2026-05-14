@@ -6,7 +6,7 @@ export function DashboardSidebar() {
   return (
     <div className="space-y-8">
        {/* Progress Overview Card */}
-       <div className="bg-white p-8 rounded-[32px] border border-sage/10 shadow-sm space-y-8">
+       <div className="bg-[#FFFFFF] p-8 rounded-[32px] border border-sage/10 shadow-sm space-y-8">
           <div className="flex items-center justify-between">
              <h3 className="font-bold text-sage-dark uppercase tracking-widest text-xs">Growth Areas</h3>
              <Link to="/portal/progress" className="w-8 h-8 bg-cream rounded-xl flex items-center justify-center text-sage-dark"><ArrowRight size={14} /></Link>
@@ -27,10 +27,10 @@ export function DashboardSidebar() {
        </div>
 
        {/* Library Snippet */}
-       <div className="bg-sage-light p-8 rounded-[32px] border border-sage/10 overflow-hidden relative group cursor-pointer">
+       <div className="bg-[#FFFFFF] p-8 rounded-[32px] border border-sage/10 overflow-hidden relative group cursor-pointer">
           <div className="absolute top-0 right-0 w-32 h-32 bg-sage/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl group-hover:bg-sage/10 transition-colors" />
           <h4 className="font-bold text-sage-dark uppercase tracking-widest text-[10px] mb-6">Recommended for you</h4>
-          <div className="bg-white p-4 rounded-2xl shadow-sm mb-6 flex items-center gap-4">
+          <div className="bg-[#FFFFFF] p-4 rounded-2xl shadow-sm mb-6 flex items-center gap-4">
              <div className="w-12 h-12 bg-[#FBF5E6] rounded-xl flex items-center justify-center text-gold shrink-0">
                 <JournalBookmark size={20} />
              </div>

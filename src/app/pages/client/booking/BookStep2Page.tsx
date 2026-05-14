@@ -30,7 +30,7 @@ export function BookSessionStep2Page() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] pb-32 portal-context">
+    <div className="min-h-screen bg-[#FFFFFF] pb-32 portal-context">
       
       {/* Compact Header - Mobile Only */}
       <div className="lg:hidden bg-[#2D3324] text-white px-6 py-6 rounded-b-[40px] relative overflow-hidden flex items-center gap-4 shadow-xl z-20">
@@ -66,8 +66,8 @@ export function BookSessionStep2Page() {
               <div className="flex items-center justify-between mb-10 px-4">
                  <h3 className="text-base font-black text-[#5E6C54] uppercase tracking-widest">{monthNames[viewDate.getMonth()]} {viewDate.getFullYear()}</h3>
                  <div className="flex gap-2">
-                    <button onClick={handlePrevMonth} className="w-8 h-8 rounded-full border border-[#99A88C]/10 flex items-center justify-center text-[#99A88C] hover:bg-[#FCF8E8] transition-colors"><ChevronLeft size={16} /></button>
-                    <button onClick={handleNextMonth} className="w-8 h-8 rounded-full border border-[#99A88C]/10 flex items-center justify-center text-[#99A88C] hover:bg-[#FCF8E8] transition-colors rotate-180"><ChevronLeft size={16} /></button>
+                    <button onClick={handlePrevMonth} className="w-8 h-8 rounded-full border border-[#99A88C]/10 flex items-center justify-center text-[#99A88C] hover:bg-[#FFFFFF] transition-colors"><ChevronLeft size={16} /></button>
+                    <button onClick={handleNextMonth} className="w-8 h-8 rounded-full border border-[#99A88C]/10 flex items-center justify-center text-[#99A88C] hover:bg-[#FFFFFF] transition-colors rotate-180"><ChevronLeft size={16} /></button>
                  </div>
               </div>
               
@@ -82,7 +82,7 @@ export function BookSessionStep2Page() {
                         key={day} 
                         onClick={() => setSelectedDate(day)}
                         className={`w-10 h-10 rounded-2xl flex items-center justify-center text-xs font-bold transition-all ${
-                          isSelected ? 'bg-[#5E6C54] !text-[#FFFFFF] shadow-lg' : 'hover:bg-[#FCF8E8] text-[#5E6C54]'
+                          isSelected ? 'bg-[#5E6C54] !text-[#FFFFFF] shadow-lg' : 'hover:bg-[#FFFFFF] text-[#5E6C54]'
                         }`}
                         style={isSelected ? { color: '#FFFFFF' } : {}}
                       >

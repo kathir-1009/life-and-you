@@ -59,7 +59,7 @@ export function CoachPayoutManagerPage() {
                   <h2 className="text-5xl font-black font-serif mb-2">$845.00</h2>
                   <p className="text-[11px] text-[#99A88C] font-bold uppercase tracking-widest mb-10">Expected: May 1, 2026</p>
                   
-                  <button className="w-full py-4 bg-[#FFFFFF] text-[#5E6C54] rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-[#FCF8E8] transition-all">
+                  <button className="w-full py-4 bg-[#FFFFFF] text-[#5E6C54] rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] shadow-xl hover:bg-[#FFFFFF] transition-all">
                      View Details
                   </button>
                </div>
@@ -100,7 +100,7 @@ export function CoachPayoutManagerPage() {
 
          {/* Sidebar */}
          <div className="space-y-8">
-            <div className="bg-[#FCF8E8] rounded-[32px] p-8 border border-sage/5 shadow-inner">
+            <div className="bg-[#FFFFFF] rounded-[32px] p-8 border border-sage/5 shadow-inner">
                <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-gold-dark mb-6 shadow-sm">
                   <Bank size={20} />
                </div>

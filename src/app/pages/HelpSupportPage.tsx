@@ -1,92 +1,203 @@
-import { HelpCircle, MessageCircle, FileText, Shield, ExternalLink, Mail, Phone, ArrowRight, ChevronLeft } from "lucide-react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
+import { ChevronLeft, HelpCircle, MessageCircle, Mail, Shield, ExternalLink, ChevronRight, Send, CheckCircle, Sparkles, Phone, Clock } from "lucide-react";
+
+const FAQ_CATEGORIES = [
+  {
+    icon: HelpCircle,
+    title: "Booking & Sessions",
+    items: [
+      "How do I reschedule a session?",
+      "Can I cancel an appointment?",
+      "How to prepare for your first call",
+      "What happens if my coach cancels?",
+    ],
+  },
+  {
+    icon: Shield,
+    title: "Privacy & Security",
+    items: [
+      "How anonymous mode works",
+      "Our end-to-end encryption policy",
+      "Can my coach see my real name?",
+      "How to delete your account data",
+    ],
+  },
+  {
+    icon: ExternalLink,
+    title: "Portal Technicals",
+    items: [
+      "Mobile app installation guide",
+      "Browser compatibility requirements",
+      "Troubleshooting video call issues",
+      "Offline mode & data sync",
+    ],
+  },
+];
 
 export function HelpSupportPage() {
   const navigate = useNavigate();
-  const categories = [
-    { title: "Booking & Sessions", icon: HelpCircle, items: ["Rescheduling a session", "Canceling your appointment", "How to prepare for your first call"] },
-    { title: "Privacy & Security", icon: Shield, items: ["How anonymous mode works", "Our data encryption policy", "Terminating your account"] },
-    { title: "Portal Technicals", icon: ExternalLink, items: ["Mobile app installation", "Browser compatibility", "Troubleshooting video calls"] },
-  ];
+  const [expanded, setExpanded] = useState<string | null>(null);
+  const [message, setMessage] = useState("");
+  const [sent, setSent] = useState(false);
+
+  const handleSend = () => {
+    if (!message.trim()) return;
+    setSent(true);
+    setMessage("");
+    setTimeout(() => setSent(false), 3000);
+  };
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen pb-32">
-      
-      {/* Compact Header - Mobile Only */}
-      <div className="lg:hidden bg-[#2D3324] text-white px-6 py-6 rounded-b-[40px] relative overflow-hidden flex items-center gap-4 shadow-xl z-20">
-         <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50 pointer-events-none" />
-         <button 
-            onClick={() => navigate(-1)}
-            className="relative z-20 w-10 h-10 bg-[#FFFFFF]/10 backdrop-blur-md rounded-xl flex items-center justify-center text-white border border-[#FFFFFF]/10 active:scale-95 transition-all shrink-0"
-         >
-            <ChevronLeft size={20} />
-         </button>
-         <div className="relative z-10 flex-1">
-            <h1 className="text-xl font-black tracking-tight leading-none text-[#FFFFFF]">Support Hub</h1>
-            <p className="text-[#8B9A71] text-[9px] font-black uppercase tracking-[0.2em] mt-1">Ensuring your journey is seamless</p>
-         </div>
-      </div>
-          
+    <div className="min-h-screen bg-[#F4F7FA] pb-32 animate-in fade-in duration-700">
 
-      {/* Header - Desktop Only */}
-      <div className="hidden lg:block bg-[#2D3324] py-16 px-12 rounded-b-[32px] relative overflow-hidden">
-         <div className="max-w-7xl mx-auto relative z-10">
-            <h1 className="text-3xl md:text-5xl font-extrabold text-[#FAF9F6] tracking-tight">Support Hub</h1>
-            <p className="text-[#8B9A71] mt-1 text-sm font-bold uppercase tracking-widest leading-relaxed">We're here to ensure your journey is seamless</p>
-         </div>
+      {/* ── Mobile Header ── */}
+      <div className="lg:hidden relative">
+        <button
+          onClick={() => navigate(-1)}
+          className="absolute top-8 left-5 z-20 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center text-white border border-white/10 active:scale-95 transition-all"
+        >
+          <ChevronLeft size={20} />
+        </button>
+        <div className="bg-[#2D3324] pt-20 pb-24 px-6 rounded-b-[64px] relative overflow-hidden text-center border-t border-white/5 shadow-xl">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+          <div className="relative z-10 flex flex-col items-center">
+            <div className="w-16 h-16 bg-white/10 rounded-[22px] flex items-center justify-center mb-5 border border-white/10">
+              <Sparkles size={26} className="text-[#8B9A71]" />
+            </div>
+            <h1 className="text-3xl font-black text-white tracking-tight font-serif italic mb-2">Evolution Support</h1>
+            <p className="text-[#8B9A71] text-[10px] font-black uppercase tracking-[0.35em]">We're here to ensure your journey is seamless</p>
+          </div>
+        </div>
       </div>
 
-       <div className="max-w-7xl mx-auto px-6 mt-12 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Main Help Areas */}
-          <div className="lg:col-span-2 space-y-8">
-             <div className="grid md:grid-cols-1 gap-6">
-                {categories.map((cat, i) => (
-                  <div key={i} className="bg-white p-10 rounded-[40px] border border-[rgba(139,154,113,0.1)] shadow-premium transition-all hover:scale-[1.01]">
-                     <div className="flex items-center gap-6 mb-8">
-                        <div className="w-16 h-16 bg-[#F8F9FA] rounded-2xl flex items-center justify-center text-[#8B9A71]">
-                           <cat.icon size={32} />
-                        </div>
-                        <h2 className="text-2xl font-black text-[#2D3324]">{cat.title}</h2>
-                     </div>
-                     <div className="space-y-4">
-                        {cat.items.map((item, ii) => (
-                          <div key={ii} className="flex items-center justify-between p-4 bg-[#FAF9F6] rounded-2xl group cursor-pointer hover:bg-[#8B9A71]/5 transition-all">
-                             <span className="text-sm font-bold text-[#545454]">{item}</span>
-                             <ArrowRight size={16} className="text-[#CED2BA] group-hover:text-[#8B9A71] transition-transform group-hover:translate-x-1" />
-                          </div>
-                        ))}
-                     </div>
-                  </div>
-                ))}
-             </div>
+      {/* ── Desktop Header ── */}
+      <div className="hidden lg:block bg-[#2D3324] pt-24 pb-20 px-12 rounded-b-[60px] relative overflow-hidden border-t border-white/5">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl" />
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="flex items-center gap-6">
+            <div className="w-16 h-16 bg-white/10 rounded-[22px] flex items-center justify-center border border-white/10">
+              <Sparkles size={28} className="text-[#8B9A71]" />
+            </div>
+            <div>
+              <h1 className="text-4xl font-black text-white font-serif italic tracking-tight">Evolution Support</h1>
+              <p className="text-[#8B9A71] text-[10px] font-black uppercase tracking-widest mt-1">We're here to ensure your journey is seamless</p>
+            </div>
           </div>
+        </div>
+      </div>
 
-          {/* Contact Methods */}
-          <div className="space-y-6">
-             <div className="bg-[#8B9A71] rounded-[48px] p-10 text-[#2D3324] shadow-premium">
-                <h3 className="text-xl font-black mb-4">Direct Concierge</h3>
-                <p className="text-sm font-bold leading-relaxed opacity-80 mb-8">Need immediate human assistance? Our concierge team is active 24/7.</p>
-                <div className="space-y-4">
-                   <button className="w-full bg-white p-4 rounded-3xl flex items-center gap-4 hover:shadow-xl transition-all">
-                      <div className="w-10 h-10 bg-[#FAF9F6] rounded-xl flex items-center justify-center text-[#8B9A71]"><MessageCircle size={20} /></div>
-                      <span className="text-xs font-black uppercase tracking-widest">Live Messenger</span>
-                   </button>
-                   <button className="w-full bg-white p-4 rounded-3xl flex items-center gap-4 hover:shadow-xl transition-all">
-                      <div className="w-10 h-10 bg-[#FAF9F6] rounded-xl flex items-center justify-center text-[#8B9A71]"><Mail size={20} /></div>
-                      <span className="text-xs font-black uppercase tracking-widest">support@lifeandyou.com</span>
-                   </button>
-                </div>
-             </div>
+      <div className="max-w-2xl mx-auto px-5 -mt-10 relative z-10 space-y-5">
 
-             <div className="bg-white rounded-[40px] p-10 border border-[rgba(139,154,113,0.1)] shadow-premium text-center">
-                <div className="w-20 h-20 bg-[#F8F9FA] rounded-full flex items-center justify-center mx-auto mb-6 text-[#CED2BA]">
-                   <Shield size={40} />
-                </div>
-                <h4 className="text-lg font-black text-[#2D3324] mb-2">Privacy Shield</h4>
-                <p className="text-xs font-bold text-[#545454]/60 leading-relaxed">Your support requests are also encrypted. We never link tickets to your real identity in anonymous mode.</p>
-             </div>
+        {/* ── Concierge Contact Card ── */}
+        <div className="bg-[#2D3324] rounded-[28px] p-6 shadow-xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-bl-[80px]" />
+          <p className="text-[#8B9A71] text-[9px] font-black uppercase tracking-widest mb-1 relative z-10">24/7 Active</p>
+          <h3 className="text-lg font-black text-white mb-4 relative z-10">Direct Concierge</h3>
+          <div className="grid grid-cols-2 gap-3 relative z-10">
+            <button className="flex items-center gap-3 bg-white/10 border border-white/10 rounded-[16px] p-4 hover:bg-white/20 transition-all text-left">
+              <div className="w-9 h-9 bg-[#8B9A71]/20 rounded-[10px] flex items-center justify-center flex-shrink-0">
+                <MessageCircle size={16} className="text-[#8B9A71]" />
+              </div>
+              <div>
+                <p className="text-[9px] font-black text-white uppercase tracking-widest">Live Chat</p>
+                <p className="text-[8px] text-[#8B9A71] font-black">Instant reply</p>
+              </div>
+            </button>
+            <button className="flex items-center gap-3 bg-white/10 border border-white/10 rounded-[16px] p-4 hover:bg-white/20 transition-all text-left">
+              <div className="w-9 h-9 bg-[#8B9A71]/20 rounded-[10px] flex items-center justify-center flex-shrink-0">
+                <Mail size={16} className="text-[#8B9A71]" />
+              </div>
+              <div>
+                <p className="text-[9px] font-black text-white uppercase tracking-widest">Email Us</p>
+                <p className="text-[8px] text-[#8B9A71] font-black">Within 2 hours</p>
+              </div>
+            </button>
           </div>
-       </div>
+        </div>
+
+        {/* ── Availability Banner ── */}
+        <div className="bg-white rounded-[24px] p-4 border border-[#8B9A71]/10 shadow-sm flex items-center gap-4">
+          <div className="w-10 h-10 bg-[#8B9A71]/10 rounded-[12px] flex items-center justify-center flex-shrink-0">
+            <Clock size={18} className="text-[#8B9A71]" />
+          </div>
+          <div className="flex-1">
+            <p className="text-[10px] font-black text-[#2D3324] uppercase tracking-widest">Support Hours</p>
+            <p className="text-[9px] text-[#8B9A71] font-black uppercase tracking-widest">Mon–Sat · 9AM–9PM IST</p>
+          </div>
+          <div className="w-2 h-2 bg-[#8B9A71] rounded-full animate-pulse" />
+        </div>
+
+        {/* ── Send a Message ── */}
+        <div className="bg-white rounded-[28px] p-6 border border-[#8B9A71]/10 shadow-sm space-y-4">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-[#2D3324]/8 rounded-[12px] flex items-center justify-center">
+              <Send size={17} className="text-[#2D3324]" />
+            </div>
+            <p className="text-[10px] font-black text-[#2D3324] uppercase tracking-widest">Send a Message</p>
+          </div>
+          <textarea
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+            placeholder="Describe your issue or question..."
+            rows={4}
+            className="w-full bg-[#F4F7FA] rounded-[16px] px-4 py-3.5 text-sm text-[#2D3324] font-medium resize-none outline-none focus:ring-2 focus:ring-[#8B9A71]/20 transition-all placeholder:text-[#8B9A71]/40 leading-relaxed"
+          />
+          <button
+            onClick={handleSend}
+            className={`w-full py-4 rounded-[16px] text-[10px] font-black uppercase tracking-widest flex items-center justify-center gap-2 transition-all
+              ${sent ? "bg-[#8B9A71] text-white" : "bg-[#2D3324] text-white hover:bg-[#8B9A71]"}`}
+          >
+            {sent ? <><CheckCircle size={14} /> Message Sent!</> : <><Send size={14} /> Send to Support Team</>}
+          </button>
+        </div>
+
+        {/* ── FAQ Accordion ── */}
+        <div className="space-y-4">
+          {FAQ_CATEGORIES.map((cat, ci) => (
+            <div key={ci} className="bg-white rounded-[24px] overflow-hidden border border-[#8B9A71]/10 shadow-sm">
+              {/* Category header */}
+              <button
+                onClick={() => setExpanded(expanded === cat.title ? null : cat.title)}
+                className="w-full p-5 flex items-center gap-4 text-left hover:bg-[#F4F7FA] transition-all"
+              >
+                <div className="w-10 h-10 bg-[#2D3324]/8 rounded-[12px] flex items-center justify-center flex-shrink-0">
+                  <cat.icon size={18} className="text-[#2D3324]" />
+                </div>
+                <span className="flex-1 text-[11px] font-black text-[#2D3324] uppercase tracking-widest">{cat.title}</span>
+                <ChevronRight
+                  size={16}
+                  className={`text-[#8B9A71] transition-transform duration-300 ${expanded === cat.title ? "rotate-90" : ""}`}
+                />
+              </button>
+
+              {/* Items */}
+              {expanded === cat.title && (
+                <div className="border-t border-[#F4F7FA] divide-y divide-[#F4F7FA] animate-in fade-in duration-300">
+                  {cat.items.map((item, ii) => (
+                    <button key={ii} className="w-full px-5 py-4 flex items-center justify-between gap-3 hover:bg-[#F4F7FA] transition-all text-left group">
+                      <span className="text-sm font-medium text-[#2D3324] leading-snug">{item}</span>
+                      <ChevronRight size={14} className="text-[#8B9A71] flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* ── Privacy Shield Notice ── */}
+        <div className="bg-white rounded-[24px] p-5 border border-[#8B9A71]/10 shadow-sm flex items-start gap-4">
+          <div className="w-10 h-10 bg-[#8B9A71]/10 rounded-[12px] flex items-center justify-center flex-shrink-0 mt-0.5">
+            <Shield size={18} className="text-[#8B9A71]" />
+          </div>
+          <div>
+            <p className="text-[10px] font-black text-[#2D3324] uppercase tracking-widest mb-1">Privacy Shield Active</p>
+            <p className="text-[11px] text-[#8B9A71] font-medium leading-relaxed">Your support requests are fully encrypted. In anonymous mode, tickets are never linked to your real identity.</p>
+          </div>
+        </div>
+
+      </div>
     </div>
   );
 }

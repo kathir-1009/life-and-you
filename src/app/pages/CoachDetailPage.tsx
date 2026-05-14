@@ -26,10 +26,10 @@ export function CoachDetailPage() {
   };
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen pb-32">
+    <div className="bg-[#F4F7FA] min-h-screen pb-32">
       {/* Visual Header */}
       <div className="h-96 relative overflow-hidden bg-[#2D3324]">
-         <div className="absolute inset-0 bg-gradient-to-t from-[#FAF9F6] to-transparent z-10" />
+         <div className="absolute inset-0 bg-gradient-to-t from-[#F4F7FA] to-transparent z-10" />
          <img src={coach.img} alt={coach.name} className="w-full h-full object-cover opacity-50" />
          
          <div className="absolute top-10 left-6 z-20">
@@ -69,7 +69,7 @@ export function CoachDetailPage() {
                <div className="space-y-4">
                   {coach.approach.map((item, i) => (
                     <div key={i} className="bg-white p-8 rounded-[40px] border border-[rgba(139,154,113,0.08)] shadow-sm flex items-start gap-6 group hover:border-[#8B9A71] transition-all">
-                       <div className="w-12 h-12 bg-[#FAF9F6] text-[#8B9A71] rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-[#8B9A71] group-hover:text-white transition-all">
+                       <div className="w-12 h-12 bg-[#F4F7FA] text-[#8B9A71] rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-[#8B9A71] group-hover:text-white transition-all">
                           <Check size={24} />
                        </div>
                        <div>

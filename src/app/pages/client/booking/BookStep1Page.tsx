@@ -26,7 +26,7 @@ export function BookSessionStep1Page() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#FCF8E8] pb-32 portal-context font-sans-app">
+    <div className="min-h-screen bg-[#FFFFFF] pb-32 portal-context font-sans-app">
       
       {/* Cinematic Header */}
       <div className="bg-[#2D3324] text-white px-6 py-12 rounded-b-[40px] lg:rounded-b-[60px] relative overflow-hidden shadow-2xl z-20">
@@ -65,7 +65,7 @@ export function BookSessionStep1Page() {
                      }`}
                   >
                      <div className={`w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center mx-auto md:mx-0 mb-3 md:mb-6 transition-all duration-500 ${
-                        selectedPath === path.id ? 'bg-[#99A88C] text-white' : 'bg-[#FCF8E8] text-[#99A88C]'
+                        selectedPath === path.id ? 'bg-[#99A88C] text-white' : 'bg-[#FFFFFF] text-[#99A88C]'
                      }`}>
                         <path.icon size={20} className="md:w-7 md:h-7" />
                      </div>
@@ -115,7 +115,7 @@ export function BookSessionStep1Page() {
                        <h4 className={`text-xs md:text-base font-black uppercase tracking-tight mb-1 ${selectedCoach === coach.id ? 'text-[#2D3324]' : 'text-white'}`}>{coach.name}</h4>
                        <p className={`text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] mb-4 ${selectedCoach === coach.id ? 'text-[#A68A45]' : 'text-white/40'}`}>{coach.specialty}</p>
                        
-                       <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-colors ${selectedCoach === coach.id ? 'bg-[#FCF8E8]' : 'bg-white/5'}`}>
+                       <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-colors ${selectedCoach === coach.id ? 'bg-[#FFFFFF]' : 'bg-white/5'}`}>
                           <StarFill size={10} className="text-[#A68A45]" />
                           <span className={`text-[10px] font-black ${selectedCoach === coach.id ? 'text-[#2D3324]' : 'text-white'}`}>{coach.rating}</span>
                        </div>

@@ -1,148 +1,333 @@
 import { useState } from "react";
-import { Calendar3, ChevronLeft, ChevronRight, PlusLg, ListTask, ClockHistory } from "react-bootstrap-icons";
+import { Calendar3, ChevronLeft, ChevronRight, PlusLg, ListTask, ClockHistory, X, PersonFill, CameraVideo, Mic, Chat, ArrowRight } from "react-bootstrap-icons";
 import { Link } from "react-router";
 
+const MONTHS = [
+  "January","February","March","April","May","June",
+  "July","August","September","October","November","December"
+];
+
+function getDaysInMonth(month: number, year: number) {
+  return new Date(year, month + 1, 0).getDate();
+}
+function getFirstDayOfMonth(month: number, year: number) {
+  return new Date(year, month, 1).getDay();
+}
+
+// Sample bookings data keyed by day number
+const BOOKINGS: Record<number, { time: string; client: string; type: string; mode: "video" | "audio" | "text"; status: "confirmed" | "pending" }[]> = {
+  8:  [{ time: "10:00 AM", client: "Sarah Mitchell", type: "Anxiety & Clarity", mode: "video", status: "confirmed" }],
+  15: [
+    { time: "09:00 AM", client: "Rahul Verma", type: "NLP Deep Dive", mode: "video", status: "confirmed" },
+    { time: "02:00 PM", client: "Priya Nair", type: "Executive Focus", mode: "audio", status: "pending" },
+  ],
+  18: [{ time: "11:30 AM", client: "John Doe", type: "Stress Management", mode: "text", status: "confirmed" }],
+  22: [
+    { time: "10:00 AM", client: "Aisha Khan", type: "Mental Clarity", mode: "video", status: "confirmed" },
+    { time: "04:00 PM", client: "David Lee", type: "Goals Review", mode: "audio", status: "confirmed" },
+  ],
+};
+
+const MODE_ICON = { video: CameraVideo, audio: Mic, text: Chat };
+const MODE_LABEL = { video: "Video Call", audio: "Audio Call", text: "Text Chat" };
+
+type Booking = { time: string; client: string; type: string; mode: "video" | "audio" | "text"; status: "confirmed" | "pending" };
+
 export function CoachMonthViewPage() {
-  const [currentMonth, setCurrentMonth] = useState("March 2026");
+  const today = new Date();
+  const [viewMonth, setViewMonth] = useState(today.getMonth());
+  const [viewYear, setViewYear] = useState(today.getFullYear());
+  const [activeView, setActiveView] = useState<"Month" | "Week" | "Day">("Month");
+  const [selectedDay, setSelectedDay] = useState<number | null>(null);
+  const [selectedBookings, setSelectedBookings] = useState<Booking[]>([]);
+
+  const daysInMonth = getDaysInMonth(viewMonth, viewYear);
+  const firstDay = getFirstDayOfMonth(viewMonth, viewYear);
+  const totalCells = Math.ceil((firstDay + daysInMonth) / 7) * 7;
+
+  const prevMonth = () => {
+    if (viewMonth === 0) { setViewMonth(11); setViewYear(y => y - 1); }
+    else setViewMonth(m => m - 1);
+  };
+  const nextMonth = () => {
+    if (viewMonth === 11) { setViewMonth(0); setViewYear(y => y + 1); }
+    else setViewMonth(m => m + 1);
+  };
+
+  const isToday = (day: number) =>
+    day === today.getDate() && viewMonth === today.getMonth() && viewYear === today.getFullYear();
+
+  const handleDayClick = (day: number) => {
+    setSelectedDay(day);
+    setSelectedBookings(BOOKINGS[day] || []);
+  };
+
+  const closePopup = () => setSelectedDay(null);
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700 px-4 md:px-0 portal-context pb-20">
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-        <div>
-           <h1 className="text-3xl lg:text-4xl font-bold text-sage-dark font-serif mb-2 uppercase tracking-tight">Mentorship Schedule</h1>
-           <p className="text-sage-dark/60 text-[11px] font-bold uppercase tracking-widest">Manage your availability and upcoming client breakthroughs.</p>
+    <div className="min-h-screen bg-[#F4F7FA] animate-in fade-in duration-500 pb-32 relative">
+      <div className="max-w-6xl mx-auto px-4 pt-6 space-y-6">
+
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div>
+            <h1 className="text-2xl md:text-3xl font-black text-[#2D3324] font-serif uppercase italic tracking-tight">
+              Mentorship Schedule
+            </h1>
+            <p className="text-[#8B9A71] text-[10px] font-black uppercase tracking-[0.25em] mt-1">
+              Manage your availability and upcoming client breakthroughs.
+            </p>
+          </div>
+          <Link
+            to="/coach/schedule/add"
+            className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#2D3324] text-white rounded-[16px] text-[10px] font-black uppercase tracking-widest shadow-xl hover:bg-[#8B9A71] transition-all self-start sm:self-auto"
+          >
+            <PlusLg size={16} /> Add Availability
+          </Link>
         </div>
 
-        <div className="flex items-center gap-3">
-           <Link 
-             to="/coach/schedule/add"
-             className="px-8 py-4 bg-sage-dark text-white rounded-2xl text-[10px] font-black uppercase tracking-widest shadow-xl hover:scale-105 transition-all flex items-center gap-3"
-           >
-              <PlusLg /> Add Availability
-           </Link>
+        <div className="grid lg:grid-cols-12 gap-6">
+
+          {/* ── Calendar ── */}
+          <div className="lg:col-span-8 bg-white rounded-[32px] border border-[#8B9A71]/10 shadow-sm p-5 md:p-8">
+
+            {/* Month nav + view toggle */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
+              <h3 className="text-xl font-black text-[#2D3324] font-serif uppercase italic tracking-tight">
+                {MONTHS[viewMonth]} {viewYear}
+              </h3>
+              <div className="flex items-center gap-3">
+                <div className="flex items-center bg-[#F4F7FA] rounded-[12px] p-1 border border-[#8B9A71]/10">
+                  {(["Month", "Week", "Day"] as const).map(v => (
+                    <button key={v} onClick={() => setActiveView(v)}
+                      className={`px-3 py-1.5 rounded-[9px] text-[9px] font-black uppercase tracking-widest transition-all ${activeView === v ? "bg-[#2D3324] text-white shadow-sm" : "text-[#8B9A71] hover:text-[#2D3324]"}`}>
+                      {v}
+                    </button>
+                  ))}
+                </div>
+                <div className="flex gap-1">
+                  <button onClick={prevMonth} className="w-9 h-9 bg-[#F4F7FA] border border-[#8B9A71]/10 rounded-[10px] flex items-center justify-center text-[#2D3324] hover:bg-[#2D3324] hover:text-white transition-all"><ChevronLeft size={15} /></button>
+                  <button onClick={nextMonth} className="w-9 h-9 bg-[#F4F7FA] border border-[#8B9A71]/10 rounded-[10px] flex items-center justify-center text-[#2D3324] hover:bg-[#2D3324] hover:text-white transition-all"><ChevronRight size={15} /></button>
+                </div>
+              </div>
+            </div>
+
+            {/* Day headers */}
+            <div className="grid grid-cols-7 mb-1">
+              {["S","M","T","W","T","F","S"].map((d, i) => (
+                <div key={i} className="py-2 text-center text-[9px] font-black text-[#8B9A71] uppercase tracking-widest">{d}</div>
+              ))}
+            </div>
+
+            {/* Grid */}
+            <div className="grid grid-cols-7 gap-1">
+              {Array.from({ length: totalCells }).map((_, i) => {
+                const dayNum = i - firstDay + 1;
+                const isValid = dayNum >= 1 && dayNum <= daysInMonth;
+                const hasBooking = isValid && !!BOOKINGS[dayNum];
+                const todayFlag = isValid && isToday(dayNum);
+                const isSelected = isValid && selectedDay === dayNum;
+                const count = hasBooking ? BOOKINGS[dayNum].length : 0;
+
+                return (
+                  <div key={i}
+                    onClick={() => isValid && handleDayClick(dayNum)}
+                    className={`min-h-[52px] md:min-h-[72px] rounded-[12px] p-1.5 flex flex-col items-center md:items-start transition-all
+                      ${isValid ? "cursor-pointer hover:bg-[#F4F7FA]" : ""}
+                      ${todayFlag ? "bg-[#2D3324]" : ""}
+                      ${isSelected && !todayFlag ? "bg-[#8B9A71]/15 ring-2 ring-[#8B9A71]/40" : ""}
+                    `}
+                  >
+                    {isValid && (
+                      <>
+                        <span className={`text-[10px] md:text-xs font-black leading-none mb-1 w-6 h-6 flex items-center justify-center rounded-full
+                          ${todayFlag ? "text-white" : "text-[#2D3324]"}
+                        `}>
+                          {dayNum}
+                        </span>
+                        {hasBooking && (
+                          <>
+                            {/* Mobile: coloured dots */}
+                            <div className="md:hidden flex gap-0.5 mt-auto flex-wrap justify-center">
+                              {Array.from({ length: Math.min(count, 3) }).map((_, d) => (
+                                <div key={d} className={`w-1.5 h-1.5 rounded-full ${todayFlag ? "bg-white/60" : "bg-[#8B9A71]"}`} />
+                              ))}
+                            </div>
+                            {/* Desktop: session chip */}
+                            <div className="hidden md:block w-full mt-1 space-y-0.5">
+                              <div className={`text-[8px] font-black uppercase tracking-tight px-1.5 py-1 rounded-[6px] truncate
+                                ${todayFlag ? "bg-white/15 text-white" : "bg-[#2D3324]/8 text-[#2D3324] border-l-2 border-[#8B9A71]"}
+                              `}>
+                                {BOOKINGS[dayNum][0].time} • {BOOKINGS[dayNum][0].client.split(" ")[0]}
+                              </div>
+                              {count > 1 && (
+                                <div className={`text-[7px] font-black uppercase tracking-tight px-1.5 ${todayFlag ? "text-white/50" : "text-[#8B9A71]"}`}>
+                                  +{count - 1} more
+                                </div>
+                              )}
+                            </div>
+                          </>
+                        )}
+                      </>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ── Sidebar ── */}
+          <div className="lg:col-span-4 space-y-5">
+            <div className="bg-[#2D3324] p-8 rounded-[28px] text-white shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-[80px]" />
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#8B9A71]/10 rounded-tr-[80px]" />
+              <div className="flex items-center gap-3 mb-6 relative z-10">
+                <div className="w-10 h-10 bg-white/10 rounded-[12px] flex items-center justify-center">
+                  <Calendar3 size={18} className="text-[#8B9A71]" />
+                </div>
+                <h4 className="text-sm font-black uppercase tracking-widest text-white/80">{MONTHS[viewMonth]} Stats</h4>
+              </div>
+              <div className="space-y-4 relative z-10">
+                <StatRow label="Completed Sessions" val="24" />
+                <StatRow label="Upcoming Bookings" val="12" />
+                <StatRow label="Hours Authored" val="36h" />
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-[28px] border border-[#8B9A71]/10 shadow-sm">
+              <div className="flex items-center justify-between mb-5">
+                <h4 className="text-[10px] font-black text-[#2D3324] uppercase tracking-widest">Today's Focus</h4>
+                <ListTask size={16} className="text-[#8B9A71]" />
+              </div>
+              <div className="space-y-3">
+                <AgendaItem time="10:00 AM" client="Sarah Mitchell" type="Anxiety Check" />
+                <AgendaItem time="02:00 PM" client="John Doe" type="Goals Review" />
+              </div>
+              <button className="w-full mt-5 py-3.5 text-[9px] font-black text-[#2D3324] uppercase tracking-[0.2em] border border-[#2D3324]/20 rounded-[14px] hover:bg-[#2D3324] hover:text-white transition-all">
+                Full Day Agenda
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-12 gap-8">
-         {/* Calendar Main View */}
-         <div className="lg:col-span-8 bg-white rounded-[48px] border border-sage/10 shadow-sm p-6 lg:p-10">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8 lg:mb-12">
-               <h3 className="text-2xl font-bold text-sage-dark font-serif uppercase tracking-tight">{currentMonth}</h3>
-               <div className="flex items-center justify-between md:justify-end gap-4 w-full md:w-auto">
-                  <div className="flex items-center bg-cream rounded-xl p-1 border border-sage/10">
-                     <ViewButton active>Month</ViewButton>
-                     <ViewButton>Week</ViewButton>
-                     <ViewButton>Day</ViewButton>
-                  </div>
-                  <div className="flex gap-2">
-                     <NavButton icon={ChevronLeft} />
-                     <NavButton icon={ChevronRight} />
-                  </div>
-               </div>
+      {/* ── Day Detail Popup ── */}
+      {selectedDay !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4"
+          onClick={closePopup}
+        >
+          {/* Backdrop */}
+          <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
+
+          {/* Sheet */}
+          <div
+            className="relative z-10 w-full max-w-md bg-[#2D3324] rounded-t-[36px] sm:rounded-[32px] shadow-2xl animate-in slide-in-from-bottom-4 duration-300 overflow-hidden"
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Handle bar (mobile) */}
+            <div className="sm:hidden w-10 h-1 bg-white/20 rounded-full mx-auto mt-3 mb-1" />
+
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-white/10">
+              <div>
+                <p className="text-[#8B9A71] text-[9px] font-black uppercase tracking-[0.3em]">{MONTHS[viewMonth]} {viewYear}</p>
+                <h2 className="text-2xl font-black text-white font-serif italic tracking-tight">
+                  {selectedDay} {MONTHS[viewMonth].slice(0,3)}
+                </h2>
+              </div>
+              <button onClick={closePopup} className="w-9 h-9 bg-white/10 rounded-[10px] flex items-center justify-center text-white/60 hover:text-white hover:bg-white/20 transition-all">
+                <X size={18} />
+              </button>
             </div>
 
-            <div className="bg-sage/10 rounded-2xl md:rounded-3xl overflow-hidden border border-sage/10">
-               <div className="grid grid-cols-7 gap-px">
-                  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(day => (
-                    <div key={day} className="bg-cream py-2 md:p-4 text-center text-[8px] md:text-[10px] font-black text-sage-dark/40 uppercase tracking-widest border-b border-sage/10 truncate">
-                       <span className="hidden md:inline">{day}</span>
-                       <span className="md:hidden">{day.slice(0, 1)}</span>
-                    </div>
-                  ))}
-                  {[...Array(35)].map((_, i) => {
-                    const day = i - 2; // Offset for month start
-                    const isToday = day === 14;
-                    const hasSession = [15, 18, 22].includes(day);
-                    
+            {/* Bookings list */}
+            <div className="px-6 py-5 space-y-3 max-h-[60vh] overflow-y-auto">
+              {selectedBookings.length === 0 ? (
+                <div className="py-12 text-center">
+                  <div className="w-14 h-14 bg-white/5 rounded-[18px] flex items-center justify-center mx-auto mb-4">
+                    <Calendar3 size={24} className="text-[#8B9A71]" />
+                  </div>
+                  <p className="text-white/60 text-[10px] font-black uppercase tracking-widest">No sessions scheduled</p>
+                  <Link to="/coach/schedule/add"
+                    className="mt-5 inline-flex items-center gap-2 px-5 py-3 bg-[#8B9A71] text-white rounded-[12px] text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-[#2D3324] transition-all">
+                    <PlusLg size={14} /> Add Slot
+                  </Link>
+                </div>
+              ) : (
+                <>
+                  <p className="text-[#8B9A71] text-[9px] font-black uppercase tracking-widest mb-2">{selectedBookings.length} session{selectedBookings.length > 1 ? "s" : ""} scheduled</p>
+                  {selectedBookings.map((b, idx) => {
+                    const ModeIcon = MODE_ICON[b.mode];
                     return (
-                      <div key={i} className={`min-h-[60px] md:min-h-[120px] bg-white p-1 md:p-4 border-r border-b border-sage/5 transition-all hover:bg-cream/30 group cursor-pointer flex flex-col items-center md:items-start`}>
-                         <span className={`text-[10px] md:text-[11px] font-bold ${day > 0 && day <= 31 ? (isToday ? 'bg-sage text-white w-5 h-5 md:w-6 md:h-6 rounded-lg flex items-center justify-center' : 'text-sage-dark') : 'text-sage-dark/10'}`}>
-                            {day > 0 && day <= 31 ? day : ''}
-                         </span>
-                         {hasSession && (
-                           <>
-                             {/* Mobile Dot */}
-                             <div className="mt-1 md:hidden w-1.5 h-1.5 rounded-full bg-sage-dark" />
-                             {/* Desktop Text */}
-                             <div className="hidden md:block mt-4 space-y-1 w-full">
-                                <div className="bg-sage-dark/10 border-l-2 border-sage-dark p-2 rounded-r-lg">
-                                   <p className="text-[8px] font-black text-sage-dark uppercase tracking-tighter truncate">10:00 AM • Sarah</p>
-                                </div>
-                             </div>
-                           </>
-                         )}
+                      <div key={idx} className="bg-white/5 border border-white/10 rounded-[18px] p-4 hover:bg-white/10 transition-all">
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-[#8B9A71]/20 rounded-[12px] flex items-center justify-center flex-shrink-0">
+                              <PersonFill size={18} className="text-[#8B9A71]" />
+                            </div>
+                            <div>
+                              <p className="text-white font-black text-sm tracking-tight">{b.client}</p>
+                              <p className="text-[#8B9A71] text-[9px] font-black uppercase tracking-widest">{b.type}</p>
+                            </div>
+                          </div>
+                          <span className={`text-[8px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full flex-shrink-0
+                            ${b.status === "confirmed" ? "bg-[#8B9A71]/20 text-[#8B9A71]" : "bg-[#A68A45]/20 text-[#A68A45]"}`}>
+                            {b.status}
+                          </span>
+                        </div>
+                        <div className="flex items-center gap-4 mt-3 pt-3 border-t border-white/10">
+                          <div className="flex items-center gap-1.5 text-[#8B9A71]">
+                            <ClockHistory size={12} />
+                            <span className="text-[10px] font-black text-white">{b.time}</span>
+                          </div>
+                          <div className="flex items-center gap-1.5 text-[#8B9A71]">
+                            <ModeIcon size={12} />
+                            <span className="text-[10px] font-black text-[#8B9A71]">{MODE_LABEL[b.mode]}</span>
+                          </div>
+                          <Link to="/coach/sessions" className="ml-auto flex items-center gap-1 text-[9px] font-black text-[#8B9A71] hover:text-white uppercase tracking-widest transition-colors">
+                            View <ArrowRight size={11} />
+                          </Link>
+                        </div>
                       </div>
                     );
                   })}
-               </div>
-            </div>
-         </div>
-
-         {/* Right: Sidebar Info */}
-         <div className="lg:col-span-4 space-y-6">
-            <div className="bg-sage-dark p-10 rounded-[48px] text-white shadow-2xl relative overflow-hidden">
-               <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-bl-[100px]" />
-               <h4 className="text-xl font-bold font-serif mb-8 uppercase tracking-tight">March Statistics</h4>
-               <div className="space-y-6">
-                  <StatRow label="Completed Sessions" val="24" />
-                  <StatRow label="Upcoming Bookings" val="12" />
-                  <StatRow label="Hours Authored" val="36h" />
-               </div>
+                </>
+              )}
             </div>
 
-            <div className="bg-white p-8 rounded-[40px] border border-sage/10 shadow-sm">
-               <div className="flex items-center justify-between mb-8">
-                  <h4 className="text-[10px] font-black text-sage-dark uppercase tracking-widest">Today's Focus</h4>
-                  <ListTask size={18} className="text-sage" />
-               </div>
-               <div className="space-y-4">
-                  <AgendaItem time="10:00 AM" client="Sarah Mitchell" type="Anxiety Check" />
-                  <AgendaItem time="02:00 PM" client="John Doe" type="Goals Review" />
-               </div>
-               <button className="w-full mt-8 py-4 text-[9px] font-black text-gold-dark uppercase tracking-[0.2em] border border-gold-dark/20 rounded-2xl hover:bg-gold-dark hover:text-white transition-all">
-                  Full Day Agenda
-               </button>
+            {/* Footer */}
+            <div className="px-6 py-4 border-t border-white/10">
+              <Link to="/coach/schedule/add"
+                className="w-full flex items-center justify-center gap-2 py-4 bg-[#8B9A71] text-white rounded-[16px] text-[10px] font-black uppercase tracking-widest hover:bg-white hover:text-[#2D3324] transition-all">
+                <PlusLg size={14} /> Add Session to This Day
+              </Link>
             </div>
-         </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function StatRow({ label, val }: { label: string; val: string }) {
+  return (
+    <div className="flex justify-between items-end border-b border-white/10 pb-3">
+      <span className="text-[9px] font-black text-white/40 uppercase tracking-widest">{label}</span>
+      <span className="text-2xl font-black font-serif text-white">{val}</span>
+    </div>
+  );
+}
+
+function AgendaItem({ time, client, type }: { time: string; client: string; type: string }) {
+  return (
+    <div className="p-4 bg-[#F4F7FA] rounded-[16px] border border-[#8B9A71]/10 hover:border-[#8B9A71]/30 transition-all cursor-pointer">
+      <div className="flex items-center justify-between mb-1.5">
+        <span className="text-[9px] font-black text-[#A68A45] uppercase tracking-widest">{time}</span>
+        <ClockHistory size={11} className="text-[#8B9A71]/40" />
       </div>
-    </div>
-  );
-}
-
-function ViewButton({ children, active }: { children: string, active?: boolean }) {
-  return (
-    <button className={`px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-widest transition-all ${active ? 'bg-white text-sage-dark shadow-sm' : 'text-sage-dark/40 hover:text-sage-dark'}`}>
-       {children}
-    </button>
-  );
-}
-
-function NavButton({ icon: Icon }: { icon: any }) {
-  return (
-    <button className="p-3 bg-white border border-sage/10 rounded-xl text-sage-dark hover:bg-cream transition-all shadow-sm">
-       <Icon size={16} />
-    </button>
-  );
-}
-
-function StatRow({ label, val }: { label: string, val: string }) {
-  return (
-    <div className="flex justify-between items-end border-b border-white/10 pb-4">
-       <span className="text-[10px] font-black text-white/40 uppercase tracking-widest">{label}</span>
-       <span className="text-2xl font-bold font-serif">{val}</span>
-    </div>
-  );
-}
-
-function AgendaItem({ time, client, type }: { time: string, client: string, type: string }) {
-  return (
-    <div className="p-4 bg-cream rounded-2xl border border-sage/5 group hover:border-sage/20 transition-all cursor-pointer">
-       <div className="flex items-center justify-between mb-2">
-          <span className="text-[9px] font-black text-gold-dark uppercase tracking-widest">{time}</span>
-          <ClockHistory size={12} className="text-sage-dark/20" />
-       </div>
-       <p className="text-sm font-bold text-sage-dark tracking-tight mb-1">{client}</p>
-       <p className="text-[9px] font-black text-sage-dark/40 uppercase tracking-widest">{type}</p>
+      <p className="text-sm font-black text-[#2D3324] tracking-tight mb-0.5">{client}</p>
+      <p className="text-[9px] font-black text-[#8B9A71] uppercase tracking-widest">{type}</p>
     </div>
   );
 }

@@ -48,7 +48,7 @@ export function NotificationsPage() {
   ];
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen pb-32 portal-context">
+    <div className="bg-[#F4F7FA] min-h-screen pb-32 portal-context">
       
       {/* Compact Header - Mobile Only */}
       <div className="lg:hidden bg-[#2D3324] text-white px-6 py-6 rounded-b-[40px] relative overflow-hidden flex items-center gap-4 shadow-xl z-20">

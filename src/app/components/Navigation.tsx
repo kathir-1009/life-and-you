@@ -69,7 +69,7 @@ export function Navigation() {
                   className={`px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all flex items-center gap-2 ${
                     isActive(link.path)
                       ? "text-[#5E6C54] bg-[#D0D9CD]"
-                      : "text-[#5E6C54]/60 hover:text-[#5E6C54] hover:bg-[#FCF8E8]"
+                      : "text-[#5E6C54]/60 hover:text-[#5E6C54] hover:bg-[#FFFFFF]"
                   }`}
                 >
                   {link.label}
@@ -128,7 +128,7 @@ export function Navigation() {
                     className={`px-6 py-4 rounded-2xl text-xs font-bold uppercase tracking-widest flex items-center justify-between ${
                       isActive(link.path)
                         ? "bg-[#99A88C] text-[#FFFFFF] shadow-lg shadow-[#99A88C]/20"
-                        : "bg-[#FCF8E8] text-[#5E6C54]"
+                        : "bg-[#FFFFFF] text-[#5E6C54]"
                     }`}
                   >
                     <div className="flex items-center gap-2">

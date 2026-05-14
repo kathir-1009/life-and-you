@@ -11,13 +11,13 @@ export function AvailabilityPage() {
   ]);
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen pb-32">
+    <div className="bg-[#F4F7FA] min-h-screen pb-32">
        {/* Header */}
        <div className="bg-[#2D3324] py-12 px-6 md:px-12 rounded-b-[32px] relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#8B9A71]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-[100px]" />
           <div className="max-w-7xl mx-auto relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
              <div>
-                <h1 className="text-3xl md:text-5xl font-extrabold text-[#FAF9F6] tracking-tight leading-tight">Availability</h1>
+                <h1 className="text-3xl md:text-5xl font-extrabold text-[#F4F7FA] tracking-tight leading-tight">Availability</h1>
                 <p className="text-[#8B9A71] mt-1 text-sm font-bold uppercase tracking-widest leading-relaxed">Define your professional consulting hours</p>
              </div>
              <div className="flex gap-3">
@@ -45,7 +45,7 @@ export function AvailabilityPage() {
 
                 <div className="space-y-6">
                    {availability.map((item, i) => (
-                     <div key={i} className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 rounded-3xl bg-[#FAF9F6] group hover:bg-white hover:shadow-md transition-all border border-transparent hover:border-[#8B9A71]/20">
+                     <div key={i} className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 rounded-3xl bg-[#F4F7FA] group hover:bg-white hover:shadow-md transition-all border border-transparent hover:border-[#8B9A71]/20">
                         <div className="w-40">
                            <h3 className="text-xl font-black text-[#2D3324]">{item.day}</h3>
                            <p className="text-[10px] font-bold text-[#8B9A71] uppercase tracking-[0.1em]">{item.slots.length} Blocks active</p>
@@ -76,7 +76,7 @@ export function AvailabilityPage() {
                       <Plus size={16} /> Add Exception
                    </button>
                 </div>
-                <div className="bg-[#FAF9F6] p-10 rounded-[32px] border border-dashed border-[#CED2BA] text-center">
+                <div className="bg-[#F4F7FA] p-10 rounded-[32px] border border-dashed border-[#CED2BA] text-center">
                    <Calendar size={32} className="mx-auto text-[#CED2BA] mb-4" />
                    <p className="text-sm font-bold text-[#545454] opacity-50">No vacations or blackouts scheduled for April.</p>
                 </div>
