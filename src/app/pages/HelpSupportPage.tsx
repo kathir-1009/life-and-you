@@ -7,30 +7,30 @@ const FAQ_CATEGORIES = [
     icon: HelpCircle,
     title: "Booking & Sessions",
     items: [
-      "How do I reschedule a session?",
-      "Can I cancel an appointment?",
-      "How to prepare for your first call",
-      "What happens if my coach cancels?",
+      { q: "How do I reschedule a session?", a: "You can reschedule from your Dashboard up to 24 hours before the session starts without any penalty." },
+      { q: "Can I cancel an appointment?", a: "Yes, cancellations made 48 hours in advance receive a full refund. Late cancellations may incur a fee." },
+      { q: "How to prepare for your first call", a: "Find a quiet, private space. Bring a notebook and an open mind. No other preparation is required." },
+      { q: "What happens if my coach cancels?", a: "In the rare event your coach cancels, you will be immediately notified and granted a free priority reschedule." },
     ],
   },
   {
     icon: Shield,
     title: "Privacy & Security",
     items: [
-      "How anonymous mode works",
-      "Our end-to-end encryption policy",
-      "Can my coach see my real name?",
-      "How to delete your account data",
+      { q: "How anonymous mode works", a: "Your real name and contact details are hidden from your coach. You are identified only by a secure alias." },
+      { q: "Our end-to-end encryption policy", a: "All video calls and chat messages are end-to-end encrypted. We cannot view or store your session content." },
+      { q: "Can my coach see my real name?", a: "No. Unless you explicitly share it during a session, your identity remains completely confidential." },
+      { q: "How to delete your account data", a: "You can request a full data deletion from the Security Vault. All records will be wiped within 72 hours." },
     ],
   },
   {
     icon: ExternalLink,
     title: "Portal Technicals",
     items: [
-      "Mobile app installation guide",
-      "Browser compatibility requirements",
-      "Troubleshooting video call issues",
-      "Offline mode & data sync",
+      { q: "Mobile app installation guide", a: "You can install our Progressive Web App directly to your home screen via your browser's share menu." },
+      { q: "Browser compatibility requirements", a: "We support the latest versions of Chrome, Safari, Firefox, and Edge. Please ensure your browser is updated." },
+      { q: "Troubleshooting video call issues", a: "Check your microphone and camera permissions. If issues persist, try refreshing the page or switching browsers." },
+      { q: "Offline mode & data sync", a: "Journal entries can be written offline and will automatically sync to our secure servers once you reconnect." },
     ],
   },
 ];
@@ -38,6 +38,7 @@ const FAQ_CATEGORIES = [
 export function HelpSupportPage() {
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [expandedQ, setExpandedQ] = useState<string | null>(null);
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
 
@@ -175,10 +176,20 @@ export function HelpSupportPage() {
               {expanded === cat.title && (
                 <div className="border-t border-[#F4F7FA] divide-y divide-[#F4F7FA] animate-in fade-in duration-300">
                   {cat.items.map((item, ii) => (
-                    <button key={ii} className="w-full px-5 py-4 flex items-center justify-between gap-3 hover:bg-[#F4F7FA] transition-all text-left group">
-                      <span className="text-sm font-medium text-[#2D3324] leading-snug">{item}</span>
-                      <ChevronRight size={14} className="text-[#8B9A71] flex-shrink-0 group-hover:translate-x-0.5 transition-transform" />
-                    </button>
+                    <div key={ii} className="group">
+                      <button 
+                        onClick={() => setExpandedQ(expandedQ === item.q ? null : item.q)}
+                        className="w-full px-5 py-4 flex items-center justify-between gap-3 hover:bg-[#F4F7FA] transition-all text-left"
+                      >
+                        <span className="text-sm font-medium text-[#2D3324] leading-snug">{item.q}</span>
+                        <ChevronRight size={14} className={`text-[#8B9A71] flex-shrink-0 transition-transform ${expandedQ === item.q ? 'rotate-90' : 'group-hover:translate-x-0.5'}`} />
+                      </button>
+                      {expandedQ === item.q && (
+                        <div className="px-5 pb-4 text-[13px] text-[#2D3324]/60 font-medium leading-relaxed animate-in fade-in slide-in-from-top-1">
+                          {item.a}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               )}

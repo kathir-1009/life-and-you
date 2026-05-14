@@ -25,7 +25,7 @@ export function ConfirmationPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#2D3324] flex flex-col items-center justify-center p-6 relative overflow-hidden portal-context">
+    <div className="min-h-[100dvh] bg-[#2D3324] flex flex-col items-center justify-start pt-20 pb-32 px-6 relative overflow-x-hidden portal-context">
       {/* Background ambient glows */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#8B9A71]/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#A68A45]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-[100px] pointer-events-none" />
