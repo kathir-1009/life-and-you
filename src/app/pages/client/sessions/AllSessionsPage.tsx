@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Calendar3, Clock, Person, ChevronRight, PlayFill, ThreeDotsVertical, Search, Filter } from "react-bootstrap-icons";
+import { Calendar3, Person, ChevronRight, PlayFill, ThreeDotsVertical, Search, Filter } from "react-bootstrap-icons";
 import { useUser } from "../../../context/UserContext";
 import { Link, useNavigate } from "react-router";
 import { ChevronLeft } from "lucide-react";
@@ -42,114 +42,126 @@ export function AllSessionsPage() {
   const filteredSessions = sessions.filter(s => tab === 'upcoming' ? s.isUpcoming : !s.isUpcoming);
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-5 duration-700 px-4 md:px-0 portal-context pb-20">
+    <div className="min-h-screen bg-[#F4F7FA] pb-24 portal-context animate-in fade-in slide-in-from-bottom-5 duration-700">
       
-      {/* Compact Header - Mobile Only */}
-      <div className="lg:hidden bg-[#2D3324] text-white px-6 py-6 rounded-b-[40px] relative overflow-hidden flex items-center gap-4 shadow-xl z-20">
-         <div className="absolute top-0 right-0 w-64 h-64 bg-[#FFFFFF]/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl opacity-50 pointer-events-none" />
-         <button 
-            onClick={() => navigate(-1)}
-            className="relative z-20 w-10 h-10 bg-[#FFFFFF]/10 backdrop-blur-md rounded-xl flex items-center justify-center text-white border border-[#FFFFFF]/10 active:scale-95 transition-all shrink-0"
-         >
-            <ChevronLeft size={20} />
-         </button>
-         <div className="relative z-10 flex-1">
-            <h1 className="text-xl font-black tracking-tight leading-none text-[#FFFFFF]">My Sessions</h1>
-            <p className="text-[#8B9A71] text-[9px] font-black uppercase tracking-[0.2em] mt-1">Breakthroughs & Journey History</p>
-         </div>
+      {/* ── Mobile Header ── */}
+      <div className="relative lg:hidden">
+        <button
+          onClick={() => navigate(-1)}
+          className="absolute top-8 left-5 z-20 w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center text-white border border-white/10 active:scale-95 transition-all"
+        >
+          <ChevronLeft size={20} />
+        </button>
+
+        <div className="bg-[#2D3324] pt-20 pb-16 px-6 rounded-b-[64px] relative overflow-hidden text-center border-t border-white/5 shadow-xl">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-[#A68A45]/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-2xl pointer-events-none" />
+          
+          <div className="relative z-10 flex flex-col items-center">
+            <h1 className="text-3xl font-black text-white tracking-tight font-serif italic mb-2">My Sessions</h1>
+            <p className="text-[#8B9A71] text-[10px] font-black uppercase tracking-[0.35em]">Breakthroughs & Journey</p>
+          </div>
+        </div>
       </div>
           
 
-      {/* Header with Search - Desktop with Mobile Hidden */}
-      <div className="hidden lg:flex bg-[#FFFFFF] p-6 rounded-[32px] md:p-0 md:bg-transparent shadow-sm md:shadow-none flex-col lg:flex-row lg:items-center justify-between gap-6">
-        <div>
-           <h1 className="text-3xl lg:text-4xl font-bold text-[#5E6C54] font-serif mb-2 uppercase tracking-tight">My Sessions</h1>
-           <p className="text-[#5E6C54]/60 text-[11px] font-bold uppercase tracking-widest">Manage your breakthroughs and journey history.</p>
-        </div>
-
-        <div className="flex items-center gap-3">
-           <div className="relative flex-1 lg:w-72">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#5E6C54]/30" size={18} />
-              <input 
-                type="text" 
-                placeholder="Search sessions..." 
-                className="w-full bg-[#FFFFFF] border border-[#99A88C]/10 pl-12 pr-4 py-3 rounded-2xl text-[11px] font-bold uppercase tracking-widest outline-none focus:border-[#99A88C] transition-all"
-              />
+      {/* ── Desktop Header ── */}
+      <div className="hidden lg:flex bg-[#2D3324] pt-20 pb-20 px-12 rounded-b-[60px] relative overflow-hidden shadow-xl z-20">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl pointer-events-none" />
+        <div className="max-w-7xl mx-auto w-full relative z-10 flex items-center justify-between">
+           <div>
+              <h1 className="text-4xl font-black text-white font-serif italic mb-2 tracking-tight">My Sessions</h1>
+              <p className="text-[#8B9A71] text-[10px] font-black uppercase tracking-widest">Manage your breakthroughs and journey history.</p>
            </div>
-           <button className="p-3 bg-[#FFFFFF] border border-[#99A88C]/10 rounded-2xl text-[#5E6C54] hover:bg-[#FFFFFF] transition-colors shadow-sm">
-              <Filter size={18} />
-           </button>
+           
+           <div className="flex items-center gap-3">
+              <div className="relative w-72">
+                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40" size={16} />
+                 <input 
+                   type="text" 
+                   placeholder="Search sessions..." 
+                   className="w-full bg-white/10 border border-white/10 pl-12 pr-4 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest outline-none text-white focus:bg-white/20 transition-all placeholder:text-white/40"
+                 />
+              </div>
+              <button className="p-3.5 bg-white/10 border border-white/10 rounded-2xl text-[#8B9A71] hover:bg-white/20 hover:text-white transition-colors">
+                 <Filter size={18} />
+              </button>
+           </div>
         </div>
       </div>
 
-      {/* Tabs */}
-      <div className="flex gap-4 border-b border-sage/10 pb-1">
-         <TabButton active={tab === 'upcoming'} onClick={() => setTab('upcoming')}>Upcoming ({sessions.filter(s => s.isUpcoming).length})</TabButton>
-         <TabButton active={tab === 'history'} onClick={() => setTab('history')}>Past Journey</TabButton>
-      </div>
+      <div className="max-w-7xl mx-auto px-5 lg:px-12 mt-6 lg:-mt-6 relative z-30 space-y-6">
+        
+        {/* Tabs */}
+        <div className="flex gap-4 border-b border-[#8B9A71]/10 pb-1 px-2">
+           <TabButton active={tab === 'upcoming'} onClick={() => setTab('upcoming')}>Upcoming ({sessions.filter(s => s.isUpcoming).length})</TabButton>
+           <TabButton active={tab === 'history'} onClick={() => setTab('history')}>Past Journey</TabButton>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-         {filteredSessions.map((session) => (
-           <div key={session.id} className="bg-white rounded-[40px] p-6 lg:p-10 border border-sage/5 shadow-sm hover:shadow-xl transition-all group flex flex-col justify-between">
-              <div>
-                 <div className="flex items-center justify-between mb-10">
-                    <div className="flex items-center gap-4">
-                       <div className="w-12 h-12 bg-cream rounded-2xl flex items-center justify-center text-sage shadow-sm">
-                          <Calendar3 size={20} />
-                       </div>
-                       <div>
-                          <p className="text-xs font-black text-sage-dark uppercase tracking-widest">{session.date}</p>
-                          <p className="text-[10px] text-gold-dark font-black uppercase mt-1 tracking-widest">{session.time}</p>
-                       </div>
-                    </div>
-                    <button className="p-2 text-sage-dark/20 hover:text-sage-dark transition-colors"><ThreeDotsVertical size={18} /></button>
-                 </div>
+        {/* Sessions Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+           {filteredSessions.map((session) => (
+             <div key={session.id} className="bg-white rounded-[32px] md:rounded-[40px] p-6 lg:p-8 border border-[#8B9A71]/10 shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col justify-between">
+                <div>
+                   <div className="flex items-center justify-between mb-8">
+                      <div className="flex items-center gap-4">
+                         <div className="w-12 h-12 bg-[#F4F7FA] rounded-[16px] flex items-center justify-center text-[#8B9A71] border border-[#8B9A71]/10">
+                            <Calendar3 size={18} />
+                         </div>
+                         <div>
+                            <p className="text-[10px] font-black text-[#2D3324] uppercase tracking-widest">{session.date}</p>
+                            <p className="text-[9px] text-[#A68A45] font-black uppercase mt-1 tracking-widest">{session.time}</p>
+                         </div>
+                      </div>
+                      <button className="p-2 text-[#8B9A71]/40 hover:text-[#8B9A71] transition-colors"><ThreeDotsVertical size={18} /></button>
+                   </div>
 
-                 <div className="mb-10">
-                    <h3 className="text-xl lg:text-2xl font-bold text-sage-dark font-serif mb-3 uppercase tracking-tight">{session.type}</h3>
-                    <div className="flex items-center gap-2">
-                       <div className="w-6 h-6 bg-sage/10 rounded-full flex items-center justify-center text-sage-dark"><Person size={12} /></div>
-                       <span className="text-[11px] font-bold text-sage-dark/60 uppercase tracking-widest">{session.partner}</span>
-                    </div>
-                 </div>
-              </div>
+                   <div className="mb-8">
+                      <h3 className="text-xl md:text-2xl font-bold text-[#2D3324] font-serif mb-3 uppercase tracking-tight">{session.type}</h3>
+                      <div className="flex items-center gap-2">
+                         <div className="w-6 h-6 bg-[#8B9A71]/10 rounded-full flex items-center justify-center text-[#2D3324]"><Person size={12} /></div>
+                         <span className="text-[10px] font-black text-[#8B9A71] uppercase tracking-widest">{session.partner}</span>
+                      </div>
+                   </div>
+                </div>
 
-              <div className="pt-8 border-t border-cream flex items-center justify-between mt-auto">
-                 <div className="flex items-center gap-2">
-                    <div className={`w-2.5 h-2.5 rounded-full ${session.isUpcoming ? 'bg-sage animate-pulse' : 'bg-sage/20'}`} />
-                    <span className="text-[10px] font-black text-sage-dark/40 uppercase tracking-widest">{session.status}</span>
-                 </div>
-                 
-                 {session.isUpcoming ? (
-                   <Link 
-                     to={`/portal/sessions/${session.id}`}
-                     className="px-8 py-3 bg-sage-dark text-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-xl shadow-sage-dark/10 hover:scale-105 transition-all flex items-center gap-3"
-                   >
-                     Join Room <PlayFill size={12} />
-                   </Link>
-                 ) : (
-                   <Link to={`/portal/sessions/${session.id}`} className="text-[10px] font-black text-gold-dark uppercase tracking-widest flex items-center gap-2 hover:gap-4 transition-all group/link">
-                     View Summary <ChevronRight size={14} className="group-hover/link:translate-x-1 transition-transform" />
-                   </Link>
-                 )}
-              </div>
-           </div>
-         ))}
+                <div className="pt-6 border-t border-[#F4F7FA] flex items-center justify-between mt-auto">
+                   <div className="flex items-center gap-2">
+                      <div className={`w-2 h-2 rounded-full ${session.isUpcoming ? 'bg-[#8B9A71] animate-pulse' : 'bg-[#8B9A71]/30'}`} />
+                      <span className="text-[9px] font-black text-[#2D3324]/50 uppercase tracking-widest">{session.status}</span>
+                   </div>
+                   
+                   {session.isUpcoming ? (
+                     <Link 
+                       to={`/session/${session.id}`}
+                       className="px-6 py-3 bg-[#2D3324] text-white rounded-[14px] text-[9px] font-black uppercase tracking-widest shadow-xl shadow-[#2D3324]/10 hover:scale-105 hover:bg-[#8B9A71] transition-all flex items-center gap-3"
+                     >
+                       Join Room <PlayFill size={12} />
+                     </Link>
+                   ) : (
+                     <Link to={`/portal/sessions/${session.id}`} className="text-[9px] font-black text-[#A68A45] uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all group/link">
+                       View Summary <ChevronRight size={14} className="group-hover/link:translate-x-0.5 transition-transform" />
+                     </Link>
+                   )}
+                </div>
+             </div>
+           ))}
 
-         {tab === 'upcoming' && (
-           <Link 
-             to="/portal/book"
-             className="border-2 border-dashed border-sage/20 rounded-[40px] p-10 flex flex-col items-center justify-center text-center gap-6 group hover:border-sage/40 hover:bg-white transition-all min-h-[320px] shadow-sm"
-           >
-              <div className="w-20 h-20 bg-cream rounded-full flex items-center justify-center text-sage-dark group-hover:scale-110 transition-transform shadow-sm">
-                 <Calendar3 size={32} />
-              </div>
-              <div>
-                 <h4 className="text-base font-black text-sage-dark uppercase tracking-widest mb-2">Book New Session</h4>
-                 <p className="text-[10px] text-sage-dark/40 font-bold max-w-[200px] mx-auto uppercase tracking-widest leading-relaxed italic">"The journey of a thousand miles begins with a single step."</p>
-              </div>
-           </Link>
-         )}
+           {tab === 'upcoming' && (
+             <Link 
+               to="/portal/book"
+               className="border-2 border-dashed border-[#8B9A71]/20 rounded-[32px] md:rounded-[40px] p-8 flex flex-col items-center justify-center text-center gap-5 group hover:border-[#8B9A71]/40 hover:bg-white transition-all min-h-[280px] shadow-sm"
+             >
+                <div className="w-16 h-16 bg-[#F4F7FA] border border-[#8B9A71]/10 rounded-[20px] flex items-center justify-center text-[#2D3324] group-hover:scale-110 group-hover:bg-[#8B9A71] group-hover:text-white transition-all shadow-sm">
+                   <Calendar3 size={24} />
+                </div>
+                <div>
+                   <h4 className="text-[11px] font-black text-[#2D3324] uppercase tracking-widest mb-2">Book New Session</h4>
+                   <p className="text-[10px] text-[#8B9A71] font-bold max-w-[200px] mx-auto uppercase tracking-widest leading-relaxed">"The journey of a thousand miles begins with a single step."</p>
+                </div>
+             </Link>
+           )}
+        </div>
       </div>
     </div>
   );
@@ -159,11 +171,11 @@ function TabButton({ children, active, onClick }: { children: React.ReactNode, a
   return (
     <button 
       onClick={onClick}
-      className={`relative px-6 py-3 text-[11px] font-bold uppercase tracking-widest transition-all ${active ? 'text-sage-dark' : 'text-sage-dark/40 hover:text-sage-dark'}`}
+      className={`relative px-4 py-3 text-[10px] font-black uppercase tracking-[0.2em] transition-all ${active ? 'text-[#2D3324]' : 'text-[#8B9A71]/50 hover:text-[#2D3324]'}`}
     >
       {children}
       {active && (
-        <div className="absolute bottom-0 left-4 right-4 h-1 bg-sage rounded-t-full shadow-[0_-2px_10px_rgba(153,168,140,0.3)] animate-in fade-in slide-in-from-bottom-1" />
+        <div className="absolute bottom-0 left-3 right-3 h-1 bg-[#8B9A71] rounded-t-full shadow-[0_-2px_10px_rgba(139,154,113,0.3)] animate-in fade-in slide-in-from-bottom-1" />
       )}
     </button>
   );

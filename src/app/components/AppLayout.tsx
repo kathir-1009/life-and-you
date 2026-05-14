@@ -63,7 +63,7 @@ export function AppLayout() {
         
         {/* Mobile Header */}
         {!isChat && !isOnboarding && (
-          <div className="lg:hidden bg-[#2D3324] text-white p-4 flex items-center justify-between relative z-50 shadow-xl border-b border-[#2D3324]">
+          <div className="lg:hidden bg-[#2D3324] text-white p-4 flex items-center justify-between relative z-50 border-b border-[#2D3324]">
             <div className="flex items-center gap-3">
               <button 
                 onClick={() => setIsSidebarOpen(true)}
@@ -84,7 +84,7 @@ export function AppLayout() {
           </div>
         )}
 
-        <div ref={scrollRef} className="flex-1 overflow-y-auto">
+        <div ref={scrollRef} className="flex-1 overflow-y-auto overflow-x-hidden">
           <main className={`relative z-10 w-full max-w-[1440px] mx-auto p-0 ${!isOnboarding && 'lg:p-10'} ${!isChat && !isOnboarding && 'lg:pt-10'}`}>
             <Outlet />
           </main>

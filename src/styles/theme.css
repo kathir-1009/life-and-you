@@ -59,6 +59,8 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* portal-context: same font, just ensures it's never overridden by a parent scope */
