@@ -18,7 +18,11 @@ export function SplashPage() {
   const handleRoleSelect = (role: "client" | "coach") => {
     setRole(role);
     localStorage.setItem('userRole', role);
-    navigate("/auth");
+    if (role === 'client') {
+      navigate("/auth/client/login");
+    } else {
+      navigate("/auth/coach/login");
+    }
   };
 
   return (

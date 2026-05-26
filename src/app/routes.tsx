@@ -19,7 +19,10 @@ const JournalPage = lazy(() => import("./pages/JournalPage").then(m => ({ defaul
 
 // Marketing & Auth
 const SplashPage = lazy(() => import("./pages/SplashPage").then(m => ({ default: m.SplashPage })));
-const AuthPage = lazy(() => import("./pages/AuthPage").then(m => ({ default: m.AuthPage })));
+const ClientLoginPage = lazy(() => import("./pages/auth/ClientLoginPage").then(m => ({ default: m.ClientLoginPage })));
+const ClientRegisterPage = lazy(() => import("./pages/auth/ClientRegisterPage").then(m => ({ default: m.ClientRegisterPage })));
+const CoachLoginPage = lazy(() => import("./pages/auth/CoachLoginPage").then(m => ({ default: m.CoachLoginPage })));
+const CoachRegisterPage = lazy(() => import("./pages/auth/CoachRegisterPage").then(m => ({ default: m.CoachRegisterPage })));
 const OTPVerifyPage = lazy(() => import("./pages/OTPVerifyPage").then(m => ({ default: m.OTPVerifyPage })));
 const AboutPage = lazy(() => import("./pages/AboutPage").then(m => ({ default: m.AboutPage })));
 const PricingPage = lazy(() => import("./pages/PricingPage").then(m => ({ default: m.PricingPage })));
@@ -114,9 +117,11 @@ export const router = createBrowserRouter([
   {
     path: "/auth",
     children: [
-      { index: true, element: <Navigate to="/auth/login" replace /> },
-      { path: "login", element: withSuspense(AuthPage) },
-      { path: "register", element: withSuspense(AuthPage) },
+      { index: true, element: <Navigate to="/auth/client/login" replace /> },
+      { path: "client/login", element: withSuspense(ClientLoginPage) },
+      { path: "client/register", element: withSuspense(ClientRegisterPage) },
+      { path: "coach/login", element: withSuspense(CoachLoginPage) },
+      { path: "coach/register", element: withSuspense(CoachRegisterPage) },
       { path: "verify", element: withSuspense(OTPVerifyPage) },
       { path: "forgot-password", element: withSuspense(ForgotPasswordPage) },
       { path: "reset-password", element: withSuspense(ResetPasswordPage) },
